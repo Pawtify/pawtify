@@ -2,7 +2,7 @@
 
 ### *PLANNED FEATURES*
 ##### 1. Matching DB Tables - build logic that will match columns in two tables and create the event that sets Twilio in motion
-- [x] DB tables that compare columns
+- [ ] DB tables that compare columns
 - [ ] connect Twilio text event to the match
 ##### 2. Notification - PA will receive a text message through Twilio stating that their animal is ready to meet them
 - [ ] research Twilio API and implement text message feature that sends the user a link (or the information) for the animal the matched with
