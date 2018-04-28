@@ -45,6 +45,7 @@
 - [ ] add contact the shelter to the show animal page where the name and address are listed 
 - [ ] link that pop up an email form with the shelter email already populated for them?
 ##### 15. Share an Animal on social media - Feature that lets you share the post with Facebook and Twitter
+- [ ] pregame with a search functionality where you can search by any of the animal traits
 - [ ] add the the show animal page
 - [ ] opens social media pop up thing to post and share directly to facebook or twitter
 
