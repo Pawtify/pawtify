@@ -161,20 +161,20 @@ public class Animal {
         this.rescueshelter = rescueshelter;
     }
 
-//    public List<CatBreed> getCat_breeds() {
-//        return cat_breeds;
-//    }
-//
-//    public void setCat_breeds(List<CatBreed> cat_breeds) {
-//        this.cat_breeds = cat_breeds;
-//    }
-//
-//    public List<DogBreed> getDog_breeds() {
-//        return dog_breeds;
-//    }
-//
-//    public void setDog_breeds(List<DogBreed> dog_breeds) {
-//        this.dog_breeds = dog_breeds;
-//    }
+    public CatBreed getCatBreed() {
+        return catBreed;
+    }
+
+    public void setCatBreed(CatBreed catBreed) {
+        this.catBreed = catBreed;
+    }
+
+    public DogBreed getDogBreed() {
+        return dogBreed;
+    }
+
+    public void setDogBreed(DogBreed dogBreed) {
+        this.dogBreed = dogBreed;
+    }
 }
 
