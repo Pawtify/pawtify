@@ -31,8 +31,9 @@
 ##### 10. Animal Card - Card will show animal picture with name and age. Click on animal card to be taken to individual animal page (show.html) to see more information about specific animal.
 - [ ] add animal card to PA index page that updates when new animals are entered into the db and is filter/searchable from the PA index page
 - [ ] add animal card to RS index page with more information for RS (see Laura's example) that updates as soon as new animals are entered and is filter/searchable
-##### 11. Filter - PA users will be able to filter the list of animals by animal type, breed, age, and gender.
-- [ ] add filter to PA browse index 
+##### 11. Filter & Search Options - PA users will be able to filter the list of animals by animal type, breed, age, and gender.
+- [ ] add filter options to for animal type, gender and age
+- [ ] add search box and functionality for all other traits
 - [ ] add filter functionality to RS index
 
 ### *WISH LIST FEATURES*
@@ -45,7 +46,6 @@
 - [ ] add contact the shelter to the show animal page where the name and address are listed 
 - [ ] link that pop up an email form with the shelter email already populated for them?
 ##### 15. Share an Animal on social media - Feature that lets you share the post with Facebook and Twitter
-- [ ] pregame with a search functionality where you can search by any of the animal traits
 - [ ] add the the show animal page
 - [ ] opens social media pop up thing to post and share directly to facebook or twitter
 
