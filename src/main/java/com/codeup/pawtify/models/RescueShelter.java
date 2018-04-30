@@ -1,6 +1,7 @@
 package com.codeup.pawtify.models;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "rescue_shelter")
@@ -18,21 +19,24 @@ public class RescueShelter {
     private String phone;
 
     @OneToOne
-    private long users_id;
+    private User user;
 
-    public RescueShelter(long id, String name, String address, String phone, long users_id) {
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "rescueshelter")
+    private List<Animal> animals;
+
+    public RescueShelter(long id, String name, String address, String phone, User user) {
         this.id = id;
         this.name = name;
         this.address = address;
         this.phone = phone;
-        this.users_id = users_id;
+        this.user = user;
     }
 
-    public RescueShelter(String name, String address, String phone, long users_id) {
+    public RescueShelter(String name, String address, String phone, User user) {
         this.name = name;
         this.address = address;
         this.phone = phone;
-        this.users_id = users_id;
+        this.user = user;
     }
 
     public RescueShelter() {
@@ -71,11 +75,19 @@ public class RescueShelter {
         this.phone = phone;
     }
 
-    public long getUsers_id() {
-        return users_id;
+    public User getUser() {
+        return user;
     }
 
-    public void setUsers_id(long users_id) {
-        this.users_id = users_id;
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public List<Animal> getAnimals() {
+        return animals;
+    }
+
+    public void setAnimals(List<Animal> animals) {
+        this.animals = animals;
     }
 }
