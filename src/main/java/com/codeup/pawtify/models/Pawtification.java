@@ -7,7 +7,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "pawtifications")
-public class pawtification {
+public class Pawtification {
     @Id
     @GeneratedValue
     private long id;
@@ -32,19 +32,19 @@ public class pawtification {
     @OneToOne
     private User user;
 
-    @OneToOne(cascade = CascadeType.ALL, mappedBy = "pawtification")
+    @OneToOne(cascade = CascadeType.ALL, mappedBy = "Pawtification")
     private List<CatBreed> cat_breeds;
 
-    @OneToOne(cascade = CascadeType.ALL, mappedBy = "pawtification")
+    @OneToOne(cascade = CascadeType.ALL, mappedBy = "Pawtification")
     private List<DogBreed> dog_breeds;
 
 
 
 
-    public pawtification() {
+    public Pawtification() {
     }
 
-    public pawtification(String age, String gender, String size, String color, User user, List<CatBreed> cat_breeds, List<DogBreed> dog_breeds) {
+    public Pawtification(String age, String gender, String size, String color, User user, List<CatBreed> cat_breeds, List<DogBreed> dog_breeds) {
         this.age = age;
         this.gender = gender;
         this.size = size;
@@ -54,7 +54,7 @@ public class pawtification {
         this.dog_breeds = dog_breeds;
     }
 
-    public pawtification(long id , String age, String gender, String size, String color, User user, List<CatBreed> cat_breeds, List<DogBreed> dog_breeds) {
+    public Pawtification(long id , String age, String gender, String size, String color, User user, List<CatBreed> cat_breeds, List<DogBreed> dog_breeds) {
         this.id = id;
         this.age = age;
         this.gender = gender;
