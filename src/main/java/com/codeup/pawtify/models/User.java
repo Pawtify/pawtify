@@ -23,6 +23,9 @@ public class User {
     @Column(nullable = false)
     private String password;
 
+    @OneToOne(cascade = CascadeType.ALL, mappedBy = "user")
+    private Pawtification pawtification;
+
     public User(long id, String full_name, String phone, String username, String email, String password) {
         this.id = id;
         this.full_name = full_name;
