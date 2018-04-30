@@ -3,10 +3,16 @@ package com.codeup.pawtify;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+
 @SpringBootApplication
 public class PawtifyApplication {
 
-	public static void main(String[] args) {
+	public static void main(String[] args)
+	{
 		SpringApplication.run(PawtifyApplication.class, args);
 	}
+//	protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
+//		return application.sources(BlogApplication.class);
+//	}
+
 }
