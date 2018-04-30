@@ -2,6 +2,7 @@ package com.codeup.pawtify.models;
 
 import javax.persistence.*;
 import javax.validation.constraints.Size;
+import java.util.List;
 
 
 @Entity
@@ -10,14 +11,6 @@ public class Animal {
     @Id
     @GeneratedValue
     private long id;
-
-    @Column(nullable = false)
-    @Size(min=1, max=100, message="Please Pick Type")
-    private String type;
-
-    @Column(nullable = false)
-    @Size(min=1, max=100, message="Please Pick Breed")
-    private String breed;
 
     @Column(nullable = false)
     @Size(min=1, max=100, message="Please Pick Pet Name")
@@ -40,53 +33,53 @@ public class Animal {
     private String color;
 
     @Column(nullable = false)
-    @Size(min=1, max=100, message="Please Pick Pets Behavior")
+    @Size(min=1, max=100, message="Please Pick Pet's Behavior")
     private String behavior;
-
-    @Column(nullable = false)
-    @Size(min=1, max=100, message="Please Pick Shelter Location")
-    private String shelter_location;
 
     @Column
     @Size(min=1, max=100, message="Please Upload a Photo")
     private String path;
 
-    //    TODO: Discuss with Emma RS_User's relationship to Animals.
-//    @ManyToOne
-//    private RS_User rs_user;
+    //    Relationships
+    @ManyToOne(cascade = CascadeType.ALL, mappedBy = "rescueshelter")
+    private RescueShelter rescueshelter;
+
+    @OneToOne(cascade = CascadeType.ALL, mappedBy = "animal")
+    private List<CatBreed> cat_breeds;
+
+    @OneToOne(cascade = CascadeType.ALL, mappedBy = "animal")
+    private List<DogBreed> dog_breeds;
 
 
     public Animal() {
     }
 
-    public Animal(String type, String breed, String name, String age, String gender, String size, String color, String behavior, String shelter_location, String path) {
-        this.type = type;
-        this.breed = breed;
+    public Animal(String name, String age, String gender, String size, String color, String behavior, String path, RescueShelter rescueShelter, List<CatBreed> cat_breeds, List<DogBreed> dog_breeds) {
         this.name = name;
         this.age = age;
         this.gender = gender;
         this.size = size;
         this.color = color;
         this.behavior = behavior;
-        this.shelter_location = shelter_location;
         this.path = path;
-//        this.rs_user = rs_user;
+        this.rescueshelter = rescueshelter;
+        this.cat_breeds = cat_breeds;
+        this.dog_breeds =  dog_breeds;
     }
 
-//    public animal(long id, String type, String breed, String name, String age, String gender, String size, String color, String behavior, String shelter_location, String path, RS_User rs_user) {
-//        this.id = id;
-//        this.type = type;
-//        this.breed = breed;
-//        this.name = name;
-//        this.age = age;
-//        this.gender = gender;
-//        this.size = size;
-//        this.color = color;
-//        this.behavior = behavior;
-//        this.shelter_location = shelter_location;
-//        this.path = path;
-////        this.rs_user = rs_user;
-//    }
+    public Animal(long id, String name, String age, String gender, String size, String color, String behavior, String path, RescueShelter rescueShelter, List<CatBreed> cat_breeds, List<DogBreed> dog_breeds) {
+        this.id = id;
+        this.name = name;
+        this.age = age;
+        this.gender = gender;
+        this.size = size;
+        this.color = color;
+        this.behavior = behavior;
+        this.path = path;
+        this.rescueshelter = rescueshelter;
+        this.cat_breeds = cat_breeds;
+        this.dog_breeds = dog_breeds;
+    }
 
     public long getId() {
         return id;
@@ -94,22 +87,6 @@ public class Animal {
 
     public void setId(long id) {
         this.id = id;
-    }
-
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
-    }
-
-    public String getBreed() {
-        return breed;
-    }
-
-    public void setBreed(String breed) {
-        this.breed = breed;
     }
 
     public String getName() {
@@ -160,14 +137,6 @@ public class Animal {
         this.behavior = behavior;
     }
 
-    public String getShelter_location() {
-        return shelter_location;
-    }
-
-    public void setShelter_location(String shelter_location) {
-        this.shelter_location = shelter_location;
-    }
-
     public String getPath() {
         return path;
     }
@@ -176,12 +145,28 @@ public class Animal {
         this.path = path;
     }
 
-//    public RS_User getRs_user() {
-//        return rs_user;
-//    }
-//
-//    public void setRs_user(RS_User rs_user) {
-//        this.rs_user = rs_user;
-//    }
+    public RescueShelter getRescueshelter() {
+        return rescueshelter;
+    }
+
+    public void setRescueshelter(RescueShelter rescueshelter) {
+        this.rescueshelter = rescueshelter;
+    }
+
+    public List<CatBreed> getCat_breeds() {
+        return cat_breeds;
+    }
+
+    public void setCat_breeds(List<CatBreed> cat_breeds) {
+        this.cat_breeds = cat_breeds;
+    }
+
+    public List<DogBreed> getDog_breeds() {
+        return dog_breeds;
+    }
+
+    public void setDog_breeds(List<DogBreed> dog_breeds) {
+        this.dog_breeds = dog_breeds;
+    }
 }
 
