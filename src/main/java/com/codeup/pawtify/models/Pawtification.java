@@ -32,11 +32,11 @@ public class Pawtification {
     @OneToOne
     private User user;
 
-    @OneToOne(cascade = CascadeType.ALL, mappedBy = "Pawtification")
-    private List<CatBreed> cat_breeds;
+    @OneToOne(cascade = CascadeType.ALL)
+    private CatBreed catBreed;
 
-    @OneToOne(cascade = CascadeType.ALL, mappedBy = "Pawtification")
-    private List<DogBreed> dog_breeds;
+    @OneToOne(cascade = CascadeType.ALL)
+    private DogBreed dogBreed;
 
 
 
@@ -44,27 +44,27 @@ public class Pawtification {
     public Pawtification() {
     }
 
-    public Pawtification(String age, String gender, String size, String color, User user, List<CatBreed> cat_breeds, List<DogBreed> dog_breeds) {
+    public Pawtification(String age, String gender, String size, String color, User user, CatBreed catBreed, DogBreed dogBreed) {
         this.age = age;
         this.gender = gender;
         this.size = size;
         this.color = color;
         this.user = user;
-        this.cat_breeds = cat_breeds;
-        this.dog_breeds = dog_breeds;
+        this.catBreed = catBreed;
+        this.dogBreed = dogBreed;
     }
 
-    public Pawtification(long id , String age, String gender, String size, String color, User user, List<CatBreed> cat_breeds, List<DogBreed> dog_breeds) {
-        this.id = id;
-        this.age = age;
-        this.gender = gender;
-        this.size = size;
-        this.color = color;
-        this.user = user;
-        this.cat_breeds = cat_breeds;
-        this.dog_breeds = dog_breeds;
-
-    }
+//    public Pawtification(long id , String age, String gender, String size, String color, User user, List<CatBreed> cat_breeds, List<DogBreed> dog_breeds) {
+//        this.id = id;
+//        this.age = age;
+//        this.gender = gender;
+//        this.size = size;
+//        this.color = color;
+//        this.user = user;
+//        this.cat_breeds = cat_breeds;
+//        this.dog_breeds = dog_breeds;
+//
+//    }
 
     public long getId() {
         return id;
@@ -114,19 +114,19 @@ public class Pawtification {
         this.user = user;
     }
 
-    public List<CatBreed> getCat_breeds() {
-        return cat_breeds;
-    }
+//    public List<CatBreed> getCat_breeds() {
+//        return cat_breeds;
+//    }
 
-    public void setCat_breeds(List<CatBreed> cat_breeds) {
-        this.cat_breeds = cat_breeds;
-    }
+//    public void setCat_breeds(List<CatBreed> cat_breeds) {
+//        this.cat_breeds = cat_breeds;
+//    }
 
-public List<DogBreed> getDog_breeds() {
-        return dog_breeds;
-    }
+//public List<DogBreed> getDog_breeds() {
+//        return dog_breeds;
+//    }
 
-    public void setDog_breeds(List<DogBreed> dog_breeds) {
-        this.dog_breeds = dog_breeds;
-    }
+//    public void setDog_breeds(List<DogBreed> dog_breeds) {
+//        this.dog_breeds = dog_breeds;
+//    }
 }
