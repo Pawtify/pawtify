@@ -1,11 +1,51 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="partials/header :: header('Browse')"></head>
 <body>
 
-<h1>hello world</h1>
+<div th:replace="partials/navbar :: navbar"></div>
+
+<main class="container">
+
+    <div class="row">
+        <div class="col-offset-6 col-lg-6">
+            <div class="input-group">
+                <input type="text" class="form-control" placeholder="Find Animal">
+                <span class="input-group-btn">
+        <button class="btn btn-default" type="button">Search</button>
+      </span>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <div th:each=" : ${}">
+        <div class="card" style="width: 10rem;">
+            <div class="card-body">
+                <h5 class="card-title">
+                    <!--name-->
+                    <a th:href="@{'//' + ${.}}">
+                        <span th:text="${.}"></span>
+                    </a>
+                    <!--gender-->
+                    <a th:href="@{'//' + ${.}}">
+                        <span th:text="${.}"></span>
+                    </a>
+                    <!--age-->
+                    <a th:href="@{'//' + ${.}}">
+                        <span th:text="${.}"></span>
+                    </a>
+                </h5>
+            </div>
+        </div>
+
+    </div>
+
+
+
+</main>
+
 </body>
 </html>

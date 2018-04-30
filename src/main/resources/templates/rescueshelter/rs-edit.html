@@ -1,10 +1,70 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="partials/header :: header('Profile')"></head>
 <body>
+
+<div th:replace="partials/navbar :: navbar"></div>
+
+<main class="container">
+
+
+    <div class="col-md-offset-3">
+        <h1>Welcome Staff Member, *insert name*</h1>
+        <!--will need to create UPDATE method for action-->
+        <form class="form-horizontal" th:action="@{/update}" th:method="post">
+            <div class="form-group">
+                <label for="register-username" class="col-sm-2 control-label">Username</label>
+                <div class="col-sm-10 col-md-5">
+                    <input type="text" class="form-control" id="register-username" placeholder="Username" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="register-password" class="col-sm-2 control-label">Password</label>
+                <div class="col-sm-10 col-md-5">
+                    <input type="password" class="form-control" id="register-password" placeholder="Password" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="confirm" class="col-sm-2 control-label">Confirm Password</label>
+                <div class="col-sm-10 col-md-5">
+                    <input type="password" class="form-control" id="confirm" placeholder="Password" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="email" class="col-sm-2 control-label">Email</label>
+                <div class="col-sm-10 col-md-5">
+                    <input type="text" class="form-control" id="email" placeholder="Email" />
+                </div>
+            </div>
+            <div class="form-group">
+                <span>Shelter</span>
+                <select name="shelter" size="1">
+                    <option value="" disabled selected>Select Shelter</option>
+                    <option value="1">Animal Care Services</option>
+                    <option value="2">Animal Defense League of Texas</option>
+                    <option value="3">Bulverde Area Humane Society</option>
+                    <option value="4">Helotes Humane Society</option>
+                    <option value="5">Kirby-Bexar Animal Facility</option>
+                    <option value="6">Paws Ranch Rescue & Animal Sanctuary</option>
+                    <option value="7">SAPA</option>
+                    <option value="8">San Antonio Feral Cat Coalition</option>
+                    <option value="9">San Antonio Humane Society</option>
+                    <option value="10">SNIPSA</option>
+                    <option value="11">Universal City Animal Shelter</option>
+                    <option value="12">Wayward Whiskers Cat Rescue</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <button type="submit" class="btn btn-default">Update</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+
+</main>
 
 </body>
 </html>

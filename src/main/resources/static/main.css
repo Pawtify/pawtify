@@ -1,0 +1,18 @@
+main {
+    margin-top: 60px;
+}
+
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+body {
+    margin-bottom: 60px;
+}
+
+
+.format {
+    background-color: #9e9e9e;
+    color: white;
+}
