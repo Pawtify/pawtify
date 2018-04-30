@@ -41,7 +41,7 @@ public class Animal {
     private String path;
 
     //    Relationships
-    @ManyToOne(cascade = CascadeType.ALL, mappedBy = "rescueshelter")
+    @ManyToOne(cascade = CascadeType.ALL)
     private RescueShelter rescueshelter;
 
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "animal")
