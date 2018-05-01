@@ -14,5 +14,30 @@ body {
 
 .format {
     background-color: #9e9e9e;
-    color: white;
 }
+
+.navbar {
+    height: 8rem;
+}
+
+.navbar .brand, .navbar .nav > li > a {
+    color: white;
+    font-size: 18px;
+    margin-top: 2rem;
+}
+
+.nav-container {
+    margin-left: 0;
+}
+
+
+.navbar-inverse .navbar-brand {
+    color: #54c6a0;
+    font-size: 34px;
+    margin-top: 1rem;
+}
+
+
+
+
+
