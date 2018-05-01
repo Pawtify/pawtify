@@ -1,92 +1,74 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head th:replace="partials/header :: header('Pawtification')"></head>
-<body>
-
-<div th:replace="partials/navbar :: navbar"></div>
-
-<main class="container">
-
-    <h1>Pawtification</h1>
-    <h2>Pawtify me when there is an available animal that matches..</h2>
-    <!--new action for pawtification-->
-    <form class="form-horizontal" th:action="@{/pawtification}" th:method="post">
-
-
-        <!--for each for breeds; still need id -->
-        <div th:each="cat : ${cats}">
-            <div class="form-group">
-                <select name="cat" size="1">
-                    <option value="" disabled selected>Cat</option>
-                    <option value="${ID}"><span th:text="${breed}"></span></option>
-                </select>
-            </div>
-        </div>
-        <span>or</span>
-        <div th:each="dog : ${dogs}">
-        <div class="form-group">
-            <select name="dog" size="1">
-                <option value="" disabled selected>Dog</option>
-                <option value="${ID}"><span th:text="${breed}"></span></option>
-            </select>
-        </div>
-        </div>
-
-
-
-
-        <div class="form-group">
-            <span>Age</span>
-            <select name="age" size="1">
-                <option value="" disabled selected>Select Age</option>
-                <option value="1">Less than 1 year</option>
-                <option value="2">More than 1 year</option>
-            </select>
-        </div>
-        <div class="form-group">
-            <span>Color</span>
-            <select name="color" size="1">
-                <option value="" disabled selected>Select Color</option>
-                <option value="1">Black</option>
-                <option value="2">Brown</option>
-                <option value="3">White</option>
-                <option value="4">No Preference</option>
-            </select>
-        </div>
-        <div class="form-group">
-            <span>Size</span>
-            <select name="size" size="1">
-                <option value="" disabled selected>Select Size</option>
-                <option value="1">Small</option>
-                <option value="2">Medium</option>
-                <option value="3">Large</option>
-            </select>
-        </div>
-        <div class="form-group">
-            <span>Gender</span>
-            <select name="gender" size="1">
-                <option value="" disabled selected>Select Gender</option>
-                <option value="1">Male</option>
-                <option value="2">Female</option>
-                <option value="3">No Preference</option>
-            </select>
-        </div>
-        <div class="form-group">
-            <div class="col-sm-offset-2 col-sm-10">
-                <button type="submit" class="btn btn-default">Pawtify Me</button>
-            </div>
-        </div>
-    </form>
-
-
-    <div>
-        <h1>Welcome, <span th:text="${name}"></span></h1>
-        <h3>Username: <span th:text="${username}"></span></h3>
-        <h3>Email: <span th:text="${email}"></span></h3>
-        <h3>Phone Number: <span th:text="${number}"></span></h3>
-    </div>
-
-</main>
-
-</body>
+    <head th:replace="partials/header :: header('Pawtification')"></head>
+    <body>
+        <div th:replace="partials/navbar :: navbar"></div>
+        <main class="container">
+            <h1>Pawtification</h1>
+            <h2>Pawtify me when there is an available animal that matches..</h2>
+            <!--new action for pawtification-->
+            <form class="form-horizontal" th:action="@{/pawtification}" th:method="post">
+                <!--for each for breeds; still need id -->
+                <div th:each="cat : ${cats}">
+                    <div class="form-group">
+                        <select name="cat" size="1">
+                            <option value="" disabled selected>Cat</option>
+                            <option value="${ID}"><span th:text="${breed}"></span></option>
+                        </select>
+                    </div>
+                </div>
+                <span>or</span>
+                <div th:each="dog : ${dogs}">
+                <div class="form-group">
+                    <select name="dog" size="1">
+                        <option value="" disabled selected>Dog</option>
+                        <option value="${ID}"><span th:text="${breed}"></span></option>
+                    </select>
+                </div>
+                </div>
+                <div class="form-group">
+                    <span>Age</span>
+                    <select name="age" size="1">
+                        <option value="" disabled selected>Select Age</option>
+                        <option value="1">Less than 1 year</option>
+                        <option value="2">More than 1 year</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <span>Color</span>
+                    <select name="color" size="1">
+                        <option value="" disabled selected>Select Color</option>
+                        <option value="1">Black</option>
+                        <option value="2">Brown</option>
+                        <option value="3">White</option>
+                        <option value="4">Other</option>
+                        <option value="5">No Preference</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <span>Size</span>
+                    <select name="size" size="1">
+                        <option value="" disabled selected>Select Size</option>
+                        <option value="1">Small</option>
+                        <option value="2">Medium</option>
+                        <option value="3">Large</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <span>Gender</span>
+                    <select name="gender" size="1">
+                        <option value="" disabled selected>Select Gender</option>
+                        <option value="1">Male</option>
+                        <option value="2">Female</option>
+                        <option value="3">No Preference</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <button type="submit" class="btn btn-default">Pawtify Me</button>
+                    </div>
+                </div>
+            </form>
+        </main>
+    </body>
 </html>
