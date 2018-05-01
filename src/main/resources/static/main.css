@@ -7,8 +7,10 @@ html {
     position: relative;
     min-height: 100%;
 }
+
 body {
-    margin-bottom: 60px;
+    /*margin-bottom: 60px;*/
+    background-color: #82434b;
 }
 
 
@@ -41,5 +43,31 @@ body {
     display: inline;
 }
 
+.main-img {
+    opacity: .8;
+    width: 100%;
 
+}
+
+.slogan {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-family: 'Concert One', cursive;
+    font-size: 8rem;
+    width: 100%;
+    margin-left: 15%;
+}
+
+
+.about {
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: maroon;
+    border: 1px solid black;
+}
 
