@@ -36,7 +36,7 @@ public class UserController {
     public String showPASignUpForm(Model model) {
         User user = new User();
         model.addAttribute("user", user);
-        return "/user/sign-up";
+        return "/potentialadopter/pa-register";
     }
 
     //Add New Potential Adopter to the DB
@@ -56,90 +56,90 @@ public class UserController {
     @GetMapping("/login")
     public String showPALoginForm() {
         //User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        return "/users/login";
+        return "/potentialadopter/pa-signin";
     }
-
-    //Edit Form Show for Potential Adopter
-    @GetMapping("/adopter/{id}/edit")
-    public String editAdopter(@PathVariable long id, Model model){
-        model.addAttribute("editUser", userdao.findOne(id));
-        return "pa-register";
-    }
-
-    //Update DB with Potential Adopter Changed Information
-    @PostMapping("/rescue-shelter/edit")
-    public String updateAdopter(@ModelAttribute User editUser){
-        User e = userdao.findOne(editUser.getId());
-        e.setFull_name(editUser.getFull_name());
-        e.setPhone(editUser.getPhone());
-        e.setUsername(editUser.getUsername());
-        e.setEmail(editUser.getEmail());
-        e.setPassword(editUser.getPassword());
-        userdao.save(e);
-        return "redirect:/rs-form";
-    }
-
-    //Delete the Potential Adopter User
-    @PostMapping("/adopter/{id}/delete")
-    public String deletePAUser(@PathVariable long id){
-        userdao.delete(id);
-        return "redirect:/home";
-    }
-
-    //################### Rescue Shelter Users ###################
-    // Show the Register Form for the Rescue Shelter
-    @GetMapping("/register/rescue-shelter")
-    public String showRSSignUpForm(Model model) {
-        User user = new User();
-        model.addAttribute("user", user);
-        return "/user/sign-up";
-    }
-
-    //Add New Rescue Shelter to the DB
-    @PostMapping("/register/rescue-shelter")
-    public String registerNewRSUser(@Valid User user, Errors errors, Model model) {
-        if(errors.hasErrors()){
-            model.addAttribute(user);
-            return "user/sign-up";
-        }
-        String hash = passwordEncoder.encode(user.getPassword());
-        user.setPassword(hash);
-        userdao.save(user);
-        return "redirect:/rs-form";
-    }
-
-    //Login Rescue Shelter
-    @GetMapping("/login")
-    public String showRSLoginForm() {
-//        User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        return "/rescue-shelter/login";
-    }
-
-    //Edit Form Show for Rescue Shelter
-    @GetMapping("/rescue-shelter/{id}/edit")
-    public String editRescueShelter(@PathVariable long id, Model model){
-        model.addAttribute("editUser", userdao.findOne(id));
-        return "rs-edit";
-    }
-
-    //Update DB with Rescue Shelter Changed Information
-    @PostMapping("/rescue-shelter/edit")
-    public String updateRescueShelter(@ModelAttribute RescueShelter editRescue){
-        RescueShelter r = (RescueShelter) rescuedao.findOne(editRescue.getId());
-        r.setFull_name(editRescue.getFull_name());
-        r.setPhone(editRescue.getPhone());
-        r.setUsername(editRescue.getUsername());
-        r.setEmail(editRescue.getEmail());
-        r.setPassword(editRescue.getPassword());
-        r.setName(editRescue.getName());
-        rescuedao.save(r);
-        return "redirect:/rs-form";
-    }
-
-    //Delete the Rescue Shelter User
-    @PostMapping("/rescue-shelter/{id}/delete")
-    public String deleteRSUser(@PathVariable long id){
-        userdao.delete(id);
-        return "redirect:/home";
-    }
+//
+//    //Edit Form Show for Potential Adopter
+//    @GetMapping("/adopter/{id}/edit")
+//    public String editAdopter(@PathVariable long id, Model model){
+//        model.addAttribute("editUser", userdao.findOne(id));
+//        return "pa-register";
+//    }
+//
+//    //Update DB with Potential Adopter Changed Information
+//    @PostMapping("/rescue-shelter/edit")
+//    public String updateAdopter(@ModelAttribute User editUser){
+//        User e = userdao.findOne(editUser.getId());
+//        e.setFull_name(editUser.getFull_name());
+//        e.setPhone(editUser.getPhone());
+//        e.setUsername(editUser.getUsername());
+//        e.setEmail(editUser.getEmail());
+//        e.setPassword(editUser.getPassword());
+//        userdao.save(e);
+//        return "redirect:/rs-form";
+//    }
+//
+//    //Delete the Potential Adopter User
+//    @PostMapping("/adopter/{id}/delete")
+//    public String deletePAUser(@PathVariable long id){
+//        userdao.delete(id);
+//        return "redirect:/home";
+//    }
+//
+//    //################### Rescue Shelter Users ###################
+//    // Show the Register Form for the Rescue Shelter
+//    @GetMapping("/register/rescue-shelter")
+//    public String showRSSignUpForm(Model model) {
+//        User user = new User();
+//        model.addAttribute("user", user);
+//        return "/user/sign-up";
+//    }
+//
+//    //Add New Rescue Shelter to the DB
+//    @PostMapping("/register/rescue-shelter")
+//    public String registerNewRSUser(@Valid User user, Errors errors, Model model) {
+//        if(errors.hasErrors()){
+//            model.addAttribute(user);
+//            return "user/sign-up";
+//        }
+//        String hash = passwordEncoder.encode(user.getPassword());
+//        user.setPassword(hash);
+//        userdao.save(user);
+//        return "redirect:/rs-form";
+//    }
+//
+//    //Login Rescue Shelter
+//    @GetMapping("/login")
+//    public String showRSLoginForm() {
+////        User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+//        return "/rescue-shelter/login";
+//    }
+//
+//    //Edit Form Show for Rescue Shelter
+//    @GetMapping("/rescue-shelter/{id}/edit")
+//    public String editRescueShelter(@PathVariable long id, Model model){
+//        model.addAttribute("editUser", userdao.findOne(id));
+//        return "rs-edit";
+//    }
+//
+//    //Update DB with Rescue Shelter Changed Information
+//    @PostMapping("/rescue-shelter/edit")
+//    public String updateRescueShelter(@ModelAttribute RescueShelter editRescue){
+//        RescueShelter r = (RescueShelter) rescuedao.findOne(editRescue.getId());
+//        r.setFull_name(editRescue.getFull_name());
+//        r.setPhone(editRescue.getPhone());
+//        r.setUsername(editRescue.getUsername());
+//        r.setEmail(editRescue.getEmail());
+//        r.setPassword(editRescue.getPassword());
+//        r.setName(editRescue.getName());
+//        rescuedao.save(r);
+//        return "redirect:/rs-form";
+//    }
+//
+//    //Delete the Rescue Shelter User
+//    @PostMapping("/rescue-shelter/{id}/delete")
+//    public String deleteRSUser(@PathVariable long id){
+//        userdao.delete(id);
+//        return "redirect:/home";
+//    }
 }
