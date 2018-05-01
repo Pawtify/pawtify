@@ -9,8 +9,24 @@
 </main>
 
 <div>
+    <h1>Meet, <span th:text="${name}"></span></h1>
 
+    <p><span th:text="${breed}">breed</span></p>
+    <p><span th:text="${age}">age</span></p>
+    <p><span th:text="${gender}">gender</span></p>
+    <p><span th:text="${size}">size</span></p>
+    <p><span th:text="${color}">color</span></p>
+    <p><span th:text="${shelter}">shelter location</span></p>
 </div>
+
+<div>
+    <p>I'm ready to meet my furever family! Come see me at <span th:text="shelter">location</span>"
+        Love, <span th:text="${name}">name</span></p>
+</div>
+
+
+
+
 
 </body>
 </html>
