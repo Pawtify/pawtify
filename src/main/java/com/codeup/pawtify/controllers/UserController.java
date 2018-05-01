@@ -19,13 +19,11 @@ import javax.validation.Valid;
 @Controller
 public class UserController {
     private UsersRepository userdao;
-    private RescueShelterRepository rescuedao;
     private PasswordEncoder passwordEncoder;
     private UserService userService;
 
-    public UserController(UsersRepository userdao, RescueShelterRepository rescuedao, PasswordEncoder passwordEncoder, UserService userService) {
+    public UserController(UsersRepository userdao, PasswordEncoder passwordEncoder, UserService userService) {
         this.userdao = userdao;
-        this.rescuedao = rescuedao;
         this.passwordEncoder = passwordEncoder;
         this.userService = userService;
     }
@@ -123,19 +121,18 @@ public class UserController {
 //    }
 //
 //    //Update DB with Rescue Shelter Changed Information
-//    @PostMapping("/rescue-shelter/edit")
-//    public String updateRescueShelter(@ModelAttribute RescueShelter editRescue){
-//        RescueShelter r = (RescueShelter) rescuedao.findOne(editRescue.getId());
-//        r.setFull_name(editRescue.getFull_name());
-//        r.setPhone(editRescue.getPhone());
-//        r.setUsername(editRescue.getUsername());
-//        r.setEmail(editRescue.getEmail());
-//        r.setPassword(editRescue.getPassword());
-//        r.setName(editRescue.getName());
-//        rescuedao.save(r);
-//        return "redirect:/rs-form";
-//    }
-//
+    @PostMapping("/rescue-shelter/edit")
+    public String updateRescueShelter(@ModelAttribute User editRescue){
+        User r = userdao.findOne(editRescue.getId());
+        r.setFull_name(editRescue.getFull_name());
+        r.setPhone(editRescue.getPhone());
+        r.setUsername(editRescue.getUsername());
+        r.setEmail(editRescue.getEmail());
+        r.setPassword(editRescue.getPassword());
+        userdao.save(r);
+        return "redirect:/rs-form";
+    }
+
 //    //Delete the Rescue Shelter User
 //    @PostMapping("/rescue-shelter/{id}/delete")
 //    public String deleteRSUser(@PathVariable long id){

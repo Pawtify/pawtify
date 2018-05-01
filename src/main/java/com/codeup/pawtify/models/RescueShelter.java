@@ -5,7 +5,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "rescue_shelter")
-public class RescueShelter extends User{
+public class RescueShelter{
     @Id @GeneratedValue
     private long id;
 
@@ -23,14 +23,6 @@ public class RescueShelter extends User{
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "rescueshelter")
     private List<Animal> animals;
-
-    public RescueShelter(String full_name, String phone, String username, String email, String password, String name, String address, String phone1, User user) {
-        super(full_name, phone, username, email, password);
-        this.name = name;
-        this.address = address;
-        this.phone = phone1;
-        this.user = user;
-    }
 
     public RescueShelter(long id, String name, String address, String phone, User user) {
         this.id = id;
