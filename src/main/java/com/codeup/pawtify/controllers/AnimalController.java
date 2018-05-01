@@ -39,10 +39,10 @@ public class AnimalController {
     }
 //
 //    Browse available animals for pa-users
-    @GetMapping("/available/pets")
+    @GetMapping("/pets")
     public String availableAnimals(Model model){
         model.addAttribute("animals", animalDoa.findAll());
-        return "main/index";
+        return "/main/index";
     }
 //
 //

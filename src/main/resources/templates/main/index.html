@@ -10,7 +10,7 @@
     <div class="row">
         <div class="col-offset-6 col-lg-6">
             <div class="input-group">
-                <input type="text" class="form-control" placeholder="Find Animal">
+                <input type="text" class="form-control" placeholder="Find Animal"/>
                 <span class="input-group-btn">
                 <button class="btn btn-default" type="button">Search</button>
                 </span>
@@ -21,21 +21,21 @@
 
 
 
-    <div th:each=" : ${}">
+    <div th:each="animal : ${animals}">
         <div class="card" style="width: 10rem;">
             <div class="card-body">
                 <h5 class="card-title">
                     <!--name-->
-                    <a th:href="@{'//' + ${.}}">
-                        <span th:text="${.}"></span>
+                    <a th:href="@{/animals/{animalId}/(animalId=${animal.getId()})}">
+                        <span th:text="${animal.name}"></span>
                     </a>
                     <!--gender-->
-                    <a th:href="@{'//' + ${.}}">
-                        <span th:text="${.}"></span>
+                    <a th:href="@{/animals/{animalId}/(animalId=${animal.getId()})}">
+                        <span th:text="${animal.gender}"></span>
                     </a>
                     <!--age-->
-                    <a th:href="@{'//' + ${.}}">
-                        <span th:text="${.}"></span>
+                    <a th:href="@{/animals/{animalId}/(animalId=${animal.getId()})}">
+                        <span th:text="${animal.age}"></span>
                     </a>
                 </h5>
             </div>
