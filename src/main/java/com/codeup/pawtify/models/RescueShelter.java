@@ -9,7 +9,7 @@ public class RescueShelter extends User{
     @Id @GeneratedValue
     private long id;
 
-    @Column(nullable = false, unique = true)
+    @Column
     private String name;
 
     @Column
