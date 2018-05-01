@@ -38,12 +38,12 @@ public class AnimalController {
         return "/main/home";
     }
 //
-////    Browse available animals for pa-users
-//    @GetMapping("/available/pets")
-//    public String availableAnimals(Model model){
-//        model.addAttribute("animals", animalDoa.findAll());
-//        return "main/index";
-//    }
+//    Browse available animals for pa-users
+    @GetMapping("/available/pets")
+    public String availableAnimals(Model model){
+        model.addAttribute("animals", animalDoa.findAll());
+        return "main/index";
+    }
 //
 //
 ////    Show one animal for pa-users
