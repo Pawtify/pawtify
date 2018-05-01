@@ -1,10 +1,131 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="partials/header :: header('Form')"></head>
 <body>
 
+<div th:replace="partials/navbar :: navbar"></div>
+
+<main class="container">
+
+    <h1>Register Your Animal</h1>
+    <!--for each for breeds; still need id -->
+    <div th:each="cat : ${cats}">
+        <div class="form-group">
+            <select name="cat" size="1">
+                <option value="" disabled selected>Cat</option>
+                <option value="${ID}"><span th:text="${breed}"></span></option>
+            </select>
+        </div>
+    </div>
+    <span>or</span>
+    <div th:each="dog : ${dogs}">
+        <div class="form-group">
+            <select name="dog" size="1">
+                <option value="" disabled selected>Dog</option>
+                <option value="${ID}"><span th:text="${breed}"></span></option>
+            </select>
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        <span>Age</span>
+        <select name="age" size="1">
+            <option value="" disabled selected>Select Age</option>
+            <option value="1">Less than 1 year</option>
+            <option value="2">More than 1 year</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <span>Color</span>
+        <select name="color" size="1">
+            <option value="" disabled selected>Select Color</option>
+            <option value="1">Black</option>
+            <option value="2">Brown</option>
+            <option value="3">White</option>
+            <option value="4">No Preference</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <span>Size</span>
+        <select name="size" size="1">
+            <option value="" disabled selected>Select Size</option>
+            <option value="1">Small</option>
+            <option value="2">Medium</option>
+            <option value="3">Large</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <span>Gender</span>
+        <select name="gender" size="1">
+            <option value="" disabled selected>Select Gender</option>
+            <option value="1">Male</option>
+            <option value="2">Female</option>
+            <option value="3">No Preference</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <span>Shelter</span>
+        <select name="shelter" size="1">
+            <option value="" disabled selected>Select Shelter</option>
+            <option value="1">Animal Care Services</option>
+            <option value="2">Animal Defense League of Texas</option>
+            <option value="3">Bulverde Area Humane Society</option>
+            <option value="4">Helotes Humane Society</option>
+            <option value="5">Kirby-Bexar Animal Facility</option>
+            <option value="6">Paws Ranch Rescue & Animal Sanctuary</option>
+            <option value="7">SAPA</option>
+            <option value="8">San Antonio Feral Cat Coalition</option>
+            <option value="9">San Antonio Humane Society</option>
+            <option value="10">SNIPSA</option>
+            <option value="11">Universal City Animal Shelter</option>
+            <option value="12">Wayward Whiskers Cat Rescue</option>
+        </select>
+    </div>
+
+    <div>
+        <div class="form-group">
+            <label for="behavior">Behavior of Animal</label><br/>
+            <textarea th:field="*{behavior}" class="form-control" id="behavior" rows="3"></textarea>
+        </div>
+    </div>
+
+    <form>
+        <div class="form-group">
+            <label for="animalphoto">Upload Animal Image</label><br/>
+            <input type="file" class="form-control-file" id="animalphoto">
+        </div>
+    </form>
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <button type="submit" class="btn btn-default">Register</button>
+        </div>
+    </div>
+    </form>
+
+    <div class="container">
+    <h1>Registered Animals</h1>
+    <div class="col-offset-6 col-lg-6">
+        <div class="input-group">
+            <input type="text" class="form-control" placeholder="Find Animal">
+            <span class="input-group-btn">
+                <button class="btn btn-default" type="button">Search</button>
+            </span>
+        </div>
+    </div>
+        <p>
+          <span>Name</span>
+          <span>Animal Type</span>
+          <span>Breed</span>
+          <span>Gender</span>
+          <span>Age</span>
+          <span>Color</span>
+          <span>
+            <button class="btn btn-default" type="button">Edit</button>
+            <button class="btn btn-default" type="button">Delete</button>
+          </span>
+      </p>
+    </div>
+</main>
 </body>
 </html>
