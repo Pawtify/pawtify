@@ -9,7 +9,7 @@
 
 
     <div class="col-md-offset-3">
-        <h1>Welcome Staff Member, *insert name*</h1>
+        <h1>Welcome Staff Member, <span th:text="${name}">Name of staff member</span></h1>
         <!--will need to create UPDATE method for action-->
         <form class="form-horizontal" th:action="@{/update}" th:method="post">
             <div class="form-group">
