@@ -1,100 +1,93 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head th:replace="partials/header :: header('Portal')"></head>
-<body>
-
-<div th:replace="partials/navbar :: navbar"></div>
-
-<main class="container">
-    <!--<div th:if="${param.error}">-->
-    <!--Invalid Username and Password.-->
-    <!--</div>-->
-    <!--<div th:if="${param.logout}">-->
-    <!--You have been logged out.-->
-    <!--</div>-->
-
-    <div class="col-md-offset-3">
-        <h1>Sign In</h1>
-        <form class="form-horizontal" th:action="@{/login}" th:method="post">
-            <div class="form-group">
-                <label for="username" class="col-sm-2 control-label">Username</label>
-                <div class="col-sm-10 col-md-5">
-                    <input type="text" class="form-control" id="username" placeholder="Username" />
+    <head th:replace="partials/header :: header('Portal')"></head>
+    <body>
+        <div th:replace="partials/navbar :: navbar"></div>
+        <main class="container">
+            <!--<div th:if="${param.error}">-->
+            <!--Invalid Username and Password.-->
+            <!--</div>-->
+            <!--<div th:if="${param.logout}">-->
+            <!--You have been logged out.-->
+            <!--</div>-->
+            <div class="col-md-offset-3">
+                <h1>Sign In</h1>
+                <form class="form-horizontal" th:action="@{/sehlter/login}" th:method="POST">
+                    <div class="form-group">
+                        <label for="username" class="col-sm-2 control-label">Username</label>
+                        <div class="col-sm-10 col-md-5">
+                            <input type="text" class="form-control" id="username" placeholder="Username" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="password" class="col-sm-2 control-label">Password</label>
+                        <div class="col-sm-10 col-md-5">
+                            <input type="password" class="form-control" id="password" placeholder="Password" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <button type="submit" class="btn btn-default">Sign in</button>
+                        </div>
+                    </div>
+                </form>
+                <!--register form for rs-->
+                <div class="col-md-offset-3">
+                    <h1>Register</h1>
+                    <!--will need to create register method for action-->
+                    <form class="form-horizontal" th:action="@{/register/rescue-shelter}" th:method="POST" th:object="${rescueshelter}">
+                        <div class="form-group">
+                            <label for="register-username" class="col-sm-2 control-label">Username</label>
+                            <div class="col-sm-10 col-md-5">
+                                <input type="text" class="form-control" id="register-username" th:field="*{username}" placeholder="Username" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="register-password" class="col-sm-2 control-label">Password</label>
+                            <div class="col-sm-10 col-md-5">
+                                <input type="password" class="form-control" id="register-password" th:field="*{password}"laceholder="Password" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="confirm" class="col-sm-2 control-label">Confirm Password</label>
+                            <div class="col-sm-10 col-md-5">
+                                <input type="password" class="form-control" id="confirm" placeholder="Password" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="email" class="col-sm-2 control-label">Email</label>
+                            <div class="col-sm-10 col-md-5">
+                                <input type="text" class="form-control" id="email" th:field="*{email}" placeholder="Email" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <button type="submit" class="btn btn-default">Register</button>
+                            </div>
+                        </div>
+                    </form>
+                    <form action="">
+                        <div class="form-group">
+                            <span>Shelter</span>
+                            <select name="shelter" size="1">
+                                <option value="" disabled selected>Select Shelter</option>
+                                <option value="1">Animal Care Services</option>
+                                <option value="2">Animal Defense League of Texas</option>
+                                <option value="3">Bulverde Area Humane Society</option>
+                                <option value="4">Helotes Humane Society</option>
+                                <option value="5">Kirby-Bexar Animal Facility</option>
+                                <option value="6">Paws Ranch Rescue & Animal Sanctuary</option>
+                                <option value="7">SAPA</option>
+                                <option value="8">San Antonio Feral Cat Coalition</option>
+                                <option value="9">San Antonio Humane Society</option>
+                                <option value="10">SNIPSA</option>
+                                <option value="11">Universal City Animal Shelter</option>
+                                <option value="12">Wayward Whiskers Cat Rescue</option>
+                            </select>
+                        </div>
+                    </form>
                 </div>
             </div>
-            <div class="form-group">
-                <label for="inputPassword" class="col-sm-2 control-label">Password</label>
-                <div class="col-sm-10 col-md-5">
-                    <input type="password" class="form-control" id="inputPassword" placeholder="Password" />
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="col-sm-offset-2 col-sm-10">
-                    <button type="submit" class="btn btn-default">Sign in</button>
-                </div>
-            </div>
-        </form>
-
-        <!--register form for rs-->
-
-        <div class="col-md-offset-3">
-            <h1>Register</h1>
-            <!--will need to create register method for action-->
-            <form class="form-horizontal" th:action="@{/register}" th:method="post">
-                <div class="form-group">
-                    <label for="register-username" class="col-sm-2 control-label">Username</label>
-                    <div class="col-sm-10 col-md-5">
-                        <input type="text" class="form-control" id="register-username" placeholder="Username" />
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="register-password" class="col-sm-2 control-label">Password</label>
-                    <div class="col-sm-10 col-md-5">
-                        <input type="password" class="form-control" id="register-password" placeholder="Password" />
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="confirm" class="col-sm-2 control-label">Confirm Password</label>
-                    <div class="col-sm-10 col-md-5">
-                        <input type="password" class="form-control" id="confirm" placeholder="Password" />
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="email" class="col-sm-2 control-label">Email</label>
-                    <div class="col-sm-10 col-md-5">
-                        <input type="text" class="form-control" id="email" placeholder="Email" />
-                    </div>
-                </div>
-                <div class="form-group">
-                    <span>Shelter</span>
-                    <select name="shelter" size="1">
-                        <option value="" disabled selected>Select Shelter</option>
-                        <option value="1">Animal Care Services</option>
-                        <option value="2">Animal Defense League of Texas</option>
-                        <option value="3">Bulverde Area Humane Society</option>
-                        <option value="4">Helotes Humane Society</option>
-                        <option value="5">Kirby-Bexar Animal Facility</option>
-                        <option value="6">Paws Ranch Rescue & Animal Sanctuary</option>
-                        <option value="7">SAPA</option>
-                        <option value="8">San Antonio Feral Cat Coalition</option>
-                        <option value="9">San Antonio Humane Society</option>
-                        <option value="10">SNIPSA</option>
-                        <option value="11">Universal City Animal Shelter</option>
-                        <option value="12">Wayward Whiskers Cat Rescue</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <div class="col-sm-offset-2 col-sm-10">
-                        <button type="submit" class="btn btn-default">Register</button>
-                    </div>
-                </div>
-            </form>
-        </div>
-
-
-    </div>
-
-</main>
-</body>
+        </main>
+    </body>
 </html>
