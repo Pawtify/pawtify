@@ -7,10 +7,10 @@
             <div class="col-md-offset-5">
                 <h1>Sign In</h1>
             </div>
-            <div class="col-md-offset-5" th:if="${param.logout}">
+            <div class="col-md-offset-5 error" th:if="${param.logout}">
                 You have been logged out.
             </div>
-            <div class="col-md-offset-5" th:if="${param.error}">
+            <div class="col-md-offset-5 error" th:if="${param.error}">
                 Invalid Username and Password.
             </div>
             <div class="col-md-offset-3">

@@ -42,7 +42,7 @@ public class UserController {
     public String registerNewPAUser(@Valid User user, Errors errors, Model model) {
         if(errors.hasErrors()){
             model.addAttribute(user);
-            return "/register/adopter";
+            return "potentialadopter/pa-register";
         }
         String hash = passwordEncoder.encode(user.getPassword());
         user.setPassword(hash);

@@ -22,7 +22,7 @@ public class User {
     @Column(nullable = false, unique = true) @NotBlank(message= "Must enter valid email.")
     private String email;
 
-    @Column(nullable = false) @NotBlank(message = "Must enter a password.")
+    @Column(nullable = false) @NotBlank(message = "Must enter valid password.")
     private String password;
 
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "user")
