@@ -1,31 +1,37 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4"
+      xmlns:sec="http://www.w3.org/1999/xhtml">
 <head th:replace="partials/header :: header('Animal')"></head>
 <body>
 
 <div th:replace="partials/navbar :: navbar"></div>
 
 <main class="container">
+
+
+<div>
+    <h1>Meet, <span th:text="${animal.name}"></span></h1>
+    <span th:text="${animal.catBreed}"></span>
+    <span th:text="${animal.dogBreed}"></span>
+    <!--<p><span th:value="${animal.getCatBreed()}" th:text="${animal.catBreed}">breed</span></p>-->
+    <!--<p><span th:value="${animal.dogBreed.id}" th:text="${animal.dogBreed}">breed</span></p>-->
+    <!--<span th:each="breed : ${animal.catBreed}" th:text="${catBreed.breed}"></span>-->
+    <!--<span th:each="breed : ${animal.dogBreed}" th:text="${dogBreed.breed}"></span>-->
+    <p><span th:text="${animal.age}">age</span></p>
+    <p><span th:text="${animal.gender}">gender</span></p>
+    <p><span th:text="${animal.size}">size</span></p>
+    <p><span th:text="${animal.color}">color</span></p>
+    <p><span th:text="${animal.behavior}">color</span></p>
+    <p><span th:text="${animal.rescueshelter}">shelter location</span></p>
+</div>
+
+<div>
+    <p>I'm ready to meet my furever family! Come see me at <span th:text="${animal.rescueshelter}">location</span>"
+        Love, <span th:text="${animal.name}">name</span></p>
+</div>
+
+
 </main>
-
-<div>
-    <h1>Meet, <span th:text="${name}"></span></h1>
-
-    <p><span th:text="${breed}">breed</span></p>
-    <p><span th:text="${age}">age</span></p>
-    <p><span th:text="${gender}">gender</span></p>
-    <p><span th:text="${size}">size</span></p>
-    <p><span th:text="${color}">color</span></p>
-    <p><span th:text="${shelter}">shelter location</span></p>
-</div>
-
-<div>
-    <p>I'm ready to meet my furever family! Come see me at <span th:text="shelter">location</span>"
-        Love, <span th:text="${name}">name</span></p>
-</div>
-
-
-
 
 
 </body>
