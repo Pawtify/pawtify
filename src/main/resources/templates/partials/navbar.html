@@ -21,23 +21,18 @@
             <ul class="nav navbar-nav">
                 <li><a href="/about">About</a></li>
                 <li><a href="/pawtification">Pawtification</a></li>
-                <li><a href="/index">Browse</a></li>
+                <li><a href="/available/pets">Browse</a></li>
             </ul>
 
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="/rs-portal">Staff Portal</a></li>
-                <li><a href="/pa-signin">Sign In</a></li>
-                <li><a href="/pa-register">Register</a></li>
-
-
-                <!--Authentication for Login/Register-->
-                <!--<li sec:authorize="!isAuthenticated()"><a href="/login">Login</a></li>-->
-                <!--<li sec:authorize="!isAuthenticated()"><a href="/sign-up">Register</a></li>-->
-                <!--<li sec:authorize="isAuthenticated()">-->
-                    <!--<form th:action="@{/logout}" th:method="post">-->
-                        <!--<button class="btn-link btn" style="margin-top: 8px">Logout</button>-->
-                    <!--</form>-->
-                <!--</li>-->
+                <li sec:authorize="!isAuthenticated()"><a href="/login">Sign In</a></li>
+                <li sec:authorize="!isAuthenticated()"><a href="/register/adopter">Register</a></li>
+                <li sec:authorize="isAuthenticated()">
+                    <form th:action="@{/logout}" th:method="post">
+                        <button class="btn-link btn" style="margin-top: 8px">Logout</button>
+                    </form>
+                </li>
             </ul>
         </div>
     </div>
