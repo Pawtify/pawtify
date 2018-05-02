@@ -35,8 +35,9 @@ body {
 
 .navbar-inverse .navbar-brand {
     color: #54c6a0;
-    font-size: 34px;
+    font-size: 40px;
     margin-top: 1rem;
+    font-family: 'Caveat Brush', cursive;
 }
 
 .inline {
@@ -84,4 +85,8 @@ body {
 
 .body-color{
     background-color: #805754;
+}
+
+.space {
+    margin-top: 3%;
 }

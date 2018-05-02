@@ -1,5 +1,7 @@
 package com.codeup.pawtify.models;
 
+import org.hibernate.validator.constraints.NotBlank;
+
 import javax.persistence.*;
 
 @Entity
@@ -8,19 +10,19 @@ public class User {
     @Id @GeneratedValue
     private long id;
 
-    @Column
+    @Column @NotBlank(message= "Must insert full name.")
     private String full_name;
 
-    @Column
+    @Column @NotBlank(message= "Must enter valid phone number.")
     private String phone;
 
-    @Column(nullable = false, unique = true)
+    @Column(nullable = false, unique = true) @NotBlank(message= "Enter username.")
     private String username;
 
-    @Column(nullable = false, unique = true)
+    @Column(nullable = false, unique = true) @NotBlank(message= "Must enter valid email.")
     private String email;
 
-    @Column(nullable = false)
+    @Column(nullable = false) @NotBlank(message = "Must enter a password.")
     private String password;
 
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "user")
