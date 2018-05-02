@@ -176,5 +176,6 @@ public class Animal {
     public void setDogBreed(DogBreed dogBreed) {
         this.dogBreed = dogBreed;
     }
+
 }
 

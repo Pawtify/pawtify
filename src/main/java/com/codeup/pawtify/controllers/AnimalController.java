@@ -3,10 +3,12 @@ package com.codeup.pawtify.controllers;
 import com.codeup.pawtify.daos.AnimalRepository;
 import com.codeup.pawtify.daos.CatBreedRepository;
 import com.codeup.pawtify.daos.DogBreedRepository;
+import com.codeup.pawtify.daos.RescueShelterRepository;
 import com.codeup.pawtify.models.Animal;
 import com.codeup.pawtify.models.CatBreed;
 import com.codeup.pawtify.models.DogBreed;
 import com.codeup.pawtify.models.RescueShelter;
+import com.codeup.pawtify.models.User;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -24,11 +26,13 @@ public class AnimalController {
  private final AnimalRepository animalDoa;
  private final CatBreedRepository catDao;
  private final DogBreedRepository dogDao;
+ private final RescueShelterRepository shelterDao;
 
-    public AnimalController(AnimalRepository animalDoa, CatBreedRepository catDao, DogBreedRepository dogDao){
+    public AnimalController(AnimalRepository animalDoa, CatBreedRepository catDao, DogBreedRepository dogDao, RescueShelterRepository shelterDao){
         this.animalDoa = animalDoa;
         this.catDao = catDao;
         this.dogDao = dogDao;
+        this.shelterDao = shelterDao;
     }
 
 //    Homepage
@@ -52,9 +56,19 @@ public class AnimalController {
         Animal animal = animalDoa.findOne(id);
         CatBreed catBreed = catDao.findOne(id);
         DogBreed dogBreed = dogDao.findOne(id);
+        RescueShelter rescueShelter = shelterDao.findOne(id);
 
-        model.addAttribute("catBreed", catBreed.getBreed());
-        model.addAttribute("dogBreed", dogBreed.getBreed());
+        String dogbreedToString = dogBreed.getBreed();
+        String catBreedToString = catBreed.getBreed();
+        String shelterNameToString = rescueShelter.getName();
+        String shelteraddressToString = rescueShelter.getAddress();
+        String shelterPhoneNumberToString = rescueShelter.getPhone();
+
+        model.addAttribute("catBreed", catBreedToString);
+        model.addAttribute("dogBreed", dogbreedToString);
+        model.addAttribute("shelterName", shelterNameToString);
+        model.addAttribute("shelterAddress", shelteraddressToString);
+        model.addAttribute("shelterNumber", shelterPhoneNumberToString);
         model.addAttribute("animal", animal);
         return "main/show";
     }
