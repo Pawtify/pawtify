@@ -90,22 +90,22 @@ public class UserController {
     public String showRSSignUpForm(Model model) {
         User user = new User();
         model.addAttribute("user", user);
-        return "/user/sign-up";
+        return "/rescueshelter/rs-portal";
     }
 
 //    //Add New Rescue Shelter to the DB
-//    @PostMapping("/register/rescue-shelter")
-//    public String registerNewRSUser(@Valid User user, Errors errors, Model model) {
-//        if(errors.hasErrors()){
-//            model.addAttribute(user);
-//            return "user/sign-up";
-//        }
-//        String hash = passwordEncoder.encode(user.getPassword());
-//        user.setPassword(hash);
-//        userdao.save(user);
-//        return "redirect:/rs-form";
-//    }
-//
+    @PostMapping("/register/rescue-shelter")
+    public String registerNewRSUser(@Valid User user, Errors errors, Model model) {
+        if(errors.hasErrors()){
+            model.addAttribute(user);
+            return "rescueshelter/rs-portal";
+        }
+        String hash = passwordEncoder.encode(user.getPassword());
+        user.setPassword(hash);
+        userdao.save(user);
+        return "redirect:/rs-form";
+    }
+
     //Login Rescue Shelter
     @GetMapping("/shelter/login")
     public String showRSLoginForm() {
