@@ -42,16 +42,22 @@ public class AnimalController {
     @GetMapping("/pets")
     public String availableAnimals(Model model){
         model.addAttribute("animals", animalDoa.findAll());
-        return "/main/index";
+        return "main/index";
     }
 //
 //
-////    Show one animal for pa-users
-//    @GetMapping("/pet/{id}")
-//    public String show(@PathVariable long id, Model model){
-//        model.addAttribute("animal", animalDoa.findOne(id));
-//        return "/main/show";
-//    }
+//    Show one animal for pa-users
+    @GetMapping("/animal/{id}")
+    public String show(@PathVariable long id, Model model){
+        Animal animal = animalDoa.findOne(id);
+        CatBreed catBreed = catDao.findOne(id);
+        DogBreed dogBreed = dogDao.findOne(id);
+
+        model.addAttribute("catBreed", catBreed.getBreed());
+        model.addAttribute("dogBreed", dogBreed.getBreed());
+        model.addAttribute("animal", animal);
+        return "main/show";
+    }
 //
 ////    RS-create a animal
 //
