@@ -10,7 +10,6 @@ html {
 
 body {
     /*margin-bottom: 60px;*/
-    background-color: #805754;
 }
 
 
@@ -81,4 +80,8 @@ body {
 
 .main-buttons {
     display: inline-block;
+}
+
+.body-color{
+    background-color: #805754;
 }
