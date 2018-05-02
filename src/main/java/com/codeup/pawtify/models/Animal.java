@@ -60,7 +60,7 @@ public class Animal {
     public Animal() {
     }
 
-    public Animal(String name, String age, String gender, String size, String color, String behavior, String path, RescueShelter rescueShelter, CatBreed catBreed, DogBreed dogBreed) {
+    public Animal(String name, String age, String gender, String size, String color, String behavior, String path, RescueShelter  rescueshelter, CatBreed catBreed, DogBreed dogBreed) {
         this.name = name;
         this.age = age;
         this.gender = gender;
@@ -74,7 +74,7 @@ public class Animal {
 
     }
 
-    public Animal(long id, String name, String age, String gender, String size, String color, String behavior, String path, RescueShelter rescueShelter, CatBreed catBreed, DogBreed dogBreed) {
+    public Animal(long id, String name, String age, String gender, String size, String color, String behavior, String path, RescueShelter rescueshelter, CatBreed catBreed, DogBreed dogBreed) {
         this.id = id;
         this.name = name;
         this.age = age;
