@@ -25,9 +25,9 @@
         <div class="card" style="width: 10rem;">
             <div class="card-body">
                 <h5 class="card-title">
-                    <!--<div th:each="animal : ${animal.path}">-->
-                        <!--<img width="20%" style="display: block; margin: 5px auto; float: left;" th:src="${animal.path}" />-->
-                    <!--</div>-->
+
+                        <img width="20%" style="display: block; margin: 5px auto; float: left;" th:src="${animal.path}" />
+
                     <!--name-->
                     <a th:href="@{/animal/{animalId}/(animalId=${animal.getId()})}">
                         <span th:text="${animal.name}"></span>
