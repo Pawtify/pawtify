@@ -15,7 +15,7 @@ body {
 
 
 .format {
-    background-color: #9e9e9e;
+    background-color: #7b7b7b;
 }
 
 .navbar {
@@ -30,6 +30,7 @@ body {
 
 .nav-container {
     margin-left: 0;
+    margin-right:0;
 }
 
 
@@ -45,26 +46,27 @@ body {
 
 .main-img {
     opacity: .8;
-    width: 100%;
+    height: 60%;
+
 
 }
 
 .slogan {
     position: absolute;
-    top: 40%;
-    left: 50%;
+    top: 30%;
+    left: 55%;
     transform: translate(-50%, -50%);
     color: white;
     font-family: 'Concert One', cursive;
     font-size: 6vw;
-    width: 100%;
-    margin-left: 15%;
+    width: 80%;
+    /*margin-left: 15%;*/
 }
 
 
 .about {
     position: absolute;
-    top: 60%;
+    top: 55%;
     left: 50%;
     transform: translate(-50%, -50%);
     color: maroon;
@@ -73,6 +75,10 @@ body {
 
 
 .home-container {
-    background-color: #805754
-;
+    background-color: #805754;
+}
+
+
+.main-buttons {
+    display: inline-block;
 }

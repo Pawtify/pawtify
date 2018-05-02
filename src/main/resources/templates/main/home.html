@@ -7,19 +7,20 @@
 <main>
     <div class="main-img">
         <img width="100%" src="https://phz8.petinsurance.com/-/media/all-phz-images/2017-images-850/dog_cat_dental_care_hero850.jpg" alt="catdog" />
-        <div class="slogan">Matching People with Pets. <br/> Get Notified with Pawtify.</div>
-        <a href="/about">
-            <button type="button" class="about btn btn-secondary btn-lg">Learn More</button>
-        </a>
+        <div class="col-offset-4">
+            <div class="slogan">Matching People with Pets. <br/> Get Notified with Pawtify.</div>
+                <a href="/about">
+                    <button type="button" class="about btn btn-secondary btn-lg">Learn More</button>
+                </a>
+        </div>
     </div>
 </main>
 
-<main class="container">
-
-    <div>
+<main class="container main-buttons">
+    <div class="col-md-offset-4">
+        <a th:href="@{/signin}"><img src="/images/signin.png" alt="signin" width="130px"/></a>
         <a th:href="@{/browse}"><img src="/images/browse.png" alt="browse" width="200px"/></a>
         <a th:href="@{/register}"><img src="/images/register.png" alt="register" width="130px"/></a>
-        <a th:href="@{/signin}"><img src="/images/signin.png" alt="signin" width="130px"/></a>
     </div>
 
 </main>
