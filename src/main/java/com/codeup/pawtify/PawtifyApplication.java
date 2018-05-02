@@ -14,7 +14,6 @@ public class PawtifyApplication extends SpringBootServletInitializer{
 		SpringApplication.run(PawtifyApplication.class, args);
 	}
 
-	@Override
 	protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
 		return application.sources(PawtifyApplication.class);
 	}
