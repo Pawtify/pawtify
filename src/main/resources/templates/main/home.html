@@ -1,31 +1,25 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head th:replace="partials/header :: header('Home')"></head>
-<body>
-<main class="body-color">
-
-<div th:replace="partials/navbar :: navbar"></div>
-<div>
-    <div class="main-img">
-        <img width="100%" src="https://phz8.petinsurance.com/-/media/all-phz-images/2017-images-850/dog_cat_dental_care_hero850.jpg" alt="catdog" />
-        <div class="col-offset-4">
-            <div class="slogan">Matching People with Pets. <br/> Get Notified with Pawtify.</div>
-                <a href="/about">
-                    <button type="button" class="about btn btn-secondary btn-lg">Learn More</button>
-                </a>
-        </div>
-    </div>
-</div>
-
-<div class="container main-buttons">
-    <div class="col-md-offset-4">
-        <a th:href="@{/login}"><img src="/images/signin.png" alt="signin" width="130px"/></a>
-        <a th:href="@{/available/pets}"><img src="/images/browse.png" alt="browse" width="200px"/></a>
-        <a th:href="@{/register/adopter}"><img src="/images/register.png" alt="register" width="130px"/></a>
-    </div>
-
-</div>
-</main>
-</body>
-
+    <head th:replace="partials/header :: header('Home')"></head>
+    <body>
+        <div th:replace="partials/navbar :: navbar"></div>
+        <main>
+            <div class="main-img">
+                <img width="100%" src="https://phz8.petinsurance.com/-/media/all-phz-images/2017-images-850/dog_cat_dental_care_hero850.jpg" alt="catdog" />
+                <div class="col-offset-4">
+                    <div class="slogan">Matching People with Pets. <br/> Get Notified with Pawtify.</div>
+                        <a href="/about">
+                            <button type="button" class="about btn btn-secondary btn-lg">Learn More</button>
+                        </a>
+                </div>
+            </div>
+        </main>
+        <main class="container main-buttons">
+            <div class="col-md-offset-4">
+                <a th:href="@{/login}"><img src="/images/signin.png" alt="signin" width="130px"/></a>
+                <a th:href="@{/pets}"><img src="/images/browse.png" alt="browse" width="200px"/></a>
+                <a th:href="@{/register/adopter}"><img src="/images/register.png" alt="register" width="130px"/></a>
+            </div>
+        </main>
+    </body>
 </html>
