@@ -42,7 +42,7 @@ public class UserController {
     public String registerNewPAUser(@Valid User user, Errors errors, Model model) {
         if(errors.hasErrors()){
             model.addAttribute(user);
-            return "/user/sign-up";
+            return "/register/adopter";
         }
         String hash = passwordEncoder.encode(user.getPassword());
         user.setPassword(hash);
@@ -84,15 +84,15 @@ public class UserController {
 //        return "redirect:/home";
 //    }
 //
-//    //################### Rescue Shelter Users ###################
-//    // Show the Register Form for the Rescue Shelter
-//    @GetMapping("/register/rescue-shelter")
-//    public String showRSSignUpForm(Model model) {
-//        User user = new User();
-//        model.addAttribute("user", user);
-//        return "/user/sign-up";
-//    }
-//
+    //################### Rescue Shelter Users ###################
+    // Show the Register Form for the Rescue Shelter
+    @GetMapping("/register/rescue-shelter")
+    public String showRSSignUpForm(Model model) {
+        User user = new User();
+        model.addAttribute("user", user);
+        return "/user/sign-up";
+    }
+
 //    //Add New Rescue Shelter to the DB
 //    @PostMapping("/register/rescue-shelter")
 //    public String registerNewRSUser(@Valid User user, Errors errors, Model model) {
@@ -106,13 +106,13 @@ public class UserController {
 //        return "redirect:/rs-form";
 //    }
 //
-//    //Login Rescue Shelter
-//    @GetMapping("/login")
-//    public String showRSLoginForm() {
-////        User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-//        return "/rescue-shelter/login";
-//    }
-//
+    //Login Rescue Shelter
+    @GetMapping("/shelter/login")
+    public String showRSLoginForm() {
+//    User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        return "/rescue-shelter/login";
+    }
+
 //    //Edit Form Show for Rescue Shelter
 //    @GetMapping("/rescue-shelter/{id}/edit")
 //    public String editRescueShelter(@PathVariable long id, Model model){
