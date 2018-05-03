@@ -60,26 +60,26 @@ public class UserController {
 //        User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         return "potentialadopter/pa-signin";
     }
-//
-//    //Edit Form Show for Potential Adopter
-//    @GetMapping("/adopter/{id}/edit")
-//    public String editAdopter(@PathVariable long id, Model model){
-//        model.addAttribute("editUser", userdao.findOne(id));
-//        return "pa-register";
-//    }
-//
-//    //Update DB with Potential Adopter Changed Information
-//    @PostMapping("/rescue-shelter/edit")
-//    public String updateAdopter(@ModelAttribute User editUser){
-//        User e = userdao.findOne(editUser.getId());
-//        e.setFull_name(editUser.getFull_name());
-//        e.setPhone(editUser.getPhone());
-//        e.setUsername(editUser.getUsername());
-//        e.setEmail(editUser.getEmail());
-//        e.setPassword(editUser.getPassword());
-//        userdao.save(e);
-//        return "redirect:/rs-form";
-//    }
+
+    //Edit Form Show for Potential Adopter---FOR EDIT
+    @GetMapping("/adopter/{id}/edit")
+    public String editAdopter(@PathVariable long id, Model model){
+        model.addAttribute("editUser", userdao.findOne(id));
+        return "pa-edit";
+    }
+
+    //Update DB with Potential Adopter Changed Information---FOR EDIT
+    @PostMapping("/adopter/{id}/edit")
+    public String updateAdopter(@ModelAttribute User editUser){
+        User e = userdao.findOne(editUser.getId());
+        e.setFull_name(editUser.getFull_name());
+        e.setPhone(editUser.getPhone());
+        e.setUsername(editUser.getUsername());
+        e.setEmail(editUser.getEmail());
+        e.setPassword(editUser.getPassword());
+        userdao.save(e);
+        return "redirect:/pawtification/";
+    }
 //
 //    //Delete the Potential Adopter User
 //    @PostMapping("/adopter/{id}/delete")
