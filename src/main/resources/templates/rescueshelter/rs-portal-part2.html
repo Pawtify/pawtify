@@ -17,16 +17,9 @@
                             <div class="form-group">
                                 <select >
                                     <option value="shelter">Select Your Shelter</option>
-                                    <option th:each="shelter : ${rescueshelter}" th:field="*{rescueshelter}" th:value="${shelter.id}"><span th:text="${shelter.name}"></span></option>
+                                    <option th:each="shelter : ${rescueshelters}" th:name="rescueshelter" th:value="${shelter.id}"><span th:text="${shelter.name}"></span></option>
                                 </select>
                             </div>
-                        <!--<div class="form-group">-->
-                            <!--<div th:each="shelter : ${rescueshelter}">-->
-                                <!--<label class="checkbox">-->
-                                    <!--<input type="checkbox" th:field="*{rescueshelter}" th:value="${shelter.id}" /><span th:text="${shelter.name}"></span>-->
-                                <!--</label>-->
-                            <!--</div>-->
-                        <!--</div>-->
 
                         <select name="shelter" size="1">
                             <option value="0">Select Shelter</option>
