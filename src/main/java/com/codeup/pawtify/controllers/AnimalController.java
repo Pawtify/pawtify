@@ -46,7 +46,7 @@ public class AnimalController {
     @GetMapping("/pets")
     public String availableAnimals(Model model){
         model.addAttribute("animals", animalDoa.findAll());
-        return "main/index";
+        return "/main/index";
     }
 //
 //
@@ -70,7 +70,7 @@ public class AnimalController {
         model.addAttribute("shelterAddress", shelteraddressToString);
         model.addAttribute("shelterNumber", shelterPhoneNumberToString);
         model.addAttribute("animal", animal);
-        return "main/show";
+        return "/main/show";
     }
 //
 ////    RS-create a animal

@@ -49,15 +49,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
 
 //                NEED TO CHANGE THIS TO ACTUAL PAGE NAMES
-                .antMatchers("/", "/available/animals, /pet/{id}") // anyone can see the home and t he ads pages
+                .antMatchers("/", "/pets, /pet/{id}", "/animals/{id}", "/pawtification") // anyone can see the home and t he ads pages
                 .permitAll()
                 /* Pages that require athentication */
                 .and()
                 .authorizeRequests()
                 .antMatchers(
                         "/animals/create", // only authenticated users can create ads
-                        "/animals/{id}/edit", // only authenticated users can edit ads
-                        "/animals/{id}" //show page hidden so edit button is hidden
+                        "/animals/{id}/edit" // only authenticated users can edit ads//show page hidden so edit button is hidden
                 )
                 .authenticated();
     }
