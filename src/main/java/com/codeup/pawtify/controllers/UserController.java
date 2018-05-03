@@ -5,6 +5,7 @@ import com.codeup.pawtify.daos.UsersRepository;
 import com.codeup.pawtify.models.RescueShelter;
 import com.codeup.pawtify.models.User;
 import com.codeup.pawtify.services.UserService;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -107,7 +108,7 @@ public class UserController {
         String hash = passwordEncoder.encode(user.getPassword());
         user.setPassword(hash);
         userdao.save(user);
-        return "redirect:/rs-portal-part2";
+        return "redirect:/register/shelter-registration";
     }
 
     //Show Rescue Shelter User Affiliation Drop Down
@@ -121,12 +122,13 @@ public class UserController {
     }
 
     //Update User to Have Connection to Rescue Shelter Table
-//    @PostMapping("/register/shelter-registration")
-//    public String connectUserToShelter(User user, Model model, RescueShelter rescueShelter) {
-//        rescueShelter.setName(name);
-//        rescuedao.save(rescueShelter);
-//        return "redirect:/rs-form";
-//    }
+    @PostMapping("/register/shelter-registration")
+    public String connectUserToShelter(RescueShelter newShelter, Model model) {
+        User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        newShelter.setUser(loggedInUser);
+        rescuedao.save(newShelter);
+        return "redirect:/rs-form";
+    }
 
     //Login Rescue Shelter
     @GetMapping("/shelter/login")
