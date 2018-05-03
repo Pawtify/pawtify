@@ -35,10 +35,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
-                /* Login configuration */
+                /* Login configuration for pa*/
                 .formLogin()
                     .loginPage("/login")
-                    .defaultSuccessUrl("/pawtification") // user's home page, it can be any URL
+                    .defaultSuccessUrl("/pawtification/") // user's home page, it can be any URL
                     .permitAll() // Anyone can go to the login page
                 /* Logout configuration */
                 .and()
@@ -47,12 +47,15 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 /* Pages that can be viewed without having to log in */
                 .and()
                     .authorizeRequests()
-                    .antMatchers("/", "/pets", "/animal/{id}", "/pawtification")
+                    .antMatchers("/", "/pets", "/animal/{id}")
                     .permitAll()
                 /* Pages that require athentication */
                 .and()
                     .authorizeRequests()
-                    .antMatchers("/animals/create", "/animals/{id}/edit")
+                    .antMatchers("/animals/create", "/animals/{id}/edit", "/pawtification/")
                     .authenticated();
+
+
+
     }
 }

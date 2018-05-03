@@ -27,6 +27,18 @@ body {
     margin-top: 2rem;
 }
 
+/*.navbar .brand, .navbar .nav > li > form {*/
+    /*color: white;*/
+    /*font-size: 18px;*/
+    /*margin-top: 2rem;*/
+/*}*/
+
+#navbar > ul.nav.navbar-nav.navbar-right > li:nth-child(2) > form {
+    color: white;
+    font-size: 18px;
+    margin-top: 2rem;
+}
+
 .nav-container {
     margin-left: 0;
     margin-right:0;
@@ -53,7 +65,7 @@ body {
 
 .slogan {
     position: absolute;
-    top: 30%;
+    top: 25%;
     left: 55%;
     transform: translate(-50%, -50%);
     color: white;
@@ -66,7 +78,7 @@ body {
 
 .about {
     position: absolute;
-    top: 55%;
+    top: 45%;
     left: 50%;
     transform: translate(-50%, -50%);
     color: maroon;
@@ -76,6 +88,10 @@ body {
 
 .home-container {
     background-color: #805754;
+    margin: 0;
+    padding-top: 7%;
+    padding-bottom: 7%;
+    width: 100%;
 }
 
 
@@ -117,3 +133,9 @@ body {
     margin-top: 0;
 
 }
+
+/*color for dropdown nav*/
+#navbar {
+    background-color: #7b7b7b;
+}
+

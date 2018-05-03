@@ -25,17 +25,10 @@
             </ul>
 
             <ul class="nav navbar-nav navbar-right">
-                <li><a th:href="@{/register/rescue-shelter}">Staff Portal</a></li>
-                <li sec:authorize="!isAuthenticated()"><a href="/login">Sign In</a></li>
-                <li sec:authorize="!isAuthenticated()"><a href="/register/adopter">Register</a></li>
                 <li sec:authorize="isAuthenticated()">
                     <form th:action="@{/logout}" th:method="post">
-                        <button class="btn-link btn">Logout</button>
+                        <button class="btn-link btn" style="margin-top: 8px">Logout</button>
                     </form>
-                </li>
-                <li sec:authorize="isAuthenticated()" style="color: #dedede;">
-                    <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
-                    <span sec:authentication="name"></span>
                 </li>
             </ul>
         </div>
