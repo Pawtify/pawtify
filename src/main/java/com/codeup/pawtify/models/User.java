@@ -1,5 +1,6 @@
 package com.codeup.pawtify.models;
 
+import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotBlank;
 
 import javax.persistence.*;
@@ -20,6 +21,7 @@ public class User {
     private String username;
 
     @Column(nullable = false, unique = true) @NotBlank(message= "Must enter valid email.")
+    @Email(message="Must enter valid email.")
     private String email;
 
     @Column(nullable = false) @NotBlank(message = "Must enter valid password.")
