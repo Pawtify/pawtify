@@ -54,7 +54,7 @@ public class UserController {
     @GetMapping("/login")
     public String showPALoginForm() {
 //        User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        return "/potentialadopter/pa-signin";
+        return "potentialadopter/pa-signin";
     }
 //
 //    //Edit Form Show for Potential Adopter
