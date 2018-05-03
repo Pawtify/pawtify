@@ -1,8 +1,5 @@
 USE pawtify_db;
 INSERT INTO animals(name,age,gender,size,color,behavior,path ,rescueshelter_id,cat_breed_id,dog_breed_id)VALUES
-  ('Lily', 'more than a year', 'female', 'large', 'brown', 'great with all animals and children', 'https://images.pexels.com/photos/356378/pexels-photo-356378.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260', 4, null, 6),
-  ('Ruffus', 'more than a year', 'male', 'medium', 'brown', 'great with children and dogs, chases cats', 'https://images.pexels.com/photos/58997/pexels-photo-58997.jpeg?auto=compress&cs=tinysrgb&h=650&w=940', 5, null, 6),
-  ('Maple', 'more than a year', 'female', 'small', 'brown', 'great with all animals and children', 'https://images.pexels.com/photos/615369/pexels-photo-615369.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260', 6, 8, null),
-  ('Teddy', 'more than a year', 'male', 'small', 'black', 'great with all animals, not kid friendly', 'https://images.pexels.com/photos/674570/pexels-photo-674570.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260', 4, 14, null),
-  ('Annie', 'more than a year', 'female', 'small', 'brown', 'great with children, not good with other animals', 'https://images.pexels.com/photos/33492/cat-red-cute-mackerel.jpg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260', 5, 8, null),
-  ('Zoey', 'more than a year', 'female', 'large', 'black', 'great with children, not good with other animals', 'https://images.pexels.com/photos/247937/pexels-photo-247937.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260', 6, null, 3);
+  ('Teddy', 'less than a year', 'male', 'small', 'black', 'great with all animals, not kid friendly', 'https://images.pexels.com/photos/674570/pexels-photo-674570.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260', 1, 14, null),
+  ('Annie', 'more than a year', 'female', 'small', 'brown', 'great with children but not good with other animals', 'https://images.pexels.com/photos/33492/cat-red-cute-mackerel.jpg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260', 2, 8, null),
+  ('Zoey', 'more than a year', 'female', 'large', 'black', 'great with children but not good with other animals', 'https://images.pexels.com/photos/247937/pexels-photo-247937.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260', 3, null, 3);

@@ -22,11 +22,16 @@ public class PawtificationController {
 
 //set up to create new pawtification
 
+//    @GetMapping("/pawtification")
+//    public String pageLoad(Model model){
+//        return "/potentialadoper/pawtification";
+//    }
+
     @GetMapping("/pawtification")
     public String create(Model model){
         Pawtification pawtification = new Pawtification();
         model.addAttribute("pawtification", pawtification);
-        return "potentialadopter/pawtification";
+        return "/potentialadopter/pawtification";
     }
 //
 ////    Create a pawtification

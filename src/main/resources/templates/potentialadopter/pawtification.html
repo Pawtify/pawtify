@@ -7,9 +7,9 @@
             <h1>Pawtification</h1>
             <h2>Pawtify me when there is an available animal that matches..</h2>
             <!--new action for pawtification-->
-            <form class="form-horizontal" th:action="@{/pawtification}" th:method="post">
+            <form class="form-horizontal" th:action="@{/pawtification}" th:method="post" th:object="${pawtification}">
                 <!--for each for breeds; still need id -->
-                <div th:each="cat : ${cats}">
+                <div th:each="cat : ${animal.cat_breeds}">
                     <div class="form-group">
                         <select name="cat" size="1">
                             <option value="" disabled selected>Cat</option>
@@ -18,7 +18,7 @@
                     </div>
                 </div>
                 <span>or</span>
-                <div th:each="dog : ${dogs}">
+                <div th:each="dog : ${animal.dog_breeds}">
                 <div class="form-group">
                     <select name="dog" size="1">
                         <option value="" disabled selected>Dog</option>
