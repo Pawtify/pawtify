@@ -1,5 +1,6 @@
 package com.codeup.pawtify.services;
 
+import com.codeup.pawtify.daos.Roles;
 import com.codeup.pawtify.daos.UsersRepository;
 import com.codeup.pawtify.models.User;
 import com.codeup.pawtify.models.UserWithRoles;
@@ -11,9 +12,11 @@ import org.springframework.stereotype.Service;
 @Service
 public class UserDetailsLoader implements UserDetailsService{
     private UsersRepository usersDao;
+    private Roles roles;
 
     public UserDetailsLoader(UsersRepository usersDao) {
         this.usersDao = usersDao;
+        this.roles = roles;
     }
 
     @Override
@@ -22,7 +25,6 @@ public class UserDetailsLoader implements UserDetailsService{
         if (user == null) {
             throw new UsernameNotFoundException(String.format("No username: %s found", username));
         }
-        UserWithRoles userWithRoles = new UserWithRoles(user);
-        return userWithRoles;
+        return new UserWithRoles(user, roles.ofUserWith(username));
     }
 }

@@ -5,16 +5,30 @@ import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
+import java.util.List;
 
 public class UserWithRoles extends User implements UserDetails{
+
+
+    private List<String> roles;
+
     public UserWithRoles(User user) {
-        super(user);  // Call the copy constructor defined in User
+        super(user);
     }
+
+    public UserWithRoles(User user, List<String> roles) {
+        super(user);
+        this.roles = roles;
+    }
+
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        String roles = ""; // Since we're not using the authorization part of the component
-        return AuthorityUtils.commaSeparatedStringToAuthorityList(roles);
+        String rolesString = "";
+        for(String role : roles) {
+            rolesString += "role-of-" + role + ",";
+        }
+        return AuthorityUtils.commaSeparatedStringToAuthorityList(rolesString);
     }
 
     @Override
@@ -36,4 +50,17 @@ public class UserWithRoles extends User implements UserDetails{
     public boolean isEnabled() {
         return true;
     }
+
+
+    public List<String> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(List<String> roles) {
+        this.roles = roles;
+    }
+
+
+
+
 }
