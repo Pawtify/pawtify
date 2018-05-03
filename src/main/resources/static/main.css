@@ -9,7 +9,7 @@ html {
 }
 
 body {
-    /*margin-bottom: 60px;*/
+    font-family: 'Nunito', sans-serif;
 }
 
 
@@ -93,4 +93,27 @@ body {
 
 .error {
     color: red;
+}
+
+.title {
+    font-size: 2vw;
+    color: #805754;
+}
+
+.quote {
+    font-weight: bold;
+    font-size:4vh;
+}
+
+.description {
+    font-size: 3vh;
+    background-color: #cedada;
+    margin-left: 0;
+    width: 100%;
+    padding-bottom: 5%;
+}
+
+.developers {
+    margin-top: 0;
+
 }

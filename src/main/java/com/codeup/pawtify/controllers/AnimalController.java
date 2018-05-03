@@ -41,7 +41,16 @@ public class AnimalController {
         model.addAttribute("animals", animalDoa.findAll());
         return "/main/home";
     }
-//
+
+
+//    About Page
+    @GetMapping("/about")
+    public String about(){
+        return "/main/about";
+    }
+
+
+
 //    Browse available animals for pa-users
     @GetMapping("/pets")
     public String availableAnimals(Model model){
