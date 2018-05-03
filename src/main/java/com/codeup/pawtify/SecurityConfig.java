@@ -52,8 +52,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 /* Pages that require athentication */
                 .and()
                     .authorizeRequests()
-                    .antMatchers("/animals/create", "/animals/{id}/edit", "/pawtification/")
-                    .authenticated();
+                    .antMatchers("/animals/create", "/animals/{id}/edit")
+                    .hasAuthority("staff");
 
 
 
