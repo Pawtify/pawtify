@@ -19,11 +19,13 @@ import javax.validation.Valid;
 @Controller
 public class UserController {
     private UsersRepository userdao;
+    private RescueShelterRepository rescuedao;
     private PasswordEncoder passwordEncoder;
     private UserService userService;
 
-    public UserController(UsersRepository userdao, PasswordEncoder passwordEncoder, UserService userService) {
+    public UserController(UsersRepository userdao, RescueShelterRepository rescuedao, PasswordEncoder passwordEncoder, UserService userService) {
         this.userdao = userdao;
+        this.rescuedao = rescuedao;
         this.passwordEncoder = passwordEncoder;
         this.userService = userService;
     }
@@ -103,14 +105,31 @@ public class UserController {
         String hash = passwordEncoder.encode(user.getPassword());
         user.setPassword(hash);
         userdao.save(user);
-        return "redirect:/rs-form";
+        return "redirect:/rs-portal-part2";
     }
+
+    //Show Rescue Shelter User Affiliation Drop Down
+    @GetMapping("/register/shelter-registration")
+    public String showRSAffiliationForm(Model model) {
+//        Iterable<RescueShelter> shelter = rescuedao.findAll();
+//        model.addAttribute("user", user);
+        model.addAttribute("rescueshelter", rescuedao.findAll());
+        return "/rescueshelter/rs-portal-part2";
+    }
+
+    //Update User to Have Connection to Rescue Shelter Table
+//    @PostMapping("/register/shelter-registration")
+//    public String connectUserToShelter(User user, Model model, RescueShelter rescueShelter) {
+//        rescueShelter.setName(name);
+//        rescuedao.save(rescueShelter);
+//        return "redirect:/rs-form";
+//    }
 
     //Login Rescue Shelter
     @GetMapping("/shelter/login")
     public String showRSLoginForm() {
 //    User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        return "/rescue-shelter/login";
+        return "/rescueshelter/rs-portal";
     }
 
 //    //Edit Form Show for Rescue Shelter
