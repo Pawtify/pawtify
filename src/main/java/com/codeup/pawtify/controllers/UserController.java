@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.validation.Valid;
+import java.util.ArrayList;
+import java.util.List;
 
 @Controller
 public class UserController {
@@ -110,10 +112,11 @@ public class UserController {
 
     //Show Rescue Shelter User Affiliation Drop Down
     @GetMapping("/register/shelter-registration")
-    public String showRSAffiliationForm(Model model) {
-//        Iterable<RescueShelter> shelter = rescuedao.findAll();
-//        model.addAttribute("user", user);
-        model.addAttribute("rescueshelter", rescuedao.findAll());
+    public String showRSAffiliationForm(Model model, User user) {
+        Iterable<RescueShelter> rescueshelters = rescuedao.findAll();
+        model.addAttribute("user", user);
+        model.addAttribute("rescueshelter", new RescueShelter());
+        model.addAttribute("rescueshelters", rescueshelters);
         return "/rescueshelter/rs-portal-part2";
     }
 
