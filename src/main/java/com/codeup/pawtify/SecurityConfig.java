@@ -37,27 +37,22 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http
                 /* Login configuration */
                 .formLogin()
-                .loginPage("/login")
-                .defaultSuccessUrl("/pawtification") // user's home page, it can be any URL
-                .permitAll() // Anyone can go to the login page
+                    .loginPage("/login")
+                    .defaultSuccessUrl("/pawtification") // user's home page, it can be any URL
+                    .permitAll() // Anyone can go to the login page
                 /* Logout configuration */
                 .and()
-                .logout()
-                .logoutSuccessUrl("/login?logout") // append a query string value
+                    .logout()
+                    .logoutSuccessUrl("/login?logout") // append a query string value
                 /* Pages that can be viewed without having to log in */
                 .and()
-                .authorizeRequests()
-
-//                NEED TO CHANGE THIS TO ACTUAL PAGE NAMES
-                .antMatchers("/", "/pets, /pet/{id}", "/animals/{id}", "/pawtification") // anyone can see the home and t he ads pages
-                .permitAll()
+                    .authorizeRequests()
+                    .antMatchers("/", "/pets", "/animal/{id}", "/pawtification")
+                    .permitAll()
                 /* Pages that require athentication */
                 .and()
-                .authorizeRequests()
-                .antMatchers(
-                        "/animals/create", // only authenticated users can create ads
-                        "/animals/{id}/edit" // only authenticated users can edit ads//show page hidden so edit button is hidden
-                )
-                .authenticated();
+                    .authorizeRequests()
+                    .antMatchers("/animals/create", "/animals/{id}/edit")
+                    .authenticated();
     }
 }
