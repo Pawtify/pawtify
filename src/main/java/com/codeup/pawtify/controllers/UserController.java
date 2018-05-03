@@ -53,7 +53,7 @@ public class UserController {
     //Login Potential Adopter
     @GetMapping("/login")
     public String showPALoginForm() {
-        //User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+//        User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         return "/potentialadopter/pa-signin";
     }
 //
