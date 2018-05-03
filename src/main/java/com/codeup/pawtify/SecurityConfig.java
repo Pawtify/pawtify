@@ -47,13 +47,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 /* Pages that can be viewed without having to log in */
                 .and()
                     .authorizeRequests()
-                    .antMatchers("/", "/pets", "/animal/{id}")
+                    .antMatchers("/", "/pets", "/animal/{id}", "/login", "/register/adopter")
                     .permitAll()
                 /* Pages that require athentication */
                 .and()
                     .authorizeRequests()
-                    .antMatchers("/animals/create", "/animals/{id}/edit", "/pawtification/")
-                    .authenticated();
+                    .antMatchers("/animals/create", "/animals/{id}/edit")
+                    .hasAuthority("staff");
 
 
 
