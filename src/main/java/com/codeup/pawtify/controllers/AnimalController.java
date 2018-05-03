@@ -83,18 +83,18 @@ public class AnimalController {
     }
 //
 ////    RS-create a animal
-//
-//    @GetMapping("/animal/create")
-//    public String create(Model model){
-//        Animal animal = new Animal();
-//        Iterable<CatBreed> catBreeds = catDao.findAll();
-//        Iterable<DogBreed> dogBreeds = dogDao.findAll();
-//
-//        model.addAttribute("catBreed", catBreeds);
-//        model.addAttribute("dogBreed", dogBreeds);
-//        model.addAttribute("animal", animal);
-//        return "rescueshelter/rs-form";
-//        }
+
+    @GetMapping("/animal/create")
+    public String create(Model model){
+        Animal animal = new Animal();
+        Iterable<CatBreed> catBreeds = catDao.findAll();
+        Iterable<DogBreed> dogBreeds = dogDao.findAll();
+
+        model.addAttribute("catBreed", catBreeds);
+        model.addAttribute("dogBreed", dogBreeds);
+        model.addAttribute("animal", animal);
+        return "rescueshelter/rs-form";
+        }
 //
 //
 ////        RS-Post new Animal w/ image method, can be refactored once working
