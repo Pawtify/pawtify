@@ -8,28 +8,28 @@
             <h2>Pawtify me when there is an available animal that matches..</h2>
             <!--new action for pawtification-->
             <form class="form-horizontal" th:action="@{/pawtification}" th:method="post" th:object="${pawtification}">
-                <!--for each for breeds; still need id -->
-                <div th:each="cat : ${animal.cat_breeds}">
+                <!--for each for breeds-->
+                <div th:each="cat : ${cat_breeds}">
                     <div class="form-group">
                         <select name="cat" size="1">
-                            <option value="" disabled selected>Cat</option>
-                            <option value="${ID}"><span th:text="${breed}"></span></option>
+                            <option value="cat">Cat</option>
+                            <option th:field="*{cat}" th:value="${cat.id}"><span th:text="${cat.breed}"></span></option>
                         </select>
                     </div>
                 </div>
                 <span>or</span>
-                <div th:each="dog : ${animal.dog_breeds}">
+                <div th:each="dog : ${dog_breeds}">
                 <div class="form-group">
                     <select name="dog" size="1">
-                        <option value="" disabled selected>Dog</option>
-                        <option value="${ID}"><span th:text="${breed}"></span></option>
+                        <option value="dog">Dog</option>
+                        <option th:field="*{dog}" th:value="${dog.id}"><span th:text="${dog.breed}"></span></option>
                     </select>
                 </div>
                 </div>
                 <div class="form-group">
                     <span>Age</span>
                     <select name="age" size="1">
-                        <option value="" disabled selected>Select Age</option>
+                        <option value="age">Select Age</option>
                         <option value="1">Less than 1 year</option>
                         <option value="2">More than 1 year</option>
                     </select>
@@ -37,7 +37,7 @@
                 <div class="form-group">
                     <span>Color</span>
                     <select name="color" size="1">
-                        <option value="" disabled selected>Select Color</option>
+                        <option value="color">Select Color</option>
                         <option value="1">Black</option>
                         <option value="2">Brown</option>
                         <option value="3">White</option>
@@ -48,7 +48,7 @@
                 <div class="form-group">
                     <span>Size</span>
                     <select name="size" size="1">
-                        <option value="" disabled selected>Select Size</option>
+                        <option value="size">Select Size</option>
                         <option value="1">Small</option>
                         <option value="2">Medium</option>
                         <option value="3">Large</option>
@@ -57,7 +57,7 @@
                 <div class="form-group">
                     <span>Gender</span>
                     <select name="gender" size="1">
-                        <option value="" disabled selected>Select Gender</option>
+                        <option value="gender">Select Gender</option>
                         <option value="1">Male</option>
                         <option value="2">Female</option>
                         <option value="3">No Preference</option>
