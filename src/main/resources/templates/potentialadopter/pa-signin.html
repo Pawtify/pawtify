@@ -17,28 +17,33 @@
 
 
 
-                <form th:action="@{/login}" method="post">
-                    <label class="font" for="username">Username</label>
-                    <br/>
-                    <input id="username" name="username" type="text" />
-                    <br/>
-                    <label class="font" for="password">Password</label>
-                    <br/>
-                    <input id="password" name="password" type="password" />
-                    <br/>
-                    <input type="submit" value="Log In" />
+                <form class="form-horizontal" th:action="@{/login}" method="post">
+                    <div class="form-group">
+                        <label for="username" class="col-sm-2 control-label">Username</label>
+                        <div class="col-sm-10 col-md-4">
+                            <input id="username" name="username" type="text" class="form-control"/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                    <label for="password" class="col-sm-2 control-label">Password</label>
+                        <div class="col-sm-10 col-md-4">
+                            <input id="password" name="password" type="password" class="form-control"/>
+                        </div>
+                    </div>
+                    <button type="submit"  class="col-md-offset-3 btn btn-primary">Sign In</button>
                 </form>
 
 
 
 
                 <div class="col-sm-offset-2 col-sm-10 space">
-                    <span>Not a member?</span> <a th:href="@{/register/adopter}"><button type="submit" class="btn btn-primary">Register Here!</button></a>
+                    <span>Not a member?</span> <a th:href="@{/register/adopter}"><button type="submit" class="btn btn-warning">Register Here!</button></a>
                 </div>
                 <div class="col-sm-offset-1 col-sm-10 space">
-                    <span>Are you a Rescue Staff Member?</span> <a th:href="@{/register/rescue-shelter}"><button type="submit" class="btn btn-primary">Staff Portal</button></a>
+                    <span>Are you a Rescue Staff Member?</span> <a th:href="@{/register/rescue-shelter}"><button type="submit" class="btn btn-warning">Staff Portal</button></a>
                 </div>
             </div>
         </main>
+        <footer th:replace="partials/footer :: footer"></footer>
     </body>
 </html>

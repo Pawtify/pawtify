@@ -27,17 +27,28 @@ body {
     margin-top: 2rem;
 }
 
-/*.navbar .brand, .navbar .nav > li > form {*/
-    /*color: white;*/
-    /*font-size: 18px;*/
-    /*margin-top: 2rem;*/
-/*}*/
 
-#navbar > ul.nav.navbar-nav.navbar-right > li:nth-child(2) > form {
+
+#navbar > ul.nav.navbar-nav.navbar-right > li > form > button {
     color: white;
     font-size: 18px;
-    margin-top: 2rem;
+    margin-top: 3rem;
+    text-decoration: none;
+    background-color: #7b7b7b;
+    border: none;
+    font-family: 'Nunito', sans-serif;
+    padding-top: 3%;
 }
+
+
+.profile {
+    margin-top: 10%;
+    font-size: 18px;
+    color: #54c6a0;
+    text-decoration: none;
+}
+
+
 
 .nav-container {
     margin-left: 0;
