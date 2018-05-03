@@ -4,43 +4,21 @@
     <body>
         <div th:replace="partials/navbar :: navbar"></div>
         <main class="container">
-            <!--<div th:if="${param.error}">-->
-            <!--Invalid Username and Password.-->
-            <!--</div>-->
-            <!--<div th:if="${param.logout}">-->
-            <!--You have been logged out.-->
-            <!--</div>-->
             <div class="col-md-offset-3">
                 <form class="form-horizontal" th:action="@{/register/shelter-registration}" th:method="POST" th:object="${rescueshelter}">
                     <div class="form-group">
                         <h1>Please Select Your Shelter Affiliation</h1>
-                            <div class="form-group">
-                                <select >
-                                    <option value="shelter">Select Your Shelter</option>
-                                    <option th:each="shelter : ${rescueshelters}" th:name="rescueshelter" th:value="${shelter.id}"><span th:text="${shelter.name}"></span></option>
-                                </select>
-                            </div>
-
-                        <select name="shelter" size="1">
-                            <option value="0">Select Shelter</option>
-                            <option value="1">Animal Care Services</option>
-                            <option value="2">Animal Defense League of Texas</option>
-                            <option value="3">Bulverde Area Humane Society</option>
-                            <option value="4">Helotes Humane Society</option>
-                            <option value="5">Kirby-Bexar Animal Facility</option>
-                            <option value="6">Paws Ranch Rescue And Animal Sanctuary</option>
-                            <option value="7">SAPA</option>
-                            <option value="8">San Antonio Feral Cat Coalition</option>
-                            <option value="9">San Antonio Humane Society</option>
-                            <option value="10">SNIPSA</option>
-                            <option value="11">Universal City Animal Shelter</option>
-                            <option value="12">Wayward Whiskers Cat Rescue</option>
-                        </select>
+                        <div class="form-group">
+                            <select >
+                                <option value="shelter">Select Your Shelter</option>
+                                <option th:each="shelter : ${rescueshelters}" th:name="rescueshelter" th:value="${shelter.id}"><span th:text="${shelter.name}"></span></option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" class="btn btn-primary" value="Complete Shelter Registration"/>
                     </div>
                 </form>
-            </div>
-            <div>
-                <button type="button" class="btn btn-primary">Complete Shelter Registration</button>
             </div>
         </main>
     </body>
