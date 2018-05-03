@@ -14,11 +14,19 @@
                 </div>
             </div>
         </main>
-        <main class="container main-buttons home-container">
-            <div class="col-md-offset-4 col-xs-offset-1">
-                <a th:href="@{/login}"><img src="/images/signin.png" alt="signin" width="130px"/></a>
-                <a th:href="@{/pets}"><img src="/images/browse.png" alt="browse" width="200px"/></a>
-                <a th:href="@{/register/adopter}"><img src="/images/register.png" alt="register" width="130px"/></a>
+        <main class="main-buttons home-container">
+            <div class="col-md-offset-2 col-xs-12">
+                <div class="col-md-offset-2 col-md-8">
+                    <a th:href="@{/pets}"><img src="/images/browse.png" alt="browse" width="40%"/></a>
+                </div>
+                <div class="row">
+                    <div class="col-md-5">
+                        <a th:href="@{/login}"><img src="/images/signin.png" alt="signin" width="30%"/></a>
+                    </div>
+                    <div class="col-md-5">
+                        <a th:href="@{/register/adopter}"><img src="/images/register.png" alt="register" width="30%"/></a>
+                    </div>
+                </div>
             </div>
         </main>
 
