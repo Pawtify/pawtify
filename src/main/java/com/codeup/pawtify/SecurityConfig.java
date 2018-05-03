@@ -42,12 +42,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                     .permitAll() // Anyone can go to the login page
                 /* Logout configuration */
                 .and()
-                /* Login configuration for rs*/
-//                .formLogin()
-//                    .loginPage("/register/rescue-shelter")
-//                    .defaultSuccessUrl("/rs-form")
-//                    .permitAll()
-//                .and()
                     .logout()
                     .logoutSuccessUrl("/login?logout") // append a query string value
                 /* Pages that can be viewed without having to log in */
@@ -60,5 +54,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                     .authorizeRequests()
                     .antMatchers("/animals/create", "/animals/{id}/edit", "/pawtification/")
                     .authenticated();
+
+
+
     }
 }
