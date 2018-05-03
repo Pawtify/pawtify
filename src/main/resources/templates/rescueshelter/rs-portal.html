@@ -4,12 +4,12 @@
     <body>
         <div th:replace="partials/navbar :: navbar"></div>
         <main class="container">
-            <!--<div th:if="${param.error}">-->
-            <!--Invalid Username and Password.-->
-            <!--</div>-->
-            <!--<div th:if="${param.logout}">-->
-            <!--You have been logged out.-->
-            <!--</div>-->
+            <div th:if="${param.error}">
+            Invalid Username and Password.
+            </div>
+            <div th:if="${param.logout}">
+            You have been logged out.
+            </div>
             <div class="col-md-offset-3">
                 <h1>Sign In</h1>
                 <form class="form-horizontal" th:action="@{/sehlter/login}" th:method="POST">
@@ -34,76 +34,54 @@
                 <!--register form for rs-->
                 <div class="col-md-offset-3">
                     <h1>Register</h1>
-                    <!--will need to create register method for action-->
-                    <form class="form-horizontal" th:action="@{/register/rescue-shelter}" th:method="POST" th:object="${user}">
-                        <div class="form-group">
-                            <label for="register-username" class="col-sm-2 control-label">Username</label>
-                            <div class="col-sm-10 col-md-5">
-                                <input type="text" class="form-control" id="register-username" th:field="*{username}" placeholder="Username" />
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="register-password" class="col-sm-2 control-label">Password</label>
-                            <div class="col-sm-10 col-md-5">
-                                <input type="password" class="form-control" id="register-password" th:field="*{password}" placeholder="Password" />
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="confirm" class="col-sm-2 control-label">Confirm Password</label>
-                            <div class="col-sm-10 col-md-5">
-                                <input type="password" class="form-control" id="confirm" placeholder="Password" />
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="email" class="col-sm-2 control-label">Email</label>
-                            <div class="col-sm-10 col-md-5">
-                                <input type="text" class="form-control" id="email" th:field="*{email}" placeholder="Email" />
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-sm-offset-2 col-sm-10">
-                                <!-- Button trigger modal -->
-                                <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">Continue Registration</button>
-                            </div>
-                        </div>
-                    </form>
-                    <!-- Modal -->
-                    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-                        <div class="modal-dialog" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                    <h4 class="modal-title" id="myModalLabel">Modal title</h4>
-                                </div>
-                                <div class="modal-body">
-                                    <form class="form-horizontal" th:action="@{/register/rescue-shelter}" th:method="POST" th:object="${rescueshelter}">
-                                        <div class="form-group">
-                                            <span>Shelter</span>
-                                            <select name="shelter" size="1">
-                                                <option value="0">Select Shelter</option>
-                                                <option value="1">Animal Care Services</option>
-                                                <option value="2">Animal Defense League of Texas</option>
-                                                <option value="3">Bulverde Area Humane Society</option>
-                                                <option value="4">Helotes Humane Society</option>
-                                                <option value="5">Kirby-Bexar Animal Facility</option>
-                                                <option value="6">Paws Ranch Rescue And Animal Sanctuary</option>
-                                                <option value="7">SAPA</option>
-                                                <option value="8">San Antonio Feral Cat Coalition</option>
-                                                <option value="9">San Antonio Humane Society</option>
-                                                <option value="10">SNIPSA</option>
-                                                <option value="11">Universal City Animal Shelter</option>
-                                                <option value="12">Wayward Whiskers Cat Rescue</option>
-                                            </select>
-                                        </div>
-                                    </form>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                    <button type="button" class="btn btn-primary">Save changes</button>
+                        <form class="form-horizontal" th:action="@{/register/rescue-shelter}" th:method="POST" th:object="${user}">
+                            <div class="form-group">
+                                <label for="username" class="col-sm-2 control-label">Username</label>
+                                <div class="col-sm-10 col-md-5">
+                                    <p class="error" th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></p>
+                                    <input type="text" class="form-control" id="username" th:field="*{username}" placeholder="Username" />
                                 </div>
                             </div>
-                        </div>
-                    </div>
+                            <div class="form-group">
+                                <label for="email" class="col-sm-2 control-label">Shelter Email</label>
+                                <div class="col-sm-10 col-md-5">
+                                    <p class="error" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></p>
+                                    <input type="text" class="form-control" id="email" th:field="*{email}" placeholder="Email" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputPassword" class="col-sm-2 control-label">Password</label>
+                                <div class="col-sm-10 col-md-5">
+                                    <p class="error" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></p>
+                                    <input type="password" class="form-control" id="inputPassword" th:field="*{password}" placeholder="Password" />
+                                </div>
+                            </div>
+                            <!--<div class="form-group">-->
+                            <!--<label for="confirm" class="col-sm-2 control-label">Confirm Password</label>-->
+                            <!--<div class="col-sm-10 col-md-5">-->
+                            <!--<input type="password" class="form-control" id="confirm" placeholder="Password"/>-->
+                            <!--</div>-->
+                            <!--</div>-->
+                            <div class="form-group">
+                                <label for="name" class="col-sm-2 control-label">Employee Full Name</label>
+                                <div class="col-sm-10 col-md-5">
+                                    <p class="error" th:if="${#fields.hasErrors('full_name')}" th:errors="*{full_name}"></p>
+                                    <input type="text" class="form-control" id="name" th:field="*{full_name}" placeholder="Full Name" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="number" class="col-sm-2 control-label">Shelter Phone Number</label>
+                                <div class="col-sm-10 col-md-5">
+                                    <p class="error" th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}"></p>
+                                    <input type="tel" class="form-control" id="number" th:field="*{phone}" placeholder="123-456-6789" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-offset-3 col-sm-10">
+                                    <button type="submit" class="btn btn-success">Continue Registration</button>
+                                </div>
+                            </div>
+                        </form>
                 </div>
             </div>
         </main>
