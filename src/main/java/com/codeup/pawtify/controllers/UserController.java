@@ -1,9 +1,11 @@
 package com.codeup.pawtify.controllers;
 
 import com.codeup.pawtify.daos.RescueShelterRepository;
+import com.codeup.pawtify.daos.Roles;
 import com.codeup.pawtify.daos.UsersRepository;
 import com.codeup.pawtify.models.RescueShelter;
 import com.codeup.pawtify.models.User;
+import com.codeup.pawtify.models.UserRole;
 import com.codeup.pawtify.services.UserService;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -25,12 +27,14 @@ public class UserController {
     private RescueShelterRepository rescuedao;
     private PasswordEncoder passwordEncoder;
     private UserService userService;
+    private Roles rolesRepo;
 
-    public UserController(UsersRepository userdao, RescueShelterRepository rescuedao, PasswordEncoder passwordEncoder, UserService userService) {
+    public UserController(UsersRepository userdao, RescueShelterRepository rescuedao, PasswordEncoder passwordEncoder, UserService userService, Roles rolesRepo) {
         this.userdao = userdao;
         this.rescuedao = rescuedao;
         this.passwordEncoder = passwordEncoder;
         this.userService = userService;
+        this.rolesRepo = rolesRepo;
     }
 
     //################### Potential Adopters Users ###################
@@ -52,6 +56,7 @@ public class UserController {
         String hash = passwordEncoder.encode(user.getPassword());
         user.setPassword(hash);
         userdao.save(user);
+        rolesRepo.save(new UserRole(user.getId(), "adopter"));
         return "redirect:/pawtification";
     }
 
@@ -108,6 +113,7 @@ public class UserController {
         String hash = passwordEncoder.encode(user.getPassword());
         user.setPassword(hash);
         userdao.save(user);
+        rolesRepo.save(new UserRole(user.getId(), "staff"));
         return "redirect:/register/shelter-registration";
     }
 
