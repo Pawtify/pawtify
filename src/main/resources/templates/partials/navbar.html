@@ -19,13 +19,13 @@
         </div>
         <div id="navbar" class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
-                <li><a href="/about">About</a></li>
+                <li><a th:href="@{/about}">About</a></li>
                 <li><a th:href="@{/pawtification/}">Pawtification</a></li>
                 <li><a th:href="@{/pets}">Browse</a></li>
             </ul>
 
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="/rs-portal">Staff Portal</a></li>
+                <li><a th:href="@{/register/rescue-shelter}">Staff Portal</a></li>
                 <li sec:authorize="!isAuthenticated()"><a href="/login">Sign In</a></li>
                 <li sec:authorize="!isAuthenticated()"><a href="/register/adopter">Register</a></li>
                 <li sec:authorize="isAuthenticated()">
