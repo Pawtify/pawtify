@@ -7,6 +7,7 @@ import com.codeup.pawtify.models.RescueShelter;
 import com.codeup.pawtify.models.User;
 import com.codeup.pawtify.models.UserRole;
 import com.codeup.pawtify.services.UserService;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -19,6 +20,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.validation.Valid;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 @Controller
@@ -46,6 +48,19 @@ public class UserController {
         return "/potentialadopter/pa-register";
     }
 
+
+    @GetMapping("/route")
+    public String routeUsers() {
+
+        Collection<? extends GrantedAuthority> roles = SecurityContextHolder.getContext().getAuthentication().getAuthorities();
+        System.out.println("roles.toArray()[0] = " + roles.toArray()[0]);
+        if (roles.toArray()[0].toString().equals("ROLE_ADOPTER")) {
+            System.out.println("HI ADOPTER");
+            return "redirect:/pawtification/";
+        }
+        return "redirect:/animal/create";
+    }
+
     //Add New Potential Adopter to the DB
     @PostMapping("/register/adopter")
     public String registerNewPAUser(@Valid User user, Errors errors, Model model) {
@@ -56,7 +71,7 @@ public class UserController {
         String hash = passwordEncoder.encode(user.getPassword());
         user.setPassword(hash);
         userdao.save(user);
-        rolesRepo.save(new UserRole(user.getId(), "adopter"));
+        rolesRepo.save(new UserRole(user.getId(), "ROLE_ADOPTER"));
         return "redirect:/login";
     }
 
@@ -113,7 +128,7 @@ public class UserController {
         String hash = passwordEncoder.encode(user.getPassword());
         user.setPassword(hash);
         userdao.save(user);
-        rolesRepo.save(new UserRole(user.getId(), "staff"));
+        rolesRepo.save(new UserRole(user.getId(), "ROLE_STAFF"));
         return "redirect:/animal/create";
     }
 
