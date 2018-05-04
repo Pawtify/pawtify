@@ -49,8 +49,10 @@ public class PawtificationController {
 //
 //    Create a pawtification
     @PostMapping("/pawtification")
-    public String pawtify(@Valid Pawtification pawtification, Model model){
+    public String pawtify(@Valid Pawtification pawtification, DogBreed dogBreed, CatBreed catBreed, Model model){
         User user = userService.loggedInUser();
+        pawtification.setDogBreed(dogBreed);
+        pawtification.setCatBreed(catBreed);
         pawtification.setUser(user);
         pawDao.save(pawtification);
         return "potentialadopter/pawtification";
