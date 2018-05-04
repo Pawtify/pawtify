@@ -22,7 +22,7 @@
                 <li><a th:href="@{'/about'}">About</a></li>
                 <li><a th:href="@{'/pets'}">Browse</a></li>
                 <!--<li sec:authorize="isAnonymous()"><a th:href="@{'/pawtification/'}">Pawtification</a></li>-->
-                <li><a th:href="@{'/pawtification/'}">Pawtification</a></li>
+                <li sec:authorize="!hasRole('rolestaff')"><a th:href="@{'/pawtification/'}">Pawtification</a></li>
 
             </ul>
 
@@ -32,9 +32,9 @@
                     <span sec:authentication="name"></span></a>
                 </li>
                 <li sec:authorize="hasRole('rolestaff')"><a th:href="'/rs-form'">Register Animal</a></li>
-                <li sec:authorize="!isAuthenticated()"><a th:href="@{'/register/rescue-shelter'}">Staff Portal</a></li>
                 <li sec:authorize="isAnonymous()"><a th:href="@{'/login'}">Sign In</a></li>
                 <li sec:authorize="isAnonymous()"><a th:href="@{'/register/adopter'}">Register</a></li>
+                <li sec:authorize="!isAuthenticated()"><a th:href="@{'/register/rescue-shelter'}">Staff Portal</a></li>
                 <li sec:authorize="isAuthenticated()">
                     <form th:action="@{/logout}" th:method="post">
                         <button>Logout</button>
