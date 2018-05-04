@@ -140,7 +140,7 @@ public class UserController {
         user.setPassword(hash);
         userdao.save(user);
         rolesRepo.save(new UserRole(user.getId(), "ROLE_STAFF"));
-        return "redirect:/animal/create";
+        return "redirect:/login";
     }
 
 //    //Update User to Have Connection to Rescue Shelter Table
@@ -162,12 +162,19 @@ public class UserController {
         return "/rescueshelter/rs-portal";
     }
 
+
+
+
 //    //Edit Form Show for Rescue Shelter
-//    @GetMapping("/rescue-shelter/{id}/edit")
-//    public String editRescueShelter(@PathVariable long id, Model model){
-//        model.addAttribute("editUser", userdao.findOne(id));
-//        return "rs-edit";
-//    }
+    @GetMapping("/rescue-shelter/{id}/edit")
+    public String editRescueShelter(@PathVariable long id, Model model){
+        model.addAttribute("user", userdao.findOne(id));
+        return "/rescueshelter/rs-edit";
+    }
+
+
+
+
 //
 //    //Update DB with Rescue Shelter Changed Information
     @PostMapping("/rescue-shelter/edit")
