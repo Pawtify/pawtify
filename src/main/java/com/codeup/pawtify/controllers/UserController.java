@@ -114,28 +114,28 @@ public class UserController {
         user.setPassword(hash);
         userdao.save(user);
         rolesRepo.save(new UserRole(user.getId(), "staff"));
-        return "redirect:/register/shelter-registration";
+        return "redirect:/animal/create";
     }
 
     //Show Rescue Shelter User Affiliation Drop Down
-    @GetMapping("/register/shelter-registration")
-    public String showRSAffiliationForm(Model model) {
-        RescueShelter rescueShelter = new RescueShelter();
-//        Iterable<RescueShelter> rescueshelters = rescuedao.findAll();
-//        model.addAttribute("user", user);
-//        model.addAttribute("rescueshelter", new RescueShelter());
-        model.addAttribute("rescueShelter", rescueShelter);
-        return "/rescueshelter/rs-portal-part2";
-    }
-
-    //Update User to Have Connection to Rescue Shelter Table
-    @PostMapping("/register/shelter-registration")
-    public String connectUserToShelter(@Valid RescueShelter rescueShelter, Model model) {
-        User user = userService.loggedInUser();
-        rescueShelter.setUser(user);
-        rescuedao.save(rescueShelter);
-        return "redirect:/rs-form";
-    }
+//    @GetMapping("/register/shelter-registration")
+//    public String showRSAffiliationForm(Model model) {
+//        RescueShelter rescueShelter = new RescueShelter();
+////        Iterable<RescueShelter> rescueshelters = rescuedao.findAll();
+////        model.addAttribute("user", user);
+////        model.addAttribute("rescueshelter", new RescueShelter());
+//        model.addAttribute("rescueShelter", rescueShelter);
+//        return "/rescueshelter/rs-portal-part2";
+//    }
+//
+//    //Update User to Have Connection to Rescue Shelter Table
+//    @PostMapping("/register/shelter-registration")
+//    public String connectUserToShelter(@Valid RescueShelter rescueShelter, Model model) {
+//        User user = userService.loggedInUser();
+//        rescueShelter.setUser(user);
+//        rescuedao.save(rescueShelter);
+//        return "redirect:/rs-form";
+//    }
 
     //Login Rescue Shelter
     @GetMapping("/shelter/login")
