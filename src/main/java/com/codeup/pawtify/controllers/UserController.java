@@ -119,20 +119,21 @@ public class UserController {
 
     //Show Rescue Shelter User Affiliation Drop Down
     @GetMapping("/register/shelter-registration")
-    public String showRSAffiliationForm(Model model, User user) {
-        Iterable<RescueShelter> rescueshelters = rescuedao.findAll();
-        model.addAttribute("user", user);
-        model.addAttribute("rescueshelter", new RescueShelter());
-        model.addAttribute("rescueshelters", rescueshelters);
+    public String showRSAffiliationForm(Model model) {
+        RescueShelter rescueShelter = new RescueShelter();
+//        Iterable<RescueShelter> rescueshelters = rescuedao.findAll();
+//        model.addAttribute("user", user);
+//        model.addAttribute("rescueshelter", new RescueShelter());
+        model.addAttribute("rescueShelter", rescueShelter);
         return "/rescueshelter/rs-portal-part2";
     }
 
     //Update User to Have Connection to Rescue Shelter Table
     @PostMapping("/register/shelter-registration")
-    public String connectUserToShelter(RescueShelter newShelter, Model model) {
-        User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        newShelter.setUser(loggedInUser);
-        rescuedao.save(newShelter);
+    public String connectUserToShelter(@Valid RescueShelter rescueShelter, Model model) {
+        User user = userService.loggedInUser();
+        rescueShelter.setUser(user);
+        rescuedao.save(rescueShelter);
         return "redirect:/rs-form";
     }
 
