@@ -18,9 +18,6 @@ public class RescueShelter{
     @Column
     private String phone;
 
-    @OneToOne
-    private User user;
-
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "rescueshelter")
     private List<Animal> animals;
 
@@ -29,14 +26,12 @@ public class RescueShelter{
         this.name = name;
         this.address = address;
         this.phone = phone;
-        this.user = user;
     }
 
     public RescueShelter(String name, String address, String phone, User user) {
         this.name = name;
         this.address = address;
         this.phone = phone;
-        this.user = user;
     }
 
     public RescueShelter() {
@@ -73,14 +68,6 @@ public class RescueShelter{
 
     public void setPhone(String phone) {
         this.phone = phone;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
     }
 
     public List<Animal> getAnimals() {

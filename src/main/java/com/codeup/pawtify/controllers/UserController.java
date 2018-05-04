@@ -110,21 +110,32 @@ public class UserController {
 //    }
 //
     //################### Rescue Shelter Users ###################
-    // Show the Register Form for the Rescue Shelter
+//    // Show the Register Form for the Rescue Shelter
+//    @GetMapping("/register/rescue-shelter")
+//    public String showRSSignUpForm(Model model) {
+//        User user = new User();
+//        model.addAttribute("user", user);
+//        return "/rescueshelter/rs-portal";
+//    }
+
+    //Show Rescue Shelter User Affiliation Drop Down
     @GetMapping("/register/rescue-shelter")
-    public String showRSSignUpForm(Model model) {
+    public String showRSAffiliationForm(Model model) {
         User user = new User();
+        Iterable<RescueShelter> rescueshelters = rescuedao.findAll();
         model.addAttribute("user", user);
+//        model.addAttribute("rescueshelter", new RescueShelter());
+        model.addAttribute("rescueshelters", rescueshelters);
         return "/rescueshelter/rs-portal";
     }
-
-//    //Add New Rescue Shelter to the DB
+    //Add New Rescue Shelter to the DB
     @PostMapping("/register/rescue-shelter")
-    public String registerNewRSUser(@Valid User user, Errors errors, Model model) {
+    public String registerNewRSUser(@Valid User user, RescueShelter rescueShelter, Errors errors, Model model) {
         if(errors.hasErrors()){
             model.addAttribute(user);
             return "rescueshelter/rs-portal";
         }
+        user.setShelter_id(rescueShelter);
         String hash = passwordEncoder.encode(user.getPassword());
         user.setPassword(hash);
         userdao.save(user);
@@ -132,24 +143,16 @@ public class UserController {
         return "redirect:/animal/create";
     }
 
-    //Show Rescue Shelter User Affiliation Drop Down
-//    @GetMapping("/register/shelter-registration")
-//    public String showRSAffiliationForm(Model model) {
-//        RescueShelter rescueShelter = new RescueShelter();
-////        Iterable<RescueShelter> rescueshelters = rescuedao.findAll();
-////        model.addAttribute("user", user);
-////        model.addAttribute("rescueshelter", new RescueShelter());
-//        model.addAttribute("rescueShelter", rescueShelter);
-//        return "/rescueshelter/rs-portal-part2";
-//    }
-//
 //    //Update User to Have Connection to Rescue Shelter Table
 //    @PostMapping("/register/shelter-registration")
-//    public String connectUserToShelter(@Valid RescueShelter rescueShelter, Model model) {
+//    public String connectUserToShelter(User user, RescueShelter rescueShelter) {
 //        User user = userService.loggedInUser();
-//        rescueShelter.setUser(user);
-//        rescuedao.save(rescueShelter);
-//        return "redirect:/rs-form";
+////        RescueShelter shelter = rescuedao.findOne(id);
+//        user.setShelter_id(rescueShelter);
+////        System.out.println(shelter);
+////        user.setShelter_id(shelter);
+//        userdao.save(user);
+//        return "redirect:/animal/create";
 //    }
 
     //Login Rescue Shelter
