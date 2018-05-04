@@ -97,6 +97,7 @@ public class AnimalController {
         }
 //
 //
+
 ////        RS-Post new Animal w/ image method, can be refactored once working
 //    @Value("${file-upload-path}")
 //    private String uploadPath;
