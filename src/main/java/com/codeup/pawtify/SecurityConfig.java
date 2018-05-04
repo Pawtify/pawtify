@@ -53,7 +53,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                     .authorizeRequests()
                     .antMatchers("/animals/create", "/animals/{id}/edit")
-                    .hasAuthority("staff");
+                    .hasAuthority("rolestaff")
+                .and()
+                .authorizeRequests()
+                .antMatchers("/pawtification/")
+                .hasAuthority("roleadopter");
 
 
 
