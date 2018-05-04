@@ -14,7 +14,7 @@ public class UserDetailsLoader implements UserDetailsService{
     private UsersRepository usersDao;
     private Roles roles;
 
-    public UserDetailsLoader(UsersRepository usersDao) {
+    public UserDetailsLoader(UsersRepository usersDao, Roles roles) {
         this.usersDao = usersDao;
         this.roles = roles;
     }

@@ -57,7 +57,7 @@ public class UserController {
         user.setPassword(hash);
         userdao.save(user);
         rolesRepo.save(new UserRole(user.getId(), "adopter"));
-        return "redirect:/pawtification";
+        return "redirect:/login";
     }
 
     //Login Potential Adopter

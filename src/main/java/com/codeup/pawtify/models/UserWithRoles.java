@@ -26,7 +26,7 @@ public class UserWithRoles extends User implements UserDetails{
     public Collection<? extends GrantedAuthority> getAuthorities() {
         String rolesString = "";
         for(String role : roles) {
-            rolesString += "role-of-" + role + ",";
+            rolesString += "role" + role + ",";
         }
         return AuthorityUtils.commaSeparatedStringToAuthorityList(rolesString);
     }
