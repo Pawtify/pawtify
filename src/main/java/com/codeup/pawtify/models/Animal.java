@@ -37,7 +37,7 @@ public class Animal {
     private String behavior;
 
     @Column
-    @Size(min=1, max=500, message="Please Upload a Photo")
+    @Size(min=1, max=1500, message="Please Upload a Photo")
     private String path;
 
     //    Relationships

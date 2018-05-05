@@ -9,18 +9,27 @@
 
     <h1>Register Your Animal</h1>
     <!--for each for breeds; still need id -->
-    <form class="form-horizontal" th:action="@{/animal/create}" th:method="post" th:object="${animal}">
+    <form class="form-horizontal" th:action="@{/animal/create}" th:method="post" th:object="${animal}" enctype="multipart/form-data">
     <div class="form-group">
         <select>
             <option value="cat">Cat</option>
-            <option th:each="catBreed : ${catBreeds}" th:name="catBreed" th:value="${catBreed.id}"><span th:text="${catBreed.breed}"></span></option>
+            <option th:each="catBreed : ${catBreeds}"
+                    th:name="catBreed"
+                    th:value="${catBreed.breed}">
+                <span th:text="${catBreed.breed}"></span></option>
         </select>
     </div>
+
     <span>or</span>
+
     <div class="form-group">
         <select>
             <option value="dog">Dog</option>
-            <option th:each="dogBreed : ${dogBreeds}" th:name="dogBreed" th:value="${dogBreed.id}"><span th:text="${dogBreed.breed}"></span></option>
+            <option th:each="dogBreed : ${dogBreeds}"
+                    th:name="dogBreed"
+                    th:value="${dogBreed.breed}">
+                <span th:text="${dogBreed.breed}"></span>
+            </option>
         </select>
     </div>
 
@@ -73,6 +82,12 @@
             <!--<label for="animalphoto">Upload Animal Image</label><br/>-->
             <!--<input type="file" class="form-control-file" id="animalphoto">-->
         <!--</div>-->
+
+        <div>
+            <label id="upload-file-title" for="file">Upload An Image</label>
+            <input id="file" name="file" type="file" />
+            <br />
+        </div>
 
     <div class="form-group">
         <div class="col-sm-offset-2 col-sm-10">
