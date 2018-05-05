@@ -7,6 +7,7 @@ import com.codeup.pawtify.models.RescueShelter;
 import com.codeup.pawtify.models.User;
 import com.codeup.pawtify.models.UserRole;
 import com.codeup.pawtify.services.UserService;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -19,6 +20,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.validation.Valid;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 @Controller
@@ -46,6 +48,19 @@ public class UserController {
         return "/potentialadopter/pa-register";
     }
 
+
+    @GetMapping("/route")
+    public String routeUsers() {
+
+        Collection<? extends GrantedAuthority> roles = SecurityContextHolder.getContext().getAuthentication().getAuthorities();
+        System.out.println("roles.toArray()[0] = " + roles.toArray()[0]);
+        if (roles.toArray()[0].toString().equals("ROLE_ADOPTER")) {
+            System.out.println("HI ADOPTER");
+            return "redirect:/pawtification/";
+        }
+        return "redirect:/animal/create";
+    }
+
     //Add New Potential Adopter to the DB
     @PostMapping("/register/adopter")
     public String registerNewPAUser(@Valid User user, Errors errors, Model model) {
@@ -56,7 +71,7 @@ public class UserController {
         String hash = passwordEncoder.encode(user.getPassword());
         user.setPassword(hash);
         userdao.save(user);
-        rolesRepo.save(new UserRole(user.getId(), "adopter"));
+        rolesRepo.save(new UserRole(user.getId(), "ROLE_ADOPTER"));
         return "redirect:/login";
     }
 
@@ -95,47 +110,50 @@ public class UserController {
 //    }
 //
     //################### Rescue Shelter Users ###################
-    // Show the Register Form for the Rescue Shelter
+//    // Show the Register Form for the Rescue Shelter
+//    @GetMapping("/register/rescue-shelter")
+//    public String showRSSignUpForm(Model model) {
+//        User user = new User();
+//        model.addAttribute("user", user);
+//        return "/rescueshelter/rs-portal";
+//    }
+
+    //Show Rescue Shelter User Affiliation Drop Down
     @GetMapping("/register/rescue-shelter")
-    public String showRSSignUpForm(Model model) {
+    public String showRSAffiliationForm(Model model) {
         User user = new User();
+        Iterable<RescueShelter> rescueshelters = rescuedao.findAll();
         model.addAttribute("user", user);
+//        model.addAttribute("rescueshelter", new RescueShelter());
+        model.addAttribute("rescueshelters", rescueshelters);
         return "/rescueshelter/rs-portal";
     }
-
-//    //Add New Rescue Shelter to the DB
+    //Add New Rescue Shelter to the DB
     @PostMapping("/register/rescue-shelter")
-    public String registerNewRSUser(@Valid User user, Errors errors, Model model) {
+    public String registerNewRSUser(@Valid User user, RescueShelter rescueShelter, Errors errors, Model model) {
         if(errors.hasErrors()){
             model.addAttribute(user);
             return "rescueshelter/rs-portal";
         }
+        user.setShelter_id(rescueShelter);
         String hash = passwordEncoder.encode(user.getPassword());
         user.setPassword(hash);
         userdao.save(user);
-        rolesRepo.save(new UserRole(user.getId(), "staff"));
-        return "redirect:/register/shelter-registration";
+        rolesRepo.save(new UserRole(user.getId(), "ROLE_STAFF"));
+        return "redirect:/login";
     }
 
-    //Show Rescue Shelter User Affiliation Drop Down
-    @GetMapping("/register/shelter-registration")
-    public String showRSAffiliationForm(Model model) {
-        RescueShelter rescueShelter = new RescueShelter();
-//        Iterable<RescueShelter> rescueshelters = rescuedao.findAll();
-//        model.addAttribute("user", user);
-//        model.addAttribute("rescueshelter", new RescueShelter());
-        model.addAttribute("rescueShelter", rescueShelter);
-        return "/rescueshelter/rs-portal-part2";
-    }
-
-    //Update User to Have Connection to Rescue Shelter Table
-    @PostMapping("/register/shelter-registration")
-    public String connectUserToShelter(@Valid RescueShelter rescueShelter, Model model) {
-        User user = userService.loggedInUser();
-        rescueShelter.setUser(user);
-        rescuedao.save(rescueShelter);
-        return "redirect:/rs-form";
-    }
+//    //Update User to Have Connection to Rescue Shelter Table
+//    @PostMapping("/register/shelter-registration")
+//    public String connectUserToShelter(User user, RescueShelter rescueShelter) {
+//        User user = userService.loggedInUser();
+////        RescueShelter shelter = rescuedao.findOne(id);
+//        user.setShelter_id(rescueShelter);
+////        System.out.println(shelter);
+////        user.setShelter_id(shelter);
+//        userdao.save(user);
+//        return "redirect:/animal/create";
+//    }
 
     //Login Rescue Shelter
     @GetMapping("/shelter/login")
@@ -144,12 +162,19 @@ public class UserController {
         return "/rescueshelter/rs-portal";
     }
 
+
+
+
 //    //Edit Form Show for Rescue Shelter
-//    @GetMapping("/rescue-shelter/{id}/edit")
-//    public String editRescueShelter(@PathVariable long id, Model model){
-//        model.addAttribute("editUser", userdao.findOne(id));
-//        return "rs-edit";
-//    }
+    @GetMapping("/rescue-shelter/{id}/edit")
+    public String editRescueShelter(@PathVariable long id, Model model){
+        model.addAttribute("user", userdao.findOne(id));
+        return "/rescueshelter/rs-edit";
+    }
+
+
+
+
 //
 //    //Update DB with Rescue Shelter Changed Information
     @PostMapping("/rescue-shelter/edit")

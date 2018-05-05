@@ -40,7 +40,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 /* Login configuration for pa*/
                 .formLogin()
                     .loginPage("/login")
-                    .defaultSuccessUrl("/pawtification/")// user's home page, it can be any URL
+                    .defaultSuccessUrl("/route")// user's home page, it can be any URL
                     .permitAll() // Anyone can go to the login page
                 /* Logout configuration */
                 .and()
@@ -54,12 +54,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 /* Pages that require athentication */
                 .and()
                     .authorizeRequests()
-                    .antMatchers("/animals/create", "/animals/{id}/edit")
-                    .hasAuthority("rolestaff")
+                    .antMatchers("/animal/create", "/animal/{id}/edit")
+                    .hasAuthority("ROLE_STAFF")
 //                .and()
 //                .authorizeRequests()
 //                .antMatchers("/pawtification/")
-//                .hasAuthority("roleadopter")
+//                .hasAuthority("ADOPTER")
 
         ;
 
