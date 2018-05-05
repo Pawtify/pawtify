@@ -9,6 +9,7 @@ import com.codeup.pawtify.models.CatBreed;
 import com.codeup.pawtify.models.DogBreed;
 import com.codeup.pawtify.models.RescueShelter;
 import com.codeup.pawtify.models.User;
+import com.codeup.pawtify.services.UserService;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -27,12 +28,14 @@ public class AnimalController {
  private final CatBreedRepository catDao;
  private final DogBreedRepository dogDao;
  private final RescueShelterRepository shelterDao;
+ private final UserService userService;
 
-    public AnimalController(AnimalRepository animalDoa, CatBreedRepository catDao, DogBreedRepository dogDao, RescueShelterRepository shelterDao){
+    public AnimalController(AnimalRepository animalDoa, CatBreedRepository catDao, DogBreedRepository dogDao, RescueShelterRepository shelterDao, UserService userService){
         this.animalDoa = animalDoa;
         this.catDao = catDao;
         this.dogDao = dogDao;
         this.shelterDao = shelterDao;
+        this.userService = userService;
     }
 
 //    Homepage
@@ -90,48 +93,55 @@ public class AnimalController {
         Iterable<CatBreed> catBreeds = catDao.findAll();
         Iterable<DogBreed> dogBreeds = dogDao.findAll();
 
-        model.addAttribute("catBreed", catBreeds);
-        model.addAttribute("dogBreed", dogBreeds);
+        model.addAttribute("catBreeds", catBreeds);
+        model.addAttribute("dogBreeds", dogBreeds);
         model.addAttribute("animal", animal);
         return "rescueshelter/rs-form";
         }
-//
-//
 
-////        RS-Post new Animal w/ image method, can be refactored once working
+
+
+//        RS-Post new Animal w/ image method, can be refactored once working
 //    @Value("${file-upload-path}")
-//    private String uploadPath;
-//    @PostMapping("/animals/create")
-//    public String insert(@Valid Animal animal, Errors errors, Model model, @RequestParam(name = "file") MultipartFile uploadedFile){
-//        if(animal.getName().contains("noname")){
-//            errors.rejectValue("name", "no-name", "Animal must have a real name");
-//        }
-//        String filename = uploadedFile.getOriginalFilename();
-//        String filepath = Paths.get(uploadPath, filename).toString();
-//        File destinationFile = new File(filepath);
-//        try{
-//            uploadedFile.transferTo(destinationFile);
-////            RescueShelter rescueShelter = rescueShelterDao.loggedInUser();
-////            animal.setRescueshelter(rescueShelter);
-//            animal.setPath("/uploads" + filename);
-//            animalDoa.save(animal);
-//            model.addAttribute("message", "File successfully uploaded!");
-//        return "redirect:/rescueshelter/rs-form";
-//        } catch (IOException e){
-//            e.printStackTrace();
-//            model.addAttribute("message", "Oops! Something went wrong! " + e);
-//        }
-//        return ("redirect:/rescueshelter/rs-form");
-//    }
-//
-////    Used for rs-form to display all animals in db by that rescue shelter
-//    @GetMapping("/rescueshelter/animals/{id}")
-//    public String rescueAnimals(@PathVariable long id, Model model){
-////        Animal animal = animalDoa.findOne(id);
-////        model.addAttribute("isAnimalOwner", resueShelterService.isLoggedInAndAnimalMatchesUser(animal.getRescueshelter()));
-//        model.addAttribute("animals", animalDoa.findAll());
-//        return "/rescueshelter/rs-form";
-//    }
+    @Value("/Users/lalepro/IdeaProjects/pawtify/target/classes/static/uploads")
+    private String uploadPath;
+    @PostMapping("/animals/create")
+    public String insert(@Valid Animal animal, Errors errors, Model model, @RequestParam(name = "file") MultipartFile uploadedFile, DogBreed dogBreed, CatBreed catBreed) {
+        if (animal.getName().contains("noname")) {
+            errors.rejectValue("name", "no-name", "Animal must have a real name");
+        }
+        {
+            String filename = uploadedFile.getOriginalFilename();
+            String filepath = Paths.get(uploadPath, filename).toString();
+            File destinationFile = new File(filepath);
+            try {
+                uploadedFile.transferTo(destinationFile);
+                User user = userService.loggedInUser();
+//            RescueShelter rescueShelter = rescueShelterDao.loggedInUser();
+//            animal.setRescueshelter(rescueShelter);
+                animal.setRescueshelter(user.getShelter_id());
+                animal.setDogBreed(dogBreed);
+                animal.setCatBreed(catBreed);
+                animal.setPath("/uploads" + filename);
+                animalDoa.save(animal);
+                model.addAttribute("message", "File successfully uploaded!");
+                return "redirect:/rescueshelter/rs-form";
+            } catch (IOException e) {
+                e.printStackTrace();
+                model.addAttribute("message", "Oops! Something went wrong! " + e);
+            }
+            return ("rescueshelter/rs-form");
+        }
+    }
+
+//    Used for rs-form to display all animals in db by that rescue shelter
+    @GetMapping("/rescueshelter/animals/{id}")
+    public String rescueAnimals(@PathVariable long id, Model model){
+//        Animal animal = animalDoa.findOne(id);
+//        model.addAttribute("isAnimalOwner", resueShelterService.isLoggedInAndAnimalMatchesUser(animal.getRescueshelter()));
+        model.addAttribute("animals", animalDoa.findAll());
+        return "/rescueshelter/rs-form";
+    }
 //
 ////    RS-edit animal
 //    @GetMapping("/animal/{id}/edit")
