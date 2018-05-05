@@ -6,9 +6,12 @@ import com.codeup.pawtify.daos.UsersRepository;
 import com.codeup.pawtify.models.RescueShelter;
 import com.codeup.pawtify.models.User;
 import com.codeup.pawtify.models.UserRole;
+import com.codeup.pawtify.services.UserDetailsLoader;
 import com.codeup.pawtify.services.UserService;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,6 +20,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import sun.java2d.cmm.Profile;
 
 import javax.validation.Valid;
 import java.util.ArrayList;
@@ -167,9 +171,11 @@ public class UserController {
 
 //    //Edit Form Show for Rescue Shelter
     @GetMapping("/rescue-shelter/{id}/edit")
-    public String editRescueShelter(@PathVariable long id, Model model){
-        model.addAttribute("user", userdao.findOne(id));
-        return "/rescueshelter/rs-edit";
+    public String editStaff(@PathVariable long id, Model model){
+//        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User user = userdao.findOne(id);
+        model.addAttribute("user", user);
+        return "/rs-edit";
     }
 
 
