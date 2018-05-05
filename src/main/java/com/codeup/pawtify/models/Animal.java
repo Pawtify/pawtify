@@ -32,8 +32,8 @@ public class Animal {
     @Size(min=1, max=100, message="Please Pick Color")
     private String color;
 
-    @Column(nullable = false)
-    @Size(min=1, max=100, message="Please Pick Pet's Behavior")
+    @Column
+    @Size(min=1, max=500, message="Please Pick Pet's Behavior")
     private String behavior;
 
     @Column

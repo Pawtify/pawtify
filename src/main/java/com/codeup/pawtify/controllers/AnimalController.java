@@ -105,32 +105,36 @@ public class AnimalController {
 //    @Value("${file-upload-path}")
     @Value("/Users/lalepro/IdeaProjects/pawtify/target/classes/static/uploads")
     private String uploadPath;
-    @PostMapping("/animals/create")
+    @PostMapping("/animal/create")
     public String insert(@Valid Animal animal, Errors errors, Model model, @RequestParam(name = "file") MultipartFile uploadedFile, DogBreed dogBreed, CatBreed catBreed) {
-        if (animal.getName().contains("noname")) {
-            errors.rejectValue("name", "no-name", "Animal must have a real name");
+        if (animal.getBehavior().contains(" ")) {
+            errors.rejectValue("behavior", "Empty", "Must fill out Animal behavior ");
+        }
+        if(animal.getName().contains(" ")){
+            errors.rejectValue("No Name", "Empty", "Enter a Nam");
         }
         {
             String filename = uploadedFile.getOriginalFilename();
             String filepath = Paths.get(uploadPath, filename).toString();
             File destinationFile = new File(filepath);
             try {
-                uploadedFile.transferTo(destinationFile);
+                 uploadedFile.transferTo(destinationFile);
                 User user = userService.loggedInUser();
 //            RescueShelter rescueShelter = rescueShelterDao.loggedInUser();
 //            animal.setRescueshelter(rescueShelter);
+
                 animal.setRescueshelter(user.getShelter_id());
                 animal.setDogBreed(dogBreed);
                 animal.setCatBreed(catBreed);
                 animal.setPath("/uploads" + filename);
                 animalDoa.save(animal);
                 model.addAttribute("message", "File successfully uploaded!");
-                return "redirect:/rescueshelter/rs-form";
+                return "redirect:/animal/create";
             } catch (IOException e) {
                 e.printStackTrace();
                 model.addAttribute("message", "Oops! Something went wrong! " + e);
             }
-            return ("rescueshelter/rs-form");
+            return ("redirect:/animal/create");
         }
     }
 
