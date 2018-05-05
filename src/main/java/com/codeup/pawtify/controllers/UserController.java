@@ -170,12 +170,20 @@ public class UserController {
 
 
 //    //Edit Form Show for Rescue Shelter
-    @GetMapping("/rescue-shelter/{id}/edit")
+    @GetMapping("/rescue-shelter/{id}")
     public String editStaff(@PathVariable long id, Model model){
 //        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         User user = userdao.findOne(id);
         model.addAttribute("user", user);
-        return "/rs-edit";
+        return "/rescueshelter/rs-edit";
+
+    }
+
+    @GetMapping("/rescue-shelter/{id}/edit")
+    public String staffId(@PathVariable long id, Model model){
+        User user = userdao.findOne(id);
+        model.addAttribute("user", user);
+        return "partials/navbar";
     }
 
 

@@ -22,41 +22,23 @@
                 <li><a th:href="@{'/about'}">About</a></li>
                 <li><a th:href="@{'/pets'}">Browse</a></li>
                 <!--<li sec:authorize="isAnonymous()"><a th:href="@{'/pawtification/'}">Pawtification</a></li>-->
-                <li><a th:href="@{'/pawtification/'}">Pawtification</a></li>
+                <li sec:authorize="!hasRole('ROLE_STAFF')"><a th:href="@{'/pawtification/'}">Pawtification</a></li>
                 <li sec:authorize="hasRole('ROLE_STAFF')"><a th:href="@{'/rs-form'}">Register Animal</a></li>
 
             </ul>
 
             <ul class="nav navbar-nav navbar-right">
 
-                <!--<li sec:authorize="hasRole('ROLE_STAFF')" style="color: #54c6a0;">-->
-                <!--<div th:if="${#authentication.principal.id == id}">-->
-                    <!--<form th:action="@{'/rescue-shelter/' + ${id} + '/edit'}" th:method="GET">-->
-                        <!--<span class="glyphicon glyphicon-user" aria-hidden="true"></span>-->
-                        <!--<span sec:authentication="name"></span></a>-->
-                    <!--</form>-->
-                <!--</div>-->
-                <!--</li>-->
 
-
-                <!--<div th:each="user : ${user}">-->
-                <!--<li sec:authorize="hasRole('ROLE_STAFF')" style="color: #54c6a0;"><a th:if="${#authentication.principal.id == user.id}" th:href="@{/rescue-shelter/{id}/edit/(id=${user.id})}">-->
-                    <!--<span class="glyphicon glyphicon-user" aria-hidden="true"></span>-->
-                    <!--<span sec:authentication="name"></span></a>-->
-                <!--</li>-->
-                <!--</div>-->
-
-                <!--<div th:each="user : ${user}">-->
-                <!--<li sec:authorize="hasRole('ROLE_STAFF')" style="color: #54c6a0;">-->
                 <div th:each="user : ${users}">
                     <li sec:authorize="hasRole('ROLE_STAFF')" style="color: #54c6a0;">
-                        <a th:href="@{/rescue-shelter/{id}/edit(id=${user.id})}">
+                        <a th:href="@{/rescue-shelter/{id}/(id=${user.getId()})}">
                         <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
-                        <span sec:authentication="name"></span></a>
+                        <span sec:authentication="name"></span>
+                        </a>
                     </li>
                 </div>
-                <!--</li>-->
-                <!--</div>-->
+
 
 
                 <li sec:authorize="isAnonymous()"><a th:href="@{'/login'}">Sign In</a></li>
