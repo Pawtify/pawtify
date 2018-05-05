@@ -13,7 +13,10 @@
             <div class="form-group">
                 <select>
                     <option value="cat">Cat</option>
-                    <option th:each="catBreed : ${catBreeds}" th:name="catBreed" th:value="${catBreed.id}"><span th:text="${catBreed.breed}"></span></option>
+                    <option th:each="catBreed : ${catBreeds}"
+                            th:name="catBreed"
+                            th:value="${catBreed.breed}">
+                        <span th:text="${catBreed.breed}"></span></option>
                 </select>
             </div>
 
@@ -23,7 +26,10 @@
             <div class="form-group">
                 <select>
                     <option value="dog">Dog</option>
-                    <option th:each="dogBreed : ${dogBreeds}" th:name="dogBreed" th:value="${dogBreed.id}"><span th:text="${dogBreed.breed}"></span></option>
+                    <option th:each="dogBreed : ${dogBreeds}"
+                            th:name="dogBreed"
+                            th:value="${dogBreed.breed}">
+                        <span th:text="${dogBreed.breed}"></span></option>
                 </select>
             </div>
 
@@ -39,29 +45,29 @@
             <span>Color</span>
             <select name="color" size="1">
                 <option value="color">Select Color</option>
-                <option value="1">Black</option>
-                <option value="2">Brown</option>
-                <option value="3">White</option>
-                <option value="4">Other</option>
-                <option value="5">No Preference</option>
+                <option value="Black">Black</option>
+                <option value="Brown">Brown</option>
+                <option value="White">White</option>
+                <option value="Other">Other</option>
+                <option value="No Preference">No Preference</option>
             </select>
         </div>
         <div class="form-group">
             <span>Size</span>
             <select name="size" size="1">
                 <option value="size">Select Size</option>
-                <option value="1">Small</option>
-                <option value="2">Medium</option>
-                <option value="3">Large</option>
+                <option value="Small">Small</option>
+                <option value="Medium">Medium</option>
+                <option value="Large">Large</option>
             </select>
         </div>
         <div class="form-group">
             <span>Gender</span>
             <select name="gender" size="1">
                 <option value="gender">Select Gender</option>
-                <option value="1">Male</option>
-                <option value="2">Female</option>
-                <option value="3">No Preference</option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+                <option value="No Preference">No Preference</option>
             </select>
         </div>
         <div class="form-group">
@@ -71,5 +77,6 @@
         </div>
     </form>
 </main>
+<div th:replace="partials/footer :: footer"></div>
 </body>
 </html>

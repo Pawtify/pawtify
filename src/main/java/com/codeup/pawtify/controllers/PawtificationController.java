@@ -34,7 +34,7 @@ public class PawtificationController {
         this.userService = userService;
     }
 
-//set up to create new pawtification
+ //set up to create new pawtification
 
     @GetMapping("/pawtification")
     public String create(Model model){
@@ -57,6 +57,8 @@ public class PawtificationController {
         pawDao.save(pawtification);
         return "potentialadopter/pawtification";
     }
+
+
 
 ////    This will allow PawUser to see there displayed choices on their Paw Page
 //    @GetMapping("/pawtification/{id}")
