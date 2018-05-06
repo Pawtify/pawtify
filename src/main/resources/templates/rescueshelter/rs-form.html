@@ -12,7 +12,7 @@
     <form class="form-horizontal" th:action="@{/animal/create}" th:method="post" th:object="${animal}" enctype="multipart/form-data">
     <div class="form-group">
         <select>
-            <option value="cat">Cat</option>
+            <option value="null">Cat</option>
             <option th:each="catBreed : ${catBreeds}"
                     th:name="catBreed"
                     th:value="${catBreed.breed}">
@@ -25,7 +25,7 @@
 
     <div class="form-group">
         <select>
-            <option value="dog">Dog</option>
+            <option value="null">Dog</option>
             <option th:each="dogBreed : ${dogBreeds}"
                     th:name="dogBreed"
                     th:value="${dogBreed.breed}">
@@ -34,7 +34,7 @@
         </select>
     </div>
         <br/>
-        <h4 th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></h4>
+        <!--<h4 th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></h4>-->
         <input th:field="*{name}" th:value="${name}" placeholder="Enter a Pet Name"/>
         <br />
     <div class="form-group">
@@ -76,7 +76,7 @@
     <div>
         <div class="form-group">
             <label for="behavior">Behavior of Animal</label><br/>
-            <h4 th:if="${#fields.hasErrors('behavior')}" th:errors="*{behavior}"></h4>
+            <!--<h4 th:if="${#fields.hasErrors('behavior')}" th:errors="*{behavior}"></h4>-->
             <textarea th:field="*{behavior}" th:value="${behavior}" class="form-control" id="behavior" rows="3" placeholder="Include Animals Behavior"></textarea>
         </div>
     </div>
@@ -133,7 +133,6 @@
                 <th th:text="${animal.age}"></th>
                 <th th:text="${animal.color}"></th>
                 <th><a th:href="@{/animal/{animalId}/edit(animalId=${animal.getId()})}">Edit</a></th>
-                <th><a th:href="@{/animal/{animalId}/delete(animalId=${animal.getId()})}">Delete</a></th>
             </tr>
 
         </table>

@@ -210,11 +210,6 @@ public class UserController {
 
     }
 
-
-
-
-
-//
 //    //Update DB with Rescue Shelter Changed Information
     @PostMapping("/rescue-shelter/edit")
     public String updateRescueShelter(@ModelAttribute User editRescue){
@@ -225,20 +220,6 @@ public class UserController {
         r.setEmail(editRescue.getEmail());
         r.setPassword(editRescue.getPassword());
         userdao.save(r);
-        return "redirect:/rs-form";
+        return "redirect:animal/create";
     }
-
-//    //Delete the Rescue Shelter User
-//    @PostMapping("/rescue-shelter/{id}/delete")
-//    public String deleteRSUser(@PathVariable long id){
-//        userdao.delete(id);
-//        return "redirect:/home";
-//    }
 }
-
-
-
-
-
-
-//test
