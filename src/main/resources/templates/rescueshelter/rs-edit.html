@@ -1,52 +1,51 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head th:replace="partials/header :: header('Profile')"></head>
-<body>
-
-<div th:replace="partials/navbar :: navbar"></div>
-
-<main class="container">
-
-
-    <div class="col-md-offset-3">
-        <h1>Welcome Staff Member, <span th:text="${name}">Name of staff member</span></h1>
-        <!--will need to create UPDATE method for action-->
-        <form class="form-horizontal" th:action="@{/update}" th:method="post">
-            <div class="form-group">
-                <label for="register-username" class="col-sm-2 control-label">Username</label>
-                <div class="col-sm-10 col-md-5">
-                    <input type="text" class="form-control" id="register-username" placeholder="Username" />
-                </div>
+    <head th:replace="partials/header :: header('Profile')"></head>
+    <body>
+        <div th:replace="partials/navbar :: navbar"></div>
+        <main class="container">
+            <div class="col-md-offset-3">
+                <h1>Welcome Staff Member, <span th:text="${name}">Name of staff member</span></h1>
+                <form class="form-horizontal" th:action="@{/rescue-shelter/edit}" method="POST" th:object="${user}">
+                    <div class="form-group">
+                        <label for="full_name" class="col-sm-2 control-label">Employee Full Name:</label>
+                        <div class="col-sm-10 col-md-5">
+                            <input type="text" th:field="*{full_name}" class="form-control" id="full_name" placeholder="Full Name" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="register-username" class="col-sm-2 control-label">Username:</label>
+                        <div class="col-sm-10 col-md-5">
+                            <input type="text" th:field="*{username}" class="form-control" id="register-username" placeholder="Username" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="register-password" class="col-sm-2 control-label">Password:</label>
+                        <div class="col-sm-10 col-md-5">
+                            <input type="password" th:field="*{password}" class="form-control" id="register-password" placeholder="Password" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="email" class="col-sm-2 control-label">Shelter Email:</label>
+                        <div class="col-sm-10 col-md-5">
+                            <input type="text" th:field="*{email}" class="form-control" id="email" placeholder="Email" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone" class="col-sm-2 control-label">Shelter Phone:</label>
+                        <div class="col-sm-10 col-md-5">
+                            <input type="text" th:field="*{phone}" class="form-control" id="phone" placeholder="Phone" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <!--<input type="hidden" th:field="*{id}" th:value="${id}" />-->
+                            <button type="submit" class="btn btn-default">Update</button>
+                        </div>
+                    </div>
+                </form>
             </div>
-            <div class="form-group">
-                <label for="register-password" class="col-sm-2 control-label">Password</label>
-                <div class="col-sm-10 col-md-5">
-                    <input type="password" class="form-control" id="register-password" placeholder="Password" />
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="confirm" class="col-sm-2 control-label">Confirm Password</label>
-                <div class="col-sm-10 col-md-5">
-                    <input type="password" class="form-control" id="confirm" placeholder="Password" />
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="email" class="col-sm-2 control-label">Email</label>
-                <div class="col-sm-10 col-md-5">
-                    <input type="text" class="form-control" id="email" placeholder="Email" />
-                </div>
-            </div>
-
-            <div class="form-group">
-                <div class="col-sm-offset-2 col-sm-10">
-                    <button type="submit" class="btn btn-default">Update</button>
-                </div>
-            </div>
-        </form>
-    </div>
-
-
-</main>
-<footer th:replace="partials/footer :: footer"></footer>
-</body>
+        </main>
+    <footer th:replace="partials/footer :: footer"></footer>
+    </body>
 </html>
