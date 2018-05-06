@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="partials/header :: header('Edit')"></head>
+<body>
+<div th:replace="partials/navbar :: navbar"></div>
+<main class="container">
+
+    <div class="col-md-offset-4">
+        <h2>Edit Your Pawtify</h2>
+    </div>
+    <div class="col-md-offset-3">
+<form class="form-horizontal" th:action="@{/pawtification/edit}" th:method="post" th:object="${editpawtification}">
+    <!--for each for breeds-->
+
+    <div class="form-group">
+        <select>
+            <option value="cat">Cat</option>
+            <option th:each="catBreed : ${catBreeds}"
+                    th:name="catBreed"
+                    th:value="${catBreed.breed}">
+                <span th:text="${catBreed.breed}"></span>
+            </option>
+        </select>
+    </div>
+
+    <span>or</span>
+
+
+    <div class="form-group">
+        <select>
+            <option value="dog">Dog</option>
+            <option th:each="dogBreed : ${dogBreeds}"
+                    th:name="dogBreed"
+                    th:value="${dogBreed.breed}">
+                <span th:text="${dogBreed.breed}"></span></option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <span>Age</span>
+        <select name="age" size="1">
+            <option value="age">Select Age</option>
+            <option value="Less than 1 year">Less than 1 year</option>
+            <option value="More than 1 year">More than 1 year</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <span>Color</span>
+        <select name="color" size="1">
+            <option value="color">Select Color</option>
+            <option value="Black">Black</option>
+            <option value="Brown">Brown</option>
+            <option value="White">White</option>
+            <option value="Other">Other</option>
+            <option value="No Preference">No Preference</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <span>Size</span>
+        <select name="size" size="1">
+            <option value="size">Select Size</option>
+            <option value="Small">Small</option>
+            <option value="Medium">Medium</option>
+            <option value="Large">Large</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <span>Gender</span>
+        <select name="gender" size="1">
+            <option value="gender">Select Gender</option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+            <option value="No Preference">No Preference</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <button type="submit" class="btn btn-default">Pawtify Me</button>
+        </div>
+    </div>
+</form>
+    </div>
+</main>
+</body>
+</html>
