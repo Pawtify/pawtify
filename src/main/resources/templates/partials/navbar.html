@@ -44,16 +44,19 @@
 
 
                 <li sec:authorize="hasRole('ROLE_ADOPTER')" style="color: #54c6a0;">
-                    <a th:href="@{/rescue-shelter/edit}">
-                        <span>Welcome,</span>
-                        <span sec:authentication="name"></span>
+                    <a th:href="@{/adopter/edit}">
+                        <span>Welcome, </span>
+                        <span class="name">
+                            <span sec:authentication="name"></span>
+                        </span>
+                        <span>!</span>
                     </a>
                 </li>
 
 
 
                 <li sec:authorize="hasRole('ROLE_STAFF')" style="color: #54c6a0;">
-                    <a th:href="@{/adopter/edit}">
+                    <a th:href="@{/rescue-shelter/edit}">
                         <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
                         <span sec:authentication="name"></span>
                     </a>

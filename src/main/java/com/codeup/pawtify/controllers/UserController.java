@@ -207,8 +207,15 @@ public class UserController {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         model.addAttribute("user", userdao.findOne(user.getId()));
         return "/rescueshelter/rs-edit";
-
     }
+
+//    Takes adopter to edit form
+    @GetMapping("/adopter/edit")
+    public String editAdopter(Model model){
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        model.addAttribute("user", userdao.findOne(user.getId()));
+        return "/potentialadopter/pa-edit";
+}
 
 //    //Update DB with Rescue Shelter Changed Information
     @PostMapping("/rescue-shelter/edit")

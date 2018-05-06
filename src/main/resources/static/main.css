@@ -27,6 +27,10 @@ body {
     margin-top: 2rem;
 }
 
+.navbar .brand, .navbar .nav > li > a > .name {
+    color: #54c6a0;
+    font-weight: bold;
+}
 
 
 #navbar > ul.nav.navbar-nav.navbar-right > li > form > button {
