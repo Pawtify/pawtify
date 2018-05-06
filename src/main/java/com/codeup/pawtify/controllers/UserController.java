@@ -86,6 +86,11 @@ public class UserController {
         return "potentialadopter/pa-signin";
     }
 
+    @GetMapping("/redirect")
+    public String redirection(){
+        return "main/redirect";
+    }
+
     //Edit Form Show for Potential Adopter---FOR EDIT
     @GetMapping("/adopter/{id}/edit")
     public String editAdopter(@PathVariable long id, Model model){
@@ -170,21 +175,41 @@ public class UserController {
 
 
 //    //Edit Form Show for Rescue Shelter
-    @GetMapping("/rescue-shelter/{id}")
-    public String editStaff(@PathVariable long id, Model model){
-//        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        User user = userdao.findOne(id);
-        model.addAttribute("user", user);
+//    @GetMapping("/rescue-shelter/{id}")
+//    public String editStaff(@PathVariable long id, Model model){
+////        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+//        User user = userdao.findOne(id);
+//        model.addAttribute("user", user);
+//        return "/rescueshelter/rs-edit";
+//
+//    }
+//
+//    @GetMapping("/rescue-shelter/{id}/edit")
+//    public String staffId(@PathVariable long id, Model model){
+//        User user = userdao.findOne(id);
+//        model.addAttribute("user", user);
+//        return "partials/navbar";
+//    }
+
+
+//    //  //Edit Form Show for Rescue Shelter
+//    @GetMapping("/rescue-shelter/edit")
+//    public String editStaff( Model model){
+//    User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+//        model.addAttribute("user", user);
+//        return "/rescueshelter/rs-edit";
+//​
+//    }
+
+    //    //Edit Form Show for Rescue Shelter
+    @GetMapping("/rescue-shelter/edit")
+    public String editStaff(Model model){
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        model.addAttribute("user", userdao.findOne(user.getId()));
         return "/rescueshelter/rs-edit";
 
     }
 
-    @GetMapping("/rescue-shelter/{id}/edit")
-    public String staffId(@PathVariable long id, Model model){
-        User user = userdao.findOne(id);
-        model.addAttribute("user", user);
-        return "partials/navbar";
-    }
 
 
 
@@ -210,3 +235,10 @@ public class UserController {
 //        return "redirect:/home";
 //    }
 }
+
+
+
+
+
+
+//test

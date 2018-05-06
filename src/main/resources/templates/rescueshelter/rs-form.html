@@ -100,6 +100,8 @@
     </div>
     </form>
 
+
+
     <div class="container">
     <h1>Registered Animals</h1>
     <!--<div class="col-offset-6 col-lg-6">-->
@@ -110,18 +112,32 @@
             <!--</span>-->
         <!--</div>-->
     <!--</div>-->
-        <p>
-          <span>Name</span>
-          <span>Animal Type</span>
-          <span>Breed</span>
-          <span>Gender</span>
-          <span>Age</span>
-          <span>Color</span>
-          <span>
-            <button class="btn btn-default" type="button">Edit</button>
-            <button class="btn btn-default" type="button">Delete</button>
-          </span>
-      </p>
+        <table>
+            <tr>
+                <th>Animal ID</th>
+                <th>Dog Type</th>
+                <th>Cat Type</th>
+                <th>Name</th>
+                <th>size</th>
+                <th>Gender</th>
+                <th>Age</th>
+                <th>Color</th>
+            </tr>
+            <tr th:each="animal : ${animals}">
+                <th th:text="${animal.id}"></th>
+                <th th:text="${animal.getCatBreed()}"></th>
+                <th th:text="${animal.getDogBreed()}"></th>
+                <th th:text="${animal.name}"></th>
+                <th th:text="${animal.size}"></th>
+                <th th:text="${animal.gender}"></th>
+                <th th:text="${animal.age}"></th>
+                <th th:text="${animal.color}"></th>
+                <th><a th:href="@{/animal/{animalId}/edit(animalId=${animal.getId()})}">Edit</a></th>
+                <th><a th:href="@{/animal/{animalId}/delete(animalId=${animal.getId()})}">Delete</a></th>
+            </tr>
+
+        </table>
+
     </div>
 </main>
 <footer th:replace="partials/footer :: footer"></footer>
