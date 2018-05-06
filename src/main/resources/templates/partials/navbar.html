@@ -22,7 +22,10 @@
                 <li><a th:href="@{'/about'}">About</a></li>
                 <li><a th:href="@{'/pets'}">Browse</a></li>
                 <!--<li sec:authorize="isAnonymous()"><a th:href="@{'/pawtification/'}">Pawtification</a></li>-->
-                <li sec:authorize="!hasRole('ROLE_STAFF')"><a th:href="@{'/pawtification/'}">Pawtification</a></li>
+                <li sec:authorize="hasRole('ROLE_ADOPTER')"><a th:href="@{'/pawtification/'}">Pawtification</a></li>
+                <li sec:authorize="isAnonymous()"><a th:href="@{'/redirect'}">Pawtification</a></li>
+
+
                 <li sec:authorize="hasRole('ROLE_STAFF')"><a th:href="@{'/rs-form'}">Register Animal</a></li>
 
             </ul>
@@ -30,14 +33,24 @@
             <ul class="nav navbar-nav navbar-right">
 
 
-                <div th:each="user : ${users}">
-                    <li sec:authorize="hasRole('ROLE_STAFF')" style="color: #54c6a0;">
-                        <a th:href="@{/rescue-shelter/{id}/(id=${user.getId()})}">
+                <!--<div th:each="user : ${users}">-->
+                    <!--<li sec:authorize="hasRole('ROLE_STAFF')" style="color: #54c6a0;">-->
+                        <!--<a th:href="@{/rescue-shelter/{id}/(id=${user.getId()})}">-->
+                        <!--<span class="glyphicon glyphicon-user" aria-hidden="true"></span>-->
+                        <!--<span sec:authentication="name"></span>-->
+                        <!--</a>-->
+                    <!--</li>-->
+                <!--</div>-->
+
+
+
+                <li sec:authorize="hasRole('ROLE_STAFF')" style="color: #54c6a0;">
+                    <a th:href="@{/rescue-shelter/edit}">
                         <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
                         <span sec:authentication="name"></span>
-                        </a>
-                    </li>
-                </div>
+                    </a>
+                </li>
+
 
 
 
