@@ -26,7 +26,7 @@
                 <li sec:authorize="isAnonymous()"><a th:href="@{'/redirect'}">Pawtification</a></li>
 
 
-                <li sec:authorize="hasRole('ROLE_STAFF')"><a th:href="@{'/rs-form'}">Register Animal</a></li>
+                <li sec:authorize="hasRole('ROLE_STAFF')"><a th:href="@{'/animal/create'}">Register Animal</a></li>
 
             </ul>
 
