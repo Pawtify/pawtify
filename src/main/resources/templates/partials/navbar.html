@@ -22,7 +22,7 @@
                 <li><a th:href="@{'/about'}">About</a></li>
                 <li><a th:href="@{'/pets'}">Browse</a></li>
                 <!--<li sec:authorize="isAnonymous()"><a th:href="@{'/pawtification/'}">Pawtification</a></li>-->
-                <li sec:authorize="hasRole('ROLE_ADOPTER')"><a th:href="@{'/pawtification/'}">Pawtification</a></li>
+                <li sec:authorize="hasRole('ROLE_ADOPTER')"><a th:href="@{'/pawtification'}">Pawtification</a></li>
                 <li sec:authorize="isAnonymous()"><a th:href="@{'/redirect'}">Pawtification</a></li>
 
 
