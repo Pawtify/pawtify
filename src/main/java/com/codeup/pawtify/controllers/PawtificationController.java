@@ -91,8 +91,14 @@ public class PawtificationController {
 
     @GetMapping("pawtification/{id}/edit")
     public String edit(@PathVariable long id, Model model){
+        Iterable<CatBreed> catBreeds = catDao.findAll();
+        Iterable<DogBreed> dogBreeds = dogDao.findAll();
+
+        model.addAttribute("catBreeds", catBreeds);
+        model.addAttribute("dogBreeds", dogBreeds);
+
         model.addAttribute("editPawtify", pawDao.findOne(id));
-        return "potentialadopter/pawtification";
+        return "potentialadopter/pawtification-edit";
     }
 
     @PostMapping("/pawtification/edit")
