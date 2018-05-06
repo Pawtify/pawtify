@@ -93,20 +93,31 @@ public class AnimalController {
         Iterable<CatBreed> catBreeds = catDao.findAll();
         Iterable<DogBreed> dogBreeds = dogDao.findAll();
 
+//        CatBreed catBreedEdit = catBreeds.
+//        DogBreed dogBreedEdit = dogDao.findOne(id);
+
+//        String catEdit = catBreeds.toString();
+//        String dogEdit = dogBreeds.toString();
+
         model.addAttribute("catBreeds", catBreeds);
         model.addAttribute("dogBreeds", dogBreeds);
         model.addAttribute("animal", animal);
+//        model.addAttribute("catEdit", catEdit);
+//        model.addAttribute("dogEdit", dogEdit);
+        model.addAttribute("animals", animalDoa.findAll());
         return "rescueshelter/rs-form";
         }
 
 
-
+//TODO: Animals Create For STAFF (Getting CODE LOOPY)
 //        RS-Post new Animal w/ image method, can be refactored once working
 //    @Value("${file-upload-path}")
     @Value("/Users/lalepro/IdeaProjects/pawtify/target/classes/static/uploads")
     private String uploadPath;
     @PostMapping("/animal/create")
-    public String insert(@Valid Animal animal, Errors errors, Model model, @RequestParam(name = "file") MultipartFile uploadedFile, DogBreed dogBreed, CatBreed catBreed) {
+    public String insert(@Valid Animal animal, Errors errors, Model model,
+                         @RequestParam(name = "file") MultipartFile uploadedFile,
+                         DogBreed dogBreed, CatBreed catBreed) {
         if (animal.getBehavior().contains(" ")) {
             errors.rejectValue("behavior", "Empty", "Must fill out Animal behavior ");
         }
@@ -141,48 +152,49 @@ public class AnimalController {
 //    Used for rs-form to display all animals in db by that rescue shelter
     @GetMapping("/rescueshelter/animals/{id}")
     public String rescueAnimals(@PathVariable long id, Model model){
-//        Animal animal = animalDoa.findOne(id);
+        Animal animal = animalDoa.findOne(id);
 //        model.addAttribute("isAnimalOwner", resueShelterService.isLoggedInAndAnimalMatchesUser(animal.getRescueshelter()));
-        model.addAttribute("animals", animalDoa.findAll());
+        model.addAttribute("animals", animal);
         return "/rescueshelter/rs-form";
     }
 //
-////    RS-edit animal
-//    @GetMapping("/animal/{id}/edit")
-//    public String edit(@PathVariable long id, Model model){
-//        model.addAttribute("editAnimal", animalDoa.findOne(id));
-//        model.addAttribute("path", animalDoa.findOne(id).getPath());
-//        System.out.println(animalDoa.findOne(id).getPath());
-//        return "rescueshelter/rs-form";
-//    }
-//
-//    @PostMapping("/posts/edit")
-//    public String update(@ModelAttribute Animal editAnimal){
-//        Animal e = animalDoa.findOne(editAnimal.getId());
-//        e.setName(editAnimal.getName());
-//        e.setAge(editAnimal.getAge());
-//        e.setGender(editAnimal.getGender());
-//        e.setSize(editAnimal.getSize());
-//        e.setColor(editAnimal.getColor());
-//        e.setBehavior(editAnimal.getBehavior());
-//        e.setPath(editAnimal.getPath());
-//        e.setCatBreed(editAnimal.getCatBreed());
-//        e.setDogBreed(editAnimal.getDogBreed());
-//        animalDoa.save(e);
-//        return "redirect:/rescueshelter/rs-form";
-//    }
-//
-//    @GetMapping("/animal/{id}/confirm-delete")
-//    public String confirmDelete(@PathVariable long id, Model model){
-//        model.addAttribute("animal", animalDoa.findOne(id));
-//        return "rescueshelter/rs-form";
-//    }
-//
-//    @PostMapping("/animal/{id}/delete")
-//    public String deletePost(@PathVariable long id){
-//        animalDoa.delete(id);
-//        return "redirect:/rescueshelter/rs-form";
-//    }
+//    RS-edit animal
+    @GetMapping("/animal/{id}/edit")
+    public String edit(@PathVariable long id, Model model){
+        model.addAttribute("editAnimal", animalDoa.findOne(id));
+        model.addAttribute("path", animalDoa.findOne(id).getPath());
+        System.out.println(animalDoa.findOne(id).getPath());
+        return "rescueshelter/rs-form";
+    }
+
+    @PostMapping("/posts/edit")
+    public String update(@ModelAttribute Animal editAnimal){
+        Animal e = animalDoa.findOne(editAnimal.getId());
+        e.setName(editAnimal.getName());
+        e.setAge(editAnimal.getAge());
+        e.setGender(editAnimal.getGender());
+        e.setSize(editAnimal.getSize());
+        e.setColor(editAnimal.getColor());
+        e.setBehavior(editAnimal.getBehavior());
+        e.setPath(editAnimal.getPath());
+        e.setCatBreed(editAnimal.getCatBreed());
+        e.setDogBreed(editAnimal.getDogBreed());
+        animalDoa.save(e);
+        return "redirect:/animal/create";
+    }
+
+//    TODO: Throwing Get Method Errors for Deleting
+    @GetMapping("/animal/{id}/delete")
+    public String confirmDelete(@PathVariable long id, Model model){
+        model.addAttribute("animal", animalDoa.findOne(id));
+        return "rescueshelter/rs-form";
+    }
+
+    @PostMapping("/animal/{id}/delete")
+    public String deletePost(@PathVariable long id){
+        animalDoa.delete(id);
+        return "redirect:/animal/create";
+    }
 
 
 }
