@@ -34,10 +34,9 @@ public class PawtificationController {
         this.userService = userService;
     }
 
- //set up to create new pawtification
-
+ //set up to create new pawtification--ORIGINAL
     @GetMapping("/pawtification")
-    public String create(Model model){
+    public String create( Model model){
         Pawtification pawtification = new Pawtification();
         Iterable<CatBreed> catBreeds = catDao.findAll();
         Iterable<DogBreed> dogBreeds = dogDao.findAll();
@@ -46,6 +45,27 @@ public class PawtificationController {
         model.addAttribute("pawtification", pawtification);
         return "/potentialadopter/pawtification";
     }
+
+
+//    for edit of adopter profile---WORKING ON THIS--getting info and adding it to page
+//    @GetMapping("/pawtification")
+//    public String create(@ModelAttribute User userInfo, Model model){
+//        Pawtification pawtification = new Pawtification();
+//        Iterable<CatBreed> catBreeds = catDao.findAll();
+//        Iterable<DogBreed> dogBreeds = dogDao.findAll();
+//        User user = userService.loggedInUser();
+//        String userName = user.getFull_name();
+//        user.setUsername(userInfo.getUsername());
+//        user.setEmail(userInfo.getEmail());
+//        user.setFull_name(userInfo.getFull_name());
+//        user.setPhone(userInfo.getPhone());
+//        model.addAttribute("user", userName);
+//        model.addAttribute("catBreeds", catBreeds);
+//        model.addAttribute("dogBreeds", dogBreeds);
+//        model.addAttribute("pawtification", pawtification);
+//        return "/potentialadopter/pawtification";
+//    }
+
 //
 //    Create a pawtification
     @PostMapping("/pawtification")

@@ -163,3 +163,35 @@ body > main.main-buttons.home-container.container > div {
     background-color: #805754;
     width: 100%;
 }
+
+
+.login {
+    margin-top: 50%;
+    height: 70px;
+    width: 70%;
+}
+
+.registration{
+    border-left: 8px solid #805754;
+    /*padding:5%;*/
+    margin-right: 0;
+    margin-top: 10%;
+    padding-left: 5%;
+}
+
+.redirect {
+    margin: 10%;
+    padding: 5%;
+    background-color: #54c6a0;
+    opacity: .7;
+    border-radius: 10px;
+}
+
+.sign {
+    padding: 3%;
+    background-color: #7b7b7b;
+    font-size: 5vh;
+    font-weight: bold;
+    color: black;
+    border-radius: 10px;
+}

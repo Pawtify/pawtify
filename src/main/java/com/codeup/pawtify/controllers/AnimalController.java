@@ -118,13 +118,13 @@ public class AnimalController {
     public String insert(@Valid Animal animal, Errors errors, Model model,
                          @RequestParam(name = "file") MultipartFile uploadedFile,
                          DogBreed dogBreed, CatBreed catBreed) {
-        if (animal.getBehavior().contains(" ")) {
-            errors.rejectValue("behavior", "Empty", "Must fill out Animal behavior ");
-        }
-        if(animal.getName().contains(" ")){
-            errors.rejectValue("No Name", "Empty", "Enter a Nam");
-        }
-        {
+//        if (animal.getBehavior().contains(" ")) {
+//            errors.rejectValue("behavior", "Empty", "Must fill out Animal behavior ");
+//        }
+//        if(animal.getName().contains(" ")){
+//            errors.rejectValue("No Name", "Empty", "Enter a Nam");
+//        }
+//        {
             String filename = uploadedFile.getOriginalFilename();
             String filepath = Paths.get(uploadPath, filename).toString();
             File destinationFile = new File(filepath);
@@ -146,7 +146,7 @@ public class AnimalController {
                 model.addAttribute("message", "Oops! Something went wrong! " + e);
             }
             return ("redirect:/animal/create");
-        }
+//        }
     }
 
 //    Used for rs-form to display all animals in db by that rescue shelter
@@ -161,38 +161,44 @@ public class AnimalController {
 //    RS-edit animal
     @GetMapping("/animal/{id}/edit")
     public String edit(@PathVariable long id, Model model){
+        Iterable<CatBreed> catBreeds = catDao.findAll();
+        Iterable<DogBreed> dogBreeds = dogDao.findAll();
+
+        model.addAttribute("catBreeds", catBreeds);
+        model.addAttribute("dogBreeds", dogBreeds);
+
         model.addAttribute("editAnimal", animalDoa.findOne(id));
         model.addAttribute("path", animalDoa.findOne(id).getPath());
         System.out.println(animalDoa.findOne(id).getPath());
-        return "rescueshelter/rs-form";
+        return "rescueshelter/rs-animal-edit";
     }
 
-    @PostMapping("/posts/edit")
+    @PostMapping("/animal/edit")
     public String update(@ModelAttribute Animal editAnimal){
-        Animal e = animalDoa.findOne(editAnimal.getId());
-        e.setName(editAnimal.getName());
-        e.setAge(editAnimal.getAge());
-        e.setGender(editAnimal.getGender());
-        e.setSize(editAnimal.getSize());
-        e.setColor(editAnimal.getColor());
-        e.setBehavior(editAnimal.getBehavior());
-        e.setPath(editAnimal.getPath());
-        e.setCatBreed(editAnimal.getCatBreed());
-        e.setDogBreed(editAnimal.getDogBreed());
-        animalDoa.save(e);
+        Animal updateAnimal = animalDoa.findOne(editAnimal.getId());
+        updateAnimal.setName(editAnimal.getName());
+        updateAnimal.setAge(editAnimal.getAge());
+        updateAnimal.setGender(editAnimal.getGender());
+        updateAnimal.setSize(editAnimal.getSize());
+        updateAnimal.setColor(editAnimal.getColor());
+        updateAnimal.setBehavior(editAnimal.getBehavior());
+        updateAnimal.setPath(editAnimal.getPath());
+        updateAnimal.setCatBreed(editAnimal.getCatBreed());
+        updateAnimal.setDogBreed(editAnimal.getDogBreed());
+        animalDoa.save(updateAnimal);
         return "redirect:/animal/create";
     }
 
 //    TODO: Throwing Get Method Errors for Deleting
-    @GetMapping("/animal/{id}/delete")
-    public String confirmDelete(@PathVariable long id, Model model){
-        model.addAttribute("animal", animalDoa.findOne(id));
-        return "rescueshelter/rs-form";
-    }
+//    @GetMapping("/animal/{id}/delete")
+//    public String confirmDelete(@PathVariable long id, Model model){
+//        model.addAttribute("animal", animalDoa.findOne(id));
+//        return "rescueshelter/rs-form";
+//    }
 
-    @PostMapping("/animal/{id}/delete")
-    public String deletePost(@PathVariable long id){
-        animalDoa.delete(id);
+    @PostMapping("/animal/delete")
+    public String deletePost(@ModelAttribute Animal animal){
+        animalDoa.delete(animal);
         return "redirect:/animal/create";
     }
 
