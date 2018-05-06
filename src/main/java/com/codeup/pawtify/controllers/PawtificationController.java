@@ -35,9 +35,8 @@ public class PawtificationController {
     }
 
  //set up to create new pawtification
-
     @GetMapping("/pawtification")
-    public String create(Model model){
+    public String create( Model model){
         Pawtification pawtification = new Pawtification();
         Iterable<CatBreed> catBreeds = catDao.findAll();
         Iterable<DogBreed> dogBreeds = dogDao.findAll();
@@ -46,6 +45,22 @@ public class PawtificationController {
         model.addAttribute("pawtification", pawtification);
         return "/potentialadopter/pawtification";
     }
+
+
+//    for edit of adopter profile---WORKINGO ON THIS
+//    @PostMapping("/pawtification")
+//    public String editAdopter(@PathVariable long id, Model model){
+//        User user = userDao.findOne(id);
+//        String username = user.getUsername();
+//        String fullname = user.getFull_name();
+//        String email = user.getEmail();
+//        String number = user.getPhone();
+//        model.addAttribute("username", username);
+//        model.addAttribute("fullname", fullname);
+//        model.addAttribute("email", email);
+//        model.addAttribute("number", number);
+//        return "/potentialadopter/pawtification";
+//    }
 //
 //    Create a pawtification
     @PostMapping("/pawtification")
