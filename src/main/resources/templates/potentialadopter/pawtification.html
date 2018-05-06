@@ -45,7 +45,7 @@
         <div class="form-group">
             <span>Color</span>
             <select name="color" size="1">
-                <option value="color">Select Color</option>
+                <option value="color">Select Coat Color</option>
                 <option value="Black">Black</option>
                 <option value="Brown">Brown</option>
                 <option value="White">White</option>
@@ -77,7 +77,16 @@
             </div>
         </div>
     </form>
-    <th><a th:href="@{/pawtification/{animalId}/edit(animalId=${pawtification.getId()})}">Edit</a></th>
+    <tr th:each="pawtify : ${pawtifications}">
+        <th th:text="${pawtify.getCatBreed()}"></th>
+        <th th:text="${pawtify.getDogBreed()}"></th>
+        <th th:text="${pawtify.age}"></th>
+        <th th:text="${pawtify.color}"></th>
+        <th th:text="${pawtify.size}"></th>
+        <th th:text="${pawtify.gender}"></th>
+        <th><a th:href="@{/pawtification/{animalId}/edit(animalId=${pawtification.getId()})}">Edit</a></th>
+    </tr>
+
 <!--might still be working on this-->
     <!--<div>-->
         <!--<h1>Welcome, <span th:text="${user}"></span></h1>-->
