@@ -31,23 +31,23 @@ public class User {
     private RescueShelter shelter;
 
 
-    public User(long id, String full_name, String phone, String username, String email, String password, RescueShelter shelter_id) {
+    public User(long id, String full_name, String phone, String username, String email, String password, RescueShelter shelter) {
         this.id = id;
         this.full_name = full_name;
         this.phone = phone;
         this.username = username;
         this.email = email;
         this.password = password;
-        this.shelter = shelter_id;
+        this.shelter = shelter;
     }
 
-    public User(String full_name, String phone, String username, String email, String password, RescueShelter shelter_id) {
+    public User(String full_name, String phone, String username, String email, String password, RescueShelter shelter) {
         this.full_name = full_name;
         this.phone = phone;
         this.username = username;
         this.email = email;
         this.password = password;
-        this.shelter = shelter_id;
+        this.shelter = shelter;
     }
 
     public User() {
@@ -56,9 +56,12 @@ public class User {
 
     public User(User copy) {
         id = copy.id;
-        email = copy.email;
+        full_name = copy.full_name;
+        phone = copy.phone;
         username = copy.username;
+        email = copy.email;
         password = copy.password;
+        shelter = copy.shelter;
     }
 
     public long getId() {
@@ -109,11 +112,12 @@ public class User {
         this.password = password;
     }
 
-    public RescueShelter getShelter_id() {
+    public RescueShelter getShelter() {
         return shelter;
     }
 
-    public void setShelter_id(RescueShelter shelter_id) {
-        this.shelter = shelter_id;
+    public void setShelter(RescueShelter shelter) {
+        this.shelter = shelter;
     }
 }
+

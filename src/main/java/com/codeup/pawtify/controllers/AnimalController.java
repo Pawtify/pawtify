@@ -109,15 +109,14 @@ public class AnimalController {
         }
 
 
-//TODO: Animals Create For STAFF (Getting CODE LOOPY)
+
 //        RS-Post new Animal w/ image method, can be refactored once working
 //    @Value("${file-upload-path}")
     @Value("/Users/lalepro/IdeaProjects/pawtify/target/classes/static/uploads")
     private String uploadPath;
     @PostMapping("/animal/create")
     public String insert(@Valid Animal animal, Errors errors, Model model,
-                         @RequestParam(name = "file") MultipartFile uploadedFile,
-                         DogBreed dogBreed, CatBreed catBreed) {
+                         @RequestParam(name = "file") MultipartFile uploadedFile){
 //        if (animal.getBehavior().contains(" ")) {
 //            errors.rejectValue("behavior", "Empty", "Must fill out Animal behavior ");
 //        }
@@ -133,10 +132,8 @@ public class AnimalController {
                 User user = userService.loggedInUser();
 //            RescueShelter rescueShelter = rescueShelterDao.loggedInUser();
 //            animal.setRescueshelter(rescueShelter);
-
-                animal.setRescueshelter(user.getShelter_id());
-                animal.setDogBreed(dogBreed);
-                animal.setCatBreed(catBreed);
+//                animal.setDogBreed(dogBreed);
+//                animal.setCatBreed(catBreed);
                 animal.setPath("/uploads" + filename);
                 animalDoa.save(animal);
                 model.addAttribute("message", "File successfully uploaded!");
