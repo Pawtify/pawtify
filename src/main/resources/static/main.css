@@ -88,29 +88,44 @@ body > main.main-buttons.home-container{
 
 .slogan {
     position: absolute;
-    top: 35%;
+    top: 25%;
     left: 55%;
     transform: translate(-50%, -50%);
-    color: #ffffff;
+    color: #a1fbdb;
     font-family: 'Concert One', cursive;
     font-size: 6vw;
     width: 80%;
-    font-weight: bold;
+    /*font-weight: bold;*/
 }
 
-.home {
-    background-color: rgba(255,255,255,0.5);
-    padding: 3%;
+/*.home {*/
+    /*background-color: rgba(255,255,255,0.5);*/
+    /*padding: 3%;*/
+
+/*}*/
+
+
+.direct > a:hover {
+    opacity: .5;
+}
+
+.direct {
+    transform: translate(-50%, -50%);
+    position: absolute;
+    top: 87%;
+    left: 55%;
+    opacity: .8;
 
 }
 
 .about {
     position: absolute;
-    top: 55%;
+    top: 45%;
     left: 50%;
     transform: translate(-50%, -50%);
-    color: maroon;
-    border: 1px solid black;
+    color: #ffffff;
+    background-color: #7b7b7b;
+    border: 2px solid black;
 }
 
 
@@ -189,7 +204,6 @@ body > main.main-buttons.home-container.container > div {
 
 .registration{
     border-left: 8px solid #a7726e;
-    /*padding:5%;*/
     margin-right: 0;
     margin-top: 10%;
     padding-left: 5%;
