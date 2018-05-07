@@ -12,9 +12,9 @@
     <form class="form-horizontal" th:action="@{/animal/create}" th:method="post" th:object="${animal}" enctype="multipart/form-data">
     <div class="form-group">
         <select th:name="catBreed" th:field="*{catBreed}">
-            <option value="null">Cat</option>
-            <!--<option th:value="null">Cat</option>-->
-            <option th:each="catBreed : ${catBreeds}" th:value="${catBreed.breed}" th:text="${catBreed.breed}"></option>
+            <!--<option value="null">Cat</option>-->
+            <option th:value="null">Cat</option>
+            <option th:each="catBreed : ${catBreeds}" th:value="${catBreed.id}" th:text="${catBreed.breed}"></option>
         </select>
     </div>
 
@@ -23,7 +23,7 @@
     <div class="form-group">
         <select th:name="dogBreed" th:field="*{dogBreed}">
             <option th:value="null">Dog</option>
-            <option th:each="dogBreed : ${dogBreeds}" th:value="${dogBreed.breed}" th:text="${dogBreed.breed}"></option>
+            <option th:each="dogBreed : ${dogBreeds}" th:value="${dogBreed.id}" th:text="${dogBreed.breed}"></option>
         </select>
     </div>
         <br/>

@@ -109,7 +109,7 @@ public class AnimalController {
         }
 
 
-//TODO: Animals Create For STAFF (Getting CODE LOOPY)
+
 //        RS-Post new Animal w/ image method, can be refactored once working
 //    @Value("${file-upload-path}")
     @Value("/Users/lalepro/IdeaProjects/pawtify/target/classes/static/uploads")
