@@ -180,8 +180,9 @@ body > main.main-buttons.home-container.container > div {
 
 .login {
     margin-top: 50%;
+    margin-left:20%;
     height: 70px;
-    width: 70%;
+    width: 60%;
     background-color: #70b19a;
     border: none;
 }
