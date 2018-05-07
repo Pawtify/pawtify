@@ -25,7 +25,7 @@
 ##### 7. Landing Page - create home page that allows users to login/register as a PA or RS, gives some clear info on purpose of Pawtify, and gives Guests an option to browse through already available pets
 - [X] purpose clear home page
 - [X] About page that compliments the landing/home page
-- [ ] add video to background
+- [X] add video to background
 #### 8. Mobile Responsive Site - make all pages mobile responsive
 - [ ] dynamic pages that can be used and viewed on a phone
 ##### 9. Navbar (can we split some of navbar options up with a footer?)
@@ -34,9 +34,7 @@
 - [ ] add animal card to PA index page that updates when new animals are entered into the db and is filter/searchable from the PA index page
 - [ ] add animal card to RS index page with more information for RS (see Laura's example) that updates as soon as new animals are entered and is filter/searchable
 ##### 11. Filter & Search Options - PA users will be able to filter the list of animals by animal type, breed, age, and gender.
-- [ ] add filter options to for animal type, gender and age
 - [ ] add search box and functionality for all other traits
-- [ ] add filter functionality to RS index
  
 ### *WISH LIST FEATURES*
 ##### 11. Event listener pop out for notification
@@ -52,3 +50,5 @@
 ##### 14. Share an Animal on social media - Feature that lets you share the post with Facebook and Twitter
 - [ ] add the the show animal page
 - [ ] opens social media pop up thing to post and share directly to facebook or twitter
+#### 15. Other
+- [ ] add filter options to for animal type, gender and age

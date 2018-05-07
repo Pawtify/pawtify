@@ -8,6 +8,7 @@ import com.codeup.pawtify.models.CatBreed;
 import com.codeup.pawtify.models.DogBreed;
 import com.codeup.pawtify.models.Pawtification;
 import com.codeup.pawtify.models.User;
+import com.codeup.pawtify.services.PawtificationService;
 import com.codeup.pawtify.services.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -25,13 +26,15 @@ public class PawtificationController {
     private final DogBreedRepository dogDao;
     private final UsersRepository userDao;
     private final UserService userService;
+    private final PawtificationService pawService;
 
-    public PawtificationController(PawtificationRepository pawDao, CatBreedRepository catDao, DogBreedRepository dogDao, UsersRepository userDao, UserService userService){
+    public PawtificationController(PawtificationRepository pawDao, CatBreedRepository catDao, DogBreedRepository dogDao, UsersRepository userDao, UserService userService, PawtificationService pawService){
         this.pawDao = pawDao;
         this.catDao = catDao;
         this.dogDao = dogDao;
         this.userDao = userDao;
         this.userService = userService;
+        this.pawService = pawService;
     }
 
  //set up to create new pawtification--ORIGINAL
@@ -78,9 +81,9 @@ public class PawtificationController {
 //        pawtification.setCatBreed(catBreed);
         pawtification.setUser(user);
         pawDao.save(pawtification);
+        pawService.matchPawtificationAndAnimals(pawtification);
         return "potentialadopter/pawtification";
     }
-
 
 //TODO; display pawtifications Users have made.
 //    This will allow PawUser to see there displayed choices on their Paw Page
@@ -114,6 +117,7 @@ public class PawtificationController {
         paw.setCatBreed(editPawtify.getCatBreed());
         paw.setDogBreed(editPawtify.getDogBreed());
         pawDao.save(paw);
+//        pawService.matchPawtificationAndAnimals(editPawtify);
         return "redirect:/pawtification";
     }
 //
@@ -128,6 +132,4 @@ public class PawtificationController {
         pawDao.delete(pawtification);
         return "redirect:/pawtifcation";
     }
-
-
 }
