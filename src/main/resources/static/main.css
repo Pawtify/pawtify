@@ -208,6 +208,17 @@ body > main.main-buttons.home-container.container > div {
     border-radius: 10px;
 }
 
+.side-menu {
+    height: 100vh;
+    background-color: #82434b;
+    color: #ffffff;
+}
+
+.profile {
+    margin-top: 8%;
+    border-radius: 60%;
+    margin: 3%;
+}
 
 
 /*.video-container {*/
