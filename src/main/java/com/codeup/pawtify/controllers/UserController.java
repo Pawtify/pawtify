@@ -114,12 +114,11 @@ public class UserController {
 
     //Add New Rescue Shelter to the DB
     @PostMapping("/register/rescue-shelter")
-    public String registerNewRSUser(@Valid User user, RescueShelter rescueShelter, Errors errors, Model model) {
+    public String registerNewRSUser(@Valid User user, Errors errors, Model model) {
         if(errors.hasErrors()){
             model.addAttribute(user);
             return "rescueshelter/rs-portal";
         }
-        user.setShelter(rescueShelter);
         String hash = passwordEncoder.encode(user.getPassword());
         user.setPassword(hash);
         userdao.save(user);
