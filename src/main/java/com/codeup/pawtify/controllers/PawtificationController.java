@@ -38,16 +38,19 @@ public class PawtificationController {
     @GetMapping("/pawtification")
     public String create( Model model){
         Pawtification pawtification = new Pawtification();
+
+//        Pawtification myPawtify = userService.isLoggedInAndAnimalMatchesRS(user);
         Iterable<CatBreed> catBreeds = catDao.findAll();
         Iterable<DogBreed> dogBreeds = dogDao.findAll();
         model.addAttribute("catBreeds", catBreeds);
         model.addAttribute("dogBreeds", dogBreeds);
         model.addAttribute("pawtification", pawtification);
+        model.addAttribute("pawtifications", pawDao.findAll());
         return "/potentialadopter/pawtification";
     }
 
 
-//    for edit of adopter profile---WORKING ON THIS--getting info and adding it to page
+////    for edit of adopter profile---WORKING ON THIS--getting info and adding it to page
 //    @GetMapping("/pawtification")
 //    public String create(@ModelAttribute User userInfo, Model model){
 //        Pawtification pawtification = new Pawtification();
@@ -79,17 +82,17 @@ public class PawtificationController {
     }
 
 
-
-////    This will allow PawUser to see there displayed choices on their Paw Page
+//TODO; display pawtifications Users have made.
+//    This will allow PawUser to see there displayed choices on their Paw Page
 //    @GetMapping("/pawtification/{id}")
 //    public String pawtifyChoice(@PathVariable long id, Model model){
 //        Pawtification pawtify = pawDao.findOne(id);
-//        model.addAttribute("isPawtifyOwner", userService.isLoggedInAndPostMatchesUser(pawtify.getUser()));
-//        model.addAttribute("pawtify", pawDao.findOne(id));
+////        model.addAttribute("isPawtifyOwner", userService.isLoggedInAndPostMatchesUser(pawtify.getUser()));
+//        model.addAttribute("pawtifications", pawtify);
 //        return "/potentialadopter/pawtification";
 //    }
 
-    @GetMapping("pawtification/{id}/edit")
+    @GetMapping("/pawtification/{id}/edit")
     public String edit(@PathVariable long id, Model model){
         Iterable<CatBreed> catBreeds = catDao.findAll();
         Iterable<DogBreed> dogBreeds = dogDao.findAll();
@@ -112,16 +115,16 @@ public class PawtificationController {
         pawDao.save(paw);
         return "redirect:/potentialadopter/pawtification";
     }
-
-    @GetMapping("pawtification/{id}/confirm-delete")
-    public String confirmDelete(@PathVariable long id, Model model){
-        model.addAttribute("pawtify", pawDao.findOne(id));
-        return "redirect:/potentialadopter/pawtification";
-    }
+//
+//    @GetMapping("pawtification/{id}/confirm-delete")
+//    public String confirmDelete(@PathVariable long id, Model model){
+//        model.addAttribute("pawtify", pawDao.findOne(id));
+//        return "redirect:/potentialadopter/pawtification";
+//    }
 
     @PostMapping("posts/{id}/delete")
-    public String deletePawtify(@PathVariable long id){
-        pawDao.delete(id);
+    public String deletePawtify(@ModelAttribute Pawtification pawtification){
+        pawDao.delete(pawtification);
         return "redirect:/potentialadopter/pawtifcation";
     }
 
