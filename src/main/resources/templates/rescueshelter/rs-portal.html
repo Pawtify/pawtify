@@ -29,9 +29,9 @@
                             <div class="form-group">
                                 <h3 class="text-center">Please Select Your Shelter Affiliation</h3>
                                 <div class="form-group text-center">
-                                    <select>
+                                    <select th:name="rescueshelter" th:field="*{shelter}">
                                         <option value="shelter">Select Your Shelter</option>
-                                        <option th:each="shelter : ${rescueshelters}" th:name="rescueshelter" th:value="${shelter.id}"><span th:text="${shelter.name}"></span></option>
+                                        <option th:each="shelter : ${rescueshelters}" th:value="${shelter.id}" th:text="${shelter.name}"></option>
                                     </select>
                                 </div>
                             </div>

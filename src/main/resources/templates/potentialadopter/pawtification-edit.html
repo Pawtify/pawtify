@@ -13,13 +13,9 @@
     <!--for each for breeds-->
 
     <div class="form-group">
-        <select>
-            <option value="null">Cat</option>
-            <option th:each="catBreed : ${catBreeds}"
-                    th:name="catBreed"
-                    th:value="${catBreed.breed}">
-                <span th:text="${catBreed.breed}"></span>
-            </option>
+        <select th:name="catBreed" th:field="*{catBreed}">
+            <option th:value="null">Cat</option>
+            <option th:each="catBreed : ${catBreeds}" th:value="${catBreed.id}" th:text="${catBreed.breed}"></option>
         </select>
     </div>
 
@@ -27,12 +23,9 @@
 
 
     <div class="form-group">
-        <select>
-            <option value="null">Dog</option>
-            <option th:each="dogBreed : ${dogBreeds}"
-                    th:name="dogBreed"
-                    th:value="${dogBreed.breed}">
-                <span th:text="${dogBreed.breed}"></span></option>
+        <select th:name="dogBreed" th:field="*{dogBreed}">
+            <option th:value="null">Dog</option>
+            <option th:each="dogBreed : ${dogBreeds}" th:value="${dogBreed.id}" th:text="${dogBreed.breed}"></option>
         </select>
     </div>
 
