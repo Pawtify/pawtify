@@ -34,7 +34,7 @@
 - [ ] add animal card to PA index page that updates when new animals are entered into the db and is filter/searchable from the PA index page
 - [ ] add animal card to RS index page with more information for RS (see Laura's example) that updates as soon as new animals are entered and is filter/searchable
 ##### 11. Filter & Search Options - PA users will be able to filter the list of animals by animal type, breed, age, and gender.
-- [ ] add search box and functionality for all other traits
+- [ ] add search box and functionality for all traits
  
 ### *WISH LIST FEATURES*
 ##### 11. Event listener pop out for notification
