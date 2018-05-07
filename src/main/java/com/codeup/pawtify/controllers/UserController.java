@@ -1,11 +1,11 @@
 package com.codeup.pawtify.controllers;
+
 import com.codeup.pawtify.daos.RescueShelterRepository;
 import com.codeup.pawtify.daos.Roles;
 import com.codeup.pawtify.daos.UsersRepository;
 import com.codeup.pawtify.models.RescueShelter;
 import com.codeup.pawtify.models.User;
 import com.codeup.pawtify.models.UserRole;
-import com.codeup.pawtify.services.UserService;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -14,32 +14,25 @@ import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-
-
 import javax.validation.Valid;
-
 import java.util.Collection;
-
 
 @Controller
 public class UserController {
     private UsersRepository userdao;
     private RescueShelterRepository rescuedao;
     private PasswordEncoder passwordEncoder;
-    private UserService userService;
     private Roles rolesRepo;
 
-    public UserController(UsersRepository userdao, RescueShelterRepository rescuedao, PasswordEncoder passwordEncoder, UserService userService, Roles rolesRepo) {
+    public UserController(UsersRepository userdao, RescueShelterRepository rescuedao, PasswordEncoder passwordEncoder, Roles rolesRepo) {
         this.userdao = userdao;
         this.rescuedao = rescuedao;
         this.passwordEncoder = passwordEncoder;
-        this.userService = userService;
         this.rolesRepo = rolesRepo;
     }
 
-    //################### Potential Adopters Users ###################
+    //########################################################## Potential Adopter Users ##########################################################
     //Show the Register Form for the Potential Adopter
     @GetMapping("/register/adopter")
     public String showPASignUpForm(Model model) {
@@ -48,10 +41,9 @@ public class UserController {
         return "/potentialadopter/pa-register";
     }
 
-
+    //Redirect Based off Role of the User that Logged In
     @GetMapping("/route")
     public String routeUsers() {
-
         Collection<? extends GrantedAuthority> roles = SecurityContextHolder.getContext().getAuthentication().getAuthorities();
         System.out.println("roles.toArray()[0] = " + roles.toArray()[0]);
         if (roles.toArray()[0].toString().equals("ROLE_ADOPTER")) {
@@ -82,47 +74,33 @@ public class UserController {
         return "potentialadopter/pa-signin";
     }
 
+    //If you click on Pawtification, this will redirect you and ask you to sign in
     @GetMapping("/redirect")
     public String redirection(){
         return "main/redirect";
     }
 
-    //Edit Form Show for Potential Adopter---FOR EDIT
-    @GetMapping("/adopter/{id}/edit")
-    public String editAdopter(@PathVariable long id, Model model){
-        model.addAttribute("editUser", userdao.findOne(id));
-        return "pa-edit";
+    //Edit Form Show for Potential Adopter-
+    @GetMapping("/adopter/edit")
+    public String editAdopter(Model model){
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        model.addAttribute("user", userdao.findOne(user.getId()));
+        return "/potentialadopter/pa-edit";
     }
 
-    //Update DB with Potential Adopter Changed Information---FOR EDIT
-    @PostMapping("/adopter/{id}/edit")
+    //Update DB with Potential Adopter Changed Information-
+    @PostMapping("/adopter/edit")
     public String updateAdopter(@ModelAttribute User editUser){
         User e = userdao.findOne(editUser.getId());
         e.setFull_name(editUser.getFull_name());
         e.setPhone(editUser.getPhone());
         e.setUsername(editUser.getUsername());
         e.setEmail(editUser.getEmail());
-        e.setPassword(editUser.getPassword());
+        e.setPassword(passwordEncoder.encode(editUser.getPassword()));
         userdao.save(e);
         return "redirect:/pawtification/";
     }
-//
-//    //Delete the Potential Adopter User
-//    @PostMapping("/adopter/{id}/delete")
-//    public String deletePAUser(@PathVariable long id){
-//        userdao.delete(id);
-//        return "redirect:/home";
-//    }
-//
-    //################### Rescue Shelter Users ###################
-//    // Show the Register Form for the Rescue Shelter
-//    @GetMapping("/register/rescue-shelter")
-//    public String showRSSignUpForm(Model model) {
-//        User user = new User();
-//        model.addAttribute("user", user);
-//        return "/rescueshelter/rs-portal";
-//    }
-
+    //########################################################## Rescue Shelter Users ##########################################################
     //Show Rescue Shelter User Affiliation Drop Down
     @GetMapping("/register/rescue-shelter")
     public String showRSAffiliationForm(Model model) {
@@ -133,6 +111,7 @@ public class UserController {
         model.addAttribute("rescueshelters", rescueshelters);
         return "/rescueshelter/rs-portal";
     }
+
     //Add New Rescue Shelter to the DB
     @PostMapping("/register/rescue-shelter")
     public String registerNewRSUser(@Valid User user, RescueShelter rescueShelter, Errors errors, Model model) {
@@ -148,18 +127,6 @@ public class UserController {
         return "redirect:/login";
     }
 
-//    //Update User to Have Connection to Rescue Shelter Table
-//    @PostMapping("/register/shelter-registration")
-//    public String connectUserToShelter(User user, RescueShelter rescueShelter) {
-//        User user = userService.loggedInUser();
-////        RescueShelter shelter = rescuedao.findOne(id);
-//        user.setShelter_id(rescueShelter);
-////        System.out.println(shelter);
-////        user.setShelter_id(shelter);
-//        userdao.save(user);
-//        return "redirect:/animal/create";
-//    }
-
     //Login Rescue Shelter
     @GetMapping("/shelter/login")
     public String showRSLoginForm() {
@@ -167,37 +134,7 @@ public class UserController {
         return "/rescueshelter/rs-portal";
     }
 
-
-
-
-//    //Edit Form Show for Rescue Shelter
-//    @GetMapping("/rescue-shelter/{id}")
-//    public String editStaff(@PathVariable long id, Model model){
-////        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-//        User user = userdao.findOne(id);
-//        model.addAttribute("user", user);
-//        return "/rescueshelter/rs-edit";
-//
-//    }
-//
-//    @GetMapping("/rescue-shelter/{id}/edit")
-//    public String staffId(@PathVariable long id, Model model){
-//        User user = userdao.findOne(id);
-//        model.addAttribute("user", user);
-//        return "partials/navbar";
-//    }
-
-
-//    //  //Edit Form Show for Rescue Shelter
-//    @GetMapping("/rescue-shelter/edit")
-//    public String editStaff( Model model){
-//    User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-//        model.addAttribute("user", user);
-//        return "/rescueshelter/rs-edit";
-//​
-//    }
-
-    //    //Edit Form Show for Rescue Shelter
+    //Edit Form Show for Rescue Shelter
     @GetMapping("/rescue-shelter/edit")
     public String editStaff(Model model){
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
@@ -205,15 +142,7 @@ public class UserController {
         return "/rescueshelter/rs-edit";
     }
 
-//    Takes adopter to edit form
-    @GetMapping("/adopter/edit")
-    public String editAdopter(Model model){
-        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        model.addAttribute("user", userdao.findOne(user.getId()));
-        return "/potentialadopter/pa-edit";
-}
-
-//    //Update DB with Rescue Shelter Changed Information
+    //Update DB with Rescue Shelter Changed Information
     @PostMapping("/rescue-shelter/edit")
     public String updateRescueShelter(@ModelAttribute User editRescue){
         User r = userdao.findOne(editRescue.getId());
@@ -221,8 +150,8 @@ public class UserController {
         r.setPhone(editRescue.getPhone());
         r.setUsername(editRescue.getUsername());
         r.setEmail(editRescue.getEmail());
-        r.setPassword(editRescue.getPassword());
+        r.setPassword(passwordEncoder.encode(editRescue.getPassword()));
         userdao.save(r);
-        return "redirect:animal/create";
+        return "redirect:/animal/create";
     }
 }

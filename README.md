@@ -8,23 +8,23 @@
 - [X] create rs-form.html that adds animals entered in that form to the animals table of that database
 - [X] add picture upload to animal profile from this form
 ##### 3. Notify Form - PA users can insert information (Animal type, breed, age, gender, size, and color) to be notified of an animal
-- [X] add main PA notification form that drops up and down when you click the buttons on that view, only allows you to click update and have one active form at a time
+- [X] add main PA notification form that drops up and down when you click the buttons on that view
 ##### 4. Edit/Delete - RS users will be able to edit the information of the form, with information already filled in. RS user can delete animal from rs-form.html page
-- [ ] add update/edit animals functionality for the RS user on their form
+- [X] add update/edit animals functionality for the RS user on their form
 - [ ] "recent additions" column on the rs-form.html view that populates in case you need to quickly edit something they just entered
-- [ ] RS users can edit their user information
+- [X] RS users can edit their user information
 ##### 5. Edit/Delete - PA users can update and delete notification forms 
-- [ ] add edit user info functionality
-- [ ] add edit/delete pawtification functionality
+- [X] add edit user info functionality
+- [X] add edit/delete pawtifications functionality
+- [X] listed view of all pawtifications for that user to view
 ##### 6. Form Validation
-- [ ] security for page URLs
+- [X] security for page URLs
 - [X] add register form validation logic for both PA and RS & error messages
 - [X] add login form validation logic for both PA and RS & error messages
-- [ ] add RS animal entry form validation logic & error messages
-- [ ] add PA desired animal traits entry form validation logic and error messages
+- [X] add PA desired animal traits entry form validation logic and error messages
 ##### 7. Landing Page - create home page that allows users to login/register as a PA or RS, gives some clear info on purpose of Pawtify, and gives Guests an option to browse through already available pets
-- [ ] complete clear landing page
-- [ ] About page that compliments the landing/home page
+- [X] purpose clear home page
+- [X] About page that compliments the landing/home page
 - [ ] add video to background
 #### 8. Mobile Responsive Site - make all pages mobile responsive
 - [ ] dynamic pages that can be used and viewed on a phone
@@ -32,7 +32,7 @@
 - [X] create a mobile friendly (w/ drop down on mobile), dynamic navbar for being logged in and a view for being logged out (might differ by page)
 ##### 10. Animal Card - Card will show animal picture with name and age. Click on animal card to be taken to individual animal page (show.html) to see more information about specific animal.
 - [ ] add animal card to PA index page that updates when new animals are entered into the db and is filter/searchable from the PA index page
-- [X] add animal card to RS index page with more information for RS (see Laura's example) that updates as soon as new animals are entered and is filter/searchable
+- [ ] add animal card to RS index page with more information for RS (see Laura's example) that updates as soon as new animals are entered and is filter/searchable
 ##### 11. Filter & Search Options - PA users will be able to filter the list of animals by animal type, breed, age, and gender.
 - [ ] add filter options to for animal type, gender and age
 - [ ] add search box and functionality for all other traits

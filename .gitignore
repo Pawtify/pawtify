@@ -1,6 +1,7 @@
 /target/
 !.mvn/wrapper/maven-wrapper.jar
 src/main/resources/application.properties
+src/main/resources/static/video
 
 ### STS ###
 .apt_generated
@@ -24,3 +25,4 @@ src/main/resources/application.properties
 /dist/
 /nbdist/
 /.nb-gradle/
+

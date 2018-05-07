@@ -101,19 +101,20 @@ public class PawtificationController {
         model.addAttribute("dogBreeds", dogBreeds);
 
         model.addAttribute("editPawtify", pawDao.findOne(id));
-        return "potentialadopter/pawtification-edit";
+        System.out.println(pawDao.findOne(id));
+        return "/potentialadopter/pawtification-edit";
     }
 
     @PostMapping("/pawtification/edit")
-    public String update(@ModelAttribute Pawtification editPawtification){
-        Pawtification paw = pawDao.findOne(editPawtification.getId());
-        paw.setAge(editPawtification.getAge());
-        paw.setGender(editPawtification.getGender());
-        paw.setColor(editPawtification.getGender());
-        paw.setCatBreed(editPawtification.getCatBreed());
-        paw.setDogBreed(editPawtification.getDogBreed());
+    public String update(@ModelAttribute Pawtification editPawtify){
+        Pawtification paw = pawDao.findOne(editPawtify.getId());
+        paw.setAge(editPawtify.getAge());
+        paw.setGender(editPawtify.getGender());
+        paw.setColor(editPawtify.getGender());
+        paw.setCatBreed(editPawtify.getCatBreed());
+        paw.setDogBreed(editPawtify.getDogBreed());
         pawDao.save(paw);
-        return "redirect:/potentialadopter/pawtification";
+        return "redirect:/pawtification";
     }
 //
 //    @GetMapping("pawtification/{id}/confirm-delete")
@@ -125,7 +126,7 @@ public class PawtificationController {
     @PostMapping("posts/{id}/delete")
     public String deletePawtify(@ModelAttribute Pawtification pawtification){
         pawDao.delete(pawtification);
-        return "redirect:/potentialadopter/pawtifcation";
+        return "redirect:/pawtifcation";
     }
 
 

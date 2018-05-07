@@ -3,7 +3,11 @@
 <head th:replace="partials/header :: header('Pawtification')"></head>
 <body>
 <div th:replace="partials/navbar :: navbar"></div>
+
+
+
 <main class="container">
+    <div class="col-md-6 text-center">
     <h1>Pawtification</h1>
     <h2>Pawtify me when there is an available animal that matches..</h2>
     <!--new action for pawtification-->
@@ -77,39 +81,65 @@
             </div>
         </div>
     </form>
-    <table>
-        <tr>
-            <th>Cat Type</th>
-            <th>Dog Type</th>
-            <th>Age</th>
-            <th>Color</th>
-            <th>Size</th>
-            <th>Gender</th>
-        </tr>
-    <tr th:each="pawtify : ${pawtifications}">
-        <th th:text="${pawtify.getCatBreed()}"></th>
-        <th th:text="${pawtify.getDogBreed()}"></th>
-        <th th:text="${pawtify.age}"></th>
-        <th th:text="${pawtify.color}"></th>
-        <th th:text="${pawtify.size}"></th>
-        <th th:text="${pawtify.gender}"></th>
-        <th><a th:href="@{/pawtification/{animalId}/edit(animalId=${pawtification.getId()})}">Edit</a></th>
-    </tr>
-    </table>
-
-<!--might still be working on this-->
-    <!--<div>-->
-        <!--<h1>Welcome, <span th:text="${user}"></span></h1>-->
-    <!--</div>-->
+    </div>
 
 
 
+    <div class="col-md-offset-2 col-md-4 side-menu">
+
+        <img src="/images/catdog.jpg" alt="Cat and Dog" width="70%" class="profile" />
+
+        <h3>Welcome to Pawtify!</h3>
+        <p>Here's how to make a pawtification:</p>
 
 
-
-
-
-
+        <div th:each="pawtification : ${pawtifications}">
+            <div>
+                <span>Cat Breed:</span>
+                <span th:text="${pawtification.getCatBreed()}"></span>
+            </div>
+            <div>
+                <span>Dog Breed:</span>
+                <span th:text="${pawtification.getDogBreed()}"></span>
+            </div>
+            <div>
+                <span>Age:</span>
+                <span th:text="${pawtification.age}"></span>
+            </div>
+            <div>
+                <span>Color:</span>
+                <span th:text="${pawtification.color}"></span>
+            </div>
+            <div>
+                <span>Size:</span>
+                <span th:text="${pawtification.size}"></span>
+            </div>
+            <div>
+                <span>Gender:</span>
+                <span th:text="${pawtification.gender}"></span>
+            </div>
+        <div><a th:href="@{/pawtification/{animalId}/edit(animalId=${pawtification.getId()})}">Edit</a></div>
+        </div>
+    </div>
+    <!--<table>-->
+        <!--<tr>-->
+            <!--<th>Cat Type</th>-->
+            <!--<th>Dog Type</th>-->
+            <!--<th>Age</th>-->
+            <!--<th>Color</th>-->
+            <!--<th>Size</th>-->
+            <!--<th>Gender</th>-->
+        <!--</tr>-->
+    <!--<tr th:each="pawtify : ${pawtifications}">-->
+        <!--<th th:text="${pawtify.getCatBreed()}"></th>-->
+        <!--<th th:text="${pawtify.getDogBreed()}"></th>-->
+        <!--<th th:text="${pawtify.age}"></th>-->
+        <!--<th th:text="${pawtify.color}"></th>-->
+        <!--<th th:text="${pawtify.size}"></th>-->
+        <!--<th th:text="${pawtify.gender}"></th>-->
+        <!--<th><a th:href="@{/pawtification/{animalId}/edit(animalId=${pawtification.getId()})}">Edit</a></th>-->
+    <!--</tr>-->
+    <!--</table>-->
 
 </main>
 <div th:replace="partials/footer :: footer"></div>

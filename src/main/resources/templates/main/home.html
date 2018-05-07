@@ -1,39 +1,35 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
     <head th:replace="partials/header :: header('Home')"></head>
-    <body>
+    <body class="body-container">
         <div th:replace="partials/navbar :: navbar"></div>
         <main>
-            <div class="main-img">
-                <img width="100%" src="https://phz8.petinsurance.com/-/media/all-phz-images/2017-images-850/dog_cat_dental_care_hero850.jpg" alt="catdog" />
-                <div class="col-offset-4">
-                    <div class="slogan">Matching People with Pets. <br/> Get Notified with Pawtify. </div>
-                        <a href="/about">
+
+                <div class="video-container col-md-12">
+                    <div class="video">
+                        <video id="myVideo" width="100%">
+                            <source th:src="@{/video/pawtify.mp4}" type="video/mp4" />
+                        </video>
+                    </div>
+                            <div class="slogan">Matching People with Pets. <br/> Get Notified with Pawtify. </div>
+                            <a href="/about">
                             <button type="button" class="about btn btn-secondary btn-lg">Learn More</button>
-                        </a>
+                            </a>
+
+
                 </div>
-            </div>
+
+
         </main>
         <main class="main-buttons home-container">
-            <div class="col-md-offset-2 col-md-12 col-xs-12">
-
-                    <div class="col-md-offset-2 col-md-8">
-                        <a th:href="@{/pets}"><img src="/images/browse.png" alt="browse" width="40%"/></a>
-                    </div>
-
-                    <div class="col-md-5">
-                        <a th:href="@{/login}"><img src="/images/signin.png" alt="signin" width="30%"/></a>
-                    </div>
-                    <div class="col-md-5">
-                        <a th:href="@{/register/adopter}"><img src="/images/register.png" alt="register" width="30%"/></a>
-                    </div>
-
+            <div class="col-md-offset-2 col-md-10 col-xs-12">
+                <a th:href="@{/login}"><img src="/images/signin.png" alt="signin" width="20%"/></a>
+                <a th:href="@{/pets}"><img src="/images/browse.png" alt="browse" width="35%"/></a>
+                <a th:href="@{/register/adopter}"><img src="/images/register.png" alt="register" width="20%"/></a>
             </div>
         </main>
 
         <footer th:replace="partials/footer :: footer"></footer>
     </body>
 
-
-    <script src="https://player.vimeo.com/api/player.js"></script>
 </html>
