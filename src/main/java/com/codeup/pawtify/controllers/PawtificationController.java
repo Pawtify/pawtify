@@ -72,10 +72,10 @@ public class PawtificationController {
 //
 //    Create a pawtification
     @PostMapping("/pawtification")
-    public String pawtify(@Valid Pawtification pawtification, DogBreed dogBreed, CatBreed catBreed, Model model){
+    public String pawtify(@Valid Pawtification pawtification, Model model){
         User user = userService.loggedInUser();
-        pawtification.setDogBreed(dogBreed);
-        pawtification.setCatBreed(catBreed);
+//        pawtification.setDogBreed(dogBreed);
+//        pawtification.setCatBreed(catBreed);
         pawtification.setUser(user);
         pawDao.save(pawtification);
         return "potentialadopter/pawtification";
@@ -84,13 +84,13 @@ public class PawtificationController {
 
 //TODO; display pawtifications Users have made.
 //    This will allow PawUser to see there displayed choices on their Paw Page
-//    @GetMapping("/pawtification/{id}")
-//    public String pawtifyChoice(@PathVariable long id, Model model){
-//        Pawtification pawtify = pawDao.findOne(id);
-////        model.addAttribute("isPawtifyOwner", userService.isLoggedInAndPostMatchesUser(pawtify.getUser()));
-//        model.addAttribute("pawtifications", pawtify);
-//        return "/potentialadopter/pawtification";
-//    }
+    @GetMapping("/pawtification/{id}")
+    public String pawtifyChoice(@PathVariable long id, Model model){
+        Pawtification pawtify = pawDao.findOne(id);
+//        model.addAttribute("isPawtifyOwner", userService.isLoggedInAndPostMatchesUser(pawtify.getUser()));
+        model.addAttribute("pawtifications", pawtify);
+        return "/potentialadopter/pawtification";
+    }
 
     @GetMapping("/pawtification/{id}/edit")
     public String edit(@PathVariable long id, Model model){

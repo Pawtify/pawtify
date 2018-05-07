@@ -70,7 +70,6 @@ public class UserController {
     //Login Potential Adopter
     @GetMapping("/login")
     public String showPALoginForm() {
-//        User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         return "potentialadopter/pa-signin";
     }
 
@@ -107,7 +106,6 @@ public class UserController {
         User user = new User();
         Iterable<RescueShelter> rescueshelters = rescuedao.findAll();
         model.addAttribute("user", user);
-//        model.addAttribute("rescueshelter", new RescueShelter());
         model.addAttribute("rescueshelters", rescueshelters);
         return "/rescueshelter/rs-portal";
     }
@@ -129,7 +127,6 @@ public class UserController {
     //Login Rescue Shelter
     @GetMapping("/shelter/login")
     public String showRSLoginForm() {
-//    User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         return "/rescueshelter/rs-portal";
     }
 

@@ -12,7 +12,6 @@
     <form class="form-horizontal" th:action="@{/animal/create}" th:method="post" th:object="${animal}" enctype="multipart/form-data">
     <div class="form-group">
         <select th:name="catBreed" th:field="*{catBreed}">
-            <!--<option value="null">Cat</option>-->
             <option th:value="null">Cat</option>
             <option th:each="catBreed : ${catBreeds}" th:value="${catBreed.id}" th:text="${catBreed.breed}"></option>
         </select>
