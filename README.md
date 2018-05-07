@@ -12,9 +12,9 @@
 ##### 4. Edit/Delete - RS users will be able to edit the information of the form, with information already filled in. RS user can delete animal from rs-form.html page
 - [X] add update/edit animals functionality for the RS user on their form
 - [ ] "recent additions" column on the rs-form.html view that populates in case you need to quickly edit something they just entered
-- [ ] RS users can edit their user information
+- [X] RS users can edit their user information
 ##### 5. Edit/Delete - PA users can update and delete notification forms 
-- [ ] add edit user info functionality
+- [X] add edit user info functionality
 - [X] add edit/delete pawtifications functionality
 - [X] listed view of all pawtifications for that user to view
 ##### 6. Form Validation
