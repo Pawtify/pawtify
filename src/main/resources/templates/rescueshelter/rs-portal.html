@@ -22,12 +22,12 @@
 
 
             <!--register form for rs-->
-                <div class=" col-md-6">
+                <div class="col-md-offset-1 col-md-6">
                     <div class="registration">
                     <h1 class="text-center">Register</h1>
                         <form class="form-horizontal" th:action="@{/register/rescue-shelter}" th:method="post" th:object="${user}">
                             <div class="form-group">
-                                <h3 class="text-center">Please Select Your Shelter Affiliation</h3>
+                                <h4 class="text-center">Please Select Your Shelter Affiliation</h4>
                                 <div class="form-group text-center">
                                     <select th:name="rescueshelter" th:field="*{shelter}">
                                         <option value="shelter">Select Your Shelter</option>
@@ -76,14 +76,14 @@
                                     <label for="number" class="col-sm-2 col-md-4 control-label">Shelter Phone Number</label>
                                     <div class="col-sm-10 col-md-6">
                                         <p class="error" th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}"></p>
-                                        <input type="tel" class="form-control" id="number" th:field="*{phone}" placeholder="123-456-6789" />
+                                        <input type="tel" class="form-control" id="number" th:field="*{phone}" placeholder="e.g. 1234567890" />
                                     </div>
                                 </div>
                             </div>
-                            <div class=" col-md-offset-2">
+                            <div class=" col-md-offset-3">
                                 <div class="form-group">
                                     <div class="col-sm-offset-2 col-sm-10">
-                                        <button type="submit" class="btn btn-success">Continue Registration</button>
+                                        <button type="submit" class="btn btn-primary">Register Account</button>
                                     </div>
                                 </div>
                             </div>
