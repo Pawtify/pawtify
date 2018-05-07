@@ -24,4 +24,3 @@ public class PawtificationService extends TwilioService {
         return null; //only send/use this method if there is a match, when does this message run? every time a pawtification is created
     }
 }
-//test
