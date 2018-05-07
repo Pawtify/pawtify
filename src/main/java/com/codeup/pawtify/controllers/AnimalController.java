@@ -134,7 +134,7 @@ public class AnimalController {
 //            RescueShelter rescueShelter = rescueShelterDao.loggedInUser();
 //            animal.setRescueshelter(rescueShelter);
 
-                animal.setRescueshelter(user.getShelter_id());
+                animal.setRescueshelter(user.getShelter());
                 animal.setDogBreed(dogBreed);
                 animal.setCatBreed(catBreed);
                 animal.setPath("/uploads" + filename);

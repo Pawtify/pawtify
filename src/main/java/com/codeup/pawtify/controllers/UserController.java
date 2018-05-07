@@ -119,7 +119,7 @@ public class UserController {
             model.addAttribute(user);
             return "rescueshelter/rs-portal";
         }
-        user.setShelter_id(rescueShelter);
+        user.setShelter(rescueShelter);
         String hash = passwordEncoder.encode(user.getPassword());
         user.setPassword(hash);
         userdao.save(user);
