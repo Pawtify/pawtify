@@ -32,6 +32,10 @@ body {
     font-weight: bold;
 }
 
+.image {
+    border-radius: 40%;
+    margin-top: 2%;
+}
 
 #navbar > ul.nav.navbar-nav.navbar-right > li > form > button {
     color: white;
@@ -143,6 +147,7 @@ body > main.main-buttons.home-container{
 .quote {
     font-weight: bold;
     font-size:4vh;
+    margin-top: 3%;
 }
 
 .description {
@@ -150,7 +155,8 @@ body > main.main-buttons.home-container{
     background-color: #cedada;
     margin-left: 0;
     width: 100%;
-    padding-bottom: 5%;
+    padding-bottom: 7%;
+    padding-top: 2%;
 }
 
 .developers {
@@ -173,10 +179,12 @@ body > main.main-buttons.home-container.container > div {
     margin-top: 50%;
     height: 70px;
     width: 70%;
+    background-color: #70b19a;
+    border: none;
 }
 
 .registration{
-    border-left: 8px solid #805754;
+    border-left: 8px solid #a7726e;
     /*padding:5%;*/
     margin-right: 0;
     margin-top: 10%;
@@ -187,7 +195,7 @@ body > main.main-buttons.home-container.container > div {
     margin: 10%;
     padding: 5%;
     background-color: #54c6a0;
-    opacity: .7;
+    opacity: .6;
     border-radius: 10px;
 }
 
@@ -199,3 +207,25 @@ body > main.main-buttons.home-container.container > div {
     color: black;
     border-radius: 10px;
 }
+
+
+
+/*.video-container {*/
+    /*height: 100vh;*/
+    /*width: 100%;*/
+    /*display: inline;*/
+
+/*}*/
+
+/*.main-video {*/
+    /*height: 100vh;*/
+    /*padding: 0px;*/
+    /*margin: 0px;*/
+    /*width: 100%;*/
+/*}*/
+
+/*iframe {*/
+
+    /**/
+    /*width: 100%;*/
+/*}*/
