@@ -77,6 +77,15 @@
             </div>
         </div>
     </form>
+    <table>
+        <tr>
+            <th>Cat Type</th>
+            <th>Dog Type</th>
+            <th>Age</th>
+            <th>Color</th>
+            <th>Size</th>
+            <th>Gender</th>
+        </tr>
     <tr th:each="pawtify : ${pawtifications}">
         <th th:text="${pawtify.getCatBreed()}"></th>
         <th th:text="${pawtify.getDogBreed()}"></th>
@@ -86,6 +95,7 @@
         <th th:text="${pawtify.gender}"></th>
         <th><a th:href="@{/pawtification/{animalId}/edit(animalId=${pawtification.getId()})}">Edit</a></th>
     </tr>
+    </table>
 
 <!--might still be working on this-->
     <!--<div>-->
