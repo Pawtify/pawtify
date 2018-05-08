@@ -6,7 +6,7 @@
 <div th:replace="partials/navbar :: navbar"></div>
 
 <main class="container">
-
+    <div class="row">
     <h1>Register Your Animal</h1>
     <form class="form-horizontal" th:action="@{/animal/create}" th:method="post" th:object="${animal}" enctype="multipart/form-data">
     <div class="form-group">
@@ -133,6 +133,7 @@
 
         </table>
 
+    </div>
     </div>
 </main>
 <footer th:replace="partials/footer :: footer"></footer>

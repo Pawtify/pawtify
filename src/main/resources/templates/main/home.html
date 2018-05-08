@@ -5,6 +5,7 @@
         <div th:replace="partials/navbar :: navbar"></div>
         <main>
 
+            <div class="row">
                 <div class="video-container col-md-12">
                     <div class="video">
                         <video id="myVideo" width="100%">
@@ -21,14 +22,8 @@
                                 </div>
                             </a>
                 </div>
+            </div>
         </main>
-        <!--<main class="main-buttons home-container">-->
-            <!--<div class="col-md-offset-2 col-md-10 col-xs-12">-->
-                <!--<a th:href="@{/login}"><img src="/images/signin.png" alt="signin" width="20%"/></a>-->
-                <!--<a th:href="@{/pets}"><img src="/images/browse.png" alt="browse" width="35%"/></a>-->
-                <!--<a th:href="@{/register/adopter}"><img src="/images/register.png" alt="register" width="20%"/></a>-->
-            <!--</div>-->
-        <!--</main>-->
 
         <footer th:replace="partials/footer :: footer"></footer>
     </body>
