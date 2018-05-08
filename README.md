@@ -2,8 +2,9 @@
 
 ### *PLANNED FEATURES*
 ##### 1. Matching DB Tables - build logic that will match columns in two tables and create the event that sets Twilio in motion
-- [ ] build method that matches the animal and the pawtification tables
-- [ ] research Twilio API and implement text message feature that sends the user a link (or the information) for the animal the matched with
+- [X] build method that matches the animal and the pawtification tables
+- [X] research Twilio API and implement text message feature that sends the user a link (or the information) for the animal the matched with
+- [ ] create view where adopter can see details of their matches
 ##### 2. Register Animal Form - RS users will be able to fill out a form including location, name, animal type, breed, age, gender, size, color, checkbox if animal is “good in a home with..”, and upload a picture of the pet
 - [X] create rs-form.html that adds animals entered in that form to the animals table of that database
 - [X] add picture upload to animal profile from this form
@@ -11,7 +12,7 @@
 - [X] add main PA notification form that drops up and down when you click the buttons on that view
 ##### 4. Edit/Delete - RS users will be able to edit the information of the form, with information already filled in. RS user can delete animal from rs-form.html page
 - [X] add update/edit animals functionality for the RS user on their form
-- [ ] "recent additions" column on the rs-form.html view that populates in case you need to quickly edit something they just entered
+- [X] "recent additions" column on the rs-form.html view that populates in case you need to quickly edit something they just entered
 - [X] RS users can edit their user information
 ##### 5. Edit/Delete - PA users can update and delete notification forms 
 - [X] add edit user info functionality
