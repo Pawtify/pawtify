@@ -11,13 +11,14 @@ import org.springframework.stereotype.Service;
 public class PawtificationService extends TwilioService {
     private PawtificationRepository pawDao;
     private AnimalRepository animalDao;
+    private Animal animal;
 
     public PawtificationService(PawtificationRepository pawDao, AnimalRepository animalDao) {
         this.pawDao = pawDao;
         this.animalDao = animalDao;
     }
+
     public Message matchPawtificationAndAnimals(Pawtification paw) {
-        Animal animal = (Animal) animalDao.findAll();
         if ((paw.getCatBreed() == animal.getCatBreed()) && (paw.getGender() == animal.getGender()) && (paw.getAge() == animal.getAge()) && (paw.getColor() == animal.getColor()) && (paw.getSize() == animal.getSize())) {
             return sendSMS(paw.getUser()); //change method from String to Method
         }
