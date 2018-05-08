@@ -5,7 +5,7 @@
 
 
 <nav th:fragment="navbar" class="format navbar navbar-inverse navbar-fixed-top">
-    <div class="container nav-container">
+    <div class="container-fluid nav-container">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
                 <span class="sr-only">Toggle navigation</span>
@@ -23,7 +23,6 @@
                 <li><a th:href="@{'/pets'}">Browse</a></li>
                 <li sec:authorize="hasRole('ROLE_ADOPTER')"><a th:href="@{'/pawtification'}">Pawtification</a></li>
                 <li sec:authorize="isAnonymous()"><a th:href="@{'/redirect'}">Pawtification</a></li>
-
 
                 <li sec:authorize="hasRole('ROLE_STAFF')"><a th:href="@{'/animal/create'}">Register Animal</a></li>
 
