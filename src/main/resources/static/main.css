@@ -217,6 +217,11 @@ body > main.main-buttons.home-container.container > div {
     border-radius: 10px;
 }
 
+.background {
+    padding: 3%;
+    background-color: #cedada;
+}
+
 .sign {
     padding: 3%;
     background-color: #7b7b7b;
@@ -224,6 +229,17 @@ body > main.main-buttons.home-container.container > div {
     font-weight: bold;
     color: black;
     border-radius: 10px;
+}
+
+
+.register {
+    background-color: #999999;
+    color: #ffffff;
+}
+
+
+.redirect > a:hover {
+    opacity: .8;
 }
 
 .side-menu {
