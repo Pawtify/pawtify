@@ -55,11 +55,11 @@ public class PawtificationController {
 
     //    Create a pawtification
     @PostMapping("/pawtification")
-    public String pawtify(@Valid Pawtification pawtification, Model model){
+    public String pawtify(@Valid Pawtification pawtification){
         User user = userService.loggedInUser();
         pawtification.setUser(user);
         pawDao.save(pawtification);
-//        pawService.matchPawtificationAndAnimals(pawtification);
+        pawService.checkPawtificationtoDB(pawtification);
         return "redirect:/pawtification";
     }
 

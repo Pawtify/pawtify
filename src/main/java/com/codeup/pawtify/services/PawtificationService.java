@@ -7,21 +7,36 @@ import com.codeup.pawtify.models.Pawtification;
 import com.twilio.rest.api.v2010.account.Message;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Service
 public class PawtificationService extends TwilioService {
     private PawtificationRepository pawDao;
     private AnimalRepository animalDao;
-    private Animal animal;
 
     public PawtificationService(PawtificationRepository pawDao, AnimalRepository animalDao) {
         this.pawDao = pawDao;
         this.animalDao = animalDao;
     }
 
-    public Message matchPawtificationAndAnimals(Pawtification paw) {
-        if ((paw.getCatBreed() == animal.getCatBreed()) && (paw.getGender() == animal.getGender()) && (paw.getAge() == animal.getAge()) && (paw.getColor() == animal.getColor()) && (paw.getSize() == animal.getSize())) {
-            return sendSMS(paw.getUser()); //change method from String to Method
+//    public Message sendNotifcation(Pawtification paw) {
+//        return sendSMS(paw.getUser());
+//    }
+
+    public void checkPawtificationtoDB(Pawtification pawtification) {
+        List<Animal> animalList;
+        System.out.println(pawtification.getDogBreed());
+        if(pawtification.getDogBreed() != null) {
+            animalList = animalDao.findAllByAgeAndSizeAndColorAndGenderAndDogBreed(pawtification.getAge(), pawtification.getSize(), pawtification.getColor(), pawtification.getGender(), pawtification.getDogBreed());
+        } else {
+            animalList = animalDao.findAllByAgeAndSizeAndColorAndGenderAndCatBreed(pawtification.getAge(), pawtification.getSize(), pawtification.getColor(), pawtification.getGender(), pawtification.getCatBreed());
         }
-        return null; //only send/use this method if there is a match, when does this message run? every time a pawtification is created
+        System.out.println(pawtification.getColor());
+        System.out.println(pawtification.getUser());
+        for (Animal animal : animalList) {
+            System.out.println(animal.getColor());
+            sendSMS(pawtification.getUser());
+        }
     }
 }
