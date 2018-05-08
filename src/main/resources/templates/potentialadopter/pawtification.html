@@ -3,94 +3,79 @@
 <head th:replace="partials/header :: header('Pawtification')"></head>
 <body>
 <div th:replace="partials/navbar :: navbar"></div>
-
-
-
 <main class="container">
     <div class="col-md-6 text-center">
-    <h1>Pawtification</h1>
-    <h2>Pawtify me when there is an available animal that matches..</h2>
-    <!--new action for pawtification-->
-    <form class="form-horizontal" th:action="@{/pawtification}" th:method="post" th:object="${pawtification}">
-        <!--for each for breeds-->
-
+        <h1>Pawtification</h1>
+        <h2>Pawtify me when there is an available animal that matches..</h2>
+        <!--new action for pawtification-->
+        <form class="form-horizontal" th:action="@{/pawtification}" th:method="post" th:object="${pawtification}">
+            <!--for each for breeds-->
             <div class="form-group">
                 <select th:name="catBreed" th:field="*{catBreed}">
                     <option th:value="null">Cat</option>
                     <option th:each="catBreed : ${catBreeds}" th:value="${catBreed.id}" th:text="${catBreed.breed}"></option>
                 </select>
             </div>
-
-        <span>or</span>
-
-
+            <span>or</span>
             <div class="form-group">
                 <select th:name="dogBreed" th:field="*{dogBreed}">
                     <option th:value="null">Dog</option>
                     <option th:each="dogBreed : ${dogBreeds}" th:value="${dogBreed.id}" th:text="${dogBreed.breed}"></option>
                 </select>
             </div>
-
-        <div class="form-group">
-            <span>Age</span>
-            <select name="age" size="1">
-                <option value="age">Select Age</option>
-                <option value="Less than 1 year">Less than 1 year</option>
-                <option value="More than 1 year">More than 1 year</option>
-            </select>
-        </div>
-        <div class="form-group">
-            <span>Color</span>
-            <select name="color" size="1">
-                <option value="color">Select Coat Color</option>
-                <option value="Black">Black</option>
-                <option value="Brown">Brown</option>
-                <option value="White">White</option>
-                <option value="Other">Other</option>
-                <option value="No Preference">No Preference</option>
-            </select>
-        </div>
-        <div class="form-group">
-            <span>Size</span>
-            <select name="size" size="1">
-                <option value="size">Select Size</option>
-                <option value="Small">Small</option>
-                <option value="Medium">Medium</option>
-                <option value="Large">Large</option>
-            </select>
-        </div>
-        <div class="form-group">
-            <span>Gender</span>
-            <select name="gender" size="1">
-                <option value="gender">Select Gender</option>
-                <option value="Male">Male</option>
-                <option value="Female">Female</option>
-                <option value="No Preference">No Preference</option>
-            </select>
-        </div>
-        <div class="form-group">
-            <div class="col-sm-offset-2 col-sm-10">
-                <button type="submit" class="btn btn-default">Pawtify Me</button>
+            <div class="form-group">
+                <span>Age</span>
+                <select name="age" size="1">
+                    <option value="age">Select Age</option>
+                    <option value="Less than 1 year">Less than 1 year</option>
+                    <option value="More than 1 year">More than 1 year</option>
+                </select>
             </div>
-        </div>
-    </form>
+            <div class="form-group">
+                <span>Color</span>
+                <select name="color" size="1">
+                    <option value="color">Select Coat Color</option>
+                    <option value="Black">Black</option>
+                    <option value="Brown">Brown</option>
+                    <option value="White">White</option>
+                    <option value="Other">Other</option>
+                    <option value="No Preference">No Preference</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <span>Size</span>
+                <select name="size" size="1">
+                    <option value="size">Select Size</option>
+                    <option value="Small">Small</option>
+                    <option value="Medium">Medium</option>
+                    <option value="Large">Large</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <span>Gender</span>
+                <select name="gender" size="1">
+                    <option value="gender">Select Gender</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                    <option value="No Preference">No Preference</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <button type="submit" class="btn btn-default">Pawtify Me</button>
+                </div>
+            </div>
+        </form>
     </div>
-
-
-
     <div class="col-md-offset-2 col-md-4 side-menu">
-
         <img src="/images/catdog.jpg" alt="Cat and Dog" width="70%" class="profile" />
-
         <h3>Welcome to Pawtify!</h3>
         <p>Here's how to make a pawtification:</p>
-
-
         <div th:each="pawtification : ${pawtifications}">
             <div>
                 <span>Breed:</span>
-                <span th:text="${pawtification.getCatBreed()}"></span>
-                <span th:text="${pawtification.getDogBreed()}"></span>
+                <span th:text="${pawtification.catBreed} ? ${pawtification.catBreed.getBreed()} : ' '"></span>
+                <span th:text="${pawtification.dogBreed} ? ${pawtification.dogBreed.getBreed()} : ' '"></span>
             </div>
             <div>
                 <span>Age:</span>
@@ -108,29 +93,9 @@
                 <span>Gender:</span>
                 <span th:text="${pawtification.gender}"></span>
             </div>
-        <div><a th:href="@{/pawtification/{animalId}/edit(animalId=${pawtification.getId()})}">Edit</a></div>
+            <div><a th:href="@{/pawtification/{animalId}/edit(animalId=${pawtification.getId()})}">Edit</a></div>
         </div>
     </div>
-    <!--<table>-->
-        <!--<tr>-->
-            <!--<th>Cat Type</th>-->
-            <!--<th>Dog Type</th>-->
-            <!--<th>Age</th>-->
-            <!--<th>Color</th>-->
-            <!--<th>Size</th>-->
-            <!--<th>Gender</th>-->
-        <!--</tr>-->
-    <!--<tr th:each="pawtify : ${pawtifications}">-->
-        <!--<th th:text="${pawtify.getCatBreed()}"></th>-->
-        <!--<th th:text="${pawtify.getDogBreed()}"></th>-->
-        <!--<th th:text="${pawtify.age}"></th>-->
-        <!--<th th:text="${pawtify.color}"></th>-->
-        <!--<th th:text="${pawtify.size}"></th>-->
-        <!--<th th:text="${pawtify.gender}"></th>-->
-        <!--<th><a th:href="@{/pawtification/{animalId}/edit(animalId=${pawtification.getId()})}">Edit</a></th>-->
-    <!--</tr>-->
-    <!--</table>-->
-
 </main>
 <div th:replace="partials/footer :: footer"></div>
 </body>
