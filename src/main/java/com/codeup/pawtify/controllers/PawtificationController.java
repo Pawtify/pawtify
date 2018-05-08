@@ -37,11 +37,10 @@ public class PawtificationController {
         this.pawService = pawService;
     }
 
- //set up to create new pawtification--ORIGINAL
+    //set up to create new pawtification--ORIGINAL
     @GetMapping("/pawtification")
     public String create( Model model){
         Pawtification pawtification = new Pawtification();
-
 //        Pawtification myPawtify = userService.isLoggedInAndAnimalMatchesRS(user);
         Iterable<CatBreed> catBreeds = catDao.findAll();
         Iterable<DogBreed> dogBreeds = dogDao.findAll();
@@ -52,40 +51,19 @@ public class PawtificationController {
         return "/potentialadopter/pawtification";
     }
 
-
-////    for edit of adopter profile---WORKING ON THIS--getting info and adding it to page
-//    @GetMapping("/pawtification")
-//    public String create(@ModelAttribute User userInfo, Model model){
-//        Pawtification pawtification = new Pawtification();
-//        Iterable<CatBreed> catBreeds = catDao.findAll();
-//        Iterable<DogBreed> dogBreeds = dogDao.findAll();
-//        User user = userService.loggedInUser();
-//        String userName = user.getFull_name();
-//        user.setUsername(userInfo.getUsername());
-//        user.setEmail(userInfo.getEmail());
-//        user.setFull_name(userInfo.getFull_name());
-//        user.setPhone(userInfo.getPhone());
-//        model.addAttribute("user", userName);
-//        model.addAttribute("catBreeds", catBreeds);
-//        model.addAttribute("dogBreeds", dogBreeds);
-//        model.addAttribute("pawtification", pawtification);
-//        return "/potentialadopter/pawtification";
-//    }
-
-//
-//    Create a pawtification
+    //    Create a pawtification
     @PostMapping("/pawtification")
     public String pawtify(@Valid Pawtification pawtification, Model model){
         User user = userService.loggedInUser();
-//        pawtification.setDogBreed(dogBreed);
-//        pawtification.setCatBreed(catBreed);
         pawtification.setUser(user);
         pawDao.save(pawtification);
-        pawService.matchPawtificationAndAnimals(pawtification);
-        return "potentialadopter/pawtification";
+//        pawService.matchPawtificationAndAnimals(pawtification);
+        return "redirect:/pawtification";
     }
 
-//TODO; display pawtifications Users have made.
+
+
+    //TODO; display pawtifications Users have made.
 //    This will allow PawUser to see there displayed choices on their Paw Page
     @GetMapping("/pawtification/{id}")
     public String pawtifyChoice(@PathVariable long id, Model model){
@@ -94,6 +72,8 @@ public class PawtificationController {
         model.addAttribute("pawtifications", pawtify);
         return "/potentialadopter/pawtification";
     }
+
+//    TODO: EDIT Pawtification
 
     @GetMapping("/pawtification/{id}/edit")
     public String edit(@PathVariable long id, Model model){
@@ -120,16 +100,10 @@ public class PawtificationController {
 //        pawService.matchPawtificationAndAnimals(editPawtify);
         return "redirect:/pawtification";
     }
-//
-//    @GetMapping("pawtification/{id}/confirm-delete")
-//    public String confirmDelete(@PathVariable long id, Model model){
-//        model.addAttribute("pawtify", pawDao.findOne(id));
-//        return "redirect:/potentialadopter/pawtification";
-//    }
 
-    @PostMapping("posts/{id}/delete")
+    @PostMapping("pawtification/delete")
     public String deletePawtify(@ModelAttribute Pawtification pawtification){
         pawDao.delete(pawtification);
-        return "redirect:/pawtifcation";
+        return "redirect:/pawtification";
     }
 }
