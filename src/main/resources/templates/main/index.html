@@ -6,7 +6,7 @@
 <div th:replace="partials/navbar :: navbar"></div>
 
 <main class="container">
-
+    <div class="row">
     <!--<div class="row">-->
         <!--<div class="col-offset-6 col-lg-6">-->
             <!--<div class="input-group">-->
@@ -18,20 +18,19 @@
         <!--</div>-->
     <!--</div>-->
     <div class="row">
-    <div class="col-offset-6 col-lg-6" style="padding-top: 5%">
+    <div class="col-md-offset-7 col-md-6">
         <form th:action="@{'/filter-animals'}" th:method="GET">
             <div class="form-group">
-                <input name="search" type="text" class="form-control" id="search" placeholder="Search by breed" />
+                <span class="col-md-7">
+                    <input name="search" type="text" class="form-control" id="search" placeholder="Search by breed" />
+                </span>
+                <span class="col-md-1">
+                    <button class="btn btn-info" type="submit">Search</button>
+                </span>
             </div>
-            <span class="input-group-btn">
-            <button class="btn btn-default" type="submit">Search</button>
-            </span>
         </form>
     </div>
     </div>
-
-
-
 
     <div th:each="animal : ${animals}">
         <div class="card" style="width: 10rem;">
@@ -56,11 +55,8 @@
                 </h5>
             </div>
         </div>
-
     </div>
-
-
-
+    </div>
 </main>
 <footer th:replace="partials/footer :: footer"></footer>
 </body>

@@ -4,16 +4,12 @@
 <body>
 <div th:replace="partials/navbar :: navbar"></div>
 <main class="container">
-
-<div class="redirect text-center">
-    <h1>Want to make a pawtification?</h1><br/>
-    <a th:href="@{/login}"><button class="sign">Please Sign In</button></a>
+<div class="row">
+    <div class="redirect text-center">
+        <h1>Want to make a pawtification?</h1><br/>
+        <a th:href="@{/login}"><button class="sign">Please Sign In</button></a>
+    </div>
 </div>
-    <!--<div class="col-sm-offset-2 col-sm-10 space">-->
-        <!--<a th:href="@{/login}"><button type="submit" class="btn btn-warning">Sign In Here!</button></a>-->
-    <!--</div>-->
-
-
 </main>
 <footer th:replace="partials/footer :: footer"></footer>
 </body>
