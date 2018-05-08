@@ -44,10 +44,12 @@ public class PawtificationController {
 //        Pawtification myPawtify = userService.isLoggedInAndAnimalMatchesRS(user);
         Iterable<CatBreed> catBreeds = catDao.findAll();
         Iterable<DogBreed> dogBreeds = dogDao.findAll();
+        User user = userService.loggedInUser();
+        model.addAttribute("pawtifications", pawDao.findPawtificationByUserId(user.getId()));
         model.addAttribute("catBreeds", catBreeds);
         model.addAttribute("dogBreeds", dogBreeds);
         model.addAttribute("pawtification", pawtification);
-        model.addAttribute("pawtifications", pawDao.findAll());
+//        model.addAttribute("pawtifications", pawDao.findAll());
         return "/potentialadopter/pawtification";
     }
 
@@ -61,17 +63,6 @@ public class PawtificationController {
         return "redirect:/pawtification";
     }
 
-
-
-    //TODO; display pawtifications Users have made.
-//    This will allow PawUser to see there displayed choices on their Paw Page
-    @GetMapping("/pawtification/{id}")
-    public String pawtifyChoice(@PathVariable long id, Model model){
-        Pawtification pawtify = pawDao.findOne(id);
-//        model.addAttribute("isPawtifyOwner", userService.isLoggedInAndPostMatchesUser(pawtify.getUser()));
-        model.addAttribute("pawtifications", pawtify);
-        return "/potentialadopter/pawtification";
-    }
 
 //    TODO: EDIT Pawtification
 

@@ -82,11 +82,12 @@ public class AnimalController {
         Iterable<CatBreed> catBreeds = catDao.findAll();
         Iterable<DogBreed> dogBreeds = dogDao.findAll();
         Iterable<RescueShelter> rescueshelters = shelterDao.findAll();
+        User user = userService.loggedInUser();
+        model.addAttribute("animals", animalDoa.findAnimalsByRescueshelterId(user.getShelter().getId()));
         model.addAttribute("rescueshelters", rescueshelters);
         model.addAttribute("catBreeds", catBreeds);
         model.addAttribute("dogBreeds", dogBreeds);
         model.addAttribute("animal", animal);
-        model.addAttribute("animals", animalDoa.findAll());
         return "rescueshelter/rs-form";
     }
 
@@ -106,6 +107,8 @@ public class AnimalController {
             animal.setPath("/uploads/" + filename);
             animalDoa.save(animal);
             model.addAttribute("message", "File successfully uploaded!");
+
+
             return "redirect:/animal/create";
         } catch (IOException e) {
             e.printStackTrace();
@@ -114,20 +117,11 @@ public class AnimalController {
         return ("redirect:/animal/create");
     }
 
-    //    Used for rs-form to display all animals in db by that rescue shelter
-    @GetMapping("/rescueshelter/animals/{id}")
-    public String rescueAnimals(@PathVariable long id, Model model){
-        Animal animal = animalDoa.findOne(id);
-        model.addAttribute("animals", animal);
-        return "/rescueshelter/rs-form";
-    }
-    //
 //    RS-edit animal
     @GetMapping("/animal/{id}/edit")
     public String edit(@PathVariable long id, Model model){
         Iterable<CatBreed> catBreeds = catDao.findAll();
         Iterable<DogBreed> dogBreeds = dogDao.findAll();
-
         model.addAttribute("catBreeds", catBreeds);
         model.addAttribute("dogBreeds", dogBreeds);
 
