@@ -11,15 +11,14 @@ import org.springframework.stereotype.Service;
 public class PawtificationService extends TwilioService {
     private PawtificationRepository pawDao;
     private AnimalRepository animalDao;
-    private Animal animal;
 
     public PawtificationService(PawtificationRepository pawDao, AnimalRepository animalDao) {
         this.pawDao = pawDao;
         this.animalDao = animalDao;
     }
 
-    public Message matchPawtificationAndAnimals(Pawtification paw) {
-        if ((paw.getCatBreed() == animal.getCatBreed()) && (paw.getGender() == animal.getGender()) && (paw.getAge() == animal.getAge()) && (paw.getColor() == animal.getColor()) && (paw.getSize() == animal.getSize())) {
+    public Message matchPawtificationAndAnimals(Pawtification paw, Animal animal) {
+        if (((paw.getCatBreed() == animal.getCatBreed()) || paw.getDogBreed() == animal.getDogBreed()) && (paw.getGender() == animal.getGender()) && (paw.getAge() == animal.getAge()) && (paw.getColor() == animal.getColor()) && (paw.getSize() == animal.getSize())) {
             return sendSMS(paw.getUser()); //change method from String to Method
         }
         return null; //only send/use this method if there is a match, when does this message run? every time a pawtification is created
