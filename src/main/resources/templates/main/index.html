@@ -5,8 +5,7 @@
 
 <div th:replace="partials/navbar :: navbar"></div>
 
-<main class="container">
-    <div class="row">
+<main class="container-fluid">
     <!--<div class="row">-->
         <!--<div class="col-offset-6 col-lg-6">-->
             <!--<div class="input-group">-->
@@ -17,46 +16,43 @@
             <!--</div>-->
         <!--</div>-->
     <!--</div>-->
-    <div class="row">
-    <div class="col-md-offset-7 col-md-6">
-        <form th:action="@{'/filter-animals'}" th:method="GET">
-            <div class="form-group">
-                <span class="col-md-7">
-                    <input name="search" type="text" class="form-control" id="search" placeholder="Search by breed" />
-                </span>
-                <span class="col-md-1">
-                    <button class="btn btn-info" type="submit">Search</button>
-                </span>
+        <div class="row">
+        <div class="col-md-offset-4 col-md-6">
+            <form th:action="@{'/filter-animals'}" th:method="GET">
+                <div class="form-group">
+                    <span class="col-md-7">
+                        <input name="search" type="text" class="form-control" id="search" placeholder="Search by breed" />
+                    </span>
+                    <span class="col-md-1">
+                        <button class="btn btn-info" type="submit">Search</button>
+                    </span>
+                </div>
+            </form>
+        </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-5 col-md-2">
+            <div th:each="animal : ${animals}">
+            <div class="thumbnail" style=" background-color: #cedada">
+                        <a th:href="@{/animal/{animalId}/(animalId=${animal.getId()})}">
+                            <div class="browse-animal-images">
+                            <img width="80%" th:src="${animal.path}" class="pet"/>
+                            </div>
+
+                            <div class="caption text-center">
+                                <!--name-->
+                                <h4 th:text="${animal.name}"></h4>
+                                <!--gender-->
+                                <p th:text="${animal.gender}"></p>
+                                <!--age-->
+                                <p th:text="${animal.age}"></p>
+                            </div>
+                        </a>
+                </div>
             </div>
-        </form>
-    </div>
-    </div>
-
-    <div th:each="animal : ${animals}">
-        <div class="card" style="width: 10rem;">
-            <div class="card-body">
-                <h5 class="card-title">
-                    <a th:href="@{/animal/{animalId}/(animalId=${animal.getId()})}">
-                        <div class="browse-animal-images">
-                        <img width="80%" style="display: block; margin: 5px auto; float: left;" th:src="${animal.path}" />
-                        </div>
-                    <!--name-->
-
-                        <span th:text="${animal.name}"></span>
-
-                    <!--gender-->
-
-                        <span th:text="${animal.gender}"></span>
-
-                    <!--age-->
-
-                        <span th:text="${animal.age}"></span>
-                    </a>
-                </h5>
             </div>
         </div>
-    </div>
-    </div>
 </main>
 <footer th:replace="partials/footer :: footer"></footer>
 </body>

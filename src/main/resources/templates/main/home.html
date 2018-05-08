@@ -1,16 +1,22 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-    <head th:replace="partials/header :: header('Home')"></head>
-    <body class="body-container">
+    <head th:replace="partials/header :: header('Home')">
+
+
+    </head>
+    <body class="body-container container-fluid">
         <div th:replace="partials/navbar :: navbar"></div>
         <main>
 
             <div class="row">
-                <div class="video-container col-md-12">
+                <div class="video-container col-md-12 col-xs-12">
                     <div class="video">
                         <video id="myVideo" width="100%">
                             <source th:src="@{/video/pawtify.mp4}" type="video/mp4" />
                         </video>
+                    </div>
+                    <div class="mobile">
+                        <img src="/images/mobile.jpg" alt="Cat and Dog" width="100%"/>
                     </div>
                             <div class="slogan">Matching People with Pets. <br/> Get Notified with Pawtify. </div>
                             <a href="/about">

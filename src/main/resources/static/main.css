@@ -94,7 +94,6 @@ body > main.main-buttons.home-container{
     font-family: 'Concert One', cursive;
     font-size: 6vw;
     width: 80%;
-    /*font-weight: bold;*/
 }
 
 /*.home {*/
@@ -114,7 +113,6 @@ body > main.main-buttons.home-container{
     top: 87%;
     left: 55%;
     opacity: .9;
-
 }
 
 .about {
@@ -277,3 +275,75 @@ body > main.main-buttons.home-container.container > div {
     opacity: .6;
 }
 
+.mobile {
+    display: none;
+}
+
+
+.pet {
+    border-radius: 10%;
+    border: 3px solid #835956;
+    margin-left: 7%;
+    margin-top: 5%;
+}
+
+
+
+@media (max-width:500px)  {
+    .video {
+        display: none;
+    }
+
+
+    .mobile {
+        display: inline;
+        width: 100%;
+        margin-top: 40%;
+    }
+
+
+    .body-container {
+        background-color: #7b7b7b;
+    }
+
+    .slogan {
+        position: absolute;
+        top: 4em;
+        /*left: 3%;*/
+        margin-left: 3%;
+        transform: translate(-50%, -50%);
+        color: #ffffff;
+        font-family: 'Concert One', cursive;
+        font-size: 2rem;
+        /*width: 100%;*/
+    }
+
+
+    .about {
+        position: unset;
+        margin-top: 15%;
+        margin-left: 53%;
+        color: #000000;
+        background-color: #a1fbdb;
+        border: 2px solid #ffffff;
+        opacity: .8;
+    }
+
+    .video-container {
+        margin-left: 0;
+        margin-right: 0;
+        padding-left: 0;
+        padding-right: 0;
+
+    }
+
+
+    .direct {
+        opacity: .9;
+        /*position: unset;*/
+        margin-top: 7rem;
+        margin-left: 5%;
+        width: 80%;
+    }
+
+}
