@@ -8,7 +8,6 @@
 <main class="container">
 
     <h1>Register Your Animal</h1>
-    <!--for each for breeds; still need id -->
     <form class="form-horizontal" th:action="@{/animal/create}" th:method="post" th:object="${animal}" enctype="multipart/form-data">
     <div class="form-group">
         <select th:name="catBreed" th:field="*{catBreed}">
@@ -26,13 +25,12 @@
         </select>
     </div>
         <br/>
-        <!--<h4 th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></h4>-->
         <input th:field="*{name}" th:value="${name}" placeholder="Enter a Pet Name"/>
         <br />
     <div class="form-group">
         <span>Age</span>
         <select name="age" size="1">
-            <option value="0" >Select Age</option>
+            <option th:value="null" >Select Age</option>
             <option value="Less thank 1 year">Less than 1 year</option>
             <option value="More than 1 year">More than 1 year</option>
         </select>
@@ -40,7 +38,7 @@
     <div class="form-group">
         <span>Color</span>
         <select name="color" size="1">
-            <option value="0" >Select Color</option>
+            <option th:value="null" >Select Color</option>
             <option value="Black">Black</option>
             <option value="Brown">Brown</option>
             <option value="White">White</option>
@@ -50,7 +48,7 @@
     <div class="form-group">
         <span>Size</span>
         <select name="size" size="1">
-            <option value="0">Select Size</option>
+            <option th:value="null">Select Size</option>
             <option value="Small">Small</option>
             <option value="Medium">Medium</option>
             <option value="Large">Large</option>
@@ -59,7 +57,7 @@
     <div class="form-group">
         <span>Gender</span>
         <select name="gender" size="1">
-            <option value="0">Select Gender</option>
+            <option th:value="null">Select Gender</option>
             <option value="Male">Male</option>
             <option value="Female">Female</option>
         </select>
@@ -68,16 +66,11 @@
     <div>
         <div class="form-group">
             <label for="behavior">Behavior of Animal</label><br/>
-            <!--<h4 th:if="${#fields.hasErrors('behavior')}" th:errors="*{behavior}"></h4>-->
             <textarea th:field="*{behavior}" th:value="${behavior}" class="form-control" id="behavior" rows="3" placeholder="Include Animals Behavior"></textarea>
         </div>
     </div>
 
 <!--form for image-->
-        <!--<div class="form-group">-->
-            <!--<label for="animalphoto">Upload Animal Image</label><br/>-->
-            <!--<input type="file" class="form-control-file" id="animalphoto">-->
-        <!--</div>-->
 
         <div>
             <label id="upload-file-title" for="file">Upload An Image</label>
@@ -85,7 +78,14 @@
             <br />
         </div>
 
-        <input type="hidden" th:field="*{rescueshelter}" name="rescueshelter"/>
+
+        <div class="form-group">
+            <select th:name="rescueshelter" th:field="*{rescueshelter}">
+                <option value="shelter">Select Your Shelter</option>
+                <option th:each="rescueshelter : ${rescueshelters}" th:value="${rescueshelter.id}" th:text="${rescueshelter.name}"></option>
+            </select>
+        </div>
+
     <div class="form-group">
         <div class="col-sm-offset-2 col-sm-10">
             <button type="submit" class="btn btn-default">Register</button>
@@ -105,26 +105,29 @@
             <!--</span>-->
         <!--</div>-->
     <!--</div>-->
-        <table>
+        <table class="table table-bordered">
             <tr>
                 <th>Animal ID</th>
-                <th>Dog Type</th>
-                <th>Cat Type</th>
+                <th>Cat Breed</th>t
+                <th>Dog Breed</th>
                 <th>Name</th>
-                <th>size</th>
+                <th>Size</th>
                 <th>Gender</th>
                 <th>Age</th>
                 <th>Color</th>
+                <th>Shelter</th>
+                <th></th>
             </tr>
             <tr th:each="animal : ${animals}">
                 <th th:text="${animal.id}"></th>
-                <th th:text="${animal.getCatBreed()}"></th>
-                <th th:text="${animal.getDogBreed()}"></th>
+                <th th:text="${animal.catBreed} ? ${animal.catBreed.getBreed()} : ' '"></th>
+                <th th:text="${animal.dogBreed} ? ${animal.dogBreed.getBreed()} : ' '"></th>
                 <th th:text="${animal.name}"></th>
                 <th th:text="${animal.size}"></th>
                 <th th:text="${animal.gender}"></th>
                 <th th:text="${animal.age}"></th>
                 <th th:text="${animal.color}"></th>
+                <th th:text="${animal.rescueshelter.getName()}"></th>
                 <th><a th:href="@{/animal/{animalId}/edit(animalId=${animal.getId()})}">Edit</a></th>
             </tr>
 

@@ -11,22 +11,18 @@
 
     <form class="form-horizontal" th:action="@{/animal/edit}" th:method="post" th:object="${editAnimal}" enctype="multipart/form-data">
         <div class="form-group">
-            <select th:name="dogBreed" th:field="*{dogBreed}">
-                <option th:value="null">Dog</option>
-                <option th:each="dogBreed : ${dogBreeds}" th:value="${dogBreed.id}" th:text="${dogBreed.breed}"></option>
+            <select th:name="catBreed" th:field="*{catBreed}">
+                <option th:value="null">Cat</option>
+                <option th:each="catBreed : ${catBreeds}" th:value="${catBreed.id}" th:text="${catBreed.breed}"></option>
             </select>
         </div>
 
         <span>or</span>
 
         <div class="form-group">
-            <select>
-                <option value="null">Dog</option>
-                <option th:each="dogBreed : ${dogBreeds}"
-                        th:name="dogBreed"
-                        th:value="${dogBreed.breed}">
-                    <span th:text="${dogBreed.breed}"></span>
-                </option>
+            <select th:name="dogBreed" th:field="*{dogBreed}">
+                <option th:value="null">Dog</option>
+                <option th:each="dogBreed : ${dogBreeds}" th:value="${dogBreed.id}" th:text="${dogBreed.breed}"></option>
             </select>
         </div>
         <br/>
