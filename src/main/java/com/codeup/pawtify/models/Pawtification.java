@@ -2,8 +2,6 @@ package com.codeup.pawtify.models;
 
 import javax.persistence.*;
 import javax.validation.constraints.Size;
-import java.util.List;
-
 
 @Entity
 @Table(name = "pawtifications")
@@ -28,7 +26,6 @@ public class Pawtification {
     private String color;
 
 //    Relationships
-
     @OneToOne
     private User user;
 
@@ -37,9 +34,6 @@ public class Pawtification {
 
     @OneToOne(cascade = CascadeType.ALL)
     private DogBreed dogBreed;
-
-
-
 
     public Pawtification() {
     }
@@ -54,17 +48,16 @@ public class Pawtification {
         this.dogBreed = dogBreed;
     }
 
-//    public Pawtification(long id , String age, String gender, String size, String color, User user, List<CatBreed> cat_breeds, List<DogBreed> dog_breeds) {
-//        this.id = id;
-//        this.age = age;
-//        this.gender = gender;
-//        this.size = size;
-//        this.color = color;
-//        this.user = user;
-//        this.cat_breeds = cat_breeds;
-//        this.dog_breeds = dog_breeds;
-//
-//    }
+    public Pawtification(long id , String age, String gender, String size, String color, User user, CatBreed catBreed, DogBreed dogBreed) {
+        this.id = id;
+        this.age = age;
+        this.gender = gender;
+        this.size = size;
+        this.color = color;
+        this.user = user;
+        this.catBreed = catBreed;
+        this.dogBreed = dogBreed;
+    }
 
     public long getId() {
         return id;
