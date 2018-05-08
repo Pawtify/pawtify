@@ -5,7 +5,6 @@ main {
 
 html {
     position: relative;
-    /*min-height: 100%;*/
 }
 
 body {
@@ -114,19 +113,24 @@ body > main.main-buttons.home-container{
     position: absolute;
     top: 87%;
     left: 55%;
-    opacity: .8;
+    opacity: .9;
 
 }
 
 .about {
     position: absolute;
-    top: 45%;
+    top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     color: #ffffff;
     background-color: #7b7b7b;
-    border: 2px solid black;
+    border: 2px solid #ffffff;
 }
+
+#navbar > ul:nth-child(1) > li > a:hover, #navbar > ul:nth-child(2) > li > a:hover {
+    color: #000000;
+}
+
 
 
 .home-container {
@@ -134,7 +138,6 @@ body > main.main-buttons.home-container{
     margin: 0;
     padding-top: 5%;
     padding-bottom: 5%;
-    /*width: 100%;*/
     height: 100%;
 }
 
@@ -263,10 +266,14 @@ body > main.main-buttons.home-container.container > div {
 
 }
 
+.push {
+    margin-top: 6%;
+}
+
 .video {
     padding: 0px;
     margin: 0px;
     width: 100%;
-    opacity: .9;
+    opacity: .6;
 }
 
