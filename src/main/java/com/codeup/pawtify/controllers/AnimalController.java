@@ -24,11 +24,11 @@ import java.nio.file.Paths;
 
 @Controller
 public class AnimalController {
- private final AnimalRepository animalDoa;
- private final CatBreedRepository catDao;
- private final DogBreedRepository dogDao;
- private final RescueShelterRepository shelterDao;
- private final UserService userService;
+    private final AnimalRepository animalDoa;
+    private final CatBreedRepository catDao;
+    private final DogBreedRepository dogDao;
+    private final RescueShelterRepository shelterDao;
+    private final UserService userService;
 
     public AnimalController(AnimalRepository animalDoa, CatBreedRepository catDao, DogBreedRepository dogDao, RescueShelterRepository shelterDao, UserService userService){
         this.animalDoa = animalDoa;
@@ -38,7 +38,7 @@ public class AnimalController {
         this.userService = userService;
     }
 
-//    Homepage
+    //    Homepage
     @GetMapping("/")
     public String home(Model model) {
         model.addAttribute("animals", animalDoa.findAll());
@@ -46,7 +46,7 @@ public class AnimalController {
     }
 
 
-//    About Page
+    //    About Page
     @GetMapping("/about")
     public String about(){
         return "/main/about";
@@ -54,126 +54,76 @@ public class AnimalController {
 
 
 
-//    Browse available animals for pa-users
+    //    Browse available animals for pa-users
     @GetMapping("/pets")
     public String availableAnimals(Model model){
         model.addAttribute("animals", animalDoa.findAll());
         return "/main/index";
     }
-//
-//
-//    Show one animal for pa-users
-//    @GetMapping("/animal/{id}")
-//    public String show(@PathVariable long id, Model model){
-//        Animal animal = animalDoa.findOne(id);
-//        CatBreed catBreed = catDao.findOne(id);
-//        DogBreed dogBreed = dogDao.findOne(id);
-//        RescueShelter rescueShelter = shelterDao.findOne(id);
-//
-//        String dogbreedToString = dogBreed.getBreed();
-//        String catBreedToString = catBreed.getBreed();
-//        String shelterNameToString = rescueShelter.getName();
-//        String shelteraddressToString = rescueShelter.getAddress();
-//        String shelterPhoneNumberToString = rescueShelter.getPhone();
-//
-//        model.addAttribute("catBreed", catBreedToString);
-//        model.addAttribute("dogBreed", dogbreedToString);
-//        model.addAttribute("shelterName", shelterNameToString);
-//        model.addAttribute("shelterAddress", shelteraddressToString);
-//        model.addAttribute("shelterNumber", shelterPhoneNumberToString);
-//        model.addAttribute("animal", animal);
-//        return "/main/show";
-//    }
-@GetMapping("/animal/{id}")
-public String show(@PathVariable long id, Model model){
-    Animal animal = animalDoa.findOne(id);
-    model.addAttribute("shelterName", animal.getRescueshelter().getName());
-    model.addAttribute("shelterAddress", animal.getRescueshelter().getAddress());
-    model.addAttribute("shelterNumber", animal.getRescueshelter().getPhone());
-    model.addAttribute("animal", animal);
 
-    if(animal.getCatBreed() == null){
-        model.addAttribute("dogBreed", animal.getDogBreed().getBreed());
-    } else
-        model.addAttribute("catBreed", animal.getCatBreed().getBreed());
-    return "/main/show";
-}
-//
-////    RS-create a animal
+    @GetMapping("/animal/{id}")
+    public String show(@PathVariable long id, Model model){
+        Animal animal = animalDoa.findOne(id);
+        model.addAttribute("shelterName", animal.getRescueshelter().getName());
+        model.addAttribute("shelterAddress", animal.getRescueshelter().getAddress());
+        model.addAttribute("shelterNumber", animal.getRescueshelter().getPhone());
+        model.addAttribute("animal", animal);
 
-//    @GetMapping("/animal/create")
-//    public String create(Model model){
-//        Animal animal = new Animal();
-//        Iterable<CatBreed> catBreeds = catDao.findAll();
-//        Iterable<DogBreed> dogBreeds = dogDao.findAll();
-//
-////        CatBreed catBreedEdit = catBreeds.
-////        DogBreed dogBreedEdit = dogDao.findOne(id);
-//
-////        String catEdit = catBreeds.toString();
-////        String dogEdit = dogBreeds.toString();
-//
-//        model.addAttribute("catBreeds", catBreeds);
-//        model.addAttribute("dogBreeds", dogBreeds);
-//        model.addAttribute("animal", animal);
-////        model.addAttribute("catEdit", catEdit);
-////        model.addAttribute("dogEdit", dogEdit);
-//        model.addAttribute("animals", animalDoa.findAll());
-//        return "rescueshelter/rs-form";
-//        }
-@GetMapping("/animal/create")
-public String create(Model model){
-    Animal animal = new Animal();
-    Iterable<CatBreed> catBreeds = catDao.findAll();
-    Iterable<DogBreed> dogBreeds = dogDao.findAll();
-//        TODO: Monday night added Code
-    Iterable<RescueShelter> rescueshelters = shelterDao.findAll();
-    model.addAttribute("rescueshelters", rescueshelters);
-    model.addAttribute("catBreeds", catBreeds);
-    model.addAttribute("dogBreeds", dogBreeds);
-    model.addAttribute("animal", animal);
-    model.addAttribute("animals", animalDoa.findAll());
-    return "rescueshelter/rs-form";
-}
+        if(animal.getCatBreed() == null){
+            model.addAttribute("dogBreed", animal.getDogBreed().getBreed());
+        } else
+            model.addAttribute("catBreed", animal.getCatBreed().getBreed());
+        return "/main/show";
+    }
+
+    @GetMapping("/animal/create")
+    public String create(Model model){
+        Animal animal = new Animal();
+        Iterable<CatBreed> catBreeds = catDao.findAll();
+        Iterable<DogBreed> dogBreeds = dogDao.findAll();
+        Iterable<RescueShelter> rescueshelters = shelterDao.findAll();
+        User user = userService.loggedInUser();
+        model.addAttribute("animals", animalDoa.findAnimalsByRescueshelterId(user.getShelter().getId()));
+        model.addAttribute("rescueshelters", rescueshelters);
+        model.addAttribute("catBreeds", catBreeds);
+        model.addAttribute("dogBreeds", dogBreeds);
+        model.addAttribute("animal", animal);
+        return "rescueshelter/rs-form";
+    }
 
 
-//        RS-Post new Animal w/ image method, can be refactored once working
+    //        RS-Post new Animal w/ image method, can be refactored once working
+//    @Value("/var/www/pawtify.site/uploads")
+//    @Value("/var/www/pawtify.site/uploads")
 //    @Value("${file-upload-path}")
     @Value("/Users/lalepro/IdeaProjects/pawtify/target/classes/static/uploads")
     private String uploadPath;
     @PostMapping("/animal/create")
     public String insert(@Valid Animal animal, Model model,
                          @RequestParam(name = "file") MultipartFile uploadedFile){
-            String filename = uploadedFile.getOriginalFilename();
-            String filepath = Paths.get(uploadPath, filename).toString();
-            File destinationFile = new File(filepath);
-            try {
-                uploadedFile.transferTo(destinationFile);
-                animal.setPath("/uploads/" + filename);
-                animalDoa.save(animal);
-                model.addAttribute("message", "File successfully uploaded!");
-                return "redirect:/animal/create";
-            } catch (IOException e) {
-                e.printStackTrace();
-                model.addAttribute("message", "Oops! Something went wrong! " + e);
-            }
-            return ("redirect:/animal/create");
+        String filename = uploadedFile.getOriginalFilename();
+        String filepath = Paths.get(uploadPath, filename).toString();
+        File destinationFile = new File(filepath);
+        try {
+            uploadedFile.transferTo(destinationFile);
+            animal.setPath("/uploads/" + filename);
+            animalDoa.save(animal);
+            model.addAttribute("message", "File successfully uploaded!");
+
+
+            return "redirect:/animal/create";
+        } catch (IOException e) {
+            e.printStackTrace();
+            model.addAttribute("message", "Oops! Something went wrong! " + e);
+        }
+        return ("redirect:/animal/create");
     }
 
-//    Used for rs-form to display all animals in db by that rescue shelter
-    @GetMapping("/rescueshelter/animals/{id}")
-    public String rescueAnimals(@PathVariable long id, Model model){
-        Animal animal = animalDoa.findOne(id);
-        model.addAttribute("animals", animal);
-        return "/rescueshelter/rs-form";
-    }
-//
 //    RS-edit animal
     @GetMapping("/animal/{id}/edit")
     public String edit(@PathVariable long id, Model model){
         Iterable<CatBreed> catBreeds = catDao.findAll();
         Iterable<DogBreed> dogBreeds = dogDao.findAll();
-
         model.addAttribute("catBreeds", catBreeds);
         model.addAttribute("dogBreeds", dogBreeds);
 
