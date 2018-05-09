@@ -6,28 +6,31 @@
 
 <div th:replace="partials/navbar :: navbar"></div>
 
-<main class="container">
+<main class="container-fluid">
 
-
-<div>
-    <h1 class="greeting">Meet, <span th:text="${animal.name}"></span></h1>
-    <div class="browse-animal-images">
-        <img width="80%" style="display: block; margin: 5px auto; float: left;" th:src="${animal.path}" />
+    <div class="row">
+        <div class="col-md-offset-1 col-md-6 text-center">
+            <h1 class="greeting">Meet, <span th:text="${animal.name}"></span>!</h1>
+            <span th:text="${catBreed}"></span>
+            <span th:text="${dogBreed}"></span>
+            <p>Age: <span th:text="${animal.age}">age</span></p>
+            <p>Gender: <span th:text="${animal.gender}">gender</span></p>
+            <p>Size: <span th:text="${animal.size}">size</span></p>
+            <p>Color: <span th:text="${animal.color}">color</span></p>
+            <p>Behavior: <span th:text="${animal.behavior}">behavior</span></p>
+            <p>Shelter Name:<span th:text="${shelterName}">shelter location</span></p>
+            <p>Location:<span th:text="${shelterAddress}">shelter location</span></p>
+            <p>Phone Number: <span th:text="${shelterNumber}">shelter Phone</span></p>
+        </div>
+        <div class="col-md-5">
+            <div class="browse-animal-images">
+                <img width="90%" class="show" th:src="${animal.path}" />
+            </div>
+        </div>
     </div>
-    <span th:text="${catBreed}"></span>
-    <span th:text="${dogBreed}"></span>
-    <p>Age: <span th:text="${animal.age}">age</span></p>
-    <p>Gender: <span th:text="${animal.gender}">gender</span></p>
-    <p>Size: <span th:text="${animal.size}">size</span></p>
-    <p>Color: <span th:text="${animal.color}">color</span></p>
-    <p>Behavior: <span th:text="${animal.behavior}">behavior</span></p>
-    <p>Shelter Name:<span th:text="${shelterName}">shelter location</span></p>
-    <p>Location:<span th:text="${shelterAddress}">shelter location</span></p>
-    <p>Phone Number: <span th:text="${shelterNumber}">shelter Phone</span></p>
-</div>
 
-<div>
-    <p>I'm ready to meet my <em>furever</em> family! Come see me at <span th:text="${shelterName}">location</span></p>
+<div class="col-md-offset-1 col-md-6 text-center pet-quote">
+    <p>I'm ready to meet my <em>furever</em> family! <br/>Come see me at <span th:text="${shelterName}">location</span></p>
     <p>Love, <span th:text="${animal.name}">name</span></p>
 </div>
 

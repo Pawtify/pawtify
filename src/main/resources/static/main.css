@@ -94,14 +94,8 @@ body > main.main-buttons.home-container{
     font-family: 'Concert One', cursive;
     font-size: 6vw;
     width: 80%;
+    text-shadow: 2px 2px 4px #000000;
 }
-
-/*.home {*/
-    /*background-color: rgba(255,255,255,0.5);*/
-    /*padding: 3%;*/
-
-/*}*/
-
 
 .direct > a:hover {
     opacity: .5;
@@ -212,8 +206,8 @@ body > main.main-buttons.home-container.container > div {
 
 .redirect {
     margin: 10%;
-    padding: 5%;
-    background-color: #54c6a0;
+    padding: 4%;
+    background-color: #9cd6b5;
     opacity: .6;
     border-radius: 10px;
 }
@@ -224,11 +218,11 @@ body > main.main-buttons.home-container.container > div {
 }
 
 .sign {
-    padding: 3%;
-    background-color: #7b7b7b;
-    font-size: 5vh;
+    padding: 2%;
+    background-color: #7f7474;
+    font-size: 4vh;
     font-weight: bold;
-    color: black;
+    color: #fffcf9;
     border-radius: 10px;
 }
 
@@ -261,12 +255,15 @@ body > main.main-buttons.home-container.container > div {
     margin-right: 0;
     padding-left: 0;
     padding-right: 0;
+    padding-bottom: 0;
+    background-color: #7a7a7a;
 
 }
 
 .push {
     margin-top: 6%;
 }
+
 
 .video {
     padding: 0px;
@@ -282,13 +279,64 @@ body > main.main-buttons.home-container.container > div {
 
 .pet {
     border-radius: 10%;
-    border: 3px solid #835956;
-    margin-left: 7%;
-    margin-top: 5%;
+    border: 3px solid rgba(183, 168, 167, 0.97);
+    position: relative;
+    left: 5%;
+    width: 130px;
+    height: 135px;
+}
+
+.caption-card {
+    font-family: 'Short Stack', cursive;
+    color: white;
+}
+
+
+.thumbnail {
+    box-shadow: 10px 10px 5px #939393;
+}
+
+.thumbnail-card {
+    color: black;
+    background-color: rgba(167, 210, 185, 0.44);
+    padding-bottom: 0;
+}
+
+.thumbnail > a:hover {
+    text-decoration: none;
+    font-weight: bolder;
+}
+
+
+.search {
+    background-color: #805754;
+    color: white;
+    padding: 1% 5%;
+}
+
+
+.show {
+    margin-top: 10%;
+    border-radius: 5%;
+    border: 7px solid black;
+}
+
+.pet-quote {
+    font-size: 3rem;
+    font-weight: bold;
+    color: #8e6e6a;
+}
+
+.greeting {
+    font-family: 'Short Stack', cursive;
+    font-size: 4rem;
+    font-weight: bolder;
 }
 
 
 
+
+/*########FOR MOBILE VIEW###########*/
 @media (max-width:500px)  {
     .video {
         display: none;
@@ -302,6 +350,7 @@ body > main.main-buttons.home-container.container > div {
     }
 
 
+
     .body-container {
         background-color: #7b7b7b;
     }
@@ -309,13 +358,11 @@ body > main.main-buttons.home-container.container > div {
     .slogan {
         position: absolute;
         top: 4em;
-        /*left: 3%;*/
         margin-left: 3%;
         transform: translate(-50%, -50%);
         color: #ffffff;
         font-family: 'Concert One', cursive;
         font-size: 2rem;
-        /*width: 100%;*/
     }
 
 
@@ -340,10 +387,31 @@ body > main.main-buttons.home-container.container > div {
 
     .direct {
         opacity: .9;
-        /*position: unset;*/
         margin-top: 7rem;
         margin-left: 7%;
         width: 80%;
     }
 
+
+    .pet {
+        border-radius: 10%;
+        border: 3px solid rgba(183, 168, 167, 0.97);
+        position: relative;
+        left: 20%;
+        width: 60%;
+        height: 65%;
+    }
+
+}
+
+@media only screen and (max-width: 1200px) and (min-width: 500px) {
+
+    .pet {
+        border-radius: 10%;
+        border: 3px solid rgba(183, 168, 167, 0.97);
+        position: relative;
+        left: 20%;
+        width: 60%;
+        height: 65%;
+    }
 }

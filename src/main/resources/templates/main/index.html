@@ -17,32 +17,32 @@
         <!--</div>-->
     <!--</div>-->
         <div class="row">
-        <div class="col-md-offset-4 col-md-6">
+        <div class="col-md-offset-4 col-md-4 space">
             <form th:action="@{'/filter-animals'}" th:method="GET">
                 <div class="form-group">
-                    <span class="col-md-7">
+                    <!--<span class="col-md-7">-->
                         <input name="search" type="text" class="form-control" id="search" placeholder="Search by breed" />
-                    </span>
-                    <span class="col-md-1">
-                        <button class="btn btn-info" type="submit">Search</button>
+                    <!--</span>-->
+                    <span class="col-xs-offset-5">
+                    <button class="btn search" type="submit">Search</button>
                     </span>
                 </div>
             </form>
         </div>
         </div>
-
+<hr/>
         <div class="row">
-            <div class="col-sm-5 col-md-2">
             <div th:each="animal : ${animals}">
-            <div class="thumbnail" style=" background-color: #cedada">
+            <div class="col-sm-5 col-md-2">
+            <div class="thumbnail well thumbnail-card">
                         <a th:href="@{/animal/{animalId}/(animalId=${animal.getId()})}">
                             <div class="browse-animal-images">
-                            <img width="80%" th:src="${animal.path}" class="pet"/>
+                            <img th:src="${animal.path}" class="pet"/>
                             </div>
 
-                            <div class="caption text-center">
+                            <div class="caption caption-card text-center">
                                 <!--name-->
-                                <h4 th:text="${animal.name}"></h4>
+                                <h3 th:text="${animal.name}"></h3>
                                 <!--gender-->
                                 <p th:text="${animal.gender}"></p>
                                 <!--age-->
