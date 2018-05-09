@@ -277,6 +277,12 @@ body > main.main-buttons.home-container.container > div {
 }
 
 
+.border {
+    border-bottom: 5px solid #a7d2b9;
+    border-radius: 5px;
+}
+
+
 .pet {
     border-radius: 10%;
     border: 3px solid rgba(183, 168, 167, 0.97);
@@ -293,7 +299,7 @@ body > main.main-buttons.home-container.container > div {
 
 
 .thumbnail {
-    box-shadow: 10px 10px 5px #939393;
+    box-shadow: 8px 8px 2px #939393;
 }
 
 .thumbnail-card {
@@ -316,23 +322,34 @@ body > main.main-buttons.home-container.container > div {
 
 
 .show {
-    margin-top: 10%;
+    margin-top: 13%;
     border-radius: 5%;
     border: 7px solid black;
 }
 
 .pet-quote {
-    font-size: 3rem;
+    font-size: 2rem;
     font-weight: bold;
     color: #8e6e6a;
 }
 
 .greeting {
     font-family: 'Short Stack', cursive;
-    font-size: 4rem;
+    font-size: 5rem;
     font-weight: bolder;
+    padding-bottom: 2%;
+    border-bottom: 5px solid #a7d2b9;
+    border-radius: 2px;
 }
 
+.characteristics {
+    font-family: 'Nunito', sans-serif;
+    /*font-weight: bold;*/
+    font-size: 25px;
+    /*box-shadow: 6px 6px 6px 6px rgba(142, 110, 106, 0.83);*/
+    /*background-color: rgba(156, 106, 103, 0.23);*/
+
+}
 
 
 
@@ -404,8 +421,9 @@ body > main.main-buttons.home-container.container > div {
 
 }
 
-@media only screen and (max-width: 1200px) and (min-width: 500px) {
 
+/*#####Card View for Md Screens#####*/
+@media only screen and (max-width: 1200px) and (min-width: 500px) {
     .pet {
         border-radius: 10%;
         border: 3px solid rgba(183, 168, 167, 0.97);
@@ -414,4 +432,19 @@ body > main.main-buttons.home-container.container > div {
         width: 60%;
         height: 65%;
     }
+
+}
+
+
+/*#####Card View for Large Screens#####*/
+@media only screen and (min-width: 1500px) {
+    .pet {
+        border-radius: 10%;
+        border: 3px solid rgba(183, 168, 167, 0.97);
+        position: relative;
+        left: 25%;
+        width: 160px;
+        height: 165px;
+    }
+
 }
