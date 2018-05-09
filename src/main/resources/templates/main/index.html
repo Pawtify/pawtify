@@ -6,7 +6,7 @@
 
 <div th:replace="partials/navbar :: navbar"></div>
 
-<main class="container-fluid">
+<main class="container">
     <!--<div class="row">-->
         <!--<div class="col-offset-6 col-lg-6">-->
             <!--<div class="input-group">-->
@@ -21,9 +21,7 @@
         <div class="col-md-offset-4 col-md-4 space">
             <form th:action="@{'/filter-animals'}" th:method="GET">
                 <div class="form-group">
-                    <!--<span class="col-md-7">-->
                         <input name="search" type="text" class="form-control" id="search" placeholder="Search by breed" />
-                    <!--</span>-->
                     <span class="col-xs-offset-5">
                     <button class="btn search" type="submit">Search</button>
                     </span>

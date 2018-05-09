@@ -3,79 +3,85 @@
 <head th:replace="partials/header :: header('Pawtification')"></head>
 <body>
 <div th:replace="partials/navbar :: navbar"></div>
-<main class="container">
-    <div class="col-md-6 text-center">
+<main class="container-fluid">
+    <div class="row pawtify">
+    <div class="col-md-6 col-md-offset-1 text-center">
         <h1>Pawtification</h1>
-        <h2>Pawtify me when there is an available animal that matches..</h2>
+        <h4>Pawtify me when there is an available animal that matches..</h4>
         <!--new action for pawtification-->
         <form class="form-horizontal" th:action="@{/pawtification}" th:method="post" th:object="${pawtification}">
             <!--for each for breeds-->
-            <div class="form-group">
-                <select class="cat" th:name="catBreed" th:field="*{catBreed}">
-                    <option th:value="null" selected="selected">Cat</option>
-                    <option th:each="catBreed : ${catBreeds}" th:value="${catBreed.id}" th:text="${catBreed.breed}"></option>
-                </select>
+            <div class="row">
+                <div class="col-md-offset-1 col-md-4">
+                    <span class="form-group" >
+                        <p>Cat</p>
+                        <select  class="cat form-control" th:name="catBreed" th:field="*{catBreed}">
+                            <option th:value="null" selected="selected">Unselected</option>
+                            <option th:each="catBreed : ${catBreeds}" th:value="${catBreed.id}" th:text="${catBreed.breed}"></option>
+                        </select>
+                    </span>
+                </div>
+                <div class="col-md-2">
+                    <h3>or</h3>
+                </div>
+                <div class="col-md-4">
+                    <span class="form-group">
+                        <p>Dog</p>
+                        <select class="dog form-control" th:name="dogBreed" th:field="*{dogBreed}">
+                            <option th:value="null" selected="selected" >Unselected</option>
+                            <option th:each="dogBreed : ${dogBreeds}" th:value="${dogBreed.id}" th:text="${dogBreed.breed}"></option>
+                        </select>
+                    </span>
+                </div>
             </div>
-            <span>or</span>
-            <div class="form-group">
-                <select class="dog" th:name="dogBreed" th:field="*{dogBreed}">
-                    <option th:value="null" selected="selected" >Dog</option>
-                    <option th:each="dogBreed : ${dogBreeds}" th:value="${dogBreed.id}" th:text="${dogBreed.breed}"></option>
-                </select>
+            <div class="col-md-offset-4 col-md-4">
+                <div class="form-group">
+                    <select class="form-control" name="age" size="1">
+                        <option value="age">Select Age</option>
+                        <option value="Less than 1 year">Less than 1 year</option>
+                        <option value="More than 1 year">More than 1 year</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <select name="color" size="1" class="form-control">
+                        <option value="color">Select Coat Color</option>
+                        <option value="Black">Black</option>
+                        <option value="Brown">Brown</option>
+                        <option value="White">White</option>
+                        <option value="Other">Other</option>
+                        <option value="No Preference">No Preference</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <select name="size" size="1" class="form-control">
+                        <option value="size">Select Size</option>
+                        <option value="Small">Small</option>
+                        <option value="Medium">Medium</option>
+                        <option value="Large">Large</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <select name="gender" size="1" class="form-control">
+                        <option value="gender">Select Gender</option>
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                        <option value="No Preference">No Preference</option>
+                    </select>
+                </div>
             </div>
             <div class="form-group">
-                <span>Age</span>
-                <select name="age" size="1">
-                    <option value="age">Select Age</option>
-                    <option value="Less than 1 year">Less than 1 year</option>
-                    <option value="More than 1 year">More than 1 year</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <span>Color</span>
-                <select name="color" size="1">
-                    <option value="color">Select Coat Color</option>
-                    <option value="Black">Black</option>
-                    <option value="Brown">Brown</option>
-                    <option value="White">White</option>
-                    <option value="Other">Other</option>
-                    <option value="No Preference">No Preference</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <span>Size</span>
-                <select name="size" size="1">
-                    <option value="size">Select Size</option>
-                    <option value="Small">Small</option>
-                    <option value="Medium">Medium</option>
-                    <option value="Large">Large</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <span>Gender</span>
-                <select name="gender" size="1">
-                    <option value="gender">Select Gender</option>
-                    <option value="Male">Male</option>
-                    <option value="Female">Female</option>
-                    <option value="No Preference">No Preference</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <div class="col-sm-offset-2 col-sm-10">
-                    <button type="submit" class="btn btn-default">Pawtify Me</button>
+                <div class="col-sm-offset-1 col-sm-10">
+                    <button type="submit" class="btn btn-primary">Pawtify Me</button>
                 </div>
             </div>
         </form>
     </div>
-    <div>
-        <h2>Show My Pawtification Matches</h2>
-        <a th:href="@{/matches}"><button type="submit" class="btn btn-default">View My Matches</button></a>
-    </div>
-    <div class="col-md-offset-2 col-md-4 side-menu">
-        <img src="/images/catdog.jpg" alt="Cat and Dog" width="70%" class="profile" />
+    <div class="col-md-offset-2 col-md-3 side-menu text-center">
+        <img src="/images/catdog.jpg" alt="Cat and Dog" width="70%" class="profile-paw" />
         <h3>Welcome to Pawtify!</h3>
-        <p>Here's how to make a pawtification:</p>
+        <p>We will notify you when you have a purfect match with the following: </p>
         <div th:each="pawtification : ${pawtifications}">
+            <div class="pawtification">
             <div>
                 <span>Breed:</span>
                 <span th:text="${pawtification.catBreed} ? ${pawtification.catBreed.getBreed()} : ' '"></span>
@@ -98,7 +104,10 @@
                 <span th:text="${pawtification.gender}"></span>
             </div>
             <div><a th:href="@{/pawtification/{animalId}/edit(animalId=${pawtification.getId()})}">Edit</a></div>
+                <hr/>
         </div>
+        </div>
+    </div>
     </div>
 </main>
 <div th:replace="partials/footer :: footer"></div>
