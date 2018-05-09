@@ -4,10 +4,36 @@
 <body>
 <div th:replace="partials/navbar :: navbar"></div>
 
-<div th:each="animal : ${catBreed}">
-    <p th:text="${animal.catBreed.Breed}"></p>
-</div>
+<main class="container-fluid">
+    <div style="padding-top: 5%" class="row">
+        <div th:each="animal : ${animals}">
+            <div class="col-sm-5 col-md-2">
+                <div class="thumbnail well thumbnail-card">
+                    <a th:href="@{/animal/{animalId}/(animalId=${animal.getId()})}">
+                        <div class="browse-animal-images">
+                            <img th:src="${animal.path}" class="pet"/>
+                        </div>
+                        <div class="caption caption-card text-center">
+                            <!--Breed-->
+                            <p th:text="${animal.catBreed.breed}"></p>
+                            <!--name-->
+                            <h3 th:text="${animal.name}"></h3>
+                            <!--gender-->
+                            <p th:text="${animal.gender}"></p>
+                            <!--age-->
+                            <p th:text="${animal.age}"></p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
 
 <footer th:replace="partials/footer :: footer"></footer>
 </body>
 </html>
+
+<!--<div th:each="animal : ${animals}">-->
+    <!--<p th:text="${animal.catBreed.breed}"></p>-->
+<!--</div>-->

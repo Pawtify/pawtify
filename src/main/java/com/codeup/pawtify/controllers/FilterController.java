@@ -14,12 +14,12 @@ import java.util.List;
 
 @Controller
 public class FilterController {
-    private AnimalRepository animalDoa;
+    private AnimalRepository animalDao;
     private SearchRepository searchDao;
     private CatBreedRepository catDoa;
 
-    public FilterController(AnimalRepository animalDoa, SearchRepository searchDao, CatBreedRepository catDoa) {
-        this.animalDoa = animalDoa;
+    public FilterController(AnimalRepository animalDao, SearchRepository searchDao, CatBreedRepository catDoa) {
+        this.animalDao = animalDao;
         this.searchDao = searchDao;
         this.catDoa = catDoa;
     }
@@ -27,10 +27,19 @@ public class FilterController {
     @GetMapping("/filter-animals")
     public String filterShelterAnimals(@RequestParam("search") String search, Model model){
         search = "%" +search+ "%";
-        List<Animal> catBreed = animalDoa.findByCatBreedIsLike(search);
-        model.addAttribute("catBreed", catBreed);
+        List<Animal> animals = animalDao.findByCatBreed_BreedIsLike(search);
+//        List<Animal> animals1 = animalDao.findByDogBreed_BreedIsLike(search);
+
+        for (Animal animal: animals) {
+
+            System.out.println("Animal name !!!!!!!!!!!!!!!!!!!!!!" + animal.getName());
+
+        }
+
+        model.addAttribute("animals", animals);
+//        model.addAttribute("animals", animals1);
 //        model.addAttribute("dogBreed", dogBreedLike);
-        return "/main/search";
+        return "main/search";
     }
 
 }
