@@ -9,11 +9,11 @@ import com.codeup.pawtify.models.CatBreed;
 import com.codeup.pawtify.models.DogBreed;
 import com.codeup.pawtify.models.RescueShelter;
 import com.codeup.pawtify.models.User;
+import com.codeup.pawtify.services.AnimalService;
 import com.codeup.pawtify.services.UserService;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -29,13 +29,15 @@ public class AnimalController {
     private final DogBreedRepository dogDao;
     private final RescueShelterRepository shelterDao;
     private final UserService userService;
+    private final AnimalService animalService;
 
-    public AnimalController(AnimalRepository animalDoa, CatBreedRepository catDao, DogBreedRepository dogDao, RescueShelterRepository shelterDao, UserService userService){
+    public AnimalController(AnimalRepository animalDoa, CatBreedRepository catDao, DogBreedRepository dogDao, RescueShelterRepository shelterDao, UserService userService, AnimalService animalService){
         this.animalDoa = animalDoa;
         this.catDao = catDao;
         this.dogDao = dogDao;
         this.shelterDao = shelterDao;
         this.userService = userService;
+        this.animalService = animalService;
     }
 
     //    Homepage
@@ -96,7 +98,7 @@ public class AnimalController {
 //    @Value("/var/www/pawtify.site/uploads")
 //    @Value("/var/www/pawtify.site/uploads")
 //    @Value("${file-upload-path}")
-    @Value("/Users/lalepro/IdeaProjects/pawtify/target/classes/static/uploads")
+    @Value("/Users/emmadejong/IdeaProjects/pawtify/target/classes/static/uploads")
     private String uploadPath;
     @PostMapping("/animal/create")
     public String insert(@Valid Animal animal, Model model,
@@ -108,9 +110,8 @@ public class AnimalController {
             uploadedFile.transferTo(destinationFile);
             animal.setPath("/uploads/" + filename);
             animalDoa.save(animal);
+            animalService.checkAnimalToDB(animal);
             model.addAttribute("message", "File successfully uploaded!");
-
-
             return "redirect:/animal/create";
         } catch (IOException e) {
             e.printStackTrace();
@@ -146,6 +147,7 @@ public class AnimalController {
         updateAnimal.setCatBreed(editAnimal.getCatBreed());
         updateAnimal.setDogBreed(editAnimal.getDogBreed());
         animalDoa.save(updateAnimal);
+        animalService.checkAnimalToDB(editAnimal);
         return "redirect:/animal/create";
     }
 
