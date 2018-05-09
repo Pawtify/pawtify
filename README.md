@@ -32,10 +32,10 @@
 ##### 9. Navbar (can we split some of navbar options up with a footer?)
 - [X] create a mobile friendly (w/ drop down on mobile), dynamic navbar for being logged in and a view for being logged out (might differ by page)
 ##### 10. Animal Card - Card will show animal picture with name and age. Click on animal card to be taken to individual animal page (show.html) to see more information about specific animal.
-- [ ] add animal card to PA index page that updates when new animals are entered into the db and is filter/searchable from the PA index page
-- [ ] add animal card to RS index page with more information for RS (see Laura's example) that updates as soon as new animals are entered and is filter/searchable
+- [X] add animal card to PA index page that updates when new animals are entered into the db and is filter/searchable from the PA index page
+- [X] add animal card to RS index page with more information for RS (see Laura's example) that updates as soon as new animals are entered and is filter/searchable
 ##### 11. Filter & Search Options - PA users will be able to filter the list of animals by animal type, breed, age, and gender.
-- [ ] add search box and functionality for all traits
+- [ ] add search box and functionality for breeds
  
 ### *WISH LIST FEATURES*
 ##### 11. Event listener pop out for notification
