@@ -12,14 +12,14 @@
             <!--for each for breeds-->
             <div class="form-group">
                 <select class="cat" th:name="catBreed" th:field="*{catBreed}">
-                    <option th:value="null">Cat</option>
+                    <option th:value="null" selected="selected">Options</option>
                     <option th:each="catBreed : ${catBreeds}" th:value="${catBreed.id}" th:text="${catBreed.breed}"></option>
                 </select>
             </div>
             <span>or</span>
             <div class="form-group">
                 <select class="dog" th:name="dogBreed" th:field="*{dogBreed}">
-                    <option th:value="null">Dog</option>
+                    <option th:value="null" selected="selected">Options</option>
                     <option th:each="dogBreed : ${dogBreeds}" th:value="${dogBreed.id}" th:text="${dogBreed.breed}"></option>
                 </select>
             </div>

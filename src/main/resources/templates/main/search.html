@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="partials/header :: header('Browse')"></head>
+<body>
+<div th:replace="partials/navbar :: navbar"></div>
+
+<div th:each="animal : ${catBreed}">
+    <p th:text="${animal.breed}"></p>
+</div>
+
+<footer th:replace="partials/footer :: footer"></footer>
+</body>
+</html>
