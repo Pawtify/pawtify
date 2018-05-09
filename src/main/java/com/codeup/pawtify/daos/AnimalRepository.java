@@ -19,4 +19,13 @@ public interface AnimalRepository extends CrudRepository<Animal, Long> {
 
     @Query(nativeQuery =  true, value = "SELECT * from animals where rescueshelter_id = ?1")
     List<Animal> findAnimalsByRescueshelterId(long id);
+
+//    @Query(nativeQuery = true, value = "SELECT * FROM animals where cat_breed_id = ?1")
+    List<Animal> findByCatBreed_BreedIsLike(String str);
+    List<Animal> findByDogBreed_BreedIsLike(String str);
+//    List<Animal> findByDogBreed_BreedIsLikeOrCatBreed_BreedIsLike(String str);
+//    @Query(nativeQuery = true, value = "SELECT * FROM animals WHERE dog_breed_id = ?1")
+//    List<Animal> findByCatBreed_BreedIsLikeOrDogBreed_BreedIsLike(String str);
+
+//    List<Animal> findByDogBreed_Breed IsLikeOrCatBreedIsLike(String str);
 }
