@@ -7,7 +7,7 @@
 
 <main class="container">
     <div class="row">
-
+        <div class="col-md-5">
     <h1>Edit Animal</h1>
 
     <form class="form-horizontal" th:action="@{/animal/edit}" th:method="post" th:object="${editAnimal}" enctype="multipart/form-data">
@@ -93,12 +93,15 @@
             </div>
         </div>
     </form>
+        </div>
 
-    <h2>Permanently Delete Animal</h2>
-    <form th:action="@{/animal/delete}" th:method="post" th:object="${editAnimal}">
-        <input type="hidden" th:field="*{id}" />
-        <button id="delete">Delete</button>
-    </form>
+        <div class="col-md-4">
+        <h2>Permanently Delete Animal</h2>
+        <form th:action="@{/animal/delete}" th:method="post" th:object="${editAnimal}">
+            <input type="hidden" th:field="*{id}" />
+            <button id="delete">Delete</button>
+        </form>
+        </div>
     </div>
 </main>
 </body>
