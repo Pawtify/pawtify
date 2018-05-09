@@ -67,10 +67,6 @@
             </div>
         </form>
     </div>
-    <div>
-        <h2>Show My Pawtification Matches</h2>
-        <a th:href="@{/matches}"><button type="submit" class="btn btn-default">View My Matches</button></a>
-    </div>
     <div class="col-md-offset-2 col-md-4 side-menu">
         <img src="/images/catdog.jpg" alt="Cat and Dog" width="70%" class="profile" />
         <h3>Welcome to Pawtify!</h3>
@@ -98,6 +94,7 @@
                 <span th:text="${pawtification.gender}"></span>
             </div>
             <div><a th:href="@{/pawtification/{animalId}/edit(animalId=${pawtification.getId()})}">Edit</a></div>
+            <div><a th:href="@{/matches/{matchId}/paw(matchId=${pawtification.getId()})}">View Match</a></div>
         </div>
     </div>
 </main>
