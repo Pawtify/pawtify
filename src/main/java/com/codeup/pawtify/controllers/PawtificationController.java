@@ -97,4 +97,9 @@ public class PawtificationController {
         pawDao.delete(pawtification);
         return "redirect:/pawtification";
     }
+
+    @GetMapping("/matches")
+    public String showMatches() {
+        return "/potentialadopter/match";
+    }
 }
