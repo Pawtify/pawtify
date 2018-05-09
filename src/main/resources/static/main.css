@@ -243,10 +243,9 @@ body > main.main-buttons.home-container.container > div {
     color: #ffffff;
 }
 
-.profile {
+.profile-paw {
     margin-top: 8%;
     border-radius: 60%;
-    margin: 3%;
 }
 
 
@@ -277,11 +276,16 @@ body > main.main-buttons.home-container.container > div {
 }
 
 
+.border {
+    border-bottom: 5px solid #a7d2b9;
+    border-radius: 5px;
+}
+
+
 .pet {
     border-radius: 10%;
     border: 3px solid rgba(183, 168, 167, 0.97);
     position: relative;
-    left: 5%;
     width: 130px;
     height: 135px;
 }
@@ -292,8 +296,17 @@ body > main.main-buttons.home-container.container > div {
 }
 
 
+.pawtification {
+    background-color: rgba(231, 243, 243, 0.4);
+    color: black;
+    padding-top: 1em;
+
+
+}
+
+
 .thumbnail {
-    box-shadow: 10px 10px 5px #939393;
+    box-shadow: 3px 3px 1px #c8c8c8;
 }
 
 .thumbnail-card {
@@ -307,6 +320,17 @@ body > main.main-buttons.home-container.container > div {
     font-weight: bolder;
 }
 
+.pawtify {
+    font-family: 'Short Stack', cursive;
+    font-size: 1em;
+}
+
+
+.form-group > select {
+    border: 1px solid #9cd6b5
+}
+
+
 
 .search {
     background-color: #805754;
@@ -316,23 +340,34 @@ body > main.main-buttons.home-container.container > div {
 
 
 .show {
-    margin-top: 10%;
+    margin-top: 13%;
     border-radius: 5%;
     border: 7px solid black;
 }
 
 .pet-quote {
-    font-size: 3rem;
+    font-size: 2rem;
     font-weight: bold;
     color: #8e6e6a;
 }
 
 .greeting {
     font-family: 'Short Stack', cursive;
-    font-size: 4rem;
+    font-size: 5rem;
     font-weight: bolder;
+    padding-bottom: 2%;
+    border-bottom: 5px solid #a7d2b9;
+    border-radius: 2px;
 }
 
+.characteristics {
+    font-family: 'Nunito', sans-serif;
+    /*font-weight: bold;*/
+    font-size: 25px;
+    /*box-shadow: 6px 6px 6px 6px rgba(142, 110, 106, 0.83);*/
+    /*background-color: rgba(156, 106, 103, 0.23);*/
+
+}
 
 
 
@@ -397,21 +432,37 @@ body > main.main-buttons.home-container.container > div {
         border-radius: 10%;
         border: 3px solid rgba(183, 168, 167, 0.97);
         position: relative;
-        left: 20%;
-        width: 60%;
-        height: 65%;
+        margin-left: 25%;
+        width: 10em;
+        height: 10em;
     }
 
 }
 
-@media only screen and (max-width: 1200px) and (min-width: 500px) {
 
+/*#####Card View for Md Screens#####*/
+@media only screen and (max-width: 1200px) and (min-width: 400px) {
     .pet {
         border-radius: 10%;
         border: 3px solid rgba(183, 168, 167, 0.97);
         position: relative;
-        left: 20%;
-        width: 60%;
-        height: 65%;
+        width: 5em;
+        height: 5.1em;
+
     }
+
+}
+
+
+/*#####Card View for Large Screens#####*/
+@media only screen and (min-width: 1500px) {
+    .pet {
+        border-radius: 10%;
+        border: 3px solid rgba(183, 168, 167, 0.97);
+        position: relative;
+        margin-left: .5em;
+        width: 8em;
+        height: 8.1em;
+    }
+
 }

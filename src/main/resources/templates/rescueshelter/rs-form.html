@@ -10,23 +10,24 @@
     <h1>Register Your Animal</h1>
     <form class="form-horizontal" th:action="@{/animal/create}" th:method="post" th:object="${animal}" enctype="multipart/form-data">
     <div class="form-group">
-        <select th:name="catBreed" th:field="*{catBreed}">
-            <option th:value="null">Cat</option>
+        <h3>Cat Breeds</h3>
+        <select class="cat" th:name="catBreed" th:field="*{catBreed}">
+            <option th:value="null" selected="selected">Options</option>
             <option th:each="catBreed : ${catBreeds}" th:value="${catBreed.id}" th:text="${catBreed.breed}"></option>
         </select>
     </div>
-
     <span>or</span>
-
     <div class="form-group">
-        <select th:name="dogBreed" th:field="*{dogBreed}">
-            <option th:value="null">Dog</option>
+        <h3>Dog Breeds</h3>
+        <select class="dog" th:name="dogBreed" th:field="*{dogBreed}">
+            <option th:value="null" selected="selected">Options</option>
             <option th:each="dogBreed : ${dogBreeds}" th:value="${dogBreed.id}" th:text="${dogBreed.breed}"></option>
         </select>
     </div>
         <br/>
+        <span>Pet Name </span>
         <input th:field="*{name}" th:value="${name}" placeholder="Enter a Pet Name"/>
-        <br />
+        <br/><br/><br/>
     <div class="form-group">
         <span>Age</span>
         <select name="age" size="1">
