@@ -6,17 +6,13 @@ import com.twilio.rest.api.v2010.account.Message;
 import com.twilio.type.PhoneNumber;
 import org.springframework.stereotype.Service;
 
+
 @Service
 public class TwilioService {
 
     private String twiliosid = "ACcdf7ce35f8d546df26cc502263850156";
     private String twiliotoken = "661e59735feab0ac177e61be6315dcf5";
     private String twilionumber = "8304200317";
-
-    //in case we can send customized messages
-    public String customMessage() {
-        return null;
-    }
 
     public Message sendSMS(User user) {
         Twilio.init(this.twiliosid, this.twiliotoken);

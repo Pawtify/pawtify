@@ -1,17 +1,22 @@
-// $(document).ready(function() {
+var cat = $('.cat').attr('disabled', false);
+var dog = $('.dog').attr('disabled', false);
+$(cat).change(function() {
+    if (cat.val() != "") {
+        dog.attr('disabled', true);
+    }if (cat.val() == "") {
+        dog.attr('disabled', false);
+    }
+});
 
-    var curr = $('.cat').prop('disabled', false);
-    var next = $('.dog').prop('disabled', false);
-    $(curr, next).change(function () {
-            if (curr != null) {
-                next.prop('disabled', true);
-            } else if (next != null) {
-                curr.disabled = true;
-            }
-        }
-    );
+$(dog).change(function() {
+    if (dog.val() != "") {
+        cat.attr('disabled', true);
+    }if (dog.val() == "") {
+        cat.attr('disabled', false);
+    }
+});
 
-// });
+
 var vid = document.getElementById("myVideo");
 vid.load();
 vid.autoplay = true;
