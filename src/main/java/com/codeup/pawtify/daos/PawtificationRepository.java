@@ -11,4 +11,8 @@ import java.util.List;
 public interface PawtificationRepository extends CrudRepository<Pawtification, Long> {
     @Query(nativeQuery = true, value = " SELECT * FROM pawtifications WHERE user_id = ?1")
     List<Pawtification> findPawtificationByUserId(long id);
+
+    @Query(nativeQuery = true, value = "SELECT pawtification.id, animals.name FROM animals INNER JOIN pawtifications ON pawtifications.size = animals.size ");
+
+    @Query(nativeQuery = true, value = " select * from animal where cat_breed_id in (select cat_breed_id from pawtification where user_id in (select id from user where user = ?1")
 }
