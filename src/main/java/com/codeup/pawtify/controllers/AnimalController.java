@@ -93,6 +93,8 @@ public class AnimalController {
 
 
     //        RS-Post new Animal w/ image method, can be refactored once working
+//    @Value("/var/www/pawtify.site/uploads")
+//    @Value("/var/www/pawtify.site/uploads")
 //    @Value("${file-upload-path}")
     @Value("/Users/lalepro/IdeaProjects/pawtify/target/classes/static/uploads")
     private String uploadPath;
