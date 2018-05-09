@@ -5,7 +5,7 @@
 <div th:replace="partials/navbar :: navbar"></div>
 
 <div th:each="animal : ${catBreed}">
-    <p th:text="${animal.breed}"></p>
+    <p th:text="${animal.catBreed.Breed}"></p>
 </div>
 
 <footer th:replace="partials/footer :: footer"></footer>
