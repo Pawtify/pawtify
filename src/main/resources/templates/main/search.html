@@ -6,7 +6,12 @@
 
 <main class="container">
     <div style="padding-top: 5%" class="row">
+        <div class="col-md-offset-1 col-md-10">
         <p style="margin-left: 10%; margin-right: 10%; font-size: 2em; font-family: 'Comic Sans MS'; text-align: center; background-color: #54c6a0; color: white; padding: 20px " th:if="${animals.size() == 0}"><em>Ohh No!</em> No Animals by that breed are available at this time. Please check back later. </p>
+        </div>
+        <div class="col-md-offset-5 col-md-5">
+            <button class="btn btn-lg" style="background-color: #7a7a7a"><a style="margin-bottom: 3%; color: white; text-decoration: none;" th:href="@{'/pets'}">Back to Browse</a></button>
+        </div>
         <div th:each="animal : ${animals}">
             <div class="col-sm-5 col-md-2">
                 <div class="thumbnail well thumbnail-card">
