@@ -4,15 +4,15 @@
 <body>
 <div th:replace="partials/navbar :: navbar"></div>
 
-<main class="container-fluid">
+<main class="container">
     <div style="padding-top: 5%" class="row">
-        <p style="margin-left: 10%; margin-right: 10%; font-size: 2em; font-family: 'Comic Sans MS'; text-align: center; background-color: #54c6a0; color: white; padding: 20px " th:if="${animals.size() == 0}"><em>Ohh No!</em> No Animals by that breed are available at this time. Please check back later. </p>
+        <!--<p style="margin-left: 10%; margin-right: 10%; font-size: 2em; font-family: 'Comic Sans MS'; text-align: center; background-color: #54c6a0; color: white; padding: 20px " th:if="${animals.size() == 0}"><em>Ohh No!</em> No Animals by that breed are available at this time. Please check back later. </p>-->
         <div th:each="animal : ${animals}">
             <div class="col-sm-5 col-md-2">
                 <div class="thumbnail well thumbnail-card">
                     <a th:href="@{/animal/{animalId}/(animalId=${animal.getId()})}">
                         <div class="browse-animal-images">
-                            <img th:src="${animal.path} ? ${animal.path} : ' '"/>
+                            <img class="pet" th:src="${animal.path} ? ${animal.path} : ' '"/>
                             <!--<img th:src="${animal.path}" class="pet"/>-->
                         </div>
                         <div class="caption caption-card text-center">
