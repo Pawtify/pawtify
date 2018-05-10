@@ -3,56 +3,54 @@
     <head th:replace="partials/header :: header('Register')"></head>
     <body>
         <div th:replace="partials/navbar :: navbar"></div>
-        <main class="container-fluid">
+        <main class="container">
             <div class="row push">
-                <div class="col-md-offset-4 col-md-8">
-                <h1>Welcome to Pawtify!</h1>
-                <h2>Please Register an Account</h2>
+                <div class="text-center">
+                <h2 class="welcome">Welcome to Pawtify!</h2>
+                <h3>Please Register an Account</h3>
                 </div>
-            <div class="col-md-offset-3">
-                <form class="form-horizontal" th:action="@{/register/adopter}" th:method="POST" th:object="${user}">
-                    <div class="form-group">
-                        <label for="username" class="col-sm-2 control-label">Username</label>
-                        <div class="col-sm-10 col-md-5">
+                <div class="col-md-offset-4 col-md-4">
+                <form th:action="@{/register/adopter}" th:method="POST" th:object="${user}">
+                    <div class="form-row">
+
+                            <div class="md-form form-group">
                             <p class="error" th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></p>
                             <input type="text" class="form-control" id="username" th:field="*{username}" placeholder="Username" />
+                            <label for="username">Username</label>
+                            </div>
+
+                            <div class="md-form form-group">
+                                <p class="error" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></p>
+                                <input type="password" class="form-control" id="password" th:field="*{password}" placeholder="Password" />
+                                <label for="password">Password</label>
+                            </div>
                         </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="email" class="col-sm-2 control-label">Email</label>
-                        <div class="col-sm-10 col-md-5">
-                            <p class="error" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></p>
-                            <input type="text" class="form-control" id="email" th:field="*{email}" placeholder="Email" />
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="inputPassword" class="col-sm-2 control-label">Password</label>
-                        <div class="col-sm-10 col-md-5">
-                            <p class="error" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></p>
-                            <input type="password" class="form-control" id="inputPassword" th:field="*{password}" placeholder="Password" />
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="name" class="col-sm-2 control-label">Full Name</label>
-                        <div class="col-sm-10 col-md-5">
-                            <p class="error" th:if="${#fields.hasErrors('full_name')}" th:errors="*{full_name}"></p>
-                            <input type="text" class="form-control" id="name" th:field="*{full_name}" placeholder="Full Name" />
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="number" class="col-sm-2 control-label">Phone Number</label>
-                        <div class="col-sm-10 col-md-5">
-                            <p class="error" th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}"></p>
-                            <input type="tel" class="form-control" id="number" th:field="*{phone}" placeholder="e.g. 1234567890" />
-                        </div>
-                    </div>
+
+                            <div class="md-form form-group">
+                                <p class="error" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></p>
+                                <input type="text" class="form-control" id="email" th:field="*{email}" placeholder="e.g. pawtify@gmail.com" />
+                                <label for="email">Email</label>
+                            </div>
+
+                            <div class="md-form form-group">
+                                <p class="error" th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}"></p>
+                                <input type="tel" class="form-control" id="number" th:field="*{phone}" placeholder="e.g. 1234567890" />
+                                <label for="number">Phone Number</label>
+                            </div>
+
+                            <div class="md-form form-group">
+                                <p class="error" th:if="${#fields.hasErrors('full_name')}" th:errors="*{full_name}"></p>
+                                <input type="text" class="form-control" id="name" th:field="*{full_name}" placeholder="e.g. Ann Smith" />
+                                <label for="name">Full Name</label>
+                            </div>
+
                     <div class="form-group">
                         <div class="col-sm-offset-3 col-sm-10">
-                            <button type="submit" class="btn btn-primary">Register An Account</button>
+                            <button type="submit" class="btn btn-primary">Register Account</button>
                         </div>
                     </div>
                 </form>
-            </div>
+                </div>
             </div>
         </main>
         <footer th:replace="partials/footer :: footer"></footer>
