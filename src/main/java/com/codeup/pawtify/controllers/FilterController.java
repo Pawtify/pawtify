@@ -5,6 +5,7 @@ import com.codeup.pawtify.daos.CatBreedRepository;
 import com.codeup.pawtify.daos.SearchRepository;
 import com.codeup.pawtify.models.Animal;
 import com.codeup.pawtify.models.CatBreed;
+import org.codehaus.groovy.runtime.powerassert.SourceText;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -32,9 +33,13 @@ public class FilterController {
 //        List<Animal> animals = animalDao.findByDogBreed_BreedAndCatBreed_Breed(search);
 
         for (Animal animal: animals) {
-
-            System.out.println("Animal name !!!!!!!!!!!!!!!!!!!!!!" + animal.getName());
-
+            if(animal.equals(" ")){
+                System.out.println("No Animal " + animal);
+//                model.addAttribute("animals", animals);
+            }else {
+                System.out.println("Animal name !!!!!!!!!!!!!!!!!!!!!!" + animal.getName());
+                System.out.println("No Animal" + animal + ' ');
+            }
         }
 
         model.addAttribute("animals", animals);

@@ -6,6 +6,7 @@
 
 <main class="container-fluid">
     <div style="padding-top: 5%" class="row">
+        <p style="margin-left: 10%; margin-right: 10%; font-size: 2em; font-family: 'Comic Sans MS'; text-align: center; background-color: #54c6a0; color: white; padding: 20px " th:if="${animals.size() == 0}"><em>Ohh No!</em> No Animals by that breed are available at this time. Please check back later. </p>
         <div th:each="animal : ${animals}">
             <div class="col-sm-5 col-md-2">
                 <div class="thumbnail well thumbnail-card">
@@ -16,7 +17,7 @@
                         </div>
                         <div class="caption caption-card text-center">
                             <!--Breed-->
-                            <p th:text="${animal} ? ${animal.catBreed.breed} : 'No Animals by that breed are available at this time'"></p>
+                            <p th:text="${animal.catBreed} ? ${animal.catBreed.breed} : ' '"></p>
                             <!--<p th:text="${animal.dogBreed} ? ${animal.dogBreed.breed} : ' '"></p>-->
                             <!--<p th:text="${animal.catBreed.breed}"></p>-->
                             <!--<p th:text="${animal.dogBreed.breed}"></p>-->
