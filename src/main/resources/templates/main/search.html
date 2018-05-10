@@ -15,7 +15,10 @@
                         </div>
                         <div class="caption caption-card text-center">
                             <!--Breed-->
+                            <!--<p th:text="${animal.catBreed} ? ${animal.catBreed.breed} : ' '"></p>-->
+                            <!--<p th:text="${animal.dogBreed} ? ${animal.dogBreed.breed} : ' '"></p>-->
                             <p th:text="${animal.catBreed.breed}"></p>
+                            <!--<p th:text="${animal.dogBreed.breed}"></p>-->
                             <!--name-->
                             <h3 th:text="${animal.name}"></h3>
                             <!--gender-->
