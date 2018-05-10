@@ -130,9 +130,16 @@ body > main.main-buttons.home-container{
     opacity: .9;
 }
 
+
+#behavior {
+    width: 60%;
+    margin-left: 7em;
+}
+
+
 .about {
     position: absolute;
-    top: 50%;
+    top: 65%;
     left: 50%;
     transform: translate(-50%, -50%);
     color: #ffffff;
@@ -232,6 +239,11 @@ body > main.main-buttons.home-container.container > div {
     opacity: .6;
     border-radius: 10px;
 }
+
+.register-animal {
+    padding-right: 7rem;
+}
+
 
 .background {
     padding: 3%;
