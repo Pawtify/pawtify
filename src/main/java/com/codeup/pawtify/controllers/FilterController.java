@@ -28,7 +28,7 @@ public class FilterController {
     public String filterShelterAnimals(@RequestParam("search") String search, Model model){
         search = "%" +search+ "%";
         List<Animal> animals = animalDao.findByCatBreed_BreedIsLike(search);
-        List<Animal> animals1 = animalDao.findByDogBreed_BreedIsLike(search);
+//        List<Animal> animals1 = animalDao.findByDogBreed_BreedIsLike(search);
 //        List<Animal> animals = animalDao.findByDogBreed_BreedAndCatBreed_Breed(search);
 
         for (Animal animal: animals) {
@@ -38,7 +38,7 @@ public class FilterController {
         }
 
         model.addAttribute("animals", animals);
-        model.addAttribute("animals", animals1);
+//        model.addAttribute("animals", animals1);
 //        model.addAttribute("animals", animals1);
 //        model.addAttribute("dogBreed", dogBreedLike);
         return "main/search";

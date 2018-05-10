@@ -11,20 +11,24 @@
                 <div class="thumbnail well thumbnail-card">
                     <a th:href="@{/animal/{animalId}/(animalId=${animal.getId()})}">
                         <div class="browse-animal-images">
-                            <img th:src="${animal.path}" class="pet"/>
+                            <img th:src="${animal.path} ? ${animal.path} : ' '"/>
+                            <!--<img th:src="${animal.path}" class="pet"/>-->
                         </div>
                         <div class="caption caption-card text-center">
                             <!--Breed-->
-                            <!--<p th:text="${animal.catBreed} ? ${animal.catBreed.breed} : ' '"></p>-->
+                            <p th:text="${animal} ? ${animal.catBreed.breed} : 'No Animals by that breed are available at this time'"></p>
                             <!--<p th:text="${animal.dogBreed} ? ${animal.dogBreed.breed} : ' '"></p>-->
-                            <p th:text="${animal.catBreed.breed}"></p>
+                            <!--<p th:text="${animal.catBreed.breed}"></p>-->
                             <!--<p th:text="${animal.dogBreed.breed}"></p>-->
                             <!--name-->
-                            <h3 th:text="${animal.name}"></h3>
+                            <p th:text="${animal.name} ? ${animal.name} : ' '"></p>
+                            <!--<h3 th:text="${animal.name}"></h3>-->
                             <!--gender-->
-                            <p th:text="${animal.gender}"></p>
+                            <p th:text="${animal.gender} ? ${animal.gender} : ' '"></p>
+                            <!--<p th:text="${animal.gender}"></p>-->
                             <!--age-->
-                            <p th:text="${animal.age}"></p>
+                            <p th:text="${animal.age} ? ${animal.age} : ' '"></p>
+                            <!--<p th:text="${animal.age}"></p>-->
                         </div>
                     </a>
                 </div>
