@@ -87,7 +87,7 @@ public class PawtificationController {
 
     @GetMapping("/matches/{matchId}/paw")
     public String showMatch(@PathVariable long id, Model model) {
-        pawService.showAnimalsThatMatched(pawtification);
+//        pawService.showAnimalsThatMatched(pawtification);
         Animal animal = animalDao.findOne(id);
         model.addAttribute("shelterName", animal.getRescueshelter().getName());
         model.addAttribute("shelterAddress", animal.getRescueshelter().getAddress());
