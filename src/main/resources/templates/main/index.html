@@ -18,13 +18,17 @@
         <!--</div>-->
     <!--</div>-->
         <div class="row">
-        <div class="col-md-offset-4 col-md-4 space">
+        <div class="col-md-offset-4 space">
             <form th:action="@{'/filter-animals'}" th:method="GET">
                 <div class="form-group">
+                    <div class="form-row">
+                    <span class="col-md-4">
                         <input name="search" type="text" class="form-control" id="search" placeholder="Search by breed" />
-                    <span class="col-xs-offset-5">
-                    <button class="btn search" type="submit">Search</button>
+                        </span>
+                    <span class="col-md-3">
+                    <button class="btn search btn-md" type="submit">Search</button>
                     </span>
+                    </div>
                 </div>
             </form>
         </div>
