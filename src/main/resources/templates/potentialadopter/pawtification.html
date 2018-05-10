@@ -104,7 +104,8 @@
                 <span th:text="${pawtification.gender}"></span>
             </div>
             <div><a th:href="@{/pawtification/{animalId}/edit(animalId=${pawtification.getId()})}">Edit</a></div>
-                <hr/>
+            <div><a th:href="@{/matches/{matchId}/paw(matchId=${pawtification.getId()})}">View Match</a></div>
+            <hr/>
         </div>
         </div>
     </div>

@@ -6,6 +6,7 @@
 <div th:replace="partials/navbar :: navbar"></div>
 
 <main class="container">
+<<<<<<< HEAD
     <div class="row push">
         <div class="col-md-5">
         <h1>Register Your Animal</h1>
@@ -19,6 +20,65 @@
         </div>
 
         <span>or</span>
+=======
+    <div class="row">
+    <h1>Register Your Animal</h1>
+    <form class="form-horizontal" th:action="@{/animal/create}" th:method="post" th:object="${animal}" enctype="multipart/form-data">
+    <div class="form-group">
+        <h3>Cat Breeds</h3>
+        <select class="cat" th:name="catBreed" th:field="*{catBreed}">
+            <option th:value="null" selected="selected">Options</option>
+            <option th:each="catBreed : ${catBreeds}" th:value="${catBreed.id}" th:text="${catBreed.breed}"></option>
+        </select>
+    </div>
+    <span>or</span>
+    <div class="form-group">
+        <h3>Dog Breeds</h3>
+        <select class="dog" th:name="dogBreed" th:field="*{dogBreed}">
+            <option th:value="null" selected="selected">Options</option>
+            <option th:each="dogBreed : ${dogBreeds}" th:value="${dogBreed.id}" th:text="${dogBreed.breed}"></option>
+        </select>
+    </div>
+        <br/>
+        <span>Pet Name </span>
+        <input th:field="*{name}" th:value="${name}" placeholder="Enter a Pet Name"/>
+        <br/><br/><br/>
+    <div class="form-group">
+        <span>Age</span>
+        <select name="age" size="1">
+            <option th:value="null" >Select Age</option>
+            <option value="Less than 1 year">Less than 1 year</option>
+            <option value="More than 1 year">More than 1 year</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <span>Color</span>
+        <select name="color" size="1">
+            <option th:value="null" >Select Color</option>
+            <option value="Black">Black</option>
+            <option value="Brown">Brown</option>
+            <option value="White">White</option>
+            <option value="Other">Other</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <span>Size</span>
+        <select name="size" size="1">
+            <option th:value="null">Select Size</option>
+            <option value="Small">Small</option>
+            <option value="Medium">Medium</option>
+            <option value="Large">Large</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <span>Gender</span>
+        <select name="gender" size="1">
+            <option th:value="null">Select Gender</option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+        </select>
+    </div>
+>>>>>>> master
 
         <div class="form-group">
             <select th:name="dogBreed" th:field="*{dogBreed}">

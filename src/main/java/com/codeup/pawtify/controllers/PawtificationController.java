@@ -1,13 +1,7 @@
 package com.codeup.pawtify.controllers;
 
-import com.codeup.pawtify.daos.CatBreedRepository;
-import com.codeup.pawtify.daos.DogBreedRepository;
-import com.codeup.pawtify.daos.PawtificationRepository;
-import com.codeup.pawtify.daos.UsersRepository;
-import com.codeup.pawtify.models.CatBreed;
-import com.codeup.pawtify.models.DogBreed;
-import com.codeup.pawtify.models.Pawtification;
-import com.codeup.pawtify.models.User;
+import com.codeup.pawtify.daos.*;
+import com.codeup.pawtify.models.*;
 import com.codeup.pawtify.services.PawtificationService;
 import com.codeup.pawtify.services.UserService;
 import org.springframework.stereotype.Controller;
@@ -22,14 +16,16 @@ import javax.validation.Valid;
 @Controller
 public class PawtificationController {
     private final PawtificationRepository pawDao;
+    private final AnimalRepository animalDao;
     private final CatBreedRepository catDao;
     private final DogBreedRepository dogDao;
     private final UsersRepository userDao;
     private final UserService userService;
     private final PawtificationService pawService;
 
-    public PawtificationController(PawtificationRepository pawDao, CatBreedRepository catDao, DogBreedRepository dogDao, UsersRepository userDao, UserService userService, PawtificationService pawService){
+    public PawtificationController(PawtificationRepository pawDao, AnimalRepository animalDao, CatBreedRepository catDao, DogBreedRepository dogDao, UsersRepository userDao, UserService userService, PawtificationService pawService){
         this.pawDao = pawDao;
+        this.animalDao = animalDao;
         this.catDao = catDao;
         this.dogDao = dogDao;
         this.userDao = userDao;
@@ -41,7 +37,6 @@ public class PawtificationController {
     @GetMapping("/pawtification")
     public String create( Model model){
         Pawtification pawtification = new Pawtification();
-//        Pawtification myPawtify = userService.isLoggedInAndAnimalMatchesRS(user);
         Iterable<CatBreed> catBreeds = catDao.findAll();
         Iterable<DogBreed> dogBreeds = dogDao.findAll();
         User user = userService.loggedInUser();
@@ -49,7 +44,6 @@ public class PawtificationController {
         model.addAttribute("catBreeds", catBreeds);
         model.addAttribute("dogBreeds", dogBreeds);
         model.addAttribute("pawtification", pawtification);
-//        model.addAttribute("pawtifications", pawDao.findAll());
         return "/potentialadopter/pawtification";
     }
 
@@ -62,7 +56,6 @@ public class PawtificationController {
         pawService.checkPawtificationtoDB(pawtification);
         return "redirect:/pawtification";
     }
-
 
 //    TODO: EDIT Pawtification
 
@@ -81,14 +74,8 @@ public class PawtificationController {
 
     @PostMapping("/pawtification/edit")
     public String update(@ModelAttribute Pawtification editPawtify){
-        Pawtification paw = pawDao.findOne(editPawtify.getId());
-        paw.setAge(editPawtify.getAge());
-        paw.setGender(editPawtify.getGender());
-        paw.setColor(editPawtify.getGender());
-        paw.setCatBreed(editPawtify.getCatBreed());
-        paw.setDogBreed(editPawtify.getDogBreed());
-        pawDao.save(paw);
-//        pawService.matchPawtificationAndAnimals(editPawtify);
+        pawDao.save(editPawtify);
+        pawService.checkPawtificationtoDB(editPawtify);
         return "redirect:/pawtification";
     }
 
@@ -96,5 +83,21 @@ public class PawtificationController {
     public String deletePawtify(@ModelAttribute Pawtification pawtification){
         pawDao.delete(pawtification);
         return "redirect:/pawtification";
+    }
+
+    @GetMapping("/matches/{matchId}/paw")
+    public String showMatch(Model model, Pawtification pawtification) {
+        pawService.showAnimalsThatMatched(pawtification);
+//        Animal animal = animalDao.findOne(id);
+//        model.addAttribute("shelterName", animal.getRescueshelter().getName());
+//        model.addAttribute("shelterAddress", animal.getRescueshelter().getAddress());
+//        model.addAttribute("shelterNumber", animal.getRescueshelter().getPhone());
+//        model.addAttribute("animal", animal);
+//
+//        if(animal.getCatBreed() == null){
+//            model.addAttribute("dogBreed", animal.getDogBreed().getBreed());
+//        } else
+//            model.addAttribute("catBreed", animal.getCatBreed().getBreed());
+        return "/potentialadopter/match";
     }
 }
