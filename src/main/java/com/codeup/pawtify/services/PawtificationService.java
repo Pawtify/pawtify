@@ -32,7 +32,7 @@ public class PawtificationService extends TwilioService {
         }
     }
 
-    public void showAnimalsThatMatched(Pawtification pawtification) {
+    public Animal showAnimalsThatMatched(Pawtification pawtification) {
         List<Animal> animalList;
         System.out.println(pawtification.getDogBreed());
         if(pawtification.getDogBreed() != null) {
@@ -41,8 +41,8 @@ public class PawtificationService extends TwilioService {
             animalList = animalDao.findAllByAgeAndSizeAndColorAndGenderAndCatBreed(pawtification.getAge(), pawtification.getSize(), pawtification.getColor(), pawtification.getGender(), pawtification.getCatBreed());
         }
         for (Animal animal : animalList) {
-            System.out.println(animal.getColor());
-
+            return animal;
         }
+        return null;
     }
 }
