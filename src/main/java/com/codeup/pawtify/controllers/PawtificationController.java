@@ -86,18 +86,18 @@ public class PawtificationController {
     }
 
     @GetMapping("/matches/{matchId}/paw")
-    public String showMatch(Model model, Pawtification pawtification) {
+    public String showMatch(@PathVariable long id, Model model) {
         pawService.showAnimalsThatMatched(pawtification);
-//        Animal animal = animalDao.findOne(id);
-//        model.addAttribute("shelterName", animal.getRescueshelter().getName());
-//        model.addAttribute("shelterAddress", animal.getRescueshelter().getAddress());
-//        model.addAttribute("shelterNumber", animal.getRescueshelter().getPhone());
-//        model.addAttribute("animal", animal);
-//
-//        if(animal.getCatBreed() == null){
-//            model.addAttribute("dogBreed", animal.getDogBreed().getBreed());
-//        } else
-//            model.addAttribute("catBreed", animal.getCatBreed().getBreed());
+        Animal animal = animalDao.findOne(id);
+        model.addAttribute("shelterName", animal.getRescueshelter().getName());
+        model.addAttribute("shelterAddress", animal.getRescueshelter().getAddress());
+        model.addAttribute("shelterNumber", animal.getRescueshelter().getPhone());
+        model.addAttribute("animal", animal);
+
+        if(animal.getCatBreed() == null){
+            model.addAttribute("dogBreed", animal.getDogBreed().getBreed());
+        } else
+            model.addAttribute("catBreed", animal.getCatBreed().getBreed());
         return "/potentialadopter/match";
     }
 }
