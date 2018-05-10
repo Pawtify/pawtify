@@ -2,6 +2,7 @@ package com.codeup.pawtify.controllers;
 
 import com.codeup.pawtify.daos.*;
 import com.codeup.pawtify.models.*;
+import com.codeup.pawtify.services.AnimalService;
 import com.codeup.pawtify.services.PawtificationService;
 import com.codeup.pawtify.services.UserService;
 import org.springframework.stereotype.Controller;
@@ -22,8 +23,9 @@ public class PawtificationController {
     private final UsersRepository userDao;
     private final UserService userService;
     private final PawtificationService pawService;
+    private final AnimalService animalService;
 
-    public PawtificationController(PawtificationRepository pawDao, AnimalRepository animalDao, CatBreedRepository catDao, DogBreedRepository dogDao, UsersRepository userDao, UserService userService, PawtificationService pawService){
+    public PawtificationController(PawtificationRepository pawDao, AnimalRepository animalDao, CatBreedRepository catDao, DogBreedRepository dogDao, UsersRepository userDao, UserService userService, PawtificationService pawService, AnimalService animalService){
         this.pawDao = pawDao;
         this.animalDao = animalDao;
         this.catDao = catDao;
@@ -31,6 +33,7 @@ public class PawtificationController {
         this.userDao = userDao;
         this.userService = userService;
         this.pawService = pawService;
+        this.animalService = animalService;
     }
 
     //set up to create new pawtification--ORIGINAL
@@ -86,18 +89,19 @@ public class PawtificationController {
     }
 
     @GetMapping("/matches/{matchId}/paw")
-    public String showMatch(Model model, Pawtification pawtification) {
-        pawService.showAnimalsThatMatched(pawtification);
-//        Animal animal = animalDao.findOne(id);
-//        model.addAttribute("shelterName", animal.getRescueshelter().getName());
-//        model.addAttribute("shelterAddress", animal.getRescueshelter().getAddress());
-//        model.addAttribute("shelterNumber", animal.getRescueshelter().getPhone());
-//        model.addAttribute("animal", animal);
-//
-//        if(animal.getCatBreed() == null){
-//            model.addAttribute("dogBreed", animal.getDogBreed().getBreed());
-//        } else
-//            model.addAttribute("catBreed", animal.getCatBreed().getBreed());
+    public String showMatch(@PathVariable long matchId, Model model) {
+        Pawtification pawtification = pawDao.findOne(matchId);
+        System.out.println(matchId);
+//        pawService.showAnimalsThatMatched(pawtification);
+
+        model.addAttribute("shelterName", pawService.showAnimalsThatMatched(pawtification).getRescueshelter().getName());
+        model.addAttribute("shelterAddress", pawService.showAnimalsThatMatched(pawtification).getRescueshelter().getAddress());
+        model.addAttribute("shelterNumber", pawService.showAnimalsThatMatched(pawtification).getRescueshelter().getPhone());
+        model.addAttribute("animal", pawService.showAnimalsThatMatched(pawtification));
+        if(pawService.showAnimalsThatMatched(pawtification).getCatBreed() == null){
+            model.addAttribute("dogBreed", pawService.showAnimalsThatMatched(pawtification).getDogBreed().getBreed());
+        } else
+            model.addAttribute("catBreed", pawService.showAnimalsThatMatched(pawtification).getCatBreed().getBreed());
         return "/potentialadopter/match";
     }
 }

@@ -4,7 +4,7 @@
 ##### 1. Matching DB Tables - build logic that will match columns in two tables and create the event that sets Twilio in motion
 - [X] build method that matches the animal and the pawtification tables
 - [X] research Twilio API and implement text message feature that sends the user a link (or the information) for the animal the matched with
-- [ ] create view where adopter can see details of their matches
+- [X] create view where adopter can see details of their matches
 ##### 2. Register Animal Form - RS users will be able to fill out a form including location, name, animal type, breed, age, gender, size, color, checkbox if animal is “good in a home with..”, and upload a picture of the pet
 - [X] create rs-form.html that adds animals entered in that form to the animals table of that database
 - [X] add picture upload to animal profile from this form
@@ -35,7 +35,7 @@
 - [X] add animal card to PA index page that updates when new animals are entered into the db and is filter/searchable from the PA index page
 - [X] add animal card to RS index page with more information for RS (see Laura's example) that updates as soon as new animals are entered and is filter/searchable
 ##### 11. Filter & Search Options - PA users will be able to filter the list of animals by animal type, breed, age, and gender.
-- [ ] add search box and functionality for breeds
+- [X] add search box and functionality for breeds
  
 ### *WISH LIST FEATURES*
 ##### 11. Event listener pop out for notification
