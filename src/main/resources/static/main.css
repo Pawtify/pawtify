@@ -338,6 +338,8 @@ body > main.main-buttons.home-container.container > div {
     position: relative;
     width: 130px;
     height: 135px;
+    object-fit: cover;
+
 }
 
 .caption-card {
@@ -496,6 +498,8 @@ body > main.main-buttons.home-container.container > div {
         margin-left: 25%;
         width: 10em;
         height: 10em;
+        object-fit: cover;
+
     }
 
 }
@@ -524,6 +528,7 @@ body > main.main-buttons.home-container.container > div {
         margin-left: .5em;
         width: 8em;
         height: 8.1em;
+        object-fit: cover;
     }
 
 }
