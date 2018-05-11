@@ -21,7 +21,9 @@ public interface AnimalRepository extends CrudRepository<Animal, Long> {
     List<Animal> findAnimalsByRescueshelterId(long id);
 
 //    SEARCH METHODS FOR SEARCH BAR, WORKING ON DOG BREEDS
+//    List<Animal> findAllByCatBreed_BreedOrDogBreed_Breed(String str);
     List<Animal> findByCatBreed_BreedIsLike(String str);
-    List<Animal> findByDogBreed_BreedIsLike(String str);
+//    List<Animal> findByDogBreed_BreedIsLike(String str);
+//    List<Animal> findByDogBreed_BreedAndCatBreed_Breed(String str);
 
 }
