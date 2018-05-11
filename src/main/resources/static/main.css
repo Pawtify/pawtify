@@ -15,11 +15,12 @@ body {
     background: black;
 }
 
+.animals {
+    vertical-align: middle;
+    margin-left: 0;
+    margin-top: -14%;
+}
 
-
-/*.format {*/
-    /*background-color: #7b7b7b;*/
-/*}*/
 
 .navbar {
     height: 8rem;
@@ -218,16 +219,16 @@ body > main.main-buttons.home-container.container > div {
 
 
 .login {
-    margin-top: 30%;
-    margin-left:20%;
+    margin-left: 25%;
+    margin-top: 25%;
     height: 70px;
-    width: 60%;
+    width: 50%;
     background-color: #70b19a;
     border: none;
 }
 
 .registration{
-    border-left: 8px solid #a7726e;
+    border-left: 5px solid rgba(110, 85, 82, 0.8);
     margin-right: 0;
     margin-top: 10%;
     padding-left: 5%;
@@ -252,7 +253,9 @@ body > main.main-buttons.home-container.container > div {
 }
 
 .register-animal {
-    padding-right: 7rem;
+    padding-right: 2rem;
+    margin-right: 6rem;
+    border-right: 2px solid rgba(113, 88, 84, 0.85);
 }
 
 
@@ -288,6 +291,7 @@ body > main.main-buttons.home-container.container > div {
     color: #ffffff;
     padding-bottom: 31%;
 }
+
 
 .profile-paw {
     margin-top: 8%;
@@ -428,6 +432,10 @@ body > main.main-buttons.home-container.container > div {
 @media (max-width:500px)  {
     .video {
         display: none;
+    }
+
+    .animals {
+        display: hidden;
     }
 
 
