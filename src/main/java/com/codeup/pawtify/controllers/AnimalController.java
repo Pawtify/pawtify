@@ -144,7 +144,7 @@ public class AnimalController {
         updateAnimal.setSize(editAnimal.getSize());
         updateAnimal.setColor(editAnimal.getColor());
         updateAnimal.setBehavior(editAnimal.getBehavior());
-        updateAnimal.setPath(editAnimal.getPath());
+//        updateAnimal.setPath(editAnimal.getPath());
         updateAnimal.setCatBreed(editAnimal.getCatBreed());
         updateAnimal.setDogBreed(editAnimal.getDogBreed());
         animalDoa.save(updateAnimal);
