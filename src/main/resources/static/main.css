@@ -502,7 +502,7 @@ body > main.main-buttons.home-container.container > div {
 
 
 /*#####Card View for Md Screens#####*/
-@media only screen and (max-width: 1200px) and (min-width: 400px) {
+@media only screen and (max-width: 1200px) and (min-width: 501px) {
     .pet {
         border-radius: 50%;
         border: 3px solid rgba(183, 168, 167, 0.97);
