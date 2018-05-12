@@ -28,8 +28,9 @@ body {
 
 .navbar .brand, .navbar .nav > li > a {
     color: white;
-    font-size: 18px;
+    font-size: 20px;
     margin-top: 2rem;
+    font-family: 'Gloria Hallelujah', cursive;
 }
 
 .navbar .brand, .navbar .nav > li > a > .name {
@@ -47,13 +48,24 @@ body {
 }
 
 #navbar > ul.nav.navbar-nav.navbar-right > li > form > button {
-    color: white;
-    font-size: 18px;
+    color: #ffffff;
+    font-size: 20px;
     margin-top: 3rem;
     text-decoration: none;
     background-color: transparent;
     border: none;
-    font-family: 'Nunito', sans-serif;
+    font-family: 'Gloria Hallelujah', cursive;
+    padding-top: 3%;
+}
+
+#navbar > ul.nav.navbar-nav.navbar-right > li > form > button:hover{
+    color: #54c6a0;
+    font-size: 20px;
+    margin-top: 3rem;
+    text-decoration: none;
+    background-color: transparent;
+    border: none;
+    font-family: 'Gloria Hallelujah', cursive;
     padding-top: 3%;
 }
 
@@ -98,7 +110,7 @@ body > main.main-buttons.home-container{
 
 .navbar-inverse .navbar-brand {
     color: #54c6a0;
-    font-size: 40px;
+    font-size: 50px;
     margin-top: 1rem;
     font-family: 'Caveat Brush', cursive;
 }
@@ -252,10 +264,18 @@ body > main.main-buttons.home-container.container > div {
     border-radius: 10px;
 }
 
+
+.register-btn {
+    background-color: rgba(59, 3, 7, 0.65);
+    color: #ffffff;
+    width: 9em;
+    border: 1px solid #886966;
+}
+
 .register-animal {
     padding-right: 2rem;
     margin-right: 6rem;
-    border-right: 2px solid rgba(113, 88, 84, 0.85);
+    border-right: 4px solid rgba(116, 208, 180, 0.93);
 }
 
 
