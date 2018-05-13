@@ -1,80 +1,79 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head th:replace="partials/header :: header('About')"></head>
-<body>
+    <head th:replace="partials/header :: header('About')"></head>
+    <body>
+        <div th:replace="partials/navbar :: navbar"></div>
+        <main class="container description">
+            <div class="row">
+                <div class="col-md-offset-5 col-xs-offset-3 col-sm-offset-5 title">
+                    <h1>about pawtify</h1>
+                </div>
+                <div class="description">
+                    <div class="col-md-offset-2 col-md-5 text-center space">
+                        <p>Pawtify is a notification system designed to enhance the convenience of matching people with pets.<br/>
+                        Take a look through our browse section to see which dogs and cats are already in your local animal shelters.<br/>
+                        Can’t find what you are looking for?<br/>
+                        Then create a pawtification that will notify you via text when your furever friend has been registered into a shelter.
 
-<div th:replace="partials/navbar :: navbar"></div>
-
-<main class="container description">
-
-    <div class="row">
-
-    <div class="col-md-offset-5 col-xs-offset-3 col-sm-offset-5 title">
-    <h1>about pawtify</h1>
-    </div>
-    <div class="description">
-        <div class="col-md-offset-1 col-md-10 text-center">
-            <p>Pawtify is a notification system designed to enhance the convenience of matching people with pets.
-                Take a look through our browse section to see which dogs and cats are already in your local animal shelters.<br/>
-                Can’t find what you are looking for?<br/>
-                Then create a pawtification that will notify you via text when your furever friend has been registered into a shelter.<br/>
-
-                Pawtify is designed to allow any rescue shelter staff to insert a dog or cat into our database to help it find a purfect match. Resuce staff members can enter as many animals as they would like and have the flexbility to update, delete, or create animal information.
-            </p>
-        </div>
-        <div class="col-md-offset-1 col-md-10 col-xs-offset-1 quote text-center">
-                <p><em>“The next time you want a pet, get notified with pawtify!”</em></p>
-        </div>
-    </div>
-    </div>
-</main>
-<main class="container developers">
-    <div class="col-md-7 col-md-offset-4 col-xs-offset-3">
-    <h1>Meet the Developers</h1>
-    </div>
-
-    <div class="row">
-        <div class="col-sm-6 col-md-4">
-            <div class="thumbnail">
-                    <img src="/images/dev1.jpeg" alt="Developer" width="80%" class="image"/>
-                <div class="caption text-center">
-                    <h3>Emma DeJong</h3>
-                    <span>
-                        <a href="https://github.com/emmaldejong" target="_blank" style="color: black;"><i class="fa fa-github" style="font-size:3rem"></i></a>
-                        <a href="https://www.linkedin.com/in/emmaldejong" target="_blank" style="color: black;"><i class="fa fa-linkedin-square" style="font-size:3rem; margin: .5rem;"></i></a>
-                    </span>
+                        Pawtify is designed to allow any rescue shelter staff to insert a dog or cat into our database to help it find a purfect match. Resuce staff members can enter as many animals as they would like and have the flexbility to update, delete, or create animal information.
+                        </p>
+                    </div>
+                    <div class="col-md-3">
+                        <img src="/images/IMG_1759_iphone8plusspacegrey_portrait.png" alt="iphone" width="80%"/>
+                    </div>
+                    <div class="col-md-offset-2 col-md-8 col-xs-offset-1 quote text-center">
+                        <p><em>“The next time you want a pet, get notified with pawtify!”</em></p>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="col-sm-6 col-md-4">
-            <div class="thumbnail">
-                <img src="/images/dev2.jpeg" alt="Developer" width="80%" class="image"/>
-                <div class="caption text-center">
-                    <h3>Laura Prochaska</h3>
-                    <span>
-                        <a href="https://github.com/lalepro" target="_blank" style="color: black;"><i class="fa fa-github" style="font-size:3rem"></i></a>
-                        <a href="https://www.linkedin.com/in/laura-prochaska" target="_blank" style="color: black;"><i class="fa fa-linkedin-square" style="font-size:3rem; margin: .5rem;"></i></a>
-                    </span>
+        </main>
+        <main class="container developers">
+            <div class="col-md-7 col-md-offset-4 col-xs-offset-3">
+            <h1>Meet the Developers</h1>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-6 col-md-4">
+                    <div class="thumbnail">
+                            <img src="/images/dev1.jpeg" alt="Developer" width="80%" class="image"/>
+                        <div class="caption text-center">
+                            <h3>Emma DeJong</h3>
+                            <span>
+                                <a href="https://github.com/emmaldejong" target="_blank" style="color: black;"><i class="fa fa-github" style="font-size:3rem"></i></a>
+                                <a href="https://www.linkedin.com/in/emmaldejong" target="_blank" style="color: black;"><i class="fa fa-linkedin-square" style="font-size:3rem; margin: .5rem;"></i></a>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-4">
+                    <div class="thumbnail">
+                        <img src="/images/dev2.jpeg" alt="Developer" width="80%" class="image"/>
+                        <div class="caption text-center">
+                            <h3>Laura Prochaska</h3>
+                            <span>
+                                <a href="https://github.com/lalepro" target="_blank" style="color: black;"><i class="fa fa-github" style="font-size:3rem"></i></a>
+                                <a href="https://www.linkedin.com/in/laura-prochaska" target="_blank" style="color: black;"><i class="fa fa-linkedin-square" style="font-size:3rem; margin: .5rem;"></i></a>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-4">
+                    <div class="thumbnail">
+                            <img src="/images/dev3.jpeg" alt="Developer" width="80%" class="image" />
+                        <div class="caption text-center">
+                            <h3>Bettina Trejo</h3>
+                            <span>
+                                <a href="https://github.com/bettinatrejo" target="_blank" style="color: black;"><i class="fa fa-github" style="font-size:3rem"></i></a>
+                                <a href="https://www.linkedin.com/in/bettina-trejo" target="_blank" style="color: black;"><i class="fa fa-linkedin-square" style="font-size:3rem; margin: .5rem;"></i></a>
+                            </span>
+
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="col-sm-6 col-md-4">
-            <div class="thumbnail">
-                    <img src="/images/dev3.jpeg" alt="Developer" width="80%" class="image" />
-                <div class="caption text-center">
-                    <h3>Bettina Trejo</h3>
-                    <span>
-                        <a href="https://github.com/bettinatrejo" target="_blank" style="color: black;"><i class="fa fa-github" style="font-size:3rem"></i></a>
-                        <a href="https://www.linkedin.com/in/bettina-trejo" target="_blank" style="color: black;"><i class="fa fa-linkedin-square" style="font-size:3rem; margin: .5rem;"></i></a>
-                    </span>
-
-                </div>
-            </div>
-        </div>
-    </div>
 
 
-</main>
-<footer th:replace="partials/footer :: footer"></footer>
-</body>
+        </main>
+    <footer th:replace="partials/footer :: footer"></footer>
+    </body>
 </html>
