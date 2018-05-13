@@ -6,44 +6,38 @@
 <div th:replace="partials/navbar :: navbar"></div>
 
 <main class="container">
-    <div class="row">
-        <div class="col-md-5">
+    <div class="row push">
+        <div class="col-md-5 text-center register-animal">
     <h1>Edit Animal</h1>
 
     <form class="form-horizontal" th:action="@{/animal/edit}" th:method="post" th:object="${editAnimal}" enctype="multipart/form-data">
-        <div class="form-group">
+        <div class="form-group col-md-offset-6 col-md-7">
         <h3>Update Cat Breed</h3>
             <select class="cat" th:name="catBreed" th:field="*{catBreed}">
                 <option th:value="null" selected="selected">Options</option>
                 <option th:each="catBreed : ${catBreeds}" th:value="${catBreed.id}" th:text="${catBreed.breed}"></option>
             </select>
         </div>
-        <span>And/Or</span>
+        <span>Or</span>
         <br/>
-        <div class="form-group">
+        <div class="form-group col-md-offset-8 col-md-6">
         <h3>Update Dog Breed</h3>
             <select class="dog" th:name="dogBreed" th:field="*{dogBreed}">
                 <option th:value="null" selected="selected">Options</option>
                 <option th:each="dogBreed : ${dogBreeds}" th:value="${dogBreed.id}" th:text="${dogBreed.breed}"></option>
             </select>
         </div>
-        <span>Update Pet Name </span>
-        <h4 th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></h4>
-        <input th:field="*{name}" th:value="${name}" placeholder="Enter a Pet Name"/>
-        <br/>
-        <br/>
+
         <div class="form-group">
-            <span>Age</span>
             <select name="age" size="1">
-                <option value="0" >Select Age</option>
+                <option th:value="null" >Select Age</option>
                 <option value="Less than 1 year">Less than 1 year</option>
                 <option value="More than 1 year">More than 1 year</option>
             </select>
         </div>
         <div class="form-group">
-            <span>Color</span>
             <select name="color" size="1">
-                <option value="0" >Select Color</option>
+                <option th:value="null" >Select Color</option>
                 <option value="Black">Black</option>
                 <option value="Brown">Brown</option>
                 <option value="White">White</option>
@@ -51,9 +45,8 @@
             </select>
         </div>
         <div class="form-group">
-            <span>Size</span>
             <select name="size" size="1">
-                <option value="0">Select Size</option>
+                <option th:value="null">Select Size</option>
                 <option value="Small">Small</option>
                 <option value="Medium">Medium</option>
                 <option value="Large">Large</option>
@@ -62,19 +55,24 @@
         <div class="form-group">
             <span>Gender</span>
             <select name="gender" size="1">
-                <option value="0">Select Gender</option>
+                <option th:value="null">Select Gender</option>
                 <option value="Male">Male</option>
                 <option value="Female">Female</option>
             </select>
         </div>
 
-        <div>
-            <div class="form-group">
+        <div class="form-group col-md-offset-3">
+            <label>Update Pet Name </label>
+            <input th:field="*{name}" th:value="${name}" placeholder="Enter a Pet Name"/>
+        </div>
+
+
+            <div class="form-group text-center">
                 <label for="behavior">Behavior of Animal</label><br/>
                 <h4 th:if="${#fields.hasErrors('behavior')}" th:errors="*{behavior}"></h4>
                 <textarea th:field="*{behavior}" th:value="${behavior}" class="form-control" id="behavior" rows="3" placeholder="Include Animals Behavior"></textarea>
             </div>
-        </div>
+
 
         <input type="hidden" th:field="*{id}" th:value="${id}"/>
         <div>
@@ -86,18 +84,16 @@
         </div>
 
         <div class="form-group">
-            <div class="col-sm-offset-2 col-sm-10">
-                <button type="submit" class="btn btn-default">Update</button>
-            </div>
+                <button type="submit" class="btn btn-success">Update</button>
         </div>
-    </form>
+        </form>
         </div>
 
-        <div class="col-md-4">
+        <div class="col-md-5 text-center">
         <h2>Permanently Delete Animal</h2>
         <form th:action="@{/animal/delete}" th:method="post" th:object="${editAnimal}">
             <input type="hidden" th:field="*{id}" />
-            <button id="delete">Delete</button>
+            <button id="delete" class="btn btn-danger">Delete</button>
         </form>
         </div>
     </div>

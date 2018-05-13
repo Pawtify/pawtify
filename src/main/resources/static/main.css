@@ -202,15 +202,15 @@ body > main.main-buttons.home-container{
 .quote {
     font-weight: bold;
     font-size:4vh;
-    margin-top: 3%;
+    padding-top: 5%;
+
 }
 
 .description {
-    font-size: 3vh;
+    font-size: 1.2em;
     background-color: #cedada;
-    margin-left: 0;
     width: 100%;
-    padding-bottom: 7%;
+    padding-bottom: 5%;
     padding-top: 2%;
 }
 
@@ -439,8 +439,7 @@ body > main.main-buttons.home-container.container > div {
     font-family: 'Nunito', sans-serif;
     /*font-weight: bold;*/
     font-size: 25px;
-    /*box-shadow: 6px 6px 6px 6px rgba(142, 110, 106, 0.83);*/
-    /*background-color: rgba(156, 106, 103, 0.23);*/
+
 
 }
 
@@ -515,28 +514,138 @@ body > main.main-buttons.home-container.container > div {
         border-radius: 50%;
         border: 3px solid rgba(183, 168, 167, 0.97);
         position: relative;
-        margin-left: 25%;
-        width: 10em;
-        height: 10em;
+        margin-left: 23%;
+        width: 11em;
+        height: 11.1em;
         object-fit: cover;
+    }
+}
 
+
+@media only screen and (max-width: 415px) and  (min-width: 374px) {
+
+    .pet {
+        border-radius: 50%;
+        border: 3px solid rgba(183, 168, 167, 0.97);
+        position: relative;
+        margin-left: 27%;
+        width: 11em;
+        height: 11.1em;
+        object-fit: cover;
+    }
+
+}
+
+
+
+@media only screen and (max-width: 993px) {
+    .animals {
+        display: none;
+    }
+
+
+    #navbar > ul.nav.navbar-nav.navbar-right > li > form > button {
+        color: #ffffff;
+        font-size: 14px;
+        margin-top: 3rem;
+        text-decoration: none;
+        background-color: transparent;
+        border: none;
+        font-family: 'Gloria Hallelujah', cursive;
+        padding-top: 3%;
+    }
+
+    #navbar > ul.nav.navbar-nav.navbar-right > li > form > button:hover{
+        color: #54c6a0;
+        font-size: 14px;
+        margin-top: 3rem;
+        text-decoration: none;
+        background-color: transparent;
+        border: none;
+        font-family: 'Gloria Hallelujah', cursive;
+        padding-top: 3%;
+    }
+
+    .navbar .brand, .navbar .nav > li > a {
+        color: white;
+        font-size: 14px;
+        margin-top: 2rem;
+        font-family: 'Gloria Hallelujah', cursive;
     }
 
 }
 
 
 /*#####Card View for Md Screens#####*/
-@media only screen and (max-width: 1200px) and (min-width: 501px) {
+@media only screen and (max-width: 1200px) and (min-width: 991px) {
     .pet {
         border-radius: 50%;
         border: 3px solid rgba(183, 168, 167, 0.97);
         position: relative;
-        width: 5em;
-        height: 5.1em;
-
+        width: 6em;
+        height: 6.1em;
+        margin-left: 4%;
+        object-fit: cover;
     }
 
 }
+
+@media only screen and (max-width: 992px) and (min-width: 772px) {
+    .pet {
+        border-radius: 50%;
+        border: 3px solid rgba(183, 168, 167, 0.97);
+        position: relative;
+        width: 6em;
+        height: 6.1em;
+        margin-left: 30%;
+        object-fit: cover;
+    }
+}
+
+
+@media only screen and (max-width: 771px) and (min-width: 767px) {
+   .pet {
+        border-radius: 50%;
+        border: 3px solid rgba(183, 168, 167, 0.97);
+        position: relative;
+        margin-left: 2rem;
+        width: 10em;
+        height: 10em;
+        object-fit: cover;
+   }
+
+    .thumbnail-card {
+        margin-left: 20%;
+    }
+}
+
+@media only screen and (max-width: 765px) and (min-width: 712px) {
+    .pet {
+        border-radius: 50%;
+        border: 3px solid rgba(183, 168, 167, 0.97);
+        position: relative;
+        margin-left: 25rem;
+        width: 10em;
+        height: 10em;
+        object-fit: cover;
+    }
+}
+
+@media only screen and (max-width: 711px) and (min-width: 501px) {
+    .pet {
+        border-radius: 50%;
+        border: 3px solid rgba(183, 168, 167, 0.97);
+        position: relative;
+        margin-left: 31%;
+        width: 12em;
+        height: 12.1em;
+        object-fit: cover;
+    }
+}
+
+
+
+
 
 
 /*#####Card View for Large Screens#####*/
