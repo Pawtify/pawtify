@@ -125,7 +125,7 @@ body > main.main-buttons.home-container{
     top: 25%;
     left: 55%;
     transform: translate(-50%, -50%);
-    color: #a1fbdb;
+    color: #76d4b7;
     font-family: 'Concert One', cursive;
     font-size: 6vw;
     width: 80%;
@@ -143,6 +143,9 @@ body > main.main-buttons.home-container{
     left: 55%;
     opacity: .9;
 }
+
+
+
 
 
 #behavior {
@@ -275,7 +278,7 @@ body > main.main-buttons.home-container.container > div {
 .register-animal {
     padding-right: 2rem;
     margin-right: 6rem;
-    border-right: 4px solid rgba(116, 208, 180, 0.93);
+    border-right: 4px solid rgba(100, 77, 75, 0.71);
 }
 
 
@@ -359,7 +362,6 @@ body > main.main-buttons.home-container.container > div {
     width: 130px;
     height: 135px;
     object-fit: cover;
-
 }
 
 .caption-card {
@@ -372,8 +374,6 @@ body > main.main-buttons.home-container.container > div {
     background-color: rgba(231, 243, 243, 0.4);
     color: black;
     padding-top: 1em;
-
-
 }
 
 
@@ -399,7 +399,7 @@ body > main.main-buttons.home-container.container > div {
 
 
 .form-group > select {
-    border: 1px solid #9cd6b5
+    border: 2px solid #74d0b4
 }
 
 
@@ -456,7 +456,7 @@ body > main.main-buttons.home-container.container > div {
     }
 
     .animals {
-        display: hidden;
+        display: none;
     }
 
 
@@ -572,7 +572,18 @@ body > main.main-buttons.home-container.container > div {
         margin-top: 2rem;
         font-family: 'Gloria Hallelujah', cursive;
     }
+}
 
+@media only screen and (max-width: 1499px) and (min-width: 1201px) {
+    .pet {
+        border-radius: 50%;
+        border: 3px solid rgba(183, 168, 167, 0.97);
+        position: relative;
+        width: 7em;
+        height: 7.1em;
+        margin-left: 30%;
+        object-fit: cover;
+    }
 }
 
 
@@ -582,9 +593,9 @@ body > main.main-buttons.home-container.container > div {
         border-radius: 50%;
         border: 3px solid rgba(183, 168, 167, 0.97);
         position: relative;
-        width: 6em;
-        height: 6.1em;
-        margin-left: 4%;
+        width: 7em;
+        height: 7.1em;
+        margin-left: 21%;
         object-fit: cover;
     }
 
@@ -643,20 +654,15 @@ body > main.main-buttons.home-container.container > div {
     }
 }
 
-
-
-
-
-
 /*#####Card View for Large Screens#####*/
 @media only screen and (min-width: 1500px) {
     .pet {
         border-radius: 50%;
         border: 3px solid rgba(183, 168, 167, 0.97);
         position: relative;
-        margin-left: .5em;
-        width: 8em;
-        height: 8.1em;
+        margin-left: 3.5em;
+        width: 9em;
+        height: 9.1em;
         object-fit: cover;
     }
 

@@ -75,6 +75,8 @@
                 </div>
             </div>
         </form>
+
+        <img src="/images/prints.png" alt="Paw Prints" width="50%"/>
     </div>
     <div class="col-md-offset-2 col-md-3 side-menu text-center">
         <img src="/images/catdog.jpg" alt="Cat and Dog" width="70%" class="profile-paw" />
@@ -103,7 +105,7 @@
                 <span>Gender:</span>
                 <span th:text="${pawtification.gender}"></span>
             </div>
-            <div><button class="btn btn-default btn-xs"><a style="color:black; text-decoration: none;" th:href="@{/pawtification/{animalId}/edit(animalId=${pawtification.getId()})}">Edit</a></button></div><br/>
+            <div><button class="btn btn-default btn-xs space"><a style="color:black; text-decoration: none;" th:href="@{/pawtification/{animalId}/edit(animalId=${pawtification.getId()})}">Edit</a></button></div><br/>
             <div><button class="btn btn-default match-btn btn-sm"><a style="color:white; text-decoration: none;" th:href="@{/matches/{matchId}/paw(matchId=${pawtification.getId()})}">View Match</a></button></div>
             <hr/>
         </div>
