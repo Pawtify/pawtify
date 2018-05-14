@@ -1,5 +1,23 @@
 USE pawtify_db;
 INSERT INTO animals(name,age,gender,size,color,behavior,path ,rescueshelter_id,cat_breed_id,dog_breed_id)VALUES
-  ('Teddy', 'less than a year', 'male', 'small', 'black', 'great with all animals, not kid friendly', 'https://images.pexels.com/photos/674570/pexels-photo-674570.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260', 1, 14, null),
-  ('Annie', 'more than a year', 'female', 'small', 'brown', 'great with children but not good with other animals', 'https://images.pexels.com/photos/33492/cat-red-cute-mackerel.jpg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260', 2, 8, null),
-  ('Zoey', 'more than a year', 'female', 'large', 'black', 'great with children but not good with other animals', 'https://images.pexels.com/photos/247937/pexels-photo-247937.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260', 3, null, 3);
+  ('Teddy', 'less than a year', 'male', 'small', 'black', 'great with all animals, and kid friendly', '/uploads/Ben.jpeg', 1, 14, null),
+  ('Annie', 'more than a year', 'female', 'small', 'brown', 'great with children and good with other animals', '/uploads/Jason.jpeg', 2, 8, null),
+  ('Zoey', 'more than a year', 'female', 'large', 'black', 'great with children and good with other animals', '/uploads/AJ.jpeg', 3, null, 3),
+  ('Miya', 'less than a year', 'male', 'small', 'black', 'great with all animals, and kid friendly', '/uploads/Yumi.jpeg', 4, 14, null),
+  ('Jessi', 'more than a year', 'female', 'small', 'brown', 'great with children and good with other animals', '/uploads/Ben.jpeg', 5, 8, null),
+  ('Dana', 'more than a year', 'female', 'large', 'black', 'great with children and good with other animals', '/uploads/Chris.jpeg', 6, null, 3),
+  ('Snickers', 'less than a year', 'male', 'small', 'black', 'great with all animals, and kid friendly', '/uploads/Philip.jpeg', 7, 14, null),
+  ('Spot', 'more than a year', 'female', 'small', 'brown', 'great with children and good with other animals', '/uploads/Tristan.jpeg', 8, 8, null),
+  ('Frankie', 'more than a year', 'female', 'large', 'black', 'great with children and good with other animals', '/uploads/Fer.jpeg', 9, null, 3),
+  ('Bear', 'less than a year', 'male', 'small', 'black', 'great with all animals, and kid friendly', '/uploads/Jordan.jpeg', 10, 14, null),
+  ('Max', 'more than a year', 'female', 'small', 'brown', 'great with children and good with other animals', '/uploads/Kyra.jpeg', 4, 8, null),
+  ('Willy', 'more than a year', 'female', 'large', 'black', 'great with children and good with other animals', '/uploads/Marcy.jpeg', 9, null, 3),
+  ('Bailey', 'less than a year', 'male', 'small', 'black', 'great with all animals, and kid friendly', '/uploads/Scott.jpeg', 10, 14, null),
+  ('Casey', 'more than a year', 'female', 'small', 'brown', 'great with children and good with other animals', '/uploads/Ryan.jpeg', 1, 8, null),
+  ('Devin', 'more than a year', 'female', 'large', 'black', 'great with children and good with other animals', '/uploads/Bulldog.jpeg', 5, null, 3),
+  ('Harley', 'less than a year', 'male', 'small', 'black', 'great with all animals, and kid friendly', '/uploads/Cooper.jpeg', 1, 14, null),
+  ('Lou', 'more than a year', 'female', 'small', 'brown', 'great with children and good with other animals', '/uploads/gary.jpeg', 2, 8, null),
+  ('Rory', 'more than a year', 'female', 'large', 'black', 'great with children and good with other animals', '/uploads/ZACH.jpeg', 3, null, 3),
+  ('Toby', 'less than a year', 'male', 'small', 'black', 'great with all animals, and kid friendly', '/uploads/Gonzo.jpeg', 1, 14, null),
+  ('Sage', 'more than a year', 'female', 'small', 'brown', 'great with children and good with other animals', '/uploads/simese.jpeg', 2, 8, null),
+  ('Stevie', 'more than a year', 'female', 'large', 'black', 'great with children and good with other animals', '/uploads/TJ.jpeg', 3, null, 3);
