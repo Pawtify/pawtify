@@ -8,20 +8,18 @@
 <main class="container">
     <div class="row push">
         <div class="col-md-5 text-center register-animal">
-    <h1>Edit Animal</h1>
+    <h1>Update Animal</h1>
 
     <form class="form-horizontal" th:action="@{/animal/edit}" th:method="post" th:object="${editAnimal}" enctype="multipart/form-data">
-        <div class="form-group col-md-offset-6 col-md-7">
-        <h3>Update Cat Breed</h3>
+        <div class="form-group col-md-offset-5 col-md-6">
+        <h3>Cat Breed</h3>
             <select class="cat" th:name="catBreed" th:field="*{catBreed}">
                 <option th:value="null" selected="selected">Options</option>
                 <option th:each="catBreed : ${catBreeds}" th:value="${catBreed.id}" th:text="${catBreed.breed}"></option>
             </select>
         </div>
-        <span>Or</span>
-        <br/>
-        <div class="form-group col-md-offset-8 col-md-6">
-        <h3>Update Dog Breed</h3>
+        <div class="form-group col-md-offset-6 col-md-7">
+        <h3>Dog Breed</h3>
             <select class="dog" th:name="dogBreed" th:field="*{dogBreed}">
                 <option th:value="null" selected="selected">Options</option>
                 <option th:each="dogBreed : ${dogBreeds}" th:value="${dogBreed.id}" th:text="${dogBreed.breed}"></option>
@@ -53,7 +51,6 @@
             </select>
         </div>
         <div class="form-group">
-            <span>Gender</span>
             <select name="gender" size="1">
                 <option th:value="null">Select Gender</option>
                 <option value="Male">Male</option>
