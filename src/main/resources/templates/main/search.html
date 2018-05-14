@@ -13,7 +13,7 @@
         <p style="margin-left: 10%; margin-right: 10%; font-size: 3em; font-family: 'Nunito', sans-serif; text-align: center; background-color: #54c6a0; color: white; text-shadow: 0 0 2px #000; padding: 20px " th:if="${animals.size() == 0}"><em>Ohh No!</em> There are no animals that match your breed choice at this time. Sign up for a Pawtify and we will let you know which local shelter your furry friend is located in when they become available.</p>
         </div>
         <div th:each="animal : ${animals}">
-            <div class="col-sm-5 col-md-2">
+            <div class="col-sm-5 col-md-3">
                 <div class="thumbnail well thumbnail-card">
                     <a th:href="@{/animal/{animalId}/(animalId=${animal.getId()})}">
                         <div class="browse-animal-images">
