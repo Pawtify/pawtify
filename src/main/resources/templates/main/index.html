@@ -36,7 +36,7 @@
 <hr/>
         <div class="row">
             <div th:each="animal : ${animals}">
-            <div class="col-sm-5 col-md-2">
+            <div class="col-sm-5 col-md-3">
             <div class="thumbnail well thumbnail-card">
                         <a th:href="@{/animal/{animalId}/(animalId=${animal.getId()})}">
                             <div class="browse-animal-images">
