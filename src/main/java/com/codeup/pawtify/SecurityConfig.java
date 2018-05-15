@@ -1,7 +1,6 @@
 package com.codeup.pawtify;
 
 import com.codeup.pawtify.services.UserDetailsLoader;
-import com.sun.corba.se.impl.presentation.rmi.ExceptionHandler;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -33,7 +32,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         ;
     }
 
-
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
@@ -56,14 +54,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                     .authorizeRequests()
                     .antMatchers("/animal/create", "/animal/{id}/edit")
                     .hasAuthority("ROLE_STAFF")
-//                .and()
-//                .authorizeRequests()
-//                .antMatchers("/pawtification/")
-//                .hasAuthority("ADOPTER")
-
         ;
-
-
-
     }
 }
