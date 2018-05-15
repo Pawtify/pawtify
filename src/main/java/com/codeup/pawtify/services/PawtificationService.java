@@ -5,7 +5,6 @@ import com.codeup.pawtify.daos.PawtificationRepository;
 import com.codeup.pawtify.models.Animal;
 import com.codeup.pawtify.models.Pawtification;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 
 @Service
@@ -18,6 +17,7 @@ public class PawtificationService extends TwilioService {
         this.animalDao = animalDao;
     }
 
+    //Checks the Pawtification fields to a list of all the animals in the Animals table in the database, then sends the a text message if a match is found
     public void checkPawtificationtoDB(Pawtification pawtification) {
         List<Animal> animalList;
         System.out.println(pawtification.getDogBreed());
@@ -32,6 +32,7 @@ public class PawtificationService extends TwilioService {
         }
     }
 
+    //Returns any animals that are matched when the Pawtification criteria is check so that the adopter can view their matches.
     public Animal showAnimalsThatMatched(Pawtification pawtification) {
         List<Animal> animalList;
         System.out.println(pawtification.getDogBreed());
