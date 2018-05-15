@@ -35,7 +35,6 @@ public class RescueShelter{
     }
 
     public RescueShelter() {
-
     }
 
     public long getId() {
