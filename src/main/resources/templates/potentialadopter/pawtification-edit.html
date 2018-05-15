@@ -1,90 +1,83 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head th:replace="partials/header :: header('Edit')"></head>
-<body>
-<div th:replace="partials/navbar :: navbar"></div>
-<main class="container">
-        <div class="row pawtify push  well">
-            <div class="col-md-offset-2 col-md-8  text-center">
-                    <h2>Edit Your Pawtification</h2>
-                <!--new action for pawtification-->
-                <form class="form-horizontal" th:action="@{/pawtification/edit}" th:method="post" th:object="${editPawtify}">
-                    <!--for each for breeds-->
-                    <div class="form-row">
-                        <div class="col-md-offset-2 col-md-4">
-                        <div class="form-group">
-                            <h4>Cat</h4>
-                            <select class="cat" th:name="catBreed" th:field="*{catBreed}">
-                                <option th:value="null" selected="selected">Options</option>
-                                <option th:each="catBreed : ${catBreeds}" th:value="${catBreed.id}" th:text="${catBreed.breed}"></option>
-                            </select>
-                        </div>
-                        </div>
-                        <div class="col-md-4">
-                        <div class="form-group">
-                            <h4>Dog</h4>
-                            <select class="dog" th:name="dogBreed" th:field="*{dogBreed}">
-                                <option th:value="null" selected="selected">Options</option>
-                                <option th:each="dogBreed : ${dogBreeds}" th:value="${dogBreed.id}" th:text="${dogBreed.breed}"></option>
-                            </select>
-                        </div>
+    <head th:replace="partials/header :: header('Edit')"></head>
+    <body>
+        <div th:replace="partials/navbar :: navbar"></div>
+        <main class="container">
+                <div class="row pawtify push  well">
+                    <div class="col-md-offset-2 col-md-8  text-center">
+                            <h2>Edit Your Pawtification</h2>
+                        <form class="form-horizontal" th:action="@{/pawtification/edit}" th:method="post" th:object="${editPawtify}">
+                            <div class="form-row">
+                                <div class="col-md-offset-2 col-md-4">
+                                <div class="form-group">
+                                    <h4>Cat</h4>
+                                    <select class="cat" th:name="catBreed" th:field="*{catBreed}">
+                                        <option th:value="null" selected="selected">Options</option>
+                                        <option th:each="catBreed : ${catBreeds}" th:value="${catBreed.id}" th:text="${catBreed.breed}"></option>
+                                    </select>
+                                </div>
+                                </div>
+                                <div class="col-md-4">
+                                <div class="form-group">
+                                    <h4>Dog</h4>
+                                    <select class="dog" th:name="dogBreed" th:field="*{dogBreed}">
+                                        <option th:value="null" selected="selected">Options</option>
+                                        <option th:each="dogBreed : ${dogBreeds}" th:value="${dogBreed.id}" th:text="${dogBreed.breed}"></option>
+                                    </select>
+                                </div>
+                                </div>
+                            </div>
+                            <div class="col-md-offset-4 col-md-4">
+                                <div class="form-group">
+                                    <select class="form-control" name="age" size="1">
+                                        <option value="age">Select Age</option>
+                                        <option value="Less than 1 year">Less than 1 year</option>
+                                        <option value="More than 1 year">More than 1 year</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <select name="color" size="1" class="form-control">
+                                        <option value="color">Select Coat Color</option>
+                                        <option value="Black">Black</option>
+                                        <option value="Brown">Brown</option>
+                                        <option value="White">White</option>
+                                        <option value="Other">Other</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <select name="size" size="1" class="form-control">
+                                        <option value="size">Select Size</option>
+                                        <option value="Small">Small</option>
+                                        <option value="Medium">Medium</option>
+                                        <option value="Large">Large</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <select name="gender" size="1" class="form-control">
+                                        <option value="gender">Select Gender</option>
+                                        <option value="Male">Male</option>
+                                        <option value="Female">Female</option>
+                                    </select>
+                                </div>
+                            <input type="hidden" th:field="*{id}" th:value="${id}"/>
+                            <div class="form-group">
+                                <div class="col-md-offset-3 col-md-4">
+                                    <input type="hidden" th:field="*{user}" th:value="${user}" />
+                                    <button type="submit" class="btn btn-md btn-success">Update</button>
+                                </div>
+                            </div>
+                            </div>
+                        </form>
+                        <div class="col-md-offset-4 col-md-4 push">
+                            <form th:action="@{/pawtification/delete}" th:method="post" th:object="${editPawtify}">
+                                <input type="hidden" th:field="*{id}" />
+                                <button id="delete" class="btn btn-danger">Permanently Delete</button>
+                            </form>
                         </div>
                     </div>
-                    <div class="col-md-offset-4 col-md-4">
-                        <div class="form-group">
-                            <select class="form-control" name="age" size="1">
-                                <option value="age">Select Age</option>
-                                <option value="Less than 1 year">Less than 1 year</option>
-                                <option value="More than 1 year">More than 1 year</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <select name="color" size="1" class="form-control">
-                                <option value="color">Select Coat Color</option>
-                                <option value="Black">Black</option>
-                                <option value="Brown">Brown</option>
-                                <option value="White">White</option>
-                                <option value="Other">Other</option>
-                                <!--<option value="No Preference">No Preference</option>-->
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <select name="size" size="1" class="form-control">
-                                <option value="size">Select Size</option>
-                                <option value="Small">Small</option>
-                                <option value="Medium">Medium</option>
-                                <option value="Large">Large</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <select name="gender" size="1" class="form-control">
-                                <option value="gender">Select Gender</option>
-                                <option value="Male">Male</option>
-                                <option value="Female">Female</option>
-                                <!--<option value="No Preference">No Preference</option>-->
-                            </select>
-                        </div>
-
-                    <input type="hidden" th:field="*{id}" th:value="${id}"/>
-                    <div class="form-group">
-                        <div class="col-md-offset-3 col-md-4">
-                            <input type="hidden" th:field="*{user}" th:value="${user}" />
-                            <button type="submit" class="btn btn-md btn-success">Update</button>
-                        </div>
-                    </div>
-                    </div>
-                </form>
-                <div class="col-md-offset-4 col-md-4 push">
-                    <form th:action="@{/pawtification/delete}" th:method="post" th:object="${editPawtify}">
-                        <input type="hidden" th:field="*{id}" />
-                        <button id="delete" class="btn btn-danger">Permanently Delete</button>
-                    </form>
                 </div>
-            </div>
-        </div>
-
-
-</main>
-<div th:replace="partials/footer :: footer"></div>
-</body>
+        </main>
+    <div th:replace="partials/footer :: footer"></div>
+    </body>
 </html>
