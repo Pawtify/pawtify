@@ -211,10 +211,11 @@ body > main.main-buttons.home-container{
 
 .description {
     font-size: 1.2em;
-    background-color: #cedada;
+    background-color: #d7e4e4;
     width: 100%;
-    padding-bottom: 5%;
+    padding-bottom: 2%;
     padding-top: 2%;
+    font-weight: bold;
 }
 
 .developers {
@@ -514,7 +515,7 @@ body > main.main-buttons.home-container.container > div {
         border-radius: 50%;
         border: 3px solid rgba(183, 168, 167, 0.97);
         position: relative;
-        margin-left: 23%;
+        margin-left: 19%;
         width: 11em;
         height: 11.1em;
         object-fit: cover;
@@ -579,9 +580,9 @@ body > main.main-buttons.home-container.container > div {
         border-radius: 50%;
         border: 3px solid rgba(183, 168, 167, 0.97);
         position: relative;
-        width: 7em;
-        height: 7.1em;
-        margin-left: 30%;
+        width: 9em;
+        height: 9.1em;
+        margin-left: 22%;
         object-fit: cover;
     }
 }
@@ -606,9 +607,9 @@ body > main.main-buttons.home-container.container > div {
         border-radius: 50%;
         border: 3px solid rgba(183, 168, 167, 0.97);
         position: relative;
-        width: 6em;
-        height: 6.1em;
-        margin-left: 30%;
+        width: 8em;
+        height: 8.1em;
+        margin-left: 27%;
         object-fit: cover;
     }
 }
@@ -616,13 +617,13 @@ body > main.main-buttons.home-container.container > div {
 
 @media only screen and (max-width: 771px) and (min-width: 767px) {
    .pet {
-        border-radius: 50%;
-        border: 3px solid rgba(183, 168, 167, 0.97);
-        position: relative;
-        margin-left: 2rem;
-        width: 10em;
-        height: 10em;
-        object-fit: cover;
+       border-radius: 50%;
+       border: 3px solid rgba(183, 168, 167, 0.97);
+       position: relative;
+       margin-left: 2rem;
+       width: 10em;
+       height: 10em;
+       object-fit: cover;
    }
 
     .thumbnail-card {

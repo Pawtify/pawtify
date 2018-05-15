@@ -8,9 +8,7 @@
     <div class="col-md-6 col-md-offset-1 text-center push well">
         <h1>Pawtification</h1>
         <h4>Pawtify me when there is an available animal that matches...</h4>
-        <!--new action for pawtification-->
         <form class="form-horizontal" th:action="@{/pawtification}" th:method="post" th:object="${pawtification}">
-            <!--for each for breeds-->
             <div class="row">
                 <div class="col-md-offset-1 col-md-4">
                     <span class="form-group" >
@@ -49,7 +47,6 @@
                         <option value="Brown">Brown</option>
                         <option value="White">White</option>
                         <option value="Other">Other</option>
-                        <!--<option value="No Preference">No Preference</option>-->
                     </select>
                 </div>
                 <div class="form-group">
@@ -65,7 +62,6 @@
                         <option value="gender">Select Gender</option>
                         <option value="Male">Male</option>
                         <option value="Female">Female</option>
-                        <!--<option value="No Preference">No Preference</option>-->
                     </select>
                 </div>
             </div>
@@ -105,7 +101,7 @@
                 <span>Gender:</span>
                 <span th:text="${pawtification.gender}"></span>
             </div>
-            <div><button class="btn btn-default btn-xs space"><a style="color:black; text-decoration: none;" th:href="@{/pawtification/{animalId}/edit(animalId=${pawtification.getId()})}">Edit</a></button></div><br/>
+            <div><button class="btn btn-default btn-xs space" style="background-color: #9cd6b5; padding: 1% 3%;"><a style="color:black; text-decoration: none;" th:href="@{/pawtification/{animalId}/edit(animalId=${pawtification.getId()})}"><strong>Edit</strong></a></button></div><br/>
             <div><button class="btn btn-default match-btn btn-sm"><a style="color:white; text-decoration: none;" th:href="@{/matches/{matchId}/paw(matchId=${pawtification.getId()})}">View Match</a></button></div>
             <hr/>
         </div>
