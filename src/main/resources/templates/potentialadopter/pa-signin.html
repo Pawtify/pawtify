@@ -5,46 +5,40 @@
         <div th:replace="partials/navbar :: navbar"></div>
         <main class="container">
             <div class="row push">
-            <div class="col-md-offset-4 col-md-4">
-                    <div class="card well">
-                        <div class="card-body text-center">
-                            <h1 class="text-center">Login</h1>
+                <div class="col-md-offset-4 col-md-4">
+                        <div class="card well">
+                            <div class="card-body text-center">
+                                <h1 class="text-center">Login</h1>
 
-                            <div class="error" th:if="${param.logout}">
-                                You have been logged out.
-                            </div>
-                            <div class="error" th:if="${param.error}">
-                                Invalid Username and Password.
-                            </div>
-                            <form class="form-horizontal" th:action="@{/login}" method="post">
+                                <div class="error" th:if="${param.logout}">
+                                    You have been logged out.
+                                </div>
+                                <div class="error" th:if="${param.error}">
+                                    Invalid Username and Password.
+                                </div>
+                                <form class="form-horizontal" th:action="@{/login}" method="post">
 
-                            <div class="form-group form-inline">
-                                <label for="username" class="glyphicon glyphicon-user control-label"></label>
-                                <input type="text" class="form-control" name="username" id="username" placeholder="Username"/>
-                            </div>
+                                <div class="form-group form-inline">
+                                    <label for="username" class="glyphicon glyphicon-user control-label"></label>
+                                    <input type="text" class="form-control" name="username" id="username" placeholder="Username"/>
+                                </div>
 
-                            <div class="form-group form-inline">
-                                <label for="password" class="glyphicon glyphicon-lock control-label"></label>
-                                <input id="password" class="form-control" name="password" type="password" placeholder="Password"/>
-                            </div>
+                                <div class="form-group form-inline">
+                                    <label for="password" class="glyphicon glyphicon-lock control-label"></label>
+                                    <input id="password" class="form-control" name="password" type="password" placeholder="Password"/>
+                                </div>
 
-                            <div class="text-center mt-4">
-                                <button class="btn btn-default register" type="submit">Login</button>
-                            </div>
-                        </form>
-                            <div class="push">
-                                <a th:href="@{/register/adopter}"><button type="submit" class="btn btn-default btn-sm">Member Register</button></a>
-                                <a th:href="@{/register/rescue-shelter}"><button type="submit" class="btn btn-default btn-sm">Staff Registration</button></a>
+                                <div class="text-center mt-4">
+                                    <button class="btn btn-default register" type="submit">Login</button>
+                                </div>
+                            </form>
+                                <div class="push">
+                                    <a th:href="@{/register/adopter}"><button type="submit" class="btn btn-default btn-sm">Member Register</button></a>
+                                    <a th:href="@{/register/rescue-shelter}"><button type="submit" class="btn btn-default btn-sm">Staff Registration</button></a>
+                                </div>
                             </div>
                         </div>
-                    </div>
-            </div>
-
-
-
-
-
-
+                </div>
             </div>
         </main>
         <footer th:replace="partials/footer :: footer"></footer>

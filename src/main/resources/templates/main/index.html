@@ -1,51 +1,48 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head th:replace="partials/header :: header('Browse')"></head>
-<body>
-
-
-<div th:replace="partials/navbar :: navbar"></div>
-
-<main class="container">
-        <div class="row">
-        <div class="col-md-offset-4 space">
-            <form th:action="@{'/filter-animals'}" th:method="GET">
-                <div class="form-group">
-                    <div class="form-row">
-                    <span class="col-md-4">
-                        <input name="search" type="text" class="form-control" id="search" placeholder="Search by breed" />
-                        </span>
-                    <span class="col-md-3">
-                    <button class="btn search btn-md" type="submit">Search</button>
-                    </span>
+    <head th:replace="partials/header :: header('Browse')"></head>
+    <body>
+        <div th:replace="partials/navbar :: navbar"></div>
+        <main class="container">
+                <div class="row">
+                <div class="col-md-offset-4 space">
+                    <form th:action="@{'/filter-animals'}" th:method="GET">
+                        <div class="form-group">
+                            <div class="form-row">
+                            <span class="col-md-4">
+                                <input name="search" type="text" class="form-control" id="search" placeholder="Search by breed" />
+                                </span>
+                            <span class="col-md-3">
+                            <button class="btn search btn-md" type="submit">Search</button>
+                            </span>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                </div>
+                <hr/>
+                <div class="row">
+                    <div th:each="animal : ${animals}">
+                    <div class="col-sm-5 col-md-3">
+                    <div class="thumbnail well thumbnail-card">
+                                <a th:href="@{/animal/{animalId}/(animalId=${animal.getId()})}">
+                                    <div class="browse-animal-images">
+                                    <img th:src="${animal.path}" class="pet"/>
+                                    </div>
+                                    <div class="caption caption-card text-center">
+                                        <!--name-->
+                                        <h3 th:text="${animal.name}"></h3>
+                                        <!--gender-->
+                                        <p th:text="${animal.gender}"></p>
+                                        <!--age-->
+                                        <p th:text="${animal.age}"></p>
+                                    </div>
+                                </a>
+                        </div>
+                    </div>
                     </div>
                 </div>
-            </form>
-        </div>
-        </div>
-        <hr/>
-        <div class="row">
-            <div th:each="animal : ${animals}">
-            <div class="col-sm-5 col-md-3">
-            <div class="thumbnail well thumbnail-card">
-                        <a th:href="@{/animal/{animalId}/(animalId=${animal.getId()})}">
-                            <div class="browse-animal-images">
-                            <img th:src="${animal.path}" class="pet"/>
-                            </div>
-                            <div class="caption caption-card text-center">
-                                <!--name-->
-                                <h3 th:text="${animal.name}"></h3>
-                                <!--gender-->
-                                <p th:text="${animal.gender}"></p>
-                                <!--age-->
-                                <p th:text="${animal.age}"></p>
-                            </div>
-                        </a>
-                </div>
-            </div>
-            </div>
-        </div>
-</main>
-<footer th:replace="partials/footer :: footer"></footer>
-</body>
+        </main>
+    <footer th:replace="partials/footer :: footer"></footer>
+    </body>
 </html>
