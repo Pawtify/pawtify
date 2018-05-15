@@ -2,7 +2,6 @@ package com.codeup.pawtify.controllers;
 
 import com.codeup.pawtify.daos.*;
 import com.codeup.pawtify.models.*;
-import com.codeup.pawtify.services.AnimalService;
 import com.codeup.pawtify.services.PawtificationService;
 import com.codeup.pawtify.services.UserService;
 import org.springframework.stereotype.Controller;
@@ -17,26 +16,20 @@ import javax.validation.Valid;
 @Controller
 public class PawtificationController {
     private final PawtificationRepository pawDao;
-    private final AnimalRepository animalDao;
     private final CatBreedRepository catDao;
     private final DogBreedRepository dogDao;
-    private final UsersRepository userDao;
     private final UserService userService;
     private final PawtificationService pawService;
-    private final AnimalService animalService;
 
-    public PawtificationController(PawtificationRepository pawDao, AnimalRepository animalDao, CatBreedRepository catDao, DogBreedRepository dogDao, UsersRepository userDao, UserService userService, PawtificationService pawService, AnimalService animalService){
+    public PawtificationController(PawtificationRepository pawDao, CatBreedRepository catDao, DogBreedRepository dogDao, UserService userService, PawtificationService pawService){
         this.pawDao = pawDao;
-        this.animalDao = animalDao;
         this.catDao = catDao;
         this.dogDao = dogDao;
-        this.userDao = userDao;
         this.userService = userService;
         this.pawService = pawService;
-        this.animalService = animalService;
     }
 
-    //set up to create new pawtification--ORIGINAL
+    // SHOW CREATE PAWTIFICATION FORM
     @GetMapping("/pawtification")
     public String create( Model model){
         Pawtification pawtification = new Pawtification();
@@ -50,7 +43,7 @@ public class PawtificationController {
         return "/potentialadopter/pawtification";
     }
 
-    //    Create a pawtification
+    // ADD NEW PAWTIFICATION TO DB
     @PostMapping("/pawtification")
     public String pawtify(@Valid Pawtification pawtification){
         User user = userService.loggedInUser();
@@ -60,21 +53,19 @@ public class PawtificationController {
         return "redirect:/pawtification";
     }
 
-//    TODO: EDIT Pawtification
-
+    //SHOW EDIT EXISTING PAWTIFICATION FORM
     @GetMapping("/pawtification/{id}/edit")
     public String edit(@PathVariable long id, Model model){
         Iterable<CatBreed> catBreeds = catDao.findAll();
         Iterable<DogBreed> dogBreeds = dogDao.findAll();
-
         model.addAttribute("catBreeds", catBreeds);
         model.addAttribute("dogBreeds", dogBreeds);
-
         model.addAttribute("editPawtify", pawDao.findOne(id));
         System.out.println(pawDao.findOne(id));
         return "/potentialadopter/pawtification-edit";
     }
 
+    // UPDATE EDITED PAWTIFICATION IN DB
     @PostMapping("/pawtification/edit")
     public String update(@ModelAttribute Pawtification editPawtify){
         pawDao.save(editPawtify);
@@ -82,18 +73,18 @@ public class PawtificationController {
         return "redirect:/pawtification";
     }
 
+    // DELETE EXISTING PAWTIFICATION
     @PostMapping("pawtification/delete")
     public String deletePawtify(@ModelAttribute Pawtification pawtification){
         pawDao.delete(pawtification);
         return "redirect:/pawtification";
     }
 
+    // SHOW PAWTIFICATION-ANIMAL MATCH PAGE
     @GetMapping("/matches/{matchId}/paw")
     public String showMatch(@PathVariable long matchId, Model model) {
         Pawtification pawtification = pawDao.findOne(matchId);
         System.out.println(matchId);
-//        pawService.showAnimalsThatMatched(pawtification);
-
         model.addAttribute("shelterName", pawService.showAnimalsThatMatched(pawtification).getRescueshelter().getName());
         model.addAttribute("shelterAddress", pawService.showAnimalsThatMatched(pawtification).getRescueshelter().getAddress());
         model.addAttribute("shelterNumber", pawService.showAnimalsThatMatched(pawtification).getRescueshelter().getPhone());
