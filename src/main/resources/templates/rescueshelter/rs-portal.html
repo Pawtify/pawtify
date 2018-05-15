@@ -4,19 +4,14 @@
     <body>
         <div th:replace="partials/navbar :: navbar"></div>
         <main class="container">
-
-
             <div class="row">
                 <div class="col-md-6">
-                <!--<img src="/images/animals.jpeg" alt="animals" width="85%" style="margin-top: 20%;"/>-->
                 <div>
                     <a th:href="@{/login}">
                     <button type="button" class="btn btn-primary btn-lg login">Log In to Portal</button>
                  </a>
                 </div>
                 </div>
-
-            <!--register form for rs-->
                 <div class="col-md-6">
                     <div class="registration">
                     <h1 class="text-center">Register</h1>
@@ -87,7 +82,6 @@
                 </div>
             </div>
             <img src="/images/dogcat_1024.png" alt="animals" width="45%" class="animals"/>
-
         </main>
         <footer th:replace="partials/footer :: footer"></footer>
     </body>
