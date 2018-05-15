@@ -13,6 +13,7 @@ public interface PawtificationRepository extends CrudRepository<Pawtification, L
     // METHODS FOR TWILIO USED IN THE PAWTIFICATION
     List<Pawtification> findAllByAgeAndSizeAndColorAndGenderAndCatBreed(String age, String size, String color, String gender, CatBreed catBreed);
     List<Pawtification> findAllByAgeAndSizeAndColorAndGenderAndDogBreed(String age, String size, String color, String gender, DogBreed dogBreed);
+
     //METHODS FOR THE PAWTIFICATION CONTROLLER, USED IN THE GET MAPPING PAWITIFICATION CREATE METHOD
     @Query(nativeQuery = true, value = " SELECT * FROM pawtifications WHERE user_id = ?1")
     List<Pawtification> findPawtificationByUserId(long id);
