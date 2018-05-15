@@ -33,7 +33,7 @@ public class UserController {
     }
 
     //########################################################## Potential Adopter Users ##########################################################
-    //Show the Register Form for the Potential Adopter
+    //SHOW REGISTER NEW ADOPTER FORM
     @GetMapping("/register/adopter")
     public String showPASignUpForm(Model model) {
         User user = new User();
@@ -53,7 +53,7 @@ public class UserController {
         return "redirect:/animal/create";
     }
 
-    //Add New Potential Adopter to the DB
+    //ADD NEW POTENTIAL ADOPTER TO THE DB
     @PostMapping("/register/adopter")
     public String registerNewPAUser(@Valid User user, Errors errors, Model model) {
         if(errors.hasErrors()){
@@ -67,7 +67,7 @@ public class UserController {
         return "redirect:/login";
     }
 
-    //Login Potential Adopter
+    //LOGIN POTENTIAL ADOPTER
     @GetMapping("/login")
     public String showPALoginForm() {
         return "potentialadopter/pa-signin";
@@ -79,7 +79,7 @@ public class UserController {
         return "main/redirect";
     }
 
-    //Edit Form Show for Potential Adopter-
+    //SHOW EDIT ADOPTER FORM
     @GetMapping("/adopter/edit")
     public String editAdopter(Model model){
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
@@ -87,7 +87,7 @@ public class UserController {
         return "/potentialadopter/pa-edit";
     }
 
-    //Update DB with Potential Adopter Changed Information-
+    // UPDATE EXISTING ADOPTER INFORMATION
     @PostMapping("/adopter/edit")
     public String updateAdopter(@ModelAttribute User editUser){
         User e = userdao.findOne(editUser.getId());
@@ -99,6 +99,7 @@ public class UserController {
         userdao.save(e);
         return "redirect:/pawtification/";
     }
+
     //########################################################## Rescue Shelter Users ##########################################################
     //Show Rescue Shelter User Affiliation Drop Down
     @GetMapping("/register/rescue-shelter")

@@ -2,8 +2,6 @@ package com.codeup.pawtify.models;
 
 import javax.persistence.*;
 import javax.validation.constraints.Size;
-import java.util.List;
-
 
 @Entity
 @Table(name = "animals")
@@ -44,18 +42,11 @@ public class Animal {
     @ManyToOne(cascade = CascadeType.ALL)
     private RescueShelter rescueshelter;
 
-//    @OneToOne(cascade = CascadeType.ALL, mappedBy = "animal")
-//    private List<CatBreed> cat_breeds;
-//
-//    @OneToOne(cascade = CascadeType.ALL, mappedBy = "animal")
-//    private List<DogBreed> dog_breeds;
-
     @OneToOne(cascade = CascadeType.ALL)
     private CatBreed catBreed;
 
     @OneToOne(cascade = CascadeType.ALL)
     private DogBreed dogBreed;
-
 
     public Animal() {
     }
@@ -71,7 +62,6 @@ public class Animal {
         this.rescueshelter = rescueshelter;
         this.catBreed = catBreed;
         this.dogBreed = dogBreed;
-
     }
 
     public Animal(long id, String name, String age, String gender, String size, String color, String behavior, String path, RescueShelter rescueshelter, CatBreed catBreed, DogBreed dogBreed) {
@@ -176,6 +166,4 @@ public class Animal {
     public void setDogBreed(DogBreed dogBreed) {
         this.dogBreed = dogBreed;
     }
-
 }
-

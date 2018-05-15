@@ -40,29 +40,27 @@ public class AnimalController {
         this.animalService = animalService;
     }
 
-    //    Homepage
+    // SHOW HOME/LANDING PAGE
     @GetMapping("/")
     public String home(Model model) {
         model.addAttribute("animals", animalDoa.findAll());
         return "/main/home";
     }
 
-
-    //    About Page
+    // SHOW THE ABOUT PAGE
     @GetMapping("/about")
     public String about(){
         return "/main/about";
     }
 
-
-
-    //    Browse available animals for pa-users
+    // BROWSE ALL ANIMALS
     @GetMapping("/pets")
     public String availableAnimals(Model model){
         model.addAttribute("animals", animalDoa.findAll());
         return "/main/index";
     }
 
+    // SHOW INDIVIDUAL ANIMAL
     @GetMapping("/animal/{id}")
     public String show(@PathVariable long id, Model model){
         Animal animal = animalDoa.findOne(id);
@@ -78,6 +76,7 @@ public class AnimalController {
         return "/main/show";
     }
 
+    // SHOW ANIMAL CREATE FORM
     @GetMapping("/animal/create")
     public String create(Model model){
         Animal animal = new Animal();
@@ -93,12 +92,10 @@ public class AnimalController {
         return "rescueshelter/rs-form";
     }
 
-
-    //        RS-Post new Animal w/ image method, can be refactored once working
-//     @Value("/Users/emmadejong/IdeaProjects/pawtify/target/classes/static/uploads")
-//     @Value("/Users/lalepro/IdeaProjects/pawtify/target/classes/static/uploads")
-//         @Value("/Users/BettinaTrejo/IdeaProjects/pawtify/target/classes/static/uploads")
-
+    // CREATE AN ANIMAL ENTRY WITH IMAGE FILE PATH UPLOAD
+    //@Value("/Users/emmadejong/IdeaProjects/pawtify/target/classes/static/uploads")
+    //@Value("/Users/lalepro/IdeaProjects/pawtify/target/classes/static/uploads")
+    // @Value("/Users/BettinaTrejo/IdeaProjects/pawtify/target/classes/static/uploads")
     @Value("${file-upload-path}")
     private String uploadPath;
     @PostMapping("/animal/create")
@@ -121,20 +118,20 @@ public class AnimalController {
         return ("redirect:/animal/create");
     }
 
-//    RS-edit animal
+    // SHOW ANIMAL EDIT FORM
     @GetMapping("/animal/{id}/edit")
     public String edit(@PathVariable long id, Model model){
         Iterable<CatBreed> catBreeds = catDao.findAll();
         Iterable<DogBreed> dogBreeds = dogDao.findAll();
         model.addAttribute("catBreeds", catBreeds);
         model.addAttribute("dogBreeds", dogBreeds);
-
         model.addAttribute("editAnimal", animalDoa.findOne(id));
         model.addAttribute("path", animalDoa.findOne(id).getPath());
         System.out.println(animalDoa.findOne(id).getPath());
         return "rescueshelter/rs-animal-edit";
     }
 
+    // EDIT AN ANIMAL ENTRY
     @PostMapping("/animal/edit")
     public String update(@ModelAttribute Animal editAnimal){
         Animal updateAnimal = animalDoa.findOne(editAnimal.getId());
@@ -144,7 +141,6 @@ public class AnimalController {
         updateAnimal.setSize(editAnimal.getSize());
         updateAnimal.setColor(editAnimal.getColor());
         updateAnimal.setBehavior(editAnimal.getBehavior());
-//        updateAnimal.setPath(editAnimal.getPath());
         updateAnimal.setCatBreed(editAnimal.getCatBreed());
         updateAnimal.setDogBreed(editAnimal.getDogBreed());
         animalDoa.save(updateAnimal);
@@ -152,11 +148,10 @@ public class AnimalController {
         return "redirect:/animal/create";
     }
 
+    //DELETE ANIMAL ENTRY
     @PostMapping("/animal/delete")
     public String deletePost(@ModelAttribute Animal animal){
         animalDoa.delete(animal);
         return "redirect:/animal/create";
     }
-
-
 }

@@ -39,5 +39,4 @@ public class DogBreed {
     public void setBreed(String breed) {
         this.breed = breed;
     }
-
 }

@@ -28,7 +28,7 @@
 - [X] About page that compliments the landing/home page
 - [X] add video to background
 #### 8. Mobile Responsive Site - make all pages mobile responsive
-- [ ] dynamic pages that can be used and viewed on a phone
+- [X] dynamic pages that can be used and viewed on a phone
 ##### 9. Navbar (can we split some of navbar options up with a footer?)
 - [X] create a mobile friendly (w/ drop down on mobile), dynamic navbar for being logged in and a view for being logged out (might differ by page)
 ##### 10. Animal Card - Card will show animal picture with name and age. Click on animal card to be taken to individual animal page (show.html) to see more information about specific animal.
