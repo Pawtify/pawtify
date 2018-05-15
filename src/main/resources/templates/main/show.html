@@ -1,49 +1,42 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4"
       xmlns:sec="http://www.w3.org/1999/xhtml">
-<head th:replace="partials/header :: header('Animal')"></head>
-<body>
-
-<div th:replace="partials/navbar :: navbar"></div>
-
-<main class="container">
-
-    <div class="row push">
-        <div class="col-md-offset-1 col-md-5 text-center">
-            <h1 class="greeting">Meet <span th:text="${animal.name}"></span>!</h1>
-            <div class="characteristics">
-                <div class="border">
-                    <span>Breed: </span>
-                    <span th:text="${catBreed}"></span>
-                    <span th:text="${dogBreed}"></span>
-                    <p>Age: <span th:text="${animal.age}">age</span></p>
-                    <p>Gender: <span th:text="${animal.gender}">gender</span></p>
-                    <p>Size: <span th:text="${animal.size}">size</span></p>
-                    <p>Color: <span th:text="${animal.color}">color</span></p>
-                    <p>Behavior: <span th:text="${animal.behavior}">behavior</span></p>
+    <head th:replace="partials/header :: header('Animal')"></head>
+    <body>
+        <div th:replace="partials/navbar :: navbar"></div>
+        <main class="container">
+            <div class="row push">
+                <div class="col-md-offset-1 col-md-5 text-center">
+                    <h1 class="greeting">Meet <span th:text="${animal.name}"></span>!</h1>
+                    <div class="characteristics">
+                        <div class="border">
+                            <span>Breed: </span>
+                            <span th:text="${catBreed}"></span>
+                            <span th:text="${dogBreed}"></span>
+                            <p>Age: <span th:text="${animal.age}">age</span></p>
+                            <p>Gender: <span th:text="${animal.gender}">gender</span></p>
+                            <p>Size: <span th:text="${animal.size}">size</span></p>
+                            <p>Color: <span th:text="${animal.color}">color</span></p>
+                            <p>Behavior: <span th:text="${animal.behavior}">behavior</span></p>
+                        </div>
+                        <div class="border space">
+                            <p><span th:text="${shelterName}">shelter location</span></p>
+                            <p><span th:text="${shelterAddress}">shelter location</span></p>
+                            <p><span th:text="${shelterNumber}">shelter Phone</span></p>
+                        </div>
+                    </div>
                 </div>
-                <div class="border space">
-                    <p><span th:text="${shelterName}">shelter location</span></p>
-                    <p><span th:text="${shelterAddress}">shelter location</span></p>
-                    <p><span th:text="${shelterNumber}">shelter Phone</span></p>
+                <div class="col-md-5">
+                    <div class="browse-animal-images">
+                        <img width="100%" class="show" th:src="${animal.path}" />
+                    </div>
+                    <div class="text-center pet-quote">
+                        <p>I'm ready to meet my <em>furever</em> family! <br/>Come see me at <span th:text="${shelterName}"></span>.</p>
+                        <p>Love,<br/> <span th:text="${animal.name}">name</span></p>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="col-md-5">
-            <div class="browse-animal-images">
-                <img width="100%" class="show" th:src="${animal.path}" />
-            </div>
-            <div class="text-center pet-quote">
-                <p>I'm ready to meet my <em>furever</em> family! <br/>Come see me at <span th:text="${shelterName}"></span>.</p>
-                <p>Love,<br/> <span th:text="${animal.name}">name</span></p>
-            </div>
-        </div>
-    </div>
-
-
-
-</main>
-<footer th:replace="partials/footer :: footer"></footer>
-
-</body>
+        </main>
+    <footer th:replace="partials/footer :: footer"></footer>
+    </body>
 </html>

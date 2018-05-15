@@ -1,51 +1,41 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml" lang="en">
-<head th:replace="partials/header :: header('Browse')"></head>
-<body>
-<div th:replace="partials/navbar :: navbar"></div>
-
-<main class="container">
-    <div style="padding-top: 5%" class="row">
-        <div class="col-md-offset-5 col-md-5">
-            <button class="btn btn-lg" style="background-color: #7a7a7a; margin-bottom: 10%"><a style="color: white; text-decoration: none;" th:href="@{'/pets'}">Back to Browse</a></button>
-        </div>
-        <div class="col-md-offset-1 col-md-10">
-        <p style="margin-left: 10%; margin-right: 10%; font-size: 3em; font-family: 'Nunito', sans-serif; text-align: center; background-color: #54c6a0; color: white; text-shadow: 0 0 2px #000; padding: 20px " th:if="${animals.size() == 0}"><em>Ohh No!</em> There are no animals that match your breed choice at this time. Sign up for a Pawtify and we will let you know which local shelter your furry friend is located in when they become available.</p>
-        </div>
-        <div th:each="animal : ${animals}">
-            <div class="col-sm-5 col-md-3">
-                <div class="thumbnail well thumbnail-card">
-                    <a th:href="@{/animal/{animalId}/(animalId=${animal.getId()})}">
-                        <div class="browse-animal-images">
-                            <img class="pet" th:src="${animal.path} ? ${animal.path} : ' '"/>
-                            <!--<img th:src="${animal.path}" class="pet"/>-->
+    <head th:replace="partials/header :: header('Browse')"></head>
+    <body>
+        <div th:replace="partials/navbar :: navbar"></div>
+        <main class="container">
+            <div style="padding-top: 5%" class="row">
+                <div class="col-md-offset-5 col-md-5">
+                    <button class="btn btn-lg" style="background-color: #7a7a7a; margin-bottom: 10%"><a style="color: white; text-decoration: none;" th:href="@{'/pets'}">Back to Browse</a></button>
+                </div>
+                <div class="col-md-offset-1 col-md-10">
+                <p style="margin-left: 10%; margin-right: 10%; font-size: 3em; font-family: 'Nunito', sans-serif; text-align: center; background-color: #54c6a0; color: white; text-shadow: 0 0 2px #000; padding: 20px " th:if="${animals.size() == 0}"><em>Ohh No!</em> There are no animals that match your breed choice at this time. Sign up for a Pawtify and we will let you know which local shelter your furry friend is located in when they become available.</p>
+                </div>
+                <div th:each="animal : ${animals}">
+                    <div class="col-sm-5 col-md-3">
+                        <div class="thumbnail well thumbnail-card">
+                            <a th:href="@{/animal/{animalId}/(animalId=${animal.getId()})}">
+                                <div class="browse-animal-images">
+                                    <img class="pet" th:src="${animal.path} ? ${animal.path} : ' '"/>
+                                </div>
+                                <div class="caption caption-card text-center">
+                                    <!--Breed-->
+                                    <p th:text="${animal.catBreed} ? ${animal.catBreed.breed} : ' '"></p>
+                                    <!--Name-->
+                                    <p th:text="${animal.name} ? ${animal.name} : ' '"></p>
+                                    <!--gender-->
+                                    <p th:text="${animal.gender} ? ${animal.gender} : ' '"></p>
+                                    <!--<p th:text="${animal.gender}"></p>-->
+                                    <!--age-->
+                                    <p th:text="${animal.age} ? ${animal.age} : ' '"></p>
+                                    <!--<p th:text="${animal.age}"></p>-->
+                                </div>
+                            </a>
                         </div>
-                        <div class="caption caption-card text-center">
-                            <!--Breed-->
-                            <p th:text="${animal.catBreed} ? ${animal.catBreed.breed} : ' '"></p>
-                            <!--Name-->
-                            <p th:text="${animal.name} ? ${animal.name} : ' '"></p>
-                            <!--gender-->
-                            <p th:text="${animal.gender} ? ${animal.gender} : ' '"></p>
-                            <!--<p th:text="${animal.gender}"></p>-->
-                            <!--age-->
-                            <p th:text="${animal.age} ? ${animal.age} : ' '"></p>
-                            <!--<p th:text="${animal.age}"></p>-->
-                        </div>
-                    </a>
+                    </div>
                 </div>
             </div>
-        </div>
-        <!--<div class="col-md-offset-5 col-md-5">-->
-            <!--<link sec:authorize="isAuthenticated()"><button class="btn btn-lg" style="background-color: #7a7a7a; margin-bottom: 10px"><a style="margin-bottom: 3%; color: white; text-decoration: none;" th:href="@{'/pawtification'}">Pawtify Me!</a></button></link>-->
-        <!--</div>-->
-    </div>
-</main>
-
-<footer th:replace="partials/footer :: footer"></footer>
-</body>
+        </main>
+    <footer th:replace="partials/footer :: footer"></footer>
+    </body>
 </html>
-
-<!--<div th:each="animal : ${animals}">-->
-    <!--<p th:text="${animal.catBreed.breed}"></p>-->
-<!--</div>-->
