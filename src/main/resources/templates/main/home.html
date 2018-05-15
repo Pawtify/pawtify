@@ -1,13 +1,9 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-    <head th:replace="partials/header :: header('Pawtify')">
-
-
-    </head>
+    <head th:replace="partials/header :: header('Pawtify')"></head>
     <body class="body-container container-fluid">
         <div th:replace="partials/navbar :: navbar"></div>
         <main>
-
             <div class="row">
                 <div class="video-container col-md-12 col-xs-12">
                     <div class="video">
@@ -18,20 +14,13 @@
                     <div class="mobile">
                         <img src="/images/mobile.jpg" alt="Cat and Dog" width="100%"/>
                     </div>
-                            <div class="slogan push">Matching People with Pets. <br/> Get Notified with Pawtify. </div>
-                            <a href="/about">
+                        <div class="slogan push">Matching People with Pets. <br/> Get Notified with Pawtify. </div>
+                        <a href="/about">
                             <button type="button" class="about btn btn-secondary btn-lg">Learn More</button>
-                            </a>
-                                <!--<div class="direct">-->
-                                    <!--<a th:href="@{/login}"><img src="/images/signin.png" alt="signin" width="20%"/></a>-->
-                                    <!--<a th:href="@{/pets}"><img src="/images/browse.png" alt="browse" width="35%"/></a>-->
-                                    <!--<a th:href="@{/register/adopter}"><img src="/images/register.png" alt="register" width="20%"/></a>-->
-                                <!--</div>-->
+                        </a>
                 </div>
             </div>
         </main>
-
         <footer th:replace="partials/footer :: footer"></footer>
     </body>
-
 </html>

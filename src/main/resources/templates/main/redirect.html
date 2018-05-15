@@ -1,19 +1,19 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head th:replace="partials/header :: header('Pawtification')"></head>
-<body>
-<div th:replace="partials/navbar :: navbar"></div>
-<main class="container">
-<div class="row">
-    <div class="redirect text-center">
-        <h1>Want to make a pawtification?</h1><br/>
-        <a th:href="@{/login}"><button class="sign">Please Sign In</button></a>
-    </div>
-</div>
-    <div class="row">
-        <img src="/images/animal-footer.png" alt="Puppies and Kittens" width="75%" style="margin-left: 13%;"/>
-    </div>
-</main>
-<footer th:replace="partials/footer :: footer"></footer>
-</body>
+    <head th:replace="partials/header :: header('Pawtification')"></head>
+    <body>
+        <div th:replace="partials/navbar :: navbar"></div>
+        <main class="container">
+        <div class="row">
+            <div class="redirect text-center">
+                <h1>Want to make a pawtification?</h1><br/>
+                <a th:href="@{/login}"><button class="sign">Please Sign In</button></a>
+            </div>
+        </div>
+            <div class="row">
+                <img src="/images/animal-footer.png" alt="Puppies and Kittens" width="75%" style="margin-left: 13%;"/>
+            </div>
+        </main>
+    <footer th:replace="partials/footer :: footer"></footer>
+    </body>
 </html>
