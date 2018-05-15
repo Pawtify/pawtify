@@ -19,6 +19,7 @@ public class UserService {
         return  (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
     }
 
+    // NOT CURRENTLY IN USE, PLEASE DO NOT ERASE YET
     public boolean isLoggedInAndAnimalMatchesRS(User user){
         return isLoggedIn() && (loggedInUser().getId() == user.getId());
     }
