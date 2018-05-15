@@ -1,7 +1,6 @@
 package com.codeup.pawtify.services;
 
 import com.codeup.pawtify.daos.AnimalRepository;
-import com.codeup.pawtify.daos.PawtificationRepository;
 import com.codeup.pawtify.models.Animal;
 import com.codeup.pawtify.models.Pawtification;
 import org.springframework.stereotype.Service;
@@ -9,11 +8,9 @@ import java.util.List;
 
 @Service
 public class PawtificationService extends TwilioService {
-    private PawtificationRepository pawDao;
     private AnimalRepository animalDao;
 
-    public PawtificationService(PawtificationRepository pawDao, AnimalRepository animalDao) {
-        this.pawDao = pawDao;
+    public PawtificationService(AnimalRepository animalDao) {
         this.animalDao = animalDao;
     }
 
