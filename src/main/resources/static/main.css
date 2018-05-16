@@ -2,7 +2,6 @@ main {
     margin-top: 80px;
 }
 
-
 html {
     position: relative;
 }
@@ -20,7 +19,6 @@ body {
     margin-left: 0;
     margin-top: -14%;
 }
-
 
 .navbar {
     height: 8rem;
@@ -69,8 +67,6 @@ body {
     padding-top: 3%;
 }
 
-
-
 body > main.main-buttons.home-container{
     background-color: #805754;
     width: 100%;
@@ -81,7 +77,6 @@ body > main.main-buttons.home-container{
     font-size: 1.7em;
 }
 
-
 .glyphicon-lock:before {
     font-size: 1.7em;
 }
@@ -91,8 +86,6 @@ body > main.main-buttons.home-container{
     padding: 5%;
 }
 
-
-
 .profile {
     margin-top: 10%;
     font-size: 18px;
@@ -100,13 +93,10 @@ body > main.main-buttons.home-container{
     text-decoration: none;
 }
 
-
-
 .nav-container {
     margin-left: 0;
     margin-right:0;
 }
-
 
 .navbar-inverse .navbar-brand {
     color: #54c6a0;
@@ -118,7 +108,6 @@ body > main.main-buttons.home-container{
 .inline {
     display: inline;
 }
-
 
 .slogan {
     position: absolute;
@@ -144,15 +133,10 @@ body > main.main-buttons.home-container{
     opacity: .9;
 }
 
-
-
-
-
 #behavior {
     width: 60%;
     margin-left: 7em;
 }
-
 
 .about {
     position: absolute;
@@ -168,8 +152,6 @@ body > main.main-buttons.home-container{
     color: #92dcb1;
 }
 
-
-
 .home-container {
     background-color: #805754;
     margin: 0;
@@ -177,7 +159,6 @@ body > main.main-buttons.home-container{
     padding-bottom: 5%;
     height: 100%;
 }
-
 
 .main-buttons {
     display: inline-block;
@@ -233,7 +214,6 @@ body > main.main-buttons.home-container.container > div {
     width: 100%;
 }
 
-
 .login {
     margin-left: 25%;
     margin-top: 25%;
@@ -259,7 +239,6 @@ body > main.main-buttons.home-container.container > div {
     border-radius: 2px;
 }
 
-
 .redirect {
     margin: 10%;
     padding: 2%;
@@ -267,7 +246,6 @@ body > main.main-buttons.home-container.container > div {
     opacity: .6;
     border-radius: 10px;
 }
-
 
 .register-btn {
     background-color: rgba(59, 3, 7, 0.65);
@@ -281,7 +259,6 @@ body > main.main-buttons.home-container.container > div {
     margin-right: 6rem;
     border-right: 4px solid rgba(100, 77, 75, 0.71);
 }
-
 
 .background {
     padding: 3%;
@@ -297,13 +274,11 @@ body > main.main-buttons.home-container.container > div {
     border-radius: 10px;
 }
 
-
 .register {
     background-color: #1cdea88a;
     color: #ffffff;
     width: 9em;
 }
-
 
 .redirect > a:hover {
     opacity: .8;
@@ -316,12 +291,10 @@ body > main.main-buttons.home-container.container > div {
     padding-bottom: 31%;
 }
 
-
 .profile-paw {
     margin-top: 8%;
     border-radius: 60%;
 }
-
 
 .video-container {
     margin-left: 0;
@@ -337,7 +310,6 @@ body > main.main-buttons.home-container.container > div {
     margin-top: 6%;
 }
 
-
 .video {
     padding: 0px;
     margin: 0px;
@@ -349,12 +321,10 @@ body > main.main-buttons.home-container.container > div {
     display: none;
 }
 
-
 .border {
     border-bottom: 5px solid #a7d2b9;
     border-radius: 5px;
 }
-
 
 .pet {
     border-radius: 50%;
@@ -370,13 +340,11 @@ body > main.main-buttons.home-container.container > div {
     color: white;
 }
 
-
 .pawtification {
     background-color: rgba(231, 243, 243, 0.4);
     color: black;
     padding-top: 1em;
 }
-
 
 .thumbnail {
     box-shadow: 3px 3px 1px #c8c8c8;
@@ -398,12 +366,9 @@ body > main.main-buttons.home-container.container > div {
     font-size: 1em;
 }
 
-
 .form-group > select {
     border: 2px solid #74d0b4
 }
-
-
 
 .search {
     background-color: #805754;
@@ -411,14 +376,11 @@ body > main.main-buttons.home-container.container > div {
     margin-left: 0;
 }
 
-
 .show {
     margin-top: 13%;
     border-radius: 5%;
     border: 7px solid black;
 }
-
-
 
 .pet-quote {
     margin-top: 3%;
@@ -440,14 +402,11 @@ body > main.main-buttons.home-container.container > div {
     font-family: 'Nunito', sans-serif;
     /*font-weight: bold;*/
     font-size: 25px;
-
-
 }
 
 .match-btn {
     background-color: #3e0416;
 }
-
 
 
 /*########FOR MOBILE VIEW###########*/
@@ -460,14 +419,11 @@ body > main.main-buttons.home-container.container > div {
         display: none;
     }
 
-
     .mobile {
         display: inline;
         width: 100%;
         margin-top: 40%;
     }
-
-
 
     .body-container {
         background-color: #7b7b7b;
@@ -482,7 +438,6 @@ body > main.main-buttons.home-container.container > div {
         font-family: 'Concert One', cursive;
         font-size: 2rem;
     }
-
 
     .about {
         position: unset;
@@ -499,9 +454,7 @@ body > main.main-buttons.home-container.container > div {
         margin-right: 0;
         padding-left: 0;
         padding-right: 0;
-
     }
-
 
     .direct {
         opacity: .9;
@@ -509,7 +462,6 @@ body > main.main-buttons.home-container.container > div {
         margin-left: 7%;
         width: 80%;
     }
-
 
     .pet {
         border-radius: 50%;
@@ -522,7 +474,6 @@ body > main.main-buttons.home-container.container > div {
     }
 }
 
-
 @media only screen and (max-width: 415px) and  (min-width: 374px) {
 
     .pet {
@@ -534,16 +485,12 @@ body > main.main-buttons.home-container.container > div {
         height: 11.1em;
         object-fit: cover;
     }
-
 }
-
-
 
 @media only screen and (max-width: 993px) {
     .animals {
         display: none;
     }
-
 
     #navbar > ul.nav.navbar-nav.navbar-right > li > form > button {
         color: #ffffff;
@@ -586,7 +533,6 @@ body > main.main-buttons.home-container.container > div {
         object-fit: cover;
     }
 }
-
 
 /*#####Card View for Md Screens#####*/
 @media only screen and (max-width: 1200px) and (min-width: 991px) {
@@ -666,7 +612,6 @@ body > main.main-buttons.home-container.container > div {
         height: 9.1em;
         object-fit: cover;
     }
-
 }
 
 
